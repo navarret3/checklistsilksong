@@ -1,0 +1,27 @@
+# Python / uv
+.pyenv/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.build/
+
+# Specify generated artifacts (ajusta según necesidades)
+.specify_cache/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Node (si se generan proyectos JS)
+node_modules/
+dist/
+.build/
