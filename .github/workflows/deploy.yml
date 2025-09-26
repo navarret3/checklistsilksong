@@ -23,7 +23,17 @@ jobs:
     - name: Build project
       run: npm run build
       
+    - name: Check FTP secrets
+      id: ftp_secrets
+      run: |
+        missing=0
+        [ -z "${{ secrets.FTP_SERVER }}" ] && echo "::warning ::Missing FTP_SERVER" && missing=1
+        [ -z "${{ secrets.FTP_USERNAME }}" ] && echo "::warning ::Missing FTP_USERNAME" && missing=1
+        [ -z "${{ secrets.FTP_PASSWORD }}" ] && echo "::warning ::Missing FTP_PASSWORD" && missing=1
+        echo "missing=$missing" >> $GITHUB_OUTPUT
+
     - name: Deploy to server via FTP
+      if: steps.ftp_secrets.outputs.missing == '0'
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
