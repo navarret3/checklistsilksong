@@ -115,8 +115,12 @@
 
   <style>
     /* Minimal (optional) subtle spacing for ad units */
-    .ad-unit { margin:1.2rem auto; max-width:728px; text-align:center; }
-    .ad-unit small { display:block; font-size:0.55rem; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:.35rem; }
+    .ad-container { margin:1.1rem auto; max-width:728px; padding:0.9rem 1rem 0.95rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px; display:flex; flex-direction:column; align-items:center; gap:.4rem; }
+    .ad-container .ad-label { font-size:0.55rem; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); opacity:.85; }
+    .ad-slot-wrap { width:100%; display:flex; justify-content:center; align-items:center; min-height:90px; position:relative; }
+    .ad-slot-wrap::after { content:""; position:absolute; inset:0; border:1px dashed rgba(255,255,255,0.08); border-radius:6px; pointer-events:none; }
+    .ad-container:hover .ad-slot-wrap::after { border-color:rgba(255,255,255,0.15); }
+    @media (max-width:760px){ .ad-container { padding:0.75rem .75rem 0.85rem; } }
   </style>
   <style>
     :root {
@@ -312,20 +316,24 @@
     <p data-i18n="intro.p2" style="margin:.4rem 0 .65rem;">A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released.</p>
     <noscript><p data-i18n="intro.noscript"><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
   </section>
-  <!-- Ad Unit: Top Responsive -->
-  <div class="ad-unit" id="ad-top">
-    <small>Advertisement</small>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <!-- Ad Unit: Top Responsive (with framed wrapper) -->
+  <div class="ad-container ad-container--top">
+    <small class="ad-label">Advertisement</small>
+    <div class="ad-slot-wrap">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
   </div>
   <div class="categories" id="categories" aria-live="polite"></div>
 </main>
 <footer>
-  <!-- Ad Unit: Footer Responsive -->
-  <div class="ad-unit" id="ad-footer" style="margin-top:1.5rem;">
-    <small>Advertisement</small>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="9354203965" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <!-- Ad Unit: Footer Responsive (with framed wrapper) -->
+  <div class="ad-container ad-container--footer" style="margin-top:1.5rem;">
+    <small class="ad-label">Advertisement</small>
+    <div class="ad-slot-wrap">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="9354203965" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
   </div>
   <span data-i18n="footer.note">Placeholder dataset based on Hollow Knight – will be replaced with Silksong data.</span>
   <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
