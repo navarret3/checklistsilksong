@@ -39,6 +39,13 @@ import { setLocale, t, activeLocale } from './i18n.js';
       if (changed) {
         saveProgress(progress);
         updateBothPercents();
+        if(window.dataLayer){
+          window.dataLayer.push({
+            event: 'item_toggle',
+            item_id: id,
+            new_state: progress[id] ? 'checked' : 'unchecked'
+          });
+        }
       }
       return changed;
     };
@@ -80,7 +87,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
     langSel.onchange = async () => {
       await setLocale(langSel.value.toLowerCase());
       applyI18n();
-      rerenderList(); // This will re-render the list with the new language
+      rerenderList();
+      if(window.dataLayer){ window.dataLayer.push({ event: 'language_change', lang: activeLocale() }); }
     };
 
     resetBtn.onclick = () => {
@@ -93,12 +101,15 @@ import { setLocale, t, activeLocale } from './i18n.js';
       // Reset search and re-render
       if (searchInput) searchInput.value = '';
       rerenderList();
+      if(window.dataLayer){ window.dataLayer.push({ event: 'progress_reset' }); }
     };
 
     // Theme toggle
     themeBtn.onclick = () => {
       document.body.classList.toggle('theme-light');
-      localStorage.setItem('ssTheme', document.body.classList.contains('theme-light') ? 'light' : 'dark');
+      const theme = document.body.classList.contains('theme-light') ? 'light' : 'dark';
+      localStorage.setItem('ssTheme', theme);
+      if(window.dataLayer){ window.dataLayer.push({ event: 'theme_toggle', theme }); }
     };
     // Load stored theme
     (function(){
@@ -141,6 +152,15 @@ import { setLocale, t, activeLocale } from './i18n.js';
       percentValue.title = percentValueFloating.title = formattedPercent + '% (' + completedWeight.toFixed(2).replace(/\.00$/,'') + ' / ' + totalWeight.toFixed(2).replace(/\.00$/,'') + ' weight)';
       // Refresh per-category counts each time global progress updates
       updateCategoryCounts(items, progress);
+      if(window.dataLayer){
+        window.dataLayer.push({
+          event: 'progress_update',
+          progress_percent: Number(formattedPercent),
+          remaining_items: remaining,
+          completed_weight: Number(completedWeight.toFixed(2)),
+          total_weight: Number(totalWeight.toFixed(2))
+        });
+      }
     }
 
     function formatWeightedPercent(v){
@@ -207,6 +227,16 @@ import { setLocale, t, activeLocale } from './i18n.js';
       measure();
       onScroll();
     })();
+
+    // Register service worker (PWA)
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('/src/js/sw.js').then(()=>{
+        if(window.dataLayer){ window.dataLayer.push({ event: 'sw_registered' }); }
+      }).catch(err => {
+        console.warn('SW registration failed', err);
+        if(window.dataLayer){ window.dataLayer.push({ event: 'sw_error', error: String(err) }); }
+      });
+    }
 
   } catch(e){
     console.error('[INIT] Failure', e);
