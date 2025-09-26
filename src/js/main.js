@@ -3,7 +3,7 @@ import { loadProgress, saveProgress, clearProgress } from './storage.js';
 import { toggle } from './progress.js';
 import { renderCategories, updatePercent, updateCategoryCounts } from './ui.js';
 import { computePercent } from './progress.js';
-import { setLocale, t } from './i18n.js';
+import { setLocale, t, activeLocale } from './i18n.js';
 
 (async function init(){
   try {
@@ -32,52 +32,67 @@ import { setLocale, t } from './i18n.js';
     validateDataset(items, issuesBox, issuesList, dismissIssues);
 
     const globalTotalWeight = items.reduce((s,it)=> s + (typeof it.weight==='number' && it.weight>0 ? it.weight : 1), 0);
-    renderCategories(container, items, progress, (id)=>{
+
+    // Centralized toggle handler for items
+    const handleItemToggle = (id) => {
       const changed = toggle(id, progress);
-      if(changed){
+      if (changed) {
         saveProgress(progress);
         updateBothPercents();
       }
       return changed;
-    }, globalTotalWeight);
-    updateBothPercents();
+    };
 
-    // Live search filter
-    if(searchInput){
-      const allItems = items.slice();
-      let lastQuery = '';
+    const allItems = items.slice();
+    let lastQuery = '';
+
+    // Centralized function to render the item list based on current filters/language
+    function rerenderList() {
+      const lang = activeLocale();
+      const q = searchInput ? searchInput.value.trim().toLowerCase() : '';
+      lastQuery = q;
+
+      const itemsToRender = !q
+        ? allItems
+        : allItems.filter(it => (it.name?.[lang] || it.name?.en || '').toLowerCase().includes(q));
+
+      renderCategories(container, itemsToRender, progress, handleItemToggle, globalTotalWeight);
+      updateBothPercents();
+
+      if (q) {
+        document.querySelectorAll('.cat').forEach(c => c.classList.remove('collapsed'));
+      }
+    }
+
+    // Initial render
+    rerenderList();
+
+    // Event listeners
+    if (searchInput) {
       searchInput.addEventListener('input', () => {
-        const q = searchInput.value.trim().toLowerCase();
-        if(q === lastQuery) return; lastQuery = q;
-        if(!q){
-          renderCategories(container, allItems, progress, (id)=>{ const changed = toggle(id, progress); if(changed){ saveProgress(progress); updateBothPercents(); } return changed; }, globalTotalWeight);
-          updateBothPercents();
-          return;
+        // Prevent re-render if value is identical (e.g., pressing arrow keys)
+        if (searchInput.value.trim().toLowerCase() !== lastQuery) {
+          rerenderList();
         }
-        const filtered = allItems.filter(it => (it.name?.en||'').toLowerCase().includes(q));
-  renderCategories(container, filtered, progress, (id)=>{ const changed = toggle(id, progress); if(changed){ saveProgress(progress); updateBothPercents(); } return changed; }, globalTotalWeight);
-        updateBothPercents();
-        // Expand all categories (filtered set might be smaller)
-        document.querySelectorAll('.cat').forEach(c=> c.classList.remove('collapsed'));
       });
     }
 
     langSel.onchange = async () => {
       await setLocale(langSel.value.toLowerCase());
       applyI18n();
-      updateBothPercents();
+      rerenderList(); // This will re-render the list with the new language
     };
 
     resetBtn.onclick = () => {
-      if(!confirm(t('reset.confirm1')||'Confirm reset?')) return;
-      if(!confirm(t('reset.confirm2')||'Really reset?')) return;
+      if (!confirm(t('reset.confirm1') || 'Confirm reset?')) return;
+      if (!confirm(t('reset.confirm2') || 'Really reset?')) return;
       clearProgress();
-      for(const k of Object.keys(progress)) progress[k]=false;
+      for (const k of Object.keys(progress)) progress[k] = false;
       saveProgress(progress);
-      renderCategories(container, items, progress, (id)=>{
-        const changed = toggle(id, progress);
-        if(changed){ saveProgress(progress); updateBothPercents(); } return changed; }, globalTotalWeight);
-      updateBothPercents();
+
+      // Reset search and re-render
+      if (searchInput) searchInput.value = '';
+      rerenderList();
     };
 
     // Theme toggle
@@ -121,7 +136,7 @@ import { setLocale, t } from './i18n.js';
       if(progressFillFloating) progressFillFloating.style.width = rawPercent + '%';
       percentValue.title = percentValueFloating.title = formattedPercent + '% (' + completedWeight.toFixed(2).replace(/\.00$/,'') + ' / ' + totalWeight.toFixed(2).replace(/\.00$/,'') + ' weight)';
       // Refresh per-category counts each time global progress updates
-      updateCategoryCounts(progress);
+      updateCategoryCounts(items, progress);
     }
 
     function formatWeightedPercent(v){

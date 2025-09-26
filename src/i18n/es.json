@@ -7,7 +7,8 @@
   "footer.note": "Dataset enriquecido con info pública actual de Silksong (los pesos suman 100%).",
   "done.label": "Completado",
   "items.remaining.singular": "1 ítem restante",
-  "items.remaining.plural": "{n} ítems restantes"
-  ,"export.data":"Exportar Datos"
-  ,"import.data":"Importar Datos"
+  "items.remaining.plural": "{n} ítems restantes",
+  "export.data": "Exportar Datos",
+  "import.data": "Importar Datos",
+  "dataset.errors.title": "Problemas de validación del dataset:"
 }

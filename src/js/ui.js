@@ -1,5 +1,5 @@
 import { computePercent } from './progress.js';
-import { t } from './i18n.js';
+import { t, activeLocale } from './i18n.js';
 
 let tooltipEl; // retained but tooltips disabled per latest requirement
 const ENABLE_TOOLTIPS = false; // feature flag to easily restore if needed
@@ -23,7 +23,7 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     const header = document.createElement('div');
     header.className = 'cat-header';
     const counts = countCompletedWeighted(list, progress);
-    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}</h2><span class="cat-count" data-count style="display:none">${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
+    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}</h2><span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
     header.onclick = () => { catEl.classList.toggle('collapsed'); };
     const body = document.createElement('div');
     body.className = 'cat-body';
@@ -67,7 +67,8 @@ export function updatePercent(percentEl, fillEl, items, progress){
   percentEl.textContent = percent + '%';
   if(fillEl) fillEl.style.width = percent + '%';
   percentEl.title = t('percent.tooltip') + ' ' + percent + '%';
-  updateCategoryCounts(progress);
+  // Pass items to the category counter so it doesn't need to query the DOM
+  updateCategoryCounts(items, progress);
 }
 
 function renderItem(it, progress, onToggle){
@@ -78,12 +79,17 @@ function renderItem(it, progress, onToggle){
   el.dataset.id = it.id;
   if(it.effect) el.dataset.effect = it.effect;
   if(it.requirements) el.dataset.req = it.requirements;
-  // Provide raw location text as tooltip data if no explicit description
-  if(it.location_text && !it.description) el.dataset.loc = it.location_text;
   if(progress[it.id]) el.setAttribute('aria-checked','true'); else el.setAttribute('aria-checked','false');
-  const label = escapeHtml(it.name?.en || it.id);
-  const descSource = it.description || it.location_text || '';
+  const lang = activeLocale();
+  const label = escapeHtml(it.name?.[lang] || it.name?.en || it.id);
+
+  // Correctly get translated description or location text
+  const locationString = it.location_text?.[lang] || it.location_text?.en || (typeof it.location_text === 'string' ? it.location_text : '');
+  const descSource = (it.description?.[lang] || it.description?.en) || locationString || '';
   const desc = descSource ? escapeHtml(descSource) : '';
+
+  // Provide raw location text as tooltip data if no explicit description
+  if(locationString && !it.description) el.dataset.loc = locationString;
   // image fallbacks: explicit UI alias -> icon -> placeholder
   let imgSrc = it.image || it.icon || 'assets/images/placeholder-item.png';
   // Heuristic: try to request a higher resolution if external gamerant URL with h=22&w=22
@@ -157,25 +163,21 @@ function groupByCategory(items){
   return map;
 }
 
-export function updateCategoryCounts(progress){
-  // Temporarily disabled - will fix later
-  return;
+export function updateCategoryCounts(items, progress){
+  // New implementation: calculate from data, not DOM
+  const grouped = groupByCategory(items);
   
   document.querySelectorAll('.cat').forEach(catEl => {
-    const body = catEl.querySelector('.cat-body');
-    if(!body) return;
-    const itemEls = body.querySelectorAll('.item');
-    let done=0, total=itemEls.length, doneWeight=0, totalWeight=0;
-    itemEls.forEach(i=>{
-      const wAttr = i.getAttribute('data-weight');
-      const w = wAttr ? parseFloat(wAttr) : 1;
-      totalWeight += isFinite(w) && w>0 ? w : 1;
-      const checked = i.getAttribute('aria-checked')==='true';
-      if(checked){ done++; doneWeight += isFinite(w) && w>0 ? w : 1; }
-    });
-    const catPercent = totalWeight ? (doneWeight/totalWeight)*100 : 0;
+    const categoryId = catEl.dataset.category;
+    if(!categoryId || !grouped[categoryId]) return;
+
+    const categoryItems = grouped[categoryId];
+    const counts = countCompletedWeighted(categoryItems, progress);
+
     const badge = catEl.querySelector('[data-count]');
-    if(badge) badge.textContent = `${done}/${total} (${formatPercent(catPercent)}%)`;
+    if(badge) {
+      badge.textContent = `${counts.done}/${counts.total} (${counts.categoryPercentStr}%)`;
+    }
   });
 }
 
