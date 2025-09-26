@@ -1,0 +1,7 @@
+# ads.txt for checklistsilksong.com
+# Referencia: https://support.google.com/adsense/answer/7532444
+# Formato: dominio SSP/Exchange, ID editor, tipo de relación, ID de autoridad de certificación (opcional si existe)
+
+google.com, pub-9707168065012640, DIRECT, f08c47fec0942fa0
+
+# Añade aquí otras plataformas de publicidad autorizadas en el futuro siguiendo el mismo formato.

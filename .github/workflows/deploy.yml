@@ -1,54 +1,38 @@
-name: Deploy to Server
+name: GitHub Pages Deploy
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: npm ci || npm install
-      
-    - name: Build project
-      run: npm run build
-      
-    - name: Check FTP secrets
-      id: ftp_secrets
-      run: |
-        missing=0
-        [ -z "${{ secrets.FTP_SERVER }}" ] && echo "::warning ::Missing FTP_SERVER" && missing=1
-        [ -z "${{ secrets.FTP_USERNAME }}" ] && echo "::warning ::Missing FTP_USERNAME" && missing=1
-        [ -z "${{ secrets.FTP_PASSWORD }}" ] && echo "::warning ::Missing FTP_PASSWORD" && missing=1
-        echo "missing=$missing" >> $GITHUB_OUTPUT
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-    - name: Deploy to server via FTP
-      if: steps.ftp_secrets.outputs.missing == '0'
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: /public_html/
-      
-    # Alternative: Deploy via rsync/SSH
-    # - name: Deploy via SSH
-    #   uses: appleboy/ssh-action@v1.0.3
-    #   with:
-    #     host: ${{ secrets.HOST }}
-    #     username: ${{ secrets.USERNAME }}
-    #     key: ${{ secrets.SSH_KEY }}
-    #     script: |
-    #       cd /path/to/website
-    #       # rsync or copy commands
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
