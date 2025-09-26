@@ -114,27 +114,9 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9707168065012640" crossorigin="anonymous"></script>
 
   <style>
-    .ad-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 1rem auto;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      max-width: 728px;
-    }
-    .ad-container small {
-      font-size: 0.6rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    .ad-slot-wrap { width:100%; min-height:90px; display:flex; align-items:center; justify-content:center; position:relative; }
-    .ad-slot-wrap.loading::after { content:"Loading ad..."; font-size:.55rem; letter-spacing:1px; color:var(--muted); position:absolute; }
-    .ad-slot-wrap.empty { background:repeating-linear-gradient(45deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05) 10px,rgba(255,255,255,0.1) 10px,rgba(255,255,255,0.1) 20px); }
-    .ad-slot-wrap.border { border:1px dashed var(--border); border-radius:6px; }
+    /* Minimal (optional) subtle spacing for ad units */
+    .ad-unit { margin:1.2rem auto; max-width:728px; text-align:center; }
+    .ad-unit small { display:block; font-size:0.55rem; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:.35rem; }
   </style>
   <style>
     :root {
@@ -331,112 +313,25 @@
     <noscript><p data-i18n="intro.noscript"><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
   </section>
   <!-- Ad Unit: Top Responsive -->
-  <div class="ad-container ad-container--top">
+  <div class="ad-unit" id="ad-top">
     <small>Advertisement</small>
-    <div class="ad-slot-wrap loading empty" data-ad-slot="top-responsive">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-9707168065012640"
-     data-ad-slot="8232693985"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
   <div class="categories" id="categories" aria-live="polite"></div>
 </main>
 <footer>
   <!-- Ad Unit: Footer Responsive -->
-  <div class="ad-container ad-container--footer">
+  <div class="ad-unit" id="ad-footer" style="margin-top:1.5rem;">
     <small>Advertisement</small>
-    <div class="ad-slot-wrap loading empty" data-ad-slot="footer-responsive">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-9707168065012640"
-     data-ad-slot="9354203965"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="9354203965" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
   <span data-i18n="footer.note">Placeholder dataset based on Hollow Knight – will be replaced with Silksong data.</span>
   <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
 </footer>
 <script type="module" src="./src/js/main.js"></script>
-<script>
-  // Lazy trigger ads after main content render & small delay to improve CLS
-  (function(){
-    const params = new URLSearchParams(location.search);
-    const DEBUG = params.has('addebug');
-    let adInitAttempts = 0;
-    const MAX_ATTEMPTS = 14; // ~7s worst case (14 * 500ms)
-    function log(){ if(DEBUG) console.log('[ADS]', ...arguments); }
-    function initAds(){
-      if(!window.adsbygoogle){
-        log('adsbygoogle array not ready yet');
-        return scheduleRetry();
-      }
-      document.querySelectorAll('.ad-slot-wrap').forEach(wrap => {
-        if(wrap.dataset.processed === '1') return; // already attempted
-        const ins = wrap.querySelector('ins.adsbygoogle');
-        if(!ins){
-          log('No <ins> inside wrapper', wrap);
-          wrap.dataset.processed = '1';
-          return;
-        }
-        try {
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          wrap.dataset.processed = '1';
-          wrap.classList.remove('loading');
-          log('Pushed ad request for slot wrapper', wrap.dataset.adSlot);
-          const obs = new MutationObserver(()=>{
-            if(wrap.querySelector('iframe')){
-              wrap.classList.remove('empty');
-              obs.disconnect();
-              log('Ad iframe detected for', wrap.dataset.adSlot);
-            }
-          });
-          obs.observe(wrap, { childList:true, subtree:true });
-          // Fallback timer: if after 3.5s no iframe, mark as no-fill
-          setTimeout(()=>{
-            if(!wrap.querySelector('iframe')){
-              wrap.classList.add('border');
-              log('No iframe inserted (likely ad blocked, no fill or site not yet approved).');
-            }
-          }, 3500);
-        } catch(e){
-          log('Error pushing ad', e);
-          wrap.classList.add('border');
-        }
-      });
-      // If at least one still "loading" with no processed, keep retrying until attempts exhausted
-      if([ ...document.querySelectorAll('.ad-slot-wrap') ].some(w=> w.dataset.processed !== '1')){
-        scheduleRetry();
-      }
-    }
-    function scheduleRetry(){
-      if(adInitAttempts >= MAX_ATTEMPTS){
-        log('Max attempts reached; finalizing fallbacks');
-        document.querySelectorAll('.ad-slot-wrap.loading').forEach(w => {
-          w.classList.remove('loading');
-          if(!w.querySelector('iframe')){
-            // Provide a subtle fallback message (not clickable) so layout stabilizes
-            if(!w.querySelector('.ad-fallback')){
-              const msg = document.createElement('div');
-              msg.className = 'ad-fallback';
-              msg.style.cssText = 'font-size:.55rem;letter-spacing:1px;color:var(--muted);padding:.4rem 0;';
-              msg.textContent = 'Ad not loaded';
-              w.appendChild(msg);
-            }
-            w.classList.add('border');
-          }
-        });
-        return;
-      }
-      adInitAttempts++;
-      setTimeout(initAds, 500);
-    }
-    window.addEventListener('load', () => setTimeout(initAds, 400));
-  })();
-</script>
+<!-- (Removed custom lazy / retry script; using pure default one-line pushes above each ad) -->
 <script>
   // Dynamically update <html lang> when language changes
   (function(){
