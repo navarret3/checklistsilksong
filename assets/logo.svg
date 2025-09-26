@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="40" viewBox="0 0 180 40" role="img" aria-labelledby="title desc">
+<title id="title">Silksong Checklist</title>
+<desc id="desc">Minimal placeholder logo for Silksong 100% Checklist</desc>
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#4fb3ff"/>
+    <stop offset="100%" stop-color="#00ffa8"/>
+  </linearGradient>
+</defs>
+<rect x="0" y="0" width="180" height="40" rx="8" fill="#14181d" stroke="#25313c"/>
+<g font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="600" fill="url(#g)">
+  <text x="16" y="25">Silksong</text>
+</g>
+<g font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="500" fill="#6e7b88">
+  <text x="105" y="24">Checklist</text>
+</g>
+</svg>

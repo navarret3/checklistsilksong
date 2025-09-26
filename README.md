@@ -1,6 +1,14 @@
-# Proyecto Spec-Driven Development con Spec Kit
+# Silksong 100% Checklist (MVP)
 
-Este repositorio se inicializa para trabajar con Spec Kit (Specify CLI) y (opcionalmente) integrarse con Jules. 
+Aplicación web estática (sin backend) para llevar el progreso de un 100% (placeholder con datos de Hollow Knight mientras no haya dataset oficial de Silksong). Basado en un flujo Spec‑Driven (Spec Kit) cuyos artefactos viven en este repositorio (ver `CONSTITUTION.md`, `SPECIFICATION.md`, `PLAN.md`, `TASKS.md`).
+
+Logo provisional en `assets/logo.svg` (gradiente adaptable). Puedes sustituirlo sin romper layout siempre que mantengas altura ≈34px.
+
+---
+
+## Documentación original de bootstrap (Spec Kit)
+
+El contenido siguiente conserva las instrucciones iniciales para reproducir el entorno Spec Kit y seguir iterando requisitos.
 
 ## Objetivo
 Arrancar rápidamente un flujo de Spec-Driven Development: definir principios (/constitution), especificaciones (/specify), plan técnico (/plan), tareas (/tasks) y ejecución (/implement).
@@ -86,14 +94,26 @@ Se incluye `scripts/bootstrap_spec_kit.sh` para automatizar instalación (si ya 
 bash scripts/bootstrap_spec_kit.sh
 ```
 
-## 9. Próximos pasos sugeridos
-1. Ejecuta `uv tool install ...` y `specify init --here --ai copilot`.
-2. Crea la constitución: pide a Copilot `/constitution` centrado en: testing (>=80% cobertura crítica), estándares de código, seguridad (dependabot + escaneo SAST), performance (p95 latencia < 300ms para endpoints clave), accesibilidad (WCAG AA), i18n.
-3. Define primera feature con `/specify`.
-4. Completa `/clarify` y luego `/plan`.
-5. Genera `/tasks`, valida con `/analyze` y ejecuta `/implement`.
+## 9. Ejecución local del checklist
 
-## 10. Troubleshooting rápido
+Servidor simple (ejemplo con Python):
+
+```bash
+python -m http.server 8000
+```
+
+Luego abre http://localhost:8000 en el navegador.
+
+Persistencia: localStorage (`silksongChecklistProgress_v1`). Botón Reset borra el estado tras doble confirmación.
+
+## 10. Próximos pasos UI sugeridos
+- Internacionalizar nombres de categorías (ahora se formatean automáticamente).
+- Persistir estado colapsado por categoría.
+- Tema claro/oscuro con `prefers-color-scheme` + toggle.
+- Métricas de rendimiento (logging inicial de FCP aproximada, tamaño dataset, tiempo de render ms).
+- Tests unitarios minimalistas (por ahora no hay tooling JS configurado).
+
+## 11. Troubleshooting rápido
 | Problema | Solución |
 |----------|----------|
 | `specify: command not found` | Asegura que `~/.local/bin` está en PATH o reinstala uv. |
@@ -101,7 +121,7 @@ bash scripts/bootstrap_spec_kit.sh
 | Python < 3.11 | Instala Python 3.11+ y reinicia la shell. |
 | Lentitud en Windows | Usa WSL2 (Ubuntu) y repite instalación dentro de WSL. |
 
-## 11. Licencia
+## 12. Licencia
 Consulta la licencia MIT de Spec Kit en su repo. Este proyecto inicial puede añadirse la misma o una propia.
 
 ---

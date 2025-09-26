@@ -1,0 +1,20 @@
+Crest of Beast	Crest	
+Required: Complete Chapel of the Beast
+	
+Crest of Reaper	Crest	
+Required: Defeat the ambush in the Chapel of the Reaper and climb to the top.
+	
+Crest of Wanderer	Crest	
+Required: Complete Chapel of the Wanderer
+	
+Crest of Architect	Crest	
+Required: Complete Chapel of the Architect
+	
+Crest of Witch	Crest	
+Required:
+Take Twisted Bud to Greyroot
+Complete Rite of Rebirth Wish
+Complete Infestation Operation Wish
+	
+Crest of Shaman	Crest	
+ACT 3: In a tunnel above the Lore Tablet, Silk Soar required

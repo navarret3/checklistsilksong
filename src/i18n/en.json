@@ -1,0 +1,13 @@
+{
+  "title": "Silksong 100% Checklist",
+  "reset": "Reset",
+  "reset.confirm1": "Reset all progress?",
+  "reset.confirm2": "This action cannot be undone. Proceed?",
+  "percent.tooltip": "Total completion",
+  "footer.note": "Dataset enriched with current public Silksong info (weights sum to 100%).",
+  "done.label": "Done",
+  "items.remaining.singular": "1 item remaining",
+  "items.remaining.plural": "{n} items remaining"
+  ,"export.data":"Export Data"
+  ,"import.data":"Import Data"
+}

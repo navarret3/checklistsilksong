@@ -1,0 +1,4 @@
+{
+	"note": "Runtime uses ../data/silksong_placeholder_items.json; this placeholder exists for bundler scenarios.",
+	"items": []
+}

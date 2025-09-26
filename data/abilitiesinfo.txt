@@ -1,0 +1,44 @@
+Swift Step	Ability	
+Effect: Sprint at blinding speed, beyond one's natural limits.
+Tip: You can press the sprint button while in the air to gain distance quickly.
+
+	
+Drifter's Cloak	Ability	
+Complete Flexile Spines Wish
+Effect: Ride strong winds and Glide
+
+	
+Cling Grip	Ability	
+Effect: Wall-jump
+
+	
+Needolin	Ability	
+Required: Defeat Widow
+Effect: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.
+
+	
+Needle Strike	Ability	
+Effect: Charged attack
+
+	
+Clawline	Ability	
+Effect: Fling needle as a harpoon with silk
+
+	
+Faydown Cloak	Ability	
+Requires: Needolin & Clawline
+
+Effect: Double Jump & Immunity to Freezing
+
+	
+Beastling Call	Ability	
+Defeat Bell Eater
+Effect: Summon beastlings from any location - will teleport to the last used Bellway Station
+
+	
+Silk Soar	Ability	
+ACT 3: Effect: Fling upwards
+
+	
+Elegy of the Deep	Ability	
+Complete Spell Seeker

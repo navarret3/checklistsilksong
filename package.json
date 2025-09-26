@@ -1,0 +1,32 @@
+{
+  "name": "silksong-checklist",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev_server.js",
+    "build": "node scripts/build.js",
+    "deploy": "npm run build && node scripts/package.js",
+    "open": "bash -c \"xdg-open http://localhost:5173 || start http://localhost:5173 || open http://localhost:5173\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:itemsinfo": "prettier --write data/itemsinfo.html",
+    "parse:itemsinfo": "node scripts/parse_itemsinfo.js",
+    "enrich:silksong": "node scripts/enrich_silksong_items.js",
+    "validate:data": "node scripts/validate_data.js"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0",
+    "prettier": "3.3.3"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": false,
+    "quoteProps": "as-needed",
+    "bracketSpacing": true,
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "ignore"
+  }
+}
