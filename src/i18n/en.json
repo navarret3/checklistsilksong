@@ -24,4 +24,19 @@
   "category.tool_pouch_upgrade": "Tool Pouch Upgrade",
   "category.ability": "Ability",
   "category.tool": "Tool"
+  ,"intro.heading": "Hollow Knight: Silksong Completion Tracker"
+  ,"intro.p1": "Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in Hollow Knight: Silksong. Mark needle upgrades, silk spools, crests, abilities, tools and more. Your progress is stored locally (no login) so you can return any time."
+  ,"intro.p2": "A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released."
+  ,"intro.noscript": "Note: This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below."
+  ,"fallback.categories.needle_upgrades": "Needle Upgrades"
+  ,"fallback.categories.silk_spools": "Silk Spools"
+  ,"fallback.categories.silk_hearts": "Silk Hearts"
+  ,"fallback.categories.ancient_masks": "Ancient Masks"
+  ,"fallback.categories.crests": "Crests"
+  ,"fallback.categories.silk_skills": "Silk Skills"
+  ,"fallback.categories.crafting_kit_upgrades": "Crafting Kit Upgrades"
+  ,"fallback.categories.tool_pouch_upgrades": "Tool Pouch Upgrades"
+  ,"fallback.categories.abilities": "Abilities"
+  ,"fallback.categories.tools": "Tools"
+  ,"fallback.categories.misc": "Miscellaneous"
 }

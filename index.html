@@ -325,10 +325,10 @@
 </style>
 <main>
   <section id="intro" style="max-width:760px;margin:0 auto 1.25rem;padding:0 .9rem;line-height:1.5;font-size:.8rem;color:#c9d3db;">
-    <h2 style="margin:.2rem 0 .6rem;font-size:1rem;letter-spacing:.5px;font-weight:600;">Hollow Knight: Silksong Completion Tracker</h2>
-    <p style="margin:.4rem 0 .65rem;">Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in <strong>Hollow Knight: Silksong</strong>. Mark needle upgrades, silk spools, crests, abilities, tools and more. Your progress is stored locally (no login) so you can return any time.</p>
-    <p style="margin:.4rem 0 .65rem;">A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released.</p>
-    <noscript><p><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
+    <h2 data-i18n="intro.heading" style="margin:.2rem 0 .6rem;font-size:1rem;letter-spacing:.5px;font-weight:600;">Hollow Knight: Silksong Completion Tracker</h2>
+    <p data-i18n="intro.p1" style="margin:.4rem 0 .65rem;">Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in <strong>Hollow Knight: Silksong</strong>. Mark needle upgrades, silk spools, crests, abilities, tools and more. Your progress is stored locally (no login) so you can return any time.</p>
+    <p data-i18n="intro.p2" style="margin:.4rem 0 .65rem;">A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released.</p>
+    <noscript><p data-i18n="intro.noscript"><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
   </section>
   <!-- Ad Unit: Top Responsive -->
   <div class="ad-container ad-container--top">
@@ -428,8 +428,20 @@
         ul.style.padding='0 0 0 1.1rem';
         ul.style.fontSize='.7rem';
         ul.style.opacity='0.75';
-        const cats = ['Needle Upgrades','Silk Spools','Silk Hearts','Ancient Masks','Crests','Silk Skills','Crafting Kit Upgrades','Tool Pouch Upgrades','Abilities','Tools','Miscellaneous'];
-        cats.forEach(c=>{ const li=document.createElement('li'); li.textContent=c; ul.appendChild(li); });
+        const keys = [
+          'fallback.categories.needle_upgrades',
+          'fallback.categories.silk_spools',
+          'fallback.categories.silk_hearts',
+          'fallback.categories.ancient_masks',
+          'fallback.categories.crests',
+          'fallback.categories.silk_skills',
+          'fallback.categories.crafting_kit_upgrades',
+          'fallback.categories.tool_pouch_upgrades',
+          'fallback.categories.abilities',
+          'fallback.categories.tools',
+          'fallback.categories.misc'
+        ];
+        keys.forEach(k=>{ const li=document.createElement('li'); li.setAttribute('data-i18n', k); li.textContent=k; ul.appendChild(li); });
         placeholder.appendChild(ul);
       }
     }, 1200);
