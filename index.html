@@ -1,25 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-  <!-- End Google Tag Manager -->
+  <!-- Primary SEO & Analytics -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#0d0f12" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="application-name" content="Silksong 100% Checklist" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Silksong Checklist" />
   <title>Silksong 100% Checklist &amp; Guide</title>
-  <meta name="description" content="A complete, interactive checklist for Hollow Knight: Silksong. Track all items, abilities, and secrets to achieve 100% completion.">
-  <link rel="canonical" href="https://your-domain.com/index.html" />
+  <meta name="description" content="A complete, interactive Hollow Knight: Silksong checklist. Track every item, shard, fragment, ability and upgrade to reach 100% completion." />
+  <link rel="canonical" href="https://checklistsilksong.com/" />
+  <!-- Internationalization (only EN & ES for now) -->
+  <link rel="alternate" hreflang="en" href="https://checklistsilksong.com/" />
+  <link rel="alternate" hreflang="es" href="https://checklistsilksong.com/?lang=es" />
+  <link rel="alternate" hreflang="x-default" href="https://checklistsilksong.com/" />
+
+  <!-- Favicons (replace with real generated set if available) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/silksonglogo.png" />
+  <link rel="apple-touch-icon" href="/assets/images/silksonglogo.png" />
+  <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://your-domain.com/">
-  <meta property="og:title" content="Silksong 100% Checklist & Guide">
-  <meta property="og:description" content="A complete, interactive checklist for Hollow Knight: Silksong. Track all items, abilities, and secrets to achieve 100% completion.">
-  <meta property="og:image" content="https://your-domain.com/assets/images/ss_og_preview.png">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Silksong 100% Checklist" />
+  <meta property="og:url" content="https://checklistsilksong.com/" />
+  <meta property="og:title" content="Silksong 100% Checklist & Guide" />
+  <meta property="og:description" content="Track all Hollow Knight: Silksong collectibles, abilities & upgrades toward 100% completion." />
+  <meta property="og:image" content="https://checklistsilksong.com/assets/images/ss_og_preview.png" />
+  <meta property="og:image:alt" content="Silksong 100% Checklist interface preview" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Silksong 100% Checklist & Guide" />
+  <meta name="twitter:description" content="Interactive Hollow Knight: Silksong checklist to reach 100% completion." />
+  <meta name="twitter:image" content="https://checklistsilksong.com/assets/images/ss_og_preview.png" />
+  <!-- <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE" /> -->
+
+  <!-- Preconnect & Performance Hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+  <link rel="preload" as="image" href="/assets/images/ss3.png" imagesrcset="/assets/images/ss3.png 1x" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Silksong 100% Checklist",
+    "url": "https://checklistsilksong.com/",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "description": "Interactive Hollow Knight: Silksong checklist to track collectibles, abilities and upgrades toward 100% completion.",
+    "inLanguage": ["en","es"],
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://checklistsilksong.com/?q={search_term}",
+      "query-input": "required name=search_term"
+    }
+  }</script>
+
+  <!-- Data Layer bootstrap BEFORE GTM (custom dimensions example) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'app.version': '0.1.0',
+      'app.langDefault': 'en',
+      'event': 'app_meta'
+    });
+  </script>
+  <!-- Google Tag Manager (replace GTM-XXXXXXX with real container) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Ads / Monetization (AdSense snippet inserted when client ID provided) -->
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
 
   <style>
     .ad-container {
@@ -183,15 +245,11 @@
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- AdSense placeholder -->
-<!--
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
-     crossorigin="anonymous"></script>
--->
+<!-- AdSense placeholder (uncomment when real publisher ID added) -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 <header>
   <div class="hero">
     <div class="controls">

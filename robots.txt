@@ -1,6 +1,9 @@
-# Allow all user agents to crawl the site
+# robots.txt for https://checklistsilksong.com
 User-agent: *
-Disallow:
+Allow: /
 
-# Sitemap location
-Sitemap: https://your-domain.com/sitemap.xml
+# Crawl-delay can be added if server rate-limits are needed
+# Crawl-delay: 2
+
+# Updated sitemap location
+Sitemap: https://checklistsilksong.com/sitemap.xml

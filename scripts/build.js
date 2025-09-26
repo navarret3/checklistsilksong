@@ -18,7 +18,9 @@ fs.mkdirSync(distDir, { recursive: true });
 // Copy static files
 const filesToCopy = [
   'index.html',
-  'package.json'
+  'package.json',
+  'sitemap.xml',
+  'robots.txt'
 ];
 
 const dirsToCopy = [
