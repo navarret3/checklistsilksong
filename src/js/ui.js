@@ -203,7 +203,14 @@ function formatPercent(v){
 }
 
 function formatCategory(c){
-  return c.replace(/_/g,' ').replace(/\b\w/g, m=>m.toUpperCase());
+  const key = `category.${c}`;
+  const translated = t(key);
+  // If the key is returned, it means no translation was found.
+  // In that case, format it manually as a fallback.
+  if (translated === key) {
+    return c.replace(/_/g, ' ').replace(/\b\w/g, m => m.toUpperCase());
+  }
+  return translated;
 }
 
 function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;' }[c]||c)); }

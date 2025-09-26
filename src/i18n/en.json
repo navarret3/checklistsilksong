@@ -1,4 +1,6 @@
 {
+  "app.title": "100% Completion Checklist",
+  "search.placeholder": "Search items...",
   "title": "Silksong 100% Checklist",
   "reset": "Reset",
   "reset.confirm1": "Reset all progress?",
@@ -7,7 +9,19 @@
   "footer.note": "Dataset enriched with current public Silksong info (weights sum to 100%).",
   "done.label": "Done",
   "items.remaining.singular": "1 item remaining",
-  "items.remaining.plural": "{n} items remaining"
-  ,"export.data":"Export Data"
-  ,"import.data":"Import Data"
+  "items.remaining.plural": "{n} items remaining",
+  "export.data": "Export Data",
+  "import.data": "Import Data",
+  "dataset.errors.title": "Dataset validation issues:",
+  "category.needle_upgrade": "Needle Upgrade",
+  "category.ancient_mask": "Ancient Mask",
+  "category.silk_spool": "Silk Spool",
+  "category.silk_heart": "Silk Heart",
+  "category.misc": "Miscellaneous",
+  "category.crest": "Crest",
+  "category.silk_skill": "Silk Skill",
+  "category.crafting_kit_upgrade": "Crafting Kit Upgrade",
+  "category.tool_pouch_upgrade": "Tool Pouch Upgrade",
+  "category.ability": "Ability",
+  "category.tool": "Tool"
 }
