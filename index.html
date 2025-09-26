@@ -97,8 +97,8 @@
         window.__SS_SESSION_UUID = session_uuid;
         window.__SS_FIRST_VISIT = first_visit;
         dl.push({
-          'app.version': '0.1.0',
-          'app.langDefault': 'en',
+          'app_version': '0.1.0',
+          'app_lang_default': 'en',
           'session_uuid': session_uuid,
           'first_visit': first_visit,
           'event': 'app_meta'
@@ -107,6 +107,22 @@
         dl.push({ 'event':'app_meta' });
       }
     })();
+  </script>
+  <!-- Google tag (gtag.js) - direct GA4 load (ensure you prevent double page_view in GTM config) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZCGX9CG55"></script>
+  <script>
+    // Reuse existing dataLayer (already has app_meta + session fields)
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    // Attach session / first_visit if present (for debugging / custom dimensions)
+    var gtagCfg = {};
+    if(window.__SS_SESSION_UUID) gtagCfg.session_uuid = window.__SS_SESSION_UUID;
+    if(typeof window.__SS_FIRST_VISIT === 'boolean') gtagCfg.first_visit = window.__SS_FIRST_VISIT;
+    // If you keep GA4 Configuration Tag in GTM also firing page_view, set send_page_view:false here OR disable page_view in GTM.
+    // Example to avoid duplicates (uncomment if GA4 config tag also sends page_view):
+    // gtagCfg.send_page_view = false;
+    gtag('config', 'G-6ZCGX9CG55', gtagCfg);
   </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5N84DKCJ');</script>
