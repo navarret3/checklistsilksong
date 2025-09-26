@@ -15,6 +15,8 @@
   <meta name="description" content="A complete, interactive Hollow Knight: Silksong checklist. Track every item, shard, fragment, ability and upgrade to reach 100% completion." />
   <!-- Spanish alternate description (used on ES static variant) -->
   <meta name="description" lang="es" content="Checklist interactivo completo de Hollow Knight: Silksong. Marca cada objeto, fragmento, mejora y habilidad para alcanzar el 100% de progreso." />
+  <!-- AdSense account meta (recommended) -->
+  <meta name="google-adsense-account" content="ca-pub-9707168065012640" />
   <link rel="canonical" href="https://checklistsilksong.com/" />
   <!-- Internationalization (only EN & ES for now) -->
   <link rel="alternate" hreflang="en" href="https://checklistsilksong.com/" />
@@ -265,9 +267,7 @@
   </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N84DKCJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- Removed legacy GTM noscript iframe to keep analytics minimal -->
 
 <!-- AdSense placeholder (uncomment when real publisher ID added) -->
 <!-- AdSense script already included in <head>; keep this placeholder commented to avoid double load -->
@@ -364,45 +364,77 @@
 <script>
   // Lazy trigger ads after main content render & small delay to improve CLS
   (function(){
+    const params = new URLSearchParams(location.search);
+    const DEBUG = params.has('addebug');
     let adInitAttempts = 0;
-    const MAX_ATTEMPTS = 12; // ~6s worst case (12 * 500ms) before fallback
+    const MAX_ATTEMPTS = 14; // ~7s worst case (14 * 500ms)
+    function log(){ if(DEBUG) console.log('[ADS]', ...arguments); }
     function initAds(){
-      // If script not yet ready, retry
       if(!window.adsbygoogle){
-        scheduleRetry();
-        return;
+        log('adsbygoogle array not ready yet');
+        return scheduleRetry();
       }
       document.querySelectorAll('.ad-slot-wrap').forEach(wrap => {
-        if(!wrap.classList.contains('loading')) return; // already processed
+        if(wrap.dataset.processed === '1') return; // already attempted
         const ins = wrap.querySelector('ins.adsbygoogle');
-        if(!ins) return;
+        if(!ins){
+          log('No <ins> inside wrapper', wrap);
+          wrap.dataset.processed = '1';
+          return;
+        }
         try {
           (adsbygoogle = window.adsbygoogle || []).push({});
+          wrap.dataset.processed = '1';
           wrap.classList.remove('loading');
-          // Observe fill (iframe insertion) to drop the 'empty' heuristic class
-            const obs = new MutationObserver(()=>{
-              if(wrap.querySelector('iframe')){ wrap.classList.remove('empty'); obs.disconnect(); }
-            });
-            obs.observe(wrap, { childList:true, subtree:true });
+          log('Pushed ad request for slot wrapper', wrap.dataset.adSlot);
+          const obs = new MutationObserver(()=>{
+            if(wrap.querySelector('iframe')){
+              wrap.classList.remove('empty');
+              obs.disconnect();
+              log('Ad iframe detected for', wrap.dataset.adSlot);
+            }
+          });
+          obs.observe(wrap, { childList:true, subtree:true });
+          // Fallback timer: if after 3.5s no iframe, mark as no-fill
+          setTimeout(()=>{
+            if(!wrap.querySelector('iframe')){
+              wrap.classList.add('border');
+              log('No iframe inserted (likely ad blocked, no fill or site not yet approved).');
+            }
+          }, 3500);
         } catch(e){
+          log('Error pushing ad', e);
           wrap.classList.add('border');
         }
       });
+      // If at least one still "loading" with no processed, keep retrying until attempts exhausted
+      if([ ...document.querySelectorAll('.ad-slot-wrap') ].some(w=> w.dataset.processed !== '1')){
+        scheduleRetry();
+      }
     }
     function scheduleRetry(){
       if(adInitAttempts >= MAX_ATTEMPTS){
-        // Give up gracefully: remove loading text but keep a subtle border to avoid perpetual message
+        log('Max attempts reached; finalizing fallbacks');
         document.querySelectorAll('.ad-slot-wrap.loading').forEach(w => {
           w.classList.remove('loading');
-          if(!w.querySelector('iframe')) w.classList.add('border');
+          if(!w.querySelector('iframe')){
+            // Provide a subtle fallback message (not clickable) so layout stabilizes
+            if(!w.querySelector('.ad-fallback')){
+              const msg = document.createElement('div');
+              msg.className = 'ad-fallback';
+              msg.style.cssText = 'font-size:.55rem;letter-spacing:1px;color:var(--muted);padding:.4rem 0;';
+              msg.textContent = 'Ad not loaded';
+              w.appendChild(msg);
+            }
+            w.classList.add('border');
+          }
         });
         return;
       }
       adInitAttempts++;
       setTimeout(initAds, 500);
     }
-    // First attempt shortly after load (allows other critical paint tasks first)
-    window.addEventListener('load', () => setTimeout(initAds, 450));
+    window.addEventListener('load', () => setTimeout(initAds, 400));
   })();
 </script>
 <script>

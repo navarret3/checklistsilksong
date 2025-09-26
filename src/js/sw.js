@@ -1,5 +1,5 @@
 // Basic service worker for offline shell & asset caching
-const CACHE_NAME = 'silksong-checklist-v2';
+const CACHE_NAME = 'silksong-checklist-v3';
 const CORE_ASSETS = [
   '/',
   '/index.html',
