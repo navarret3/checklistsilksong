@@ -365,26 +365,45 @@
 <script>
   // Lazy trigger ads after main content render & small delay to improve CLS
   (function(){
+    let adInitAttempts = 0;
+    const MAX_ATTEMPTS = 12; // ~6s worst case (12 * 500ms) before fallback
     function initAds(){
-      if(!window.adsbygoogle) return;
+      // If script not yet ready, retry
+      if(!window.adsbygoogle){
+        scheduleRetry();
+        return;
+      }
       document.querySelectorAll('.ad-slot-wrap').forEach(wrap => {
+        if(!wrap.classList.contains('loading')) return; // already processed
         const ins = wrap.querySelector('ins.adsbygoogle');
         if(!ins) return;
         try {
           (adsbygoogle = window.adsbygoogle || []).push({});
           wrap.classList.remove('loading');
-          // Observe fill (heuristic: if iframe appended later remove empty class)
-          const obs = new MutationObserver(()=>{
-            if(wrap.querySelector('iframe')){ wrap.classList.remove('empty'); obs.disconnect(); }
-          });
-          obs.observe(wrap, { childList:true, subtree:true });
+          // Observe fill (iframe insertion) to drop the 'empty' heuristic class
+            const obs = new MutationObserver(()=>{
+              if(wrap.querySelector('iframe')){ wrap.classList.remove('empty'); obs.disconnect(); }
+            });
+            obs.observe(wrap, { childList:true, subtree:true });
         } catch(e){
           wrap.classList.add('border');
         }
       });
     }
-    // Run soon after load to avoid blocking first paint
-    window.addEventListener('load', () => setTimeout(initAds, 600));
+    function scheduleRetry(){
+      if(adInitAttempts >= MAX_ATTEMPTS){
+        // Give up gracefully: remove loading text but keep a subtle border to avoid perpetual message
+        document.querySelectorAll('.ad-slot-wrap.loading').forEach(w => {
+          w.classList.remove('loading');
+          if(!w.querySelector('iframe')) w.classList.add('border');
+        });
+        return;
+      }
+      adInitAttempts++;
+      setTimeout(initAds, 500);
+    }
+    // First attempt shortly after load (allows other critical paint tasks first)
+    window.addEventListener('load', () => setTimeout(initAds, 450));
   })();
 </script>
 <script>
