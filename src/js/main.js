@@ -33,19 +33,31 @@ import { setLocale, t, activeLocale } from './i18n.js';
 
     const globalTotalWeight = items.reduce((s,it)=> s + (typeof it.weight==='number' && it.weight>0 ? it.weight : 1), 0);
 
+    // Helper to push to dataLayer with session enrichment
+    function pushDL(obj){
+      if(!window.dataLayer) return;
+      try {
+        if(window.__SS_SESSION_UUID && !obj.session_uuid){
+          obj.session_uuid = window.__SS_SESSION_UUID;
+        }
+        if(typeof window.__SS_FIRST_VISIT === 'boolean' && obj.first_visit === undefined){
+          obj.first_visit = window.__SS_FIRST_VISIT;
+        }
+        window.dataLayer.push(obj);
+      } catch(_){}
+    }
+
     // Centralized toggle handler for items
     const handleItemToggle = (id) => {
       const changed = toggle(id, progress);
       if (changed) {
         saveProgress(progress);
         updateBothPercents();
-        if(window.dataLayer){
-          window.dataLayer.push({
-            event: 'item_toggle',
+        pushDL({
+          event: 'item_toggle',
             item_id: id,
             new_state: progress[id] ? 'checked' : 'unchecked'
-          });
-        }
+        });
       }
       return changed;
     };
@@ -88,7 +100,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
       await setLocale(langSel.value.toLowerCase());
       applyI18n();
       rerenderList();
-      if(window.dataLayer){ window.dataLayer.push({ event: 'language_change', lang: activeLocale() }); }
+      pushDL({ event: 'language_change', lang: activeLocale() });
     };
 
     resetBtn.onclick = () => {
@@ -101,7 +113,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
       // Reset search and re-render
       if (searchInput) searchInput.value = '';
       rerenderList();
-      if(window.dataLayer){ window.dataLayer.push({ event: 'progress_reset' }); }
+      pushDL({ event: 'progress_reset' });
     };
 
     // Theme toggle
@@ -109,7 +121,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
       document.body.classList.toggle('theme-light');
       const theme = document.body.classList.contains('theme-light') ? 'light' : 'dark';
       localStorage.setItem('ssTheme', theme);
-      if(window.dataLayer){ window.dataLayer.push({ event: 'theme_toggle', theme }); }
+      pushDL({ event: 'theme_toggle', theme });
     };
     // Load stored theme
     (function(){
@@ -152,15 +164,13 @@ import { setLocale, t, activeLocale } from './i18n.js';
       percentValue.title = percentValueFloating.title = formattedPercent + '% (' + completedWeight.toFixed(2).replace(/\.00$/,'') + ' / ' + totalWeight.toFixed(2).replace(/\.00$/,'') + ' weight)';
       // Refresh per-category counts each time global progress updates
       updateCategoryCounts(items, progress);
-      if(window.dataLayer){
-        window.dataLayer.push({
-          event: 'progress_update',
-          progress_percent: Number(formattedPercent),
-          remaining_items: remaining,
-          completed_weight: Number(completedWeight.toFixed(2)),
-          total_weight: Number(totalWeight.toFixed(2))
-        });
-      }
+      pushDL({
+        event: 'progress_update',
+        progress_percent: Number(formattedPercent),
+        remaining_items: remaining,
+        completed_weight: Number(completedWeight.toFixed(2)),
+        total_weight: Number(totalWeight.toFixed(2))
+      });
     }
 
     function formatWeightedPercent(v){
@@ -231,10 +241,10 @@ import { setLocale, t, activeLocale } from './i18n.js';
     // Register service worker (PWA)
     if('serviceWorker' in navigator){
       navigator.serviceWorker.register('/src/js/sw.js').then(()=>{
-        if(window.dataLayer){ window.dataLayer.push({ event: 'sw_registered' }); }
+        pushDL({ event: 'sw_registered' });
       }).catch(err => {
         console.warn('SW registration failed', err);
-        if(window.dataLayer){ window.dataLayer.push({ event: 'sw_error', error: String(err) }); }
+        pushDL({ event: 'sw_error', error: String(err) });
       });
     }
 
