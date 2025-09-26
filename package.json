@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev_server.js",
-    "build": "npm run icons:generate && node scripts/build.js && node scripts/generate-sitemap.js",
+  "build": "npm run icons:generate && node scripts/generate-sitemap.js && node scripts/build.js",
     "deploy": "npm run build && node scripts/package.js",
     "icons:generate": "node scripts/generate-icons.js",
     "open": "bash -c \"xdg-open http://localhost:5173 || start http://localhost:5173 || open http://localhost:5173\"",
