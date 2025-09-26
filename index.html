@@ -129,17 +129,10 @@
       color: var(--muted);
       margin-bottom: 0.5rem;
     }
-    .ad-placeholder {
-      width: 100%;
-      height: 90px;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.05) 10px,
-        rgba(255, 255, 255, 0.1) 10px,
-        rgba(255, 255, 255, 0.1) 20px
-      );
-    }
+    .ad-slot-wrap { width:100%; min-height:90px; display:flex; align-items:center; justify-content:center; position:relative; }
+    .ad-slot-wrap.loading::after { content:"Loading ad..."; font-size:.55rem; letter-spacing:1px; color:var(--muted); position:absolute; }
+    .ad-slot-wrap.empty { background:repeating-linear-gradient(45deg,rgba(255,255,255,0.05),rgba(255,255,255,0.05) 10px,rgba(255,255,255,0.1) 10px,rgba(255,255,255,0.1) 20px); }
+    .ad-slot-wrap.border { border:1px dashed var(--border); border-radius:6px; }
   </style>
   <style>
     :root {
@@ -338,23 +331,62 @@
     <p style="margin:.4rem 0 .65rem;">A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released.</p>
     <noscript><p><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
   </section>
-  <!-- Ad placeholder - Top -->
+  <!-- Ad Unit: Top Responsive -->
   <div class="ad-container ad-container--top">
     <small>Advertisement</small>
-    <div class="ad-placeholder"></div>
+    <div class="ad-slot-wrap loading empty" data-ad-slot="top-responsive">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9707168065012640"
+     data-ad-slot="8232693985"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
   </div>
   <div class="categories" id="categories" aria-live="polite"></div>
 </main>
 <footer>
-  <!-- Ad placeholder - Footer -->
+  <!-- Ad Unit: Footer Responsive -->
   <div class="ad-container ad-container--footer">
     <small>Advertisement</small>
-    <div class="ad-placeholder"></div>
+    <div class="ad-slot-wrap loading empty" data-ad-slot="footer-responsive">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9707168065012640"
+     data-ad-slot="9354203965"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
   </div>
   <span data-i18n="footer.note">Placeholder dataset based on Hollow Knight – will be replaced with Silksong data.</span>
   <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
 </footer>
 <script type="module" src="./src/js/main.js"></script>
+<script>
+  // Lazy trigger ads after main content render & small delay to improve CLS
+  (function(){
+    function initAds(){
+      if(!window.adsbygoogle) return;
+      document.querySelectorAll('.ad-slot-wrap').forEach(wrap => {
+        const ins = wrap.querySelector('ins.adsbygoogle');
+        if(!ins) return;
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          wrap.classList.remove('loading');
+          // Observe fill (heuristic: if iframe appended later remove empty class)
+          const obs = new MutationObserver(()=>{
+            if(wrap.querySelector('iframe')){ wrap.classList.remove('empty'); obs.disconnect(); }
+          });
+          obs.observe(wrap, { childList:true, subtree:true });
+        } catch(e){
+          wrap.classList.add('border');
+        }
+      });
+    }
+    // Run soon after load to avoid blocking first paint
+    window.addEventListener('load', () => setTimeout(initAds, 600));
+  })();
+</script>
 <script>
   // Dynamically update <html lang> when language changes
   (function(){
