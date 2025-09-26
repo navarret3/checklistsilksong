@@ -75,42 +75,14 @@
     }
   }</script>
 
-  <!-- Data Layer bootstrap BEFORE GTM (includes session + first_visit) -->
+  <!-- Google Analytics 4 (solo, configuración mínima) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZCGX9CG55"></script>
   <script>
-    (function(){
-      const dl = window.dataLayer = window.dataLayer || [];
-      try {
-        const LS_FIRST_KEY = 'ss_first_visit';
-        const SS_SESSION_KEY = 'ss_session_uuid';
-        const storedFirst = localStorage.getItem(LS_FIRST_KEY);
-        const first_visit = !storedFirst;
-        if(first_visit){
-          localStorage.setItem(LS_FIRST_KEY, String(Date.now()));
-        }
-        let session_uuid = sessionStorage.getItem(SS_SESSION_KEY);
-        if(!session_uuid){
-          // Generate a UUID (prefer crypto.randomUUID)
-          session_uuid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 's'+Math.random().toString(16).slice(2)+Date.now().toString(16);
-          sessionStorage.setItem(SS_SESSION_KEY, session_uuid);
-        }
-        // Expose globally for later JS modules
-        window.__SS_SESSION_UUID = session_uuid;
-        window.__SS_FIRST_VISIT = first_visit;
-        dl.push({
-          'app.version': '0.1.0',
-          'app.langDefault': 'en',
-          'session_uuid': session_uuid,
-          'first_visit': first_visit,
-          'event': 'app_meta'
-        });
-      } catch(err){
-        dl.push({ 'event':'app_meta' });
-      }
-    })();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-6ZCGX9CG55');
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5N84DKCJ');</script>
-  <!-- End Google Tag Manager -->
   <!-- Ads / Monetization (AdSense snippet inserted when client ID provided) -->
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9707168065012640" crossorigin="anonymous"></script>
