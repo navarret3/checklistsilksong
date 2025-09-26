@@ -22,7 +22,6 @@ import { setLocale, t, activeLocale } from './i18n.js';
   const floatingWrap = document.getElementById('progressFloating');
   const langSel = document.getElementById('langSel');
   const resetBtn = document.getElementById('resetBtn');
-  const themeBtn = document.getElementById('themeBtn');
   const issuesBox = document.getElementById('datasetIssues');
   const issuesList = document.getElementById('datasetIssuesList');
   const dismissIssues = document.getElementById('dismissIssues');
@@ -95,17 +94,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
       rerenderList();
     };
 
-    // Theme toggle
-    themeBtn.onclick = () => {
-      document.body.classList.toggle('theme-light');
-      const theme = document.body.classList.contains('theme-light') ? 'light' : 'dark';
-      localStorage.setItem('ssTheme', theme);
-    };
-    // Load stored theme
-    (function(){
-      const th = localStorage.getItem('ssTheme');
-      if(th === 'light') document.body.classList.add('theme-light');
-    })();
+    // Theme toggle removed (design decision): default dark theme retained
 
 
     function applyI18n(){
