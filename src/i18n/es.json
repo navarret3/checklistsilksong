@@ -1,4 +1,6 @@
 {
+  "app.title": "Checklist de Finalización al 100%",
+  "search.placeholder": "Buscar ítems...",
   "title": "Checklist 100% Silksong",
   "reset": "Reiniciar",
   "reset.confirm1": "¿Reiniciar todo el progreso?",
@@ -10,5 +12,16 @@
   "items.remaining.plural": "{n} ítems restantes",
   "export.data": "Exportar Datos",
   "import.data": "Importar Datos",
-  "dataset.errors.title": "Problemas de validación del dataset:"
+  "dataset.errors.title": "Problemas de validación del dataset:",
+  "category.needle_upgrade": "Mejora de Aguja",
+  "category.ancient_mask": "Máscara Antigua",
+  "category.silk_spool": "Carrete de Seda",
+  "category.silk_heart": "Corazón de Seda",
+  "category.misc": "Misceláneo",
+  "category.crest": "Emblema",
+  "category.silk_skill": "Habilidad de Seda",
+  "category.crafting_kit_upgrade": "Mejora de Kit de Artesanía",
+  "category.tool_pouch_upgrade": "Mejora de Bolsa de Herramientas",
+  "category.ability": "Habilidad",
+  "category.tool": "Herramienta"
 }
