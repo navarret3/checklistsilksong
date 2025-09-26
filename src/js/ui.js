@@ -105,11 +105,11 @@ function renderItem(it, progress, onToggle){
   let html = `
     <span class="checkmark">✔</span>
     <div class="top">
-      <div class="thumb"><img src="${imgSrc}" alt="" loading="lazy" decoding="async"></div>
+      <div class="thumb"><img src="${imgSrc}" alt="${label}" loading="lazy" decoding="async"></div>
       <div class="meta"><span class="label">${label}</span></div>
     </div>`;
   if(desc) html += `\n    <div class="desc">${desc}</div>`;
-  if(mapSrc && !/placeholder-map\.png$/.test(mapSrc)) html += `\n    <div class="map-img"><img src="${mapSrc}" alt="" loading="lazy" decoding="async"><button type="button" class="zoom-btn" aria-label="Ampliar" title="Ampliar">⤢</button></div>`;
+  if(mapSrc && !/placeholder-map\.png$/.test(mapSrc)) html += `\n    <div class="map-img"><img src="${mapSrc}" alt="Location of ${label}" loading="lazy" decoding="async"><button type="button" class="zoom-btn" aria-label="Ampliar" title="Ampliar">⤢</button></div>`;
   el.innerHTML = html;  
   // After image loads, if it is obviously tiny (<48 logical px in either dimension), upscale smoothly via canvas
   const imgEl = el.querySelector('.thumb img');
