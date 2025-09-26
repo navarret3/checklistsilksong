@@ -13,10 +13,13 @@
   <meta name="apple-mobile-web-app-title" content="Silksong Checklist" />
   <title>Silksong 100% Checklist &amp; Guide</title>
   <meta name="description" content="A complete, interactive Hollow Knight: Silksong checklist. Track every item, shard, fragment, ability and upgrade to reach 100% completion." />
+  <!-- Spanish alternate description (used on ES static variant) -->
+  <meta name="description" lang="es" content="Checklist interactivo completo de Hollow Knight: Silksong. Marca cada objeto, fragmento, mejora y habilidad para alcanzar el 100% de progreso." />
   <link rel="canonical" href="https://checklistsilksong.com/" />
   <!-- Internationalization (only EN & ES for now) -->
   <link rel="alternate" hreflang="en" href="https://checklistsilksong.com/" />
-  <link rel="alternate" hreflang="es" href="https://checklistsilksong.com/?lang=es" />
+  <!-- Point Spanish hreflang to planned static ES variant (can be generated later) -->
+  <link rel="alternate" hreflang="es" href="https://checklistsilksong.com/es/" />
   <link rel="alternate" hreflang="x-default" href="https://checklistsilksong.com/" />
 
   <!-- Favicons & App Icons -->
@@ -55,24 +58,45 @@
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="//www.googletagmanager.com">
   <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
-  <link rel="preload" as="image" href="/assets/images/ss3.png" imagesrcset="/assets/images/ss3.png 1x" />
+  <link rel="preload" as="image" href="/assets/images/ss3.png" imagesrcset="/assets/images/ss3.png 1x" fetchpriority="high" />
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data (JSON-LD) consolidated -->
   <script type="application/ld+json">{
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Silksong 100% Checklist",
-    "url": "https://checklistsilksong.com/",
-    "applicationCategory": "GameApplication",
-    "operatingSystem": "Any",
-    "description": "Interactive Hollow Knight: Silksong checklist to track collectibles, abilities and upgrades toward 100% completion.",
-    "inLanguage": ["en","es"],
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://checklistsilksong.com/?q={search_term}",
-      "query-input": "required name=search_term"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://checklistsilksong.com/#org",
+        "name": "Silksong Checklist",
+        "url": "https://checklistsilksong.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://checklistsilksong.com/assets/images/ss_og_preview.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://checklistsilksong.com/#website",
+        "url": "https://checklistsilksong.com/",
+        "name": "Silksong 100% Checklist",
+        "inLanguage": ["en","es"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://checklistsilksong.com/?q={search_term}",
+          "query-input": "required name=search_term"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Silksong 100% Checklist",
+        "url": "https://checklistsilksong.com/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "description": "Interactive Hollow Knight: Silksong checklist to track collectibles, abilities and upgrades toward 100% completion.",
+        "inLanguage": ["en","es"],
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+      }
+    ]
   }</script>
 
   <!-- Google Analytics 4 (solo, configuración mínima) -->
@@ -308,6 +332,12 @@
   body.theme-light #datasetIssues { background:#f9e3e3; color:#5a2222; border-color:#d28a8a; }
 </style>
 <main>
+  <section id="intro" style="max-width:760px;margin:0 auto 1.25rem;padding:0 .9rem;line-height:1.5;font-size:.8rem;color:#c9d3db;">
+    <h2 style="margin:.2rem 0 .6rem;font-size:1rem;letter-spacing:.5px;font-weight:600;">Hollow Knight: Silksong Completion Tracker</h2>
+    <p style="margin:.4rem 0 .65rem;">Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in <strong>Hollow Knight: Silksong</strong>. Mark needle upgrades, silk spools, crests, abilities, tools and more. Your progress is stored locally (no login) so you can return any time.</p>
+    <p style="margin:.4rem 0 .65rem;">A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released.</p>
+    <noscript><p><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
+  </section>
   <!-- Ad placeholder - Top -->
   <div class="ad-container ad-container--top">
     <small>Advertisement</small>
@@ -325,6 +355,36 @@
   <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
 </footer>
 <script type="module" src="./src/js/main.js"></script>
+<script>
+  // Dynamically update <html lang> when language changes
+  (function(){
+    const sel = document.getElementById('langSel');
+    if(!sel) return;
+    function applyLang(){
+      const v = sel.value || 'en';
+      document.documentElement.setAttribute('lang', v);
+    }
+    sel.addEventListener('change', applyLang);
+    applyLang();
+  })();
+  // Basic fallback category headings for bots / no-JS (injection after slight delay if empty)
+  (function(){
+    const placeholder = document.getElementById('categories');
+    if(!placeholder) return;
+    setTimeout(()=>{
+      if(placeholder.children.length === 0){
+        const ul = document.createElement('ul');
+        ul.style.listStyle='disc';
+        ul.style.padding='0 0 0 1.1rem';
+        ul.style.fontSize='.7rem';
+        ul.style.opacity='0.75';
+        const cats = ['Needle Upgrades','Silk Spools','Silk Hearts','Ancient Masks','Crests','Silk Skills','Crafting Kit Upgrades','Tool Pouch Upgrades','Abilities','Tools','Miscellaneous'];
+        cats.forEach(c=>{ const li=document.createElement('li'); li.textContent=c; ul.appendChild(li); });
+        placeholder.appendChild(ul);
+      }
+    }, 1200);
+  })();
+</script>
 <script>
   (function(){
     const hero = document.querySelector('.hero');
