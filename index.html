@@ -143,25 +143,13 @@
     * { box-sizing:border-box; }
     /* Enhanced dark granular background */
     body { margin:0; color:var(--fg); -webkit-font-smoothing:antialiased; position:relative;
-      /* Lighter neutral gray granular background */
+      /* SIMPLIFIED - Lighter neutral gray granular background */
       background-color:#161a1e; /* fallback */
-      background-image:
-        radial-gradient(circle at 20% 18%, rgba(255,255,255,0.07), rgba(255,255,255,0) 62%),
-        radial-gradient(circle at 78% 32%, rgba(255,255,255,0.055), rgba(255,255,255,0) 65%),
-        radial-gradient(circle at 58% 78%, rgba(255,255,255,0.05), rgba(255,255,255,0) 58%),
-        linear-gradient(180deg,#181d22 0%, #161b20 55%, #14181c 100%),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.28'/></svg>");
-      background-blend-mode:normal,normal,normal,normal,overlay;
-      background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 180px 180px;
-      background-attachment:fixed, fixed, fixed, fixed, fixed;
+      background-image: linear-gradient(180deg,#181d22 0%, #161b20 55%, #14181c 100%);
+      background-attachment:fixed;
     }
-    /* Stronger grain variant (apply with body.grain-strong) */
-    body.grain-strong { background-image:
-        radial-gradient(circle at 20% 18%, rgba(255,255,255,0.09), rgba(255,255,255,0) 60%),
-        radial-gradient(circle at 78% 32%, rgba(255,255,255,0.075), rgba(255,255,255,0) 63%),
-        radial-gradient(circle at 58% 78%, rgba(255,255,255,0.07), rgba(255,255,255,0) 56%),
-        linear-gradient(180deg,#1b2025 0%, #181c21 55%, #161a1e 100%),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1' numOctaves='5' stitchTiles='stitch'/></filter><rect width='150' height='150' filter='url(%23n)' opacity='0.35'/></svg>"); }
+    /* SIMPLIFIED - Stronger grain variant (apply with body.grain-strong) */
+    body.grain-strong { background-image: linear-gradient(180deg,#1b2025 0%, #181c21 55%, #161a1e 100%); }
   header { display:flex; flex-direction:column; align-items:center; width:100%; position:relative; }
   .hero { width:100%; padding:1.4rem 0 1.1rem; display:flex; flex-direction:column; align-items:center; gap:.8rem; background:linear-gradient(180deg,rgba(13,15,18,0.95),rgba(13,15,18,0.75) 60%,rgba(13,15,18,0)); transition:opacity .4s ease, transform .5s ease; }
   .hero.collapsed { opacity:0; pointer-events:none; }
@@ -214,6 +202,19 @@
   /* Removed flag styling: revert to simple select */
   #langSel.flagged { background:none!important; }
   button:hover, #langSel:hover { border-color:var(--accent); }
+    /* Custom flag styles */
+    #langSel {
+        background-repeat: no-repeat;
+        background-position: 7px center;
+        background-size: 20px;
+        padding-left: 32px; /* Space for flag */
+    }
+    #langSel.en {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NDAwIDM5MDAiPgo8cGF0aCBkPSJNMCAwaDc0MDB2MzkwMEgweiIgZmlsbD0iI2IzMTk0MiIvPgo8cGF0aCBkPSJNMCA0NTBINzQwMG0wIDYwMEgwṁTAgNjAwSDc0MDBtMCA2MDBIMCYgNjAwSDc0MDBtMCA2MDBIMCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMwMCIvPgo8cGF0aCBkPSJNMCAwaDI5NjR2MjEwMEgweiIgZmlsbD0iIzBhMzE2MSIvPgo8ZyBmaWxsPSIjZmZmIj4KPGcgaWQ9InMxOCI+CjxnIGlkPSJzOSI+CjxnIGlkPSJzNSI+CjxnIGlkPSJzNCI+CjxwYXRoIGlkPSJzIiBkPSJNMjQ3IDkwaDExNC4xTDMyNy41IDMwNyAxMzIuOSAxNzNoMjI4LjJMMTc2LjUgMzA3eiIvPgo8dXNlIHhyZWY9IiNzIiB5PSI0MjAiLz4KPHVzZSB4cmVmPSIjcyIgeT0iODQwIi8+Cjx1c2UgeHJlZj0iI3MiIHk9IjEyNjAiLz4KPC9nPgo8dXNlIHhyZWY9IiNzIiB5PSIxNjgwIi8+CjwvZz4KPHVzZSB4cmVmPSIjczQiIHg9IjI0NyIgeT0iMjEwIi8+CjwvZz4KPHVseSB4cmVmPSIjczkuIHg9IjQ5NCIvPgo8L2c+Cjx1seSB4cmVmPSIjczE4IiB4PSI5ODgiLz4KPHVzZSB4cmVmPSIjczkiIHg9IjE5NzYiLz4KPHVzZSB4cmVmPSIjczUiIHg9IjI0NzAiLz4KPC9nPgo8L3N2Zz4=");
+    }
+    #langSel.es {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjAwIj4KPHBhdGggZD0iTTAgMGg5MDB2NjAwSDB6IiBmaWxsPSIjYzYwYjFiIi8+CjxwYXRoIGQ9Ik0wIDE1M2g5MDB2MzAwSDB6IiBmaWxsPSIjZmZjNDA1Ii8+CjxwYXRoIGQ9Ik0yMjUgMjgzaDIyLjV2MjEuOWgtMjEuOHYyMy40aDIxLjh2MjEuOWgtMjEuOHYyMy40aDIyLjV2MjEuOWgtNDVWMjgzem0zMy44IDExMS4zaDIyLjV2MjEuOWgtMjEuOHYyMy40aDIxLjh2MjEuOWgtMjEuOHYyMy40aDIyLjV2MjEuOWgtNDVWMzk0LjN6bTMzLjcgMGgyMi41djIxLjloLTIxLjh2MjMuNGgyMS44djIxLjloLTIxLjh2MjMuNGgyMi41djIxLjloLTQ1Wm0yODEuMi0xMzIuM2gtMjEuOHYyMy40aDIxLjh2LTIzLjR6bS0xMS4zIDIxLjloMjIuNXYyMS45aC0yMi41di0yMS45em0xMS4zIDIxLjloMjEuOHYyMy40aC0yMS44di0yMy40em0wIDQ1LjNoLTIxLjh2MjMuNGgyMS44di0yMy40em0tMTEuMyAyMS45aDIyLjV2MjEuOWgtMjIuNXYtMjEuOXptMTEuMyAyMS45aDIxLjh2MjMuNGgtMjEuOHYtMjMuNHptMCA0NS4zaC0yMS44djIzLjRoMjEuOHYtMjMuNHptLTExLjMgMjEuOWgyMi41djIxLjloLTIyLjV2LTIxLjl6bTExLjMgMjEuOWgyMS44djIzLjRoLTIxLjh2LTIzLjR6IiBmaWxsPSIjYWRkM2VkIi8+CjxwYXRoIGQ9Ik0zMzIgMzIybDMxIDExdi0xN2wtMzEtMTF6bS0yMy4yIDYuOGMtMS4xLTEuMS0xLjEtMi44IDAtMy45bDEwLjYtMTAuNmMxLjEtMS4xIDIuOC0xLjEgMy45IDBsMi44IDIuOC0xNy4zIDE3LjMtMi44LTIuOHptMTcuOS0yMS4zbDIxLjIgMjEuMiAzLjQtMy40LTIxLjItMjEuMi0zLjQgMy40em0yMC4xIDE3LjlsMS44LTEuOCAxNy4zIDE3LjMgMS44LTEuOCAyLjggMi44LTE3LjMgMTcuMy00LjYtNC42em0tMzYgMjUuMWwxMC42LTEwLjZjMS4xLTEuMSAyLjgtMS4xIDMuOSAwbDIuOCAyLjgtMTcuMyAxNy4zLTIuOC0yLjg.0IDMuOWwxMC42IDEwLjZjMS4xIDEuMSAyLjggMS4xIDMuOSAwbDIuOC0yLjgtMTcuMy0xNy4zLTIuOCAyLjh6bS0xMS4zLTI4LjdsMjEuMi0yMS4yIDMuNCAzLjQtMjEuMiAyMS4yLTMuNC0zLjR6bTEuOCAyMC4xbDE3LjMtMTcuMyAxLjggMS44LTE3LjMgMTcuMy0xLjgtMS44em00LjYgNC42bDIuOC0yLjggMTcuMyAxNy4zLTEuOCAxLjggMi44IDIuOC0yMS4yLTIxLjJ6IiBmaWxsPSIjY2YxNDJCIi8+CjxwYXRoIGQ9Ik0zMTIgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjYWRkM2VkIi8+CjxwYXRoIGQ9Ik0yODUgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjYzYwYjFiIi8+CjxwYXRoIGQ9Ik0yNTUgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjZmZjNDA1Ii8+CjxwYXRoIGQ9Ik0yMjUgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjYzYwYjFiIi8+CjxwYXRoIGQ9Ik0zNTIgMjgzdjExM2gyOHYtMTEzaC0yOHoiIGZpbGw9IiNjNjBiMWIiLz4KPHBhdGggZD0iTTM1MSAzOTdoMjl2NDRoLTI5eiIgZmlsbD0iI2ZmYzQwNSIvPgo8cGF0aCBkPSJNMzY2IDMwMGMwIDQuMS0zLjQgNy41LTcuNSA3LjVzLTcuNS0zLjQtNy41LTcuNSA1LjctMTIuMyA3LjUtMTIuMyA3LjUgOC4yIDcuNSAxMi4zek0zMDYgMzc1aDEwMnYyMWgtMTAyeiIgZmlsbD0iI2ZmYzQwNSIvPgo8L3N2Zz4=");
+    }
   /* #resetBtn additional overrides can go here if needed */
     main { max-width:1400px; margin:0 auto; padding:0.75rem 1rem 2rem; }
     .categories { display:flex; flex-direction:column; gap:1rem; }
@@ -442,16 +443,17 @@
 <script type="module" src="./src/js/main.js"></script>
 <!-- (Removed custom lazy / retry script; using pure default one-line pushes above each ad) -->
 <script>
-  // Dynamically update <html lang> when language changes
+  // Dynamically update <html lang> and flag icon when language changes
   (function(){
     const sel = document.getElementById('langSel');
     if(!sel) return;
-    function applyLang(){
+    function applyLangAndFlag(){
       const v = sel.value || 'en';
       document.documentElement.setAttribute('lang', v);
+      sel.className = v; // Set class for flag styling
     }
-    sel.addEventListener('change', applyLang);
-    applyLang();
+    sel.addEventListener('change', applyLangAndFlag);
+    applyLangAndFlag(); // Initial setup
   })();
   // Basic fallback category headings for bots / no-JS (injection after slight delay if empty)
   (function(){
