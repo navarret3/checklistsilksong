@@ -311,39 +311,8 @@
   body.theme-light #datasetIssues { background:#f9e3e3; color:#5a2222; border-color:#d28a8a; }
 </style>
 <main>
-  <section id="intro" style="max-width:760px;margin:0 auto 1.25rem;padding:0 .9rem;line-height:1.5;font-size:.8rem;color:#c9d3db;">
-    <h2 data-i18n="intro.heading" style="margin:.2rem 0 .6rem;font-size:1rem;letter-spacing:.5px;font-weight:600;">Hollow Knight: Silksong Completion Tracker</h2>
-    <p data-i18n="intro.p1" style="margin:.4rem 0 .65rem;">Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in <strong>Hollow Knight: Silksong</strong>. Mark needle upgrades, silk spools, crests, abilities, tools and more. Your progress is stored locally (no login) so you can return any time.</p>
-    <p data-i18n="intro.p2" style="margin:.4rem 0 .65rem;">A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released.</p>
-    <noscript><p data-i18n="intro.noscript"><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
-    <h3 data-i18n="section.howto.title" style="margin:1.2rem 0 .55rem;font-size:.85rem;letter-spacing:.5px;font-weight:600;">How to Use This Checklist</h3>
-    <p data-i18n="section.howto.p1" style="margin:.45rem 0 .65rem;">Browse categories, click an item to mark it as obtained. Progress lives only in your browser (localStorage). Clearing data resets it.</p>
-    <p data-i18n="section.howto.p2" style="margin:.45rem 0 .65rem;">Placeholder or inferred entries will be replaced with verified Silksong data when official info is released.</p>
-    <p data-i18n="section.howto.p3" style="margin:.45rem 0 .65rem;">Switch language (EN/ES) any time — progress is shared. Contribute improvements via the repository.</p>
-    <h3 data-i18n="section.features.title" style="margin:1.4rem 0 .55rem;font-size:.85rem;letter-spacing:.5px;font-weight:600;">Features</h3>
-    <ul style="margin:.3rem 0 .85rem .9rem; padding:0; font-size:.75rem; line-height:1.4;">
-      <li data-i18n="section.features.list1">Lightweight, minimal tracking.</li>
-      <li data-i18n="section.features.list2">Offline capable core assets.</li>
-      <li data-i18n="section.features.list3">Progress percent + remaining items.</li>
-      <li data-i18n="section.features.list4">English / Spanish localization.</li>
-      <li data-i18n="section.features.list5">Expandable category panels.</li>
-    </ul>
-    <h3 data-i18n="section.faq.title" style="margin:1.4rem 0 .55rem;font-size:.85rem;letter-spacing:.5px;font-weight:600;">FAQ</h3>
-    <dl style="margin:.2rem 0 1.2rem; font-size:.72rem; line-height:1.45;">
-      <dt data-i18n="section.faq.q.data" style="font-weight:600;margin:.6rem 0 .25rem;">Does this store my data online?</dt>
-      <dd data-i18n="section.faq.a.data" style="margin:0 0 .3rem;">No. Only in your browser. An export feature is planned.</dd>
-      <dt data-i18n="section.faq.q.change" style="font-weight:600;margin:.6rem 0 .25rem;">Will values change when the game releases?</dt>
-      <dd data-i18n="section.faq.a.change" style="margin:0 0 .3rem;">Yes—provisional entries are updated; structure aims to remain stable.</dd>
-      <dt data-i18n="section.faq.q.ads" style="font-weight:600;margin:.6rem 0 .25rem;">Why don't I see ads yet?</dt>
-      <dd data-i18n="section.faq.a.ads" style="margin:0 0 .3rem;">Site under initial AdSense review; ads will appear once approved.</dd>
-      <dt data-i18n="section.faq.q.suggest" style="font-weight:600;margin:.6rem 0 .25rem;">Can I suggest new categories?</dt>
-      <dd data-i18n="section.faq.a.suggest" style="margin:0 0 .3rem;">Yes—open an issue in the repository.</dd>
-      <dt data-i18n="section.faq.q.official" style="font-weight:600;margin:.6rem 0 .25rem;">Is this official?</dt>
-      <dd data-i18n="section.faq.a.official" style="margin:0 0 .3rem;">No. Independent fan project.</dd>
-    </dl>
-    <h3 data-i18n="section.disclaimer.title" style="margin:1.4rem 0 .55rem;font-size:.85rem;letter-spacing:.5px;font-weight:600;">Disclaimer</h3>
-    <p data-i18n="section.disclaimer.text" style="margin:.4rem 0 .65rem;">Hollow Knight and Silksong are trademarks of Team Cherry. This fan site is not affiliated with or endorsed by Team Cherry.</p>
-  </section>
+  <!-- Intro content moved into an on-demand modal to keep immediate focus on the checklist -->
+  <noscript><p data-i18n="intro.noscript" style="max-width:760px;margin:0 auto 1rem;padding:0 .9rem;font-size:.7rem;line-height:1.4;color:#d1d9df;"><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
   <!-- (Moved ad below expanded textual content for better content/ad ratio during review) -->
   <div class="ad-container ad-container--top" style="margin-top:1.8rem;">
     <small class="ad-label">Advertisement</small>
@@ -367,6 +336,85 @@
   <br><a href="/about.html" style="color:var(--accent);font-size:0.65rem;">About / Disclaimer</a>
   <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
 </footer>
+<!-- Help / Guide Modal -->
+<div id="guideModal" class="guide-modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+  <div class="guide-dialog">
+    <button class="guide-close" data-close aria-label="Close">×</button>
+    <div class="guide-scroll">
+      <h2 id="guideModalTitle" data-i18n="intro.heading">Hollow Knight: Silksong Completion Tracker</h2>
+      <p data-i18n="intro.p1">Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in Hollow Knight: Silksong...</p>
+      <p data-i18n="intro.p2">A Spanish interface is available – switch languages with the selector above.</p>
+      <hr />
+      <h3 data-i18n="section.howto.title">How to Use This Checklist</h3>
+      <p data-i18n="section.howto.p1">Browse categories...</p>
+      <p data-i18n="section.howto.p2">Placeholder or inferred entries...</p>
+      <p data-i18n="section.howto.p3">Switch language...</p>
+      <h3 data-i18n="section.features.title">Features</h3>
+      <ul class="guide-list">
+        <li data-i18n="section.features.list1">Lightweight...</li>
+        <li data-i18n="section.features.list2">Offline capable...</li>
+        <li data-i18n="section.features.list3">Progress percent...</li>
+        <li data-i18n="section.features.list4">Internationalization...</li>
+        <li data-i18n="section.features.list5">Expandable categories...</li>
+      </ul>
+      <h3 data-i18n="section.faq.title">FAQ</h3>
+      <dl class="faq">
+        <dt data-i18n="section.faq.q.data">Does this store my data online?</dt>
+        <dd data-i18n="section.faq.a.data">No...</dd>
+        <dt data-i18n="section.faq.q.change">Will values change...</dt>
+        <dd data-i18n="section.faq.a.change">Yes...</dd>
+        <dt data-i18n="section.faq.q.ads">Why don't I see ads?</dt>
+        <dd data-i18n="section.faq.a.ads">Site under review...</dd>
+        <dt data-i18n="section.faq.q.suggest">Can I suggest...</dt>
+        <dd data-i18n="section.faq.a.suggest">Yes...</dd>
+        <dt data-i18n="section.faq.q.official">Is this official?</dt>
+        <dd data-i18n="section.faq.a.official">No...</dd>
+      </dl>
+      <h3 data-i18n="section.disclaimer.title">Disclaimer</h3>
+      <p data-i18n="section.disclaimer.text">Hollow Knight and Silksong are trademarks...</p>
+    </div>
+  </div>
+</div>
+<style>
+  .guide-btn { background:rgba(32,40,48,.55); border:1px solid #2a3541; color:var(--fg); padding:0.45rem 0.6rem; border-radius:6px; font-size:.55rem; letter-spacing:.6px; text-transform:uppercase; font-weight:600; cursor:pointer; }
+  .guide-btn:hover { border-color:var(--accent); }
+  .guide-modal { position:fixed; inset:0; z-index:220; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); padding:2.2rem 1rem 1.6rem; }
+  .guide-modal.hidden { display:none; }
+  .guide-dialog { width:100%; max-width:860px; max-height:90vh; background:#12171c; border:1px solid #25313c; border-radius:14px; box-shadow:0 18px 44px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,0.04); position:relative; display:flex; flex-direction:column; }
+  .guide-scroll { overflow:auto; padding:1.1rem 1.25rem 1.4rem; font-size:.73rem; line-height:1.5; color:#c9d3db; }
+  .guide-scroll h2 { margin:.2rem 0 1rem; font-size:.95rem; letter-spacing:.6px; font-weight:600; }
+  .guide-scroll h3 { margin:1.2rem 0 .55rem; font-size:.8rem; letter-spacing:.5px; font-weight:600; }
+  .guide-scroll ul, .guide-scroll dl { margin:.4rem 0 1rem 1.1rem; padding:0; }
+  .guide-scroll ul { list-style:disc; }
+  .guide-scroll dl dt { font-weight:600; margin:.6rem 0 .25rem; }
+  .guide-scroll dl dd { margin:0 0 .35rem; }
+  .guide-close { position:absolute; top:8px; right:8px; background:#202830; border:1px solid #2a3541; color:var(--fg); width:34px; height:34px; border-radius:8px; cursor:pointer; font-size:1rem; line-height:1; display:flex; align-items:center; justify-content:center; }
+  .guide-close:hover { border-color:var(--accent); }
+  @media (max-width:720px){ .guide-dialog { max-width:100%; } .guide-scroll { font-size:.7rem; } }
+</style>
+<script>
+  (function(){
+    const controls = document.querySelector('.controls');
+    if(controls && !document.getElementById('guideBtn')){
+      const btn = document.createElement('button');
+      btn.id='guideBtn';
+      btn.type='button';
+      btn.className='guide-btn';
+      btn.setAttribute('aria-haspopup','dialog');
+      btn.textContent='?';
+      btn.title='Guide / Help';
+      controls.insertBefore(btn, controls.firstChild); // appear first
+      const modal = document.getElementById('guideModal');
+      const closeBtn = modal.querySelector('[data-close]');
+      function open(){ modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; btn.setAttribute('aria-expanded','true'); }
+      function close(){ modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; btn.setAttribute('aria-expanded','false'); }
+      btn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', e=>{ if(e.target===modal) close(); });
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')) close(); });
+    }
+  })();
+</script>
 <script type="module" src="./src/js/main.js"></script>
 <!-- (Removed custom lazy / retry script; using pure default one-line pushes above each ad) -->
 <script>
