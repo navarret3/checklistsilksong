@@ -1,5 +1,5 @@
 {
-  "dataVersion": 13,
+  "dataVersion": 14,
   "source": "official_listofrequirements_alignment_v1",
   "generatedAt": "2025-09-29T13:13:51.341Z",
   "licenseNote": "124 checklist entries. Weights: mask shards 0.25 (20 shards = 5%), silk spool fragments 0.5 (18 fragments = 9%), remaining 86 items at weight 1 (86%). Total weight = 100. Variant / upgrade pairs aggregated with '-all' suffix where needed.",
@@ -133,10 +133,10 @@
       "location_text": {
         "en": "ACT 3: Effect: Fling upwards.",
         "es": "ACTO 3: Efecto: Impulso hacia arriba.",
-        "fr": "ACT 3: Effet : Fling upwards.",
-        "de": "ACT 3: Effekt: Fling upwards.",
-        "it": "ACT 3: Effetto: Fling upwards.",
-        "ru": "ACT 3: Эффект: Fling upwards."
+        "fr": "ACTE 3: Effet : Fling upwards.",
+        "de": "AKT 3: Effekt: Fling upwards.",
+        "it": "ATTO 3: Effetto: Fling upwards.",
+        "ru": "АКТ 3: Эффект: Fling upwards."
       },
       "location_img": "assets/images/abilities_locations/silk_soar.jpg",
       "numId": 72,
@@ -356,10 +356,10 @@
       "location_text": {
         "en": "Given by the White Lady during the Red Memory.",
         "es": "Entregado por la Dama Blanca durante el Recuerdo Rojo.",
-        "fr": "Given by the White Lady during the Red Memory.",
-        "de": "Given by the White Lady during the Red Memory.",
-        "it": "Given by the White Lady during the Red Memory.",
-        "ru": "Given by the White Lady during the Red Memory."
+        "fr": "[auto] Given by the White Lady during the Red Memory.",
+        "de": "[auto] Given by the White Lady during the Red Memory.",
+        "it": "[auto] Given by the White Lady during the Red Memory.",
+        "ru": "[auto] Given by the White Lady during the Red Memory."
       },
       "location_img": null,
       "numId": 47,
@@ -416,10 +416,10 @@
       "location_text": {
         "en": "Found on a bug corpse in Sinner's Road.",
         "es": "Encontrado en el cadáver de un bicho en el Camino del Pecador.",
-        "fr": "Found on a bug corpse in Sinner's Road.",
-        "de": "Found on a bug corpse in Sinner's Road.",
-        "it": "Found on a bug corpse in Sinner's Road.",
-        "ru": "Found on a bug corpse in Sinner's Road."
+        "fr": "Trouvé : on a bug corpse in Sinner's Road.",
+        "de": "Gefunden: on a bug corpse in Sinner's Road.",
+        "it": "Trovato: on a bug corpse in Sinner's Road.",
+        "ru": "Найдено: on a bug corpse in Sinner's Road."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-barbed-bracelet-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 75,
@@ -606,10 +606,10 @@
       "location_text": {
         "en": "Found on a bug corpse in the Wormways area.",
         "es": "Encontrado en el cadáver de un bicho en el área de las Vías de Gusanos.",
-        "fr": "Found on a bug corpse in the Wormways area.",
-        "de": "Found on a bug corpse in the Wormways area.",
-        "it": "Found on a bug corpse in the Wormways area.",
-        "ru": "Found on a bug corpse in the Wormways area."
+        "fr": "Trouvé : on a bug corpse in the Wormways area.",
+        "de": "Gefunden: on a bug corpse in the Wormways area.",
+        "it": "Trovato: on a bug corpse in the Wormways area.",
+        "ru": "Найдено: on a bug corpse in the Wormways area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-dead-bugs-purse-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 82,
@@ -718,10 +718,10 @@
       "location_text": {
         "en": "Obtained as a reward for finding five fleas for Fleamaster Mooshka in The Marrow.",
         "es": "Se obtiene como recompensa por encontrar cinco pulgas para el Maestro de Pulgas Mooshka en La Médula.",
-        "fr": "Obtained as a reward for finding five fleas for Fleamaster Mooshka in The Marrow.",
-        "de": "Obtained as a reward for finding five fleas for Fleamaster Mooshka in The Marrow.",
-        "it": "Obtained as a reward for finding five fleas for Fleamaster Mooshka in The Marrow.",
-        "ru": "Obtained as a reward for finding five fleas for Fleamaster Mooshka in The Marrow."
+        "fr": "Obtenu : as a reward for finding five fleas for Fleamaster Mooshka in The Marrow.",
+        "de": "Erhalten: as a reward for finding five fleas for Fleamaster Mooshka in The Marrow.",
+        "it": "Ottenuto: as a reward for finding five fleas for Fleamaster Mooshka in The Marrow.",
+        "ru": "Получено: as a reward for finding five fleas for Fleamaster Mooshka in The Marrow."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flea-brew-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 86,
@@ -934,10 +934,10 @@
       "location_text": {
         "en": "Repeatedly beat Lumble the Lucky while playing the Dice mini-game.",
         "es": "Vence repetidamente a Lumble el Afortunado jugando al minijuego de dados.",
-        "fr": "Repeatedly beat Lumble the Lucky while playing the Dice mini-game.",
-        "de": "Repeatedly beat Lumble the Lucky while playing the Dice mini-game.",
-        "it": "Repeatedly beat Lumble the Lucky while playing the Dice mini-game.",
-        "ru": "Repeatedly beat Lumble the Lucky while playing the Dice mini-game."
+        "fr": "[auto] Repeatedly beat Lumble the Lucky while playing the Dice mini-game.",
+        "de": "[auto] Repeatedly beat Lumble the Lucky while playing the Dice mini-game.",
+        "it": "[auto] Repeatedly beat Lumble the Lucky while playing the Dice mini-game.",
+        "ru": "[auto] Repeatedly beat Lumble the Lucky while playing the Dice mini-game."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-dice-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 94,
@@ -1254,10 +1254,10 @@
       "location_text": {
         "en": "Found on a table in The Marrow.",
         "es": "Encontrado en una mesa en La Médula.",
-        "fr": "Found on a table in The Marrow.",
-        "de": "Found on a table in The Marrow.",
-        "it": "Found on a table in The Marrow.",
-        "ru": "Found on a table in The Marrow."
+        "fr": "Trouvé : on a table in The Marrow.",
+        "de": "Gefunden: on a table in The Marrow.",
+        "it": "Trovato: on a table in The Marrow.",
+        "ru": "Найдено: on a table in The Marrow."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-shard-pendant-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 106,
@@ -1288,10 +1288,10 @@
       "location_text": {
         "en": "Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
         "es": "Encuentra la Herramienta Arruinada en la parte sureste de Aguabil y luego llévala a la Hija de la Forja en el área de los Muelles Profundos.",
-        "fr": "Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
-        "de": "Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
-        "it": "Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
-        "ru": "Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area."
+        "fr": "[auto] Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
+        "de": "[auto] Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
+        "it": "[auto] Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
+        "ru": "[auto] Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkshot-i-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 107,
@@ -1530,10 +1530,10 @@
       "location_text": {
         "en": "Found in a secret cave above the Craw Lake area of Greymoor.",
         "es": "Encontrado en una cueva secreta sobre el área del Lago de Arrastre en Greymoor.",
-        "fr": "Found in a secret cave above the Craw Lake area of Greymoor.",
-        "de": "Found in a secret cave above the Craw Lake area of Greymoor.",
-        "it": "Found in a secret cave above the Craw Lake area of Greymoor.",
-        "ru": "Found in a secret cave above the Craw Lake area of Greymoor."
+        "fr": "Trouvé : in a secret cave above the Craw Lake area of Greymoor.",
+        "de": "Gefunden: in a secret cave above the Craw Lake area of Greymoor.",
+        "it": "Trovato: in a secret cave above the Craw Lake area of Greymoor.",
+        "ru": "Найдено: in a secret cave above the Craw Lake area of Greymoor."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-threefold-pin-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 116,
@@ -1564,10 +1564,10 @@
       "location_text": {
         "en": "Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater.",
         "es": "Activa el Deseo del Fin del Sendero usando el tablero de deseos en Corazón de Campana, luego encuentra a Shakra en la parte más al noreste de Aguabil.",
-        "fr": "Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater.",
-        "de": "Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater.",
-        "it": "Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater.",
-        "ru": "Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater."
+        "fr": "[auto] Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater.",
+        "de": "[auto] Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater.",
+        "it": "[auto] Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater.",
+        "ru": "[auto] Trigger the Trail's End Wish using the wishboard in Bellhart, then find Shakra in the most northeasterly part of Bilewater."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-throwing-ring-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 117,
@@ -1854,10 +1854,10 @@
       "location_text": {
         "en": "Behind a breakable wall at the water's edge.",
         "es": "Detrás de una pared rompible al borde del agua.",
-        "fr": "Behind a breakable wall at the water's edge.",
-        "de": "Behind a breakable wall at the water's edge.",
-        "it": "Behind a breakable wall at the water's edge.",
-        "ru": "Behind a breakable wall at the water's edge."
+        "fr": "[auto] Behind a breakable wall at the water's edge.",
+        "de": "[auto] Behind a breakable wall at the water's edge.",
+        "it": "[auto] Behind a breakable wall at the water's edge.",
+        "ru": "[auto] Behind a breakable wall at the water's edge."
       },
       "location_img": "assets/images/mask shards location/4.jpg",
       "numId": 8,
@@ -1920,10 +1920,10 @@
       "location_text": {
         "en": "On a high-up ledge in a room filled with lava.",
         "es": "En una repisa elevada en una habitación llena de lava.",
-        "fr": "On a high-up ledge in a room filled with lava.",
-        "de": "On a high-up ledge in a room filled with lava.",
-        "it": "On a high-up ledge in a room filled with lava.",
-        "ru": "On a high-up ledge in a room filled with lava."
+        "fr": "[auto] On a high-up ledge in a room filled with lava.",
+        "de": "[auto] On a high-up ledge in a room filled with lava.",
+        "it": "[auto] On a high-up ledge in a room filled with lava.",
+        "ru": "[auto] On a high-up ledge in a room filled with lava."
       },
       "location_img": "assets/images/mask shards location/6.jpg",
       "numId": 10,
@@ -1978,10 +1978,10 @@
       "location_text": {
         "en": "At the top of a tunnel reached after an Arena Battle.",
         "es": "En la cima de un túnel al que se llega después de una Batalla de Arena.",
-        "fr": "At the top of a tunnel reached after an Arena Battle.",
-        "de": "At the top of a tunnel reached after an Arena Battle.",
-        "it": "At the top of a tunnel reached after an Arena Battle.",
-        "ru": "At the top of a tunnel reached after an Arena Battle."
+        "fr": "[auto] At the top of a tunnel reached after an Arena Battle.",
+        "de": "[auto] At the top of a tunnel reached after an Arena Battle.",
+        "it": "[auto] At the top of a tunnel reached after an Arena Battle.",
+        "ru": "[auto] At the top of a tunnel reached after an Arena Battle."
       },
       "location_img": "assets/images/mask shards location/8.jpg",
       "numId": 12,
@@ -2111,10 +2111,10 @@
       "location_text": {
         "en": "Can be purchased from Jubilana for 750 Rosaries",
         "es": "Se puede comprar a Jubilana por 750 Rosarios",
-        "fr": "Can be purchased from Jubilana for 750 Rosaries",
-        "de": "Can be purchased from Jubilana for 750 Rosaries",
-        "it": "Can be purchased from Jubilana for 750 Rosaries",
-        "ru": "Can be purchased from Jubilana for 750 Rosaries"
+        "fr": "Can be Achat :d from Jubilana for 750 Rosaries",
+        "de": "Can be Kauf:d from Jubilana for 750 Rosaries",
+        "it": "Can be Acquisto:d from Jubilana for 750 Rosaries",
+        "ru": "Can be Покупка:d from Jubilana for 750 Rosaries"
       },
       "location_img": "assets/images/mask shards location/13.jpg",
       "numId": 17,
@@ -2144,7 +2144,7 @@
       "location_text": {
         "en": "At the top of a room behind the Locked Door - Apostate that holds a platforming challenge.\n\nEasiest to reach via Silk Soar.",
         "es": "En la cima de una habitación detrás de la Puerta Cerrada - Apóstata que contiene un desafío de plataformas.\n\nLa forma más fácil de llegar es con Ascenso de Seda.",
-        "fr": "At the top of a room behind the Locked Door - Apostate that holds a platforming challenge.\n\nEasiest to reach via Silk Soar.",
+        "fr": "At the top of a room behind the Locked Porte - Apostate that holds a platforming challenge.\n\nEasiest to reach via Silk Soar.",
         "de": "At the top of a room behind the Locked Door - Apostate that holds a platforming challenge.\n\nEasiest to reach via Silk Soar.",
         "it": "At the top of a room behind the Locked Door - Apostate that holds a platforming challenge.\n\nEasiest to reach via Silk Soar.",
         "ru": "At the top of a room behind the Locked Door - Apostate that holds a platforming challenge.\n\nEasiest to reach via Silk Soar."
@@ -2302,10 +2302,10 @@
       "location_text": {
         "en": "Can only be reached in ACT 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in.",
         "es": "Solo se puede alcanzar en el ACTO 3.\n\nEn lo más alto de la Veta Brillante. Después de una larga secuencia de plataformas, usa Ascenso de Seda para llegar a la habitación donde se encuentra.",
-        "fr": "Can only be reached in ACT 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in.",
-        "de": "Can only be reached in ACT 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in.",
-        "it": "Can only be reached in ACT 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in.",
-        "ru": "Can only be reached in ACT 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in."
+        "fr": "Can only be reached in ACTE 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in.",
+        "de": "Can only be reached in AKT 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in.",
+        "it": "Can only be reached in ATTO 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in.",
+        "ru": "Can only be reached in АКТ 3.\n\nAt the very top of the Brightvein. After a length platforming sequence, use Silk Soar to reach the room it's in."
       },
       "location_img": "assets/images/mask shards location/20.jpg",
       "numId": 24,
@@ -2335,10 +2335,10 @@
       "location_text": {
         "en": "On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage.",
         "es": "En una repisa alcanzada al golpear la Palanca en el borde de la habitación llena de magma. Sigue saltando para evitar el daño.",
-        "fr": "On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage.",
-        "de": "On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage.",
-        "it": "On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage.",
-        "ru": "On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage."
+        "fr": "[auto] On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage.",
+        "de": "[auto] On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage.",
+        "it": "[auto] On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage.",
+        "ru": "[auto] On a ledge reached by whacking the Lever at the edge of the magma-filled room. Keep jumping to avoid damage."
       },
       "location_img": "assets/images/silk_spool_locations/1.jpg",
       "numId": 25,
@@ -2368,10 +2368,10 @@
       "location_text": {
         "en": "In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps.",
         "es": "En una habitación con trampas en lo alto del asentamiento, a la que se llega dejándose caer por la Trampilla Cerrada y siguiendo el camino. Una vez que llegues a la Palanca, continúa hacia la derecha - y ten cuidado con las trampas.",
-        "fr": "In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps.",
-        "de": "In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps.",
-        "it": "In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps.",
-        "ru": "In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps."
+        "fr": "In a boobytrapped room high above the settlement, reached by dropping through the Locked TrapPorte and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps.",
+        "de": "[auto] In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps.",
+        "it": "[auto] In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps.",
+        "ru": "[auto] In a boobytrapped room high above the settlement, reached by dropping through the Locked Trapdoor and following the path. Once you reach the Lever, continue to the right - and watch out for boobytraps."
       },
       "location_img": "assets/images/silk_spool_locations/2.jpg",
       "numId": 26,
@@ -2501,10 +2501,10 @@
       "location_text": {
         "en": "Sold by Grindle for 680 Rosaries.",
         "es": "Vendido por Grindle por 680 Rosarios.",
-        "fr": "Sold by Grindle for 680 Rosaries.",
-        "de": "Sold by Grindle for 680 Rosaries.",
-        "it": "Sold by Grindle for 680 Rosaries.",
-        "ru": "Sold by Grindle for 680 Rosaries."
+        "fr": "[auto] Sold by Grindle for 680 Rosaries.",
+        "de": "[auto] Sold by Grindle for 680 Rosaries.",
+        "it": "[auto] Sold by Grindle for 680 Rosaries.",
+        "ru": "[auto] Sold by Grindle for 680 Rosaries."
       },
       "location_img": "assets/images/silk_spool_locations/7.jpg",
       "numId": 31,
@@ -2559,10 +2559,10 @@
       "location_text": {
         "en": "In a room at the edge of the tunnels, initially entered here.",
         "es": "En una habitación al borde de los túneles, a la que se entra inicialmente por aquí.",
-        "fr": "In a room at the edge of the tunnels, initially entered here.",
-        "de": "In a room at the edge of the tunnels, initially entered here.",
-        "it": "In a room at the edge of the tunnels, initially entered here.",
-        "ru": "In a room at the edge of the tunnels, initially entered here."
+        "fr": "[auto] In a room at the edge of the tunnels, initially entered here.",
+        "de": "[auto] In a room at the edge of the tunnels, initially entered here.",
+        "it": "[auto] In a room at the edge of the tunnels, initially entered here.",
+        "ru": "[auto] In a room at the edge of the tunnels, initially entered here."
       },
       "location_img": "assets/images/silk_spool_locations/9.jpg",
       "numId": 33,
@@ -2592,10 +2592,10 @@
       "location_text": {
         "en": "Behind a Breakable Wall.",
         "es": "Detrás de una Pared Rompible.",
-        "fr": "Behind a Breakable Wall.",
-        "de": "Behind a Breakable Wall.",
-        "it": "Behind a Breakable Wall.",
-        "ru": "Behind a Breakable Wall."
+        "fr": "[auto] Behind a Breakable Wall.",
+        "de": "[auto] Behind a Breakable Wall.",
+        "it": "[auto] Behind a Breakable Wall.",
+        "ru": "[auto] Behind a Breakable Wall."
       },
       "location_img": "assets/images/silk_spool_locations/10.jpg",
       "numId": 34,
@@ -2700,10 +2700,10 @@
       "location_text": {
         "en": "Empty (no additional info).",
         "es": "Vacío (sin información adicional).",
-        "fr": "Empty (no additional info).",
-        "de": "Empty (no additional info).",
-        "it": "Empty (no additional info).",
-        "ru": "Empty (no additional info)."
+        "fr": "[auto] Empty (no additional info).",
+        "de": "[auto] Empty (no additional info).",
+        "it": "[auto] Empty (no additional info).",
+        "ru": "[auto] Empty (no additional info)."
       },
       "location_img": "assets/images/silk_spool_locations/14.jpg",
       "numId": 38,
@@ -2808,10 +2808,10 @@
       "location_text": {
         "en": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool fragment at the bottom.",
         "es": "Accesible una vez que hayas llegado a la Palanca. Sube al último piso, llama al ascensor, y luego deslízate rápidamente por el agujero. Espera junto a la palanca a que pase el ascensor, luego salta para encontrar este fragmento de carrete en el fondo.",
-        "fr": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool fragment at the bottom.",
-        "de": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool fragment at the bottom.",
-        "it": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool fragment at the bottom.",
-        "ru": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool fragment at the bottom."
+        "fr": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool Fragment at the bottom.",
+        "de": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool Fragment at the bottom.",
+        "it": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool Frammento at the bottom.",
+        "ru": "Accessible once you've reached the Lever. Climb to the top floor, summon the elevator, then quickly slide back down the hole. Wait next to the lever for the elevator to pass, then jump down to find this spool Фрагмент at the bottom."
       },
       "location_img": "assets/images/silk_spool_locations/18.jpg",
       "numId": 42,
@@ -2841,10 +2841,10 @@
       "location_text": {
         "en": "Defeat Bell Beast. Regain the power to regenerate Silk within one's shell.",
         "es": "Derrota a la Bestia Campana. Recupera el poder de regenerar Seda dentro de tu caparazón.",
-        "fr": "Defeat Bell Beast. Regain the power to regenerate Silk within one's shell.",
-        "de": "Defeat Bell Beast. Regain the power to regenerate Silk within one's shell.",
-        "it": "Defeat Bell Beast. Regain the power to regenerate Silk within one's shell.",
-        "ru": "Defeat Bell Beast. Regain the power to regenerate Silk within one's shell."
+        "fr": "Vaincre Bell Beast. Regain the power to regenerate Silk within one's shell.",
+        "de": "Besiege Bell Beast. Regain the power to regenerate Silk within one's shell.",
+        "it": "Sconfiggi Bell Beast. Regain the power to regenerate Silk within one's shell.",
+        "ru": "Победи Bell Beast. Regain the power to regenerate Silk within one's shell."
       },
       "location_img": "assets/images/silk hearts/1.jpg",
       "numId": 43,
@@ -2874,10 +2874,10 @@
       "location_text": {
         "en": "Defeat The Unravelled.",
         "es": "Derrota a El Desentrañado.",
-        "fr": "Defeat The Unravelled.",
-        "de": "Defeat The Unravelled.",
-        "it": "Defeat The Unravelled.",
-        "ru": "Defeat The Unravelled."
+        "fr": "Vaincre The Unravelled.",
+        "de": "Besiege The Unravelled.",
+        "it": "Sconfiggi The Unravelled.",
+        "ru": "Победи The Unravelled."
       },
       "location_img": "assets/images/silk hearts/2.jpg",
       "numId": 44,
@@ -2907,10 +2907,10 @@
       "location_text": {
         "en": "Defeat Lace in The Cradle",
         "es": "Derrota a Lace en La Cuna",
-        "fr": "Defeat Lace in The Cradle",
-        "de": "Defeat Lace in The Cradle",
-        "it": "Defeat Lace in The Cradle",
-        "ru": "Defeat Lace in The Cradle"
+        "fr": "Vaincre Lace in The Cradle",
+        "de": "Besiege Lace in The Cradle",
+        "it": "Sconfiggi Lace in The Cradle",
+        "ru": "Победи Lace in The Cradle"
       },
       "location_img": "assets/images/silk hearts/3.jpg",
       "numId": 45,
@@ -3015,10 +3015,10 @@
       "location_text": {
         "en": "ACT 3: In a tunnel above the Lore Tablet, Silk Soar required",
         "es": "ACTO 3: En un túnel sobre la Tabla de Lore, se requiere Ascenso de Seda",
-        "fr": "ACT 3: In a tunnel above the Lore Tablet, Silk Soar required",
-        "de": "ACT 3: In a tunnel above the Lore Tablet, Silk Soar required",
-        "it": "ACT 3: In a tunnel above the Lore Tablet, Silk Soar required",
-        "ru": "ACT 3: In a tunnel above the Lore Tablet, Silk Soar required"
+        "fr": "ACTE 3: In a tunnel above the Lore Tablet, Silk Soar Requis :",
+        "de": "AKT 3: In a tunnel above the Lore Tablet, Silk Soar Erfordert:",
+        "it": "ATTO 3: In a tunnel above the Lore Tablet, Silk Soar Richiesto:",
+        "ru": "АКТ 3: In a tunnel above the Lore Tablet, Silk Soar Требуется:"
       },
       "location_img": "assets/images/crests/location_shaman.jpg",
       "numId": 51,
@@ -3098,10 +3098,10 @@
       "location_text": {
         "en": "Can be purchased from Forge Daughter for 180 Rosaries",
         "es": "Se puede comprar a la Hija de la Forja por 180 Rosarios",
-        "fr": "Can be purchased from Forge Daughter for 180 Rosaries",
-        "de": "Can be purchased from Forge Daughter for 180 Rosaries",
-        "it": "Can be purchased from Forge Daughter for 180 Rosaries",
-        "ru": "Can be purchased from Forge Daughter for 180 Rosaries"
+        "fr": "Can be Achat :d from Forge Daughter for 180 Rosaries",
+        "de": "Can be Kauf:d from Forge Daughter for 180 Rosaries",
+        "it": "Can be Acquisto:d from Forge Daughter for 180 Rosaries",
+        "ru": "Can be Покупка:d from Forge Daughter for 180 Rosaries"
       },
       "location_img": "assets/images/craft_upgrades_locations/1.jpg",
       "numId": 60,
@@ -3131,10 +3131,10 @@
       "location_text": {
         "en": "Complete Crawbug Clearing Wish",
         "es": "Completa el Deseo de Limpieza de Crawbugs",
-        "fr": "Complete Crawbug Clearing Wish",
-        "de": "Complete Crawbug Clearing Wish",
-        "it": "Complete Crawbug Clearing Wish",
-        "ru": "Complete Crawbug Clearing Wish"
+        "fr": "[auto] Complete Crawbug Clearing Wish",
+        "de": "[auto] Complete Crawbug Clearing Wish",
+        "it": "[auto] Complete Crawbug Clearing Wish",
+        "ru": "[auto] Complete Crawbug Clearing Wish"
       },
       "location_img": "assets/images/craft_upgrades_locations/2.jpg",
       "numId": 61,
@@ -3164,10 +3164,10 @@
       "location_text": {
         "en": "Sold by Grindle for 700 Rosaries",
         "es": "Vendido por Grindle por 700 Rosarios",
-        "fr": "Sold by Grindle for 700 Rosaries",
-        "de": "Sold by Grindle for 700 Rosaries",
-        "it": "Sold by Grindle for 700 Rosaries",
-        "ru": "Sold by Grindle for 700 Rosaries"
+        "fr": "[auto] Sold by Grindle for 700 Rosaries",
+        "de": "[auto] Sold by Grindle for 700 Rosaries",
+        "it": "[auto] Sold by Grindle for 700 Rosaries",
+        "ru": "[auto] Sold by Grindle for 700 Rosaries"
       },
       "location_img": "assets/images/craft_upgrades_locations/3.jpg",
       "numId": 62,
@@ -3197,10 +3197,10 @@
       "location_text": {
         "en": "Purchased from Twelfth Architect for 450 Rosaries",
         "es": "Comprado al Duodécimo Arquitecto por 450 Rosarios",
-        "fr": "Purchased from Twelfth Architect for 450 Rosaries",
-        "de": "Purchased from Twelfth Architect for 450 Rosaries",
-        "it": "Purchased from Twelfth Architect for 450 Rosaries",
-        "ru": "Purchased from Twelfth Architect for 450 Rosaries"
+        "fr": "Achat :d from Twelfth Architect for 450 Rosaries",
+        "de": "Kauf:d from Twelfth Architect for 450 Rosaries",
+        "it": "Acquisto:d from Twelfth Architect for 450 Rosaries",
+        "ru": "Покупка:d from Twelfth Architect for 450 Rosaries"
       },
       "location_img": "assets/images/craft_upgrades_locations/4.jpg",
       "numId": 63,
@@ -3230,10 +3230,10 @@
       "location_text": {
         "en": "Can be purchased from Mort for 220 Rosaries",
         "es": "Se puede comprar a Mort por 220 Rosarios",
-        "fr": "Can be purchased from Mort for 220 Rosaries",
-        "de": "Can be purchased from Mort for 220 Rosaries",
-        "it": "Can be purchased from Mort for 220 Rosaries",
-        "ru": "Can be purchased from Mort for 220 Rosaries"
+        "fr": "Can be Achat :d from Mort for 220 Rosaries",
+        "de": "Can be Kauf:d from Mort for 220 Rosaries",
+        "it": "Can be Acquisto:d from Mort for 220 Rosaries",
+        "ru": "Can be Покупка:d from Mort for 220 Rosaries"
       },
       "location_img": "assets/images/tool_pouch_locations/1.jpg",
       "numId": 64,
@@ -3263,10 +3263,10 @@
       "location_text": {
         "en": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in Act 3.",
         "es": "Completa el primer desafío de Loddie golpeando el objetivo 15 veces, o encuéntralo aquí en el Acto 3.",
-        "fr": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in Act 3.",
-        "de": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in Act 3.",
-        "it": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in Act 3.",
-        "ru": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in Act 3."
+        "fr": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in ACTE 3.",
+        "de": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in AKT 3.",
+        "it": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in ATTO 3.",
+        "ru": "Complete Loddie's first challenge by hitting the target 15 times, or find it here in АКТ 3."
       },
       "location_img": "assets/images/tool_pouch_locations/2.jpg",
       "numId": 65,
@@ -3296,10 +3296,10 @@
       "location_text": {
         "en": "Complete Bugs of Pharloom Wish",
         "es": "Completa el Deseo de los Bichos de Pharloom",
-        "fr": "Complete Bugs of Pharloom Wish",
-        "de": "Complete Bugs of Pharloom Wish",
-        "it": "Complete Bugs of Pharloom Wish",
-        "ru": "Complete Bugs of Pharloom Wish"
+        "fr": "[auto] Complete Bugs of Pharloom Wish",
+        "de": "[auto] Complete Bugs of Pharloom Wish",
+        "it": "[auto] Complete Bugs of Pharloom Wish",
+        "ru": "[auto] Complete Bugs of Pharloom Wish"
       },
       "location_img": "assets/images/tool_pouch_locations/3.jpg",
       "numId": 66,
@@ -3329,10 +3329,10 @@
       "location_text": {
         "en": "Find 20 Lost Fleas in Pharloom",
         "es": "Encuentra 20 Pulgas Perdidas en Pharloom",
-        "fr": "Find 20 Lost Fleas in Pharloom",
-        "de": "Find 20 Lost Fleas in Pharloom",
-        "it": "Find 20 Lost Fleas in Pharloom",
-        "ru": "Find 20 Lost Fleas in Pharloom"
+        "fr": "[auto] Find 20 Lost Fleas in Pharloom",
+        "de": "[auto] Find 20 Lost Fleas in Pharloom",
+        "it": "[auto] Find 20 Lost Fleas in Pharloom",
+        "ru": "[auto] Find 20 Lost Fleas in Pharloom"
       },
       "location_img": "assets/images/tool_pouch_locations/4.jpg",
       "numId": 67,
@@ -3362,10 +3362,10 @@
       "location_text": {
         "en": "The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood.",
         "es": "La primera mejora de arma de Hollow Knight: Silksong viene del propio Maestro de Alfileres Plinney. Se encuentra en el asentamiento de Corazón de Campana, a medio camino entre las regiones de Greymoor y el Bosque de Conchas.",
-        "fr": "The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood.",
-        "de": "The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood.",
-        "it": "The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood.",
-        "ru": "The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood."
+        "fr": "[auto] The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood.",
+        "de": "[auto] The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood.",
+        "it": "[auto] The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood.",
+        "ru": "[auto] The first Hollow Knight: Silksong weapon upgrade comes from Pinmaster Plinney himself. He's located in the settlement of Bellhart, which is halfway between the regions of Greymoor and Shellwood."
       },
       "location_img": "https://www.gamespot.com/a/uploads/scale_super/1816/18167535/4567251-hollow-knight-silksong-pale-oil-weapon-upgrades-guide-1.jpg",
       "numId": 1,
@@ -3431,10 +3431,10 @@
       "location_text": {
         "en": "The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas.",
         "es": "La cuarta y última mejora de arma de Hollow Knight: Silksong viene de Fleatopia. Esta es la actividad que más tiempo consume, ya que es parte de un objetivo general: Debes rescatar a las 30 Pulgas Perdidas.",
-        "fr": "The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas.",
-        "de": "The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas.",
-        "it": "The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas.",
-        "ru": "The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas."
+        "fr": "[auto] The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas.",
+        "de": "[auto] The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas.",
+        "it": "[auto] The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas.",
+        "ru": "[auto] The fourth and final Hollow Knight: Silksong weapon upgrade comes from Fleatopia. This is the most time-consuming activity since it's part of an over-arching objective: You must rescue all 30 Lost Fleas."
       },
       "location_img": null,
       "numId": 4,
@@ -3475,5 +3475,18 @@
     "generatedAt": "2025-09-29T13:06:35.157Z",
     "note": "Entries listed in per-item translationTodo need official translation for the given languages."
   },
-  "autoTranslationNote": "Heuristic auto-translation applied for location_text fr,de,it,ru. Review recommended."
+  "autoTranslationNote": "Heuristic auto-translation applied for location_text fr,de,it,ru. Review recommended.",
+  "autoTranslationEnhance": [
+    {
+      "timestamp": "2025-09-29T13:27:10.110Z",
+      "changeCount": 155,
+      "method": "lexical-replace-v1",
+      "langs": [
+        "fr",
+        "de",
+        "it",
+        "ru"
+      ]
+    }
+  ]
 }
