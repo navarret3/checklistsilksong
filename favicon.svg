@@ -1,4 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <path d="M50 10 L50 90" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" />
-  <path d="M40 20 L60 20" stroke="#f5f7fa" stroke-width="8" stroke-linecap="round" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Silksong Checklist Icon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4fb3ff"/>
+      <stop offset="100%" stop-color="#00ffa8"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="92" height="92" rx="18" fill="#0d0f12" stroke="#1f2730" stroke-width="4" />
+  <!-- Stylized monogram S (simple path) -->
+  <path fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
+        d="M68 26c-6-6-14-10-22-10-12 0-22 6-22 16 0 22 44 10 44 32 0 10-10 16-22 16-10 0-18-4-24-12" />
+  <!-- Small check mark to imply checklist -->
+  <path d="M64 66 72 74 86 58" fill="none" stroke="#00ffa8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
