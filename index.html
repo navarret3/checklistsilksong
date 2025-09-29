@@ -25,18 +25,10 @@
   <link rel="alternate" hreflang="es" href="https://checklistsilksong.com/es/" />
   <link rel="alternate" hreflang="x-default" href="https://checklistsilksong.com/" />
 
-  <!-- Favicons & App Icons -->
-  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico?v=2" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png?v=2" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png?v=2" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png?v=2" />
-  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64x64.png?v=2" />
-  <link rel="icon" type="image/png" sizes="128x128" href="/assets/images/favicon-128.png?v=2" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192.png?v=2" />
-  <link rel="icon" type="image/png" sizes="256x256" href="/assets/images/favicon-256.png?v=2" />
-  <link rel="icon" type="image/png" sizes="384x384" href="/assets/images/favicon-384.png?v=2" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon-512.png?v=2" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon-192.png?v=2" />
+  <!-- Favicons & App Icons (Simplified) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 
   <!-- Open Graph / Facebook -->
@@ -202,19 +194,26 @@
   /* Removed flag styling: revert to simple select */
   #langSel.flagged { background:none!important; }
   button:hover, #langSel:hover { border-color:var(--accent); }
-    /* Custom flag styles */
-    #langSel {
-        background-repeat: no-repeat;
-        background-position: 7px center;
-        background-size: 20px;
-        padding-left: 32px; /* Space for flag */
-    }
-    #langSel.en {
-        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NDAwIDM5MDAiPgo8cGF0aCBkPSJNMCAwaDc0MDB2MzkwMEgweiIgZmlsbD0iI2IzMTk0MiIvPgo8cGF0aCBkPSJNMCA0NTBINzQwMG0wIDYwMEgwṁTAgNjAwSDc0MDBtMCA2MDBIMCYgNjAwSDc0MDBtMCA2MDBIMCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMwMCIvPgo8cGF0aCBkPSJNMCAwaDI5NjR2MjEwMEgweiIgZmlsbD0iIzBhMzE2MSIvPgo8ZyBmaWxsPSIjZmZmIj4KPGcgaWQ9InMxOCI+CjxnIGlkPSJzOSI+CjxnIGlkPSJzNSI+CjxnIGlkPSJzNCI+CjxwYXRoIGlkPSJzIiBkPSJNMjQ3IDkwaDExNC4xTDMyNy41IDMwNyAxMzIuOSAxNzNoMjI4LjJMMTc2LjUgMzA3eiIvPgo8dXNlIHhyZWY9IiNzIiB5PSI0MjAiLz4KPHVzZSB4cmVmPSIjcyIgeT0iODQwIi8+Cjx1c2UgeHJlZj0iI3MiIHk9IjEyNjAiLz4KPC9nPgo8dXNlIHhyZWY9IiNzIiB5PSIxNjgwIi8+CjwvZz4KPHVzZSB4cmVmPSIjczQiIHg9IjI0NyIgeT0iMjEwIi8+CjwvZz4KPHVseSB4cmVmPSIjczkuIHg9IjQ5NCIvPgo8L2c+Cjx1seSB4cmVmPSIjczE4IiB4PSI5ODgiLz4KPHVzZSB4cmVmPSIjczkiIHg9IjE5NzYiLz4KPHVzZSB4cmVmPSIjczUiIHg9IjI0NzAiLz4KPC9nPgo8L3N2Zz4=");
-    }
-    #langSel.es {
-        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNjAwIj4KPHBhdGggZD0iTTAgMGg5MDB2NjAwSDB6IiBmaWxsPSIjYzYwYjFiIi8+CjxwYXRoIGQ9Ik0wIDE1M2g5MDB2MzAwSDB6IiBmaWxsPSIjZmZjNDA1Ii8+CjxwYXRoIGQ9Ik0yMjUgMjgzaDIyLjV2MjEuOWgtMjEuOHYyMy40aDIxLjh2MjEuOWgtMjEuOHYyMy40aDIyLjV2MjEuOWgtNDVWMjgzem0zMy44IDExMS4zaDIyLjV2MjEuOWgtMjEuOHYyMy40aDIxLjh2MjEuOWgtMjEuOHYyMy40aDIyLjV2MjEuOWgtNDVWMzk0LjN6bTMzLjcgMGgyMi41djIxLjloLTIxLjh2MjMuNGgyMS44djIxLjloLTIxLjh2MjMuNGgyMi41djIxLjloLTQ1Wm0yODEuMi0xMzIuM2gtMjEuOHYyMy40aDIxLjh2LTIzLjR6bS0xMS4zIDIxLjloMjIuNXYyMS45aC0yMi41di0yMS45em0xMS4zIDIxLjloMjEuOHYyMy40aC0yMS44di0yMy40em0wIDQ1LjNoLTIxLjh2MjMuNGgyMS44di0yMy40em0tMTEuMyAyMS45aDIyLjV2MjEuOWgtMjIuNXYtMjEuOXptMTEuMyAyMS45aDIxLjh2MjMuNGgtMjEuOHYtMjMuNHptMCA0NS4zaC0yMS44djIzLjRoMjEuOHYtMjMuNHptLTExLjMgMjEuOWgyMi41djIxLjloLTIyLjV2LTIxLjl6bTExLjMgMjEuOWgyMS44djIzLjRoLTIxLjh2LTIzLjR6IiBmaWxsPSIjYWRkM2VkIi8+CjxwYXRoIGQ9Ik0zMzIgMzIybDMxIDExdi0xN2wtMzEtMTF6bS0yMy4yIDYuOGMtMS4xLTEuMS0xLjEtMi44IDAtMy45bDEwLjYtMTAuNmMxLjEtMS4xIDIuOC0xLjEgMy45IDBsMi44IDIuOC0xNy4zIDE3LjMtMi44LTIuOHptMTcuOS0yMS4zbDIxLjIgMjEuMiAzLjQtMy40LTIxLjItMjEuMi0zLjQgMy40em0yMC4xIDE3LjlsMS44LTEuOCAxNy4zIDE3LjMgMS44LTEuOCAyLjggMi44LTE3LjMgMTcuMy00LjYtNC42em0tMzYgMjUuMWwxMC42LTEwLjZjMS4xLTEuMSAyLjgtMS4xIDMuOSAwbDIuOCAyLjgtMTcuMyAxNy4zLTIuOC0yLjg.0IDMuOWwxMC42IDEwLjZjMS4xIDEuMSAyLjggMS4xIDMuOSAwbDIuOC0yLjgtMTcuMy0xNy4zLTIuOCAyLjh6bS0xMS4zLTI4LjdsMjEuMi0yMS4yIDMuNCAzLjQtMjEuMiAyMS4yLTMuNC0zLjR6bTEuOCAyMC4xbDE3LjMtMTcuMyAxLjggMS44LTE3LjMgMTcuMy0xLjgtMS44em00LjYgNC42bDIuOC0yLjggMTcuMyAxNy4zLTEuOCAxLjggMi44IDIuOC0yMS4yLTIxLjJ6IiBmaWxsPSIjY2YxNDJCIi8+CjxwYXRoIGQ9Ik0zMTIgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjYWRkM2VkIi8+CjxwYXRoIGQ9Ik0yODUgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjYzYwYjFiIi8+CjxwYXRoIGQ9Ik0yNTUgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjZmZjNDA1Ii8+CjxwYXRoIGQ9Ik0yMjUgMzAwaDMwdjE1M2gtMzB6IiBmaWxsPSIjYzYwYjFiIi8+CjxwYXRoIGQ9Ik0zNTIgMjgzdjExM2gyOHYtMTEzaC0yOHoiIGZpbGw9IiNjNjBiMWIiLz4KPHBhdGggZD0iTTM1MSAzOTdoMjl2NDRoLTI5eiIgZmlsbD0iI2ZmYzQwNSIvPgo8cGF0aCBkPSJNMzY2IDMwMGMwIDQuMS0zLjQgNy41LTcuNSA3LjVzLTcuNS0zLjQtNy41LTcuNSA1LjctMTIuMyA3LjUtMTIuMyA3LjUgOC4yIDcuNSAxMi4zek0zMDYgMzc1aDEwMnYyMWgtMTAyeiIgZmlsbD0iI2ZmYzQwNSIvPgo8L3N2Zz4=");
-    }
+  .lang-container { position: relative; }
+  #langContainer::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  #langSel { padding-left: 34px; }
+  #langContainer.en::before { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb25zLXVzIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2JkM2Q0NCIgZD0iTTAgMGg2NDB2NDgwSDAiLz4KICA8cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMzciIGQ9Ik0wIDU1LjNoNjQwTTAgMTI5aDY0ME0wIDIwM2g2NDBNMCAyNzdoNjQwTTAgMzUxaDY0ME0wIDQyNWg2NDAiLz4KICA8cGF0aCBmaWxsPSIjMTkyZjVkIiBkPSJNMCAwaDM2NC44djI1OC41SDAiLz4KICA8bWFya2VyIGlkPSJ1cy1hIiBtYXJrZXJIZWlnaHQ9IjMwIiBtYXJrZXJXaWR0aD0iMzAiPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0ibTE0IDAgOSAyN0wwIDEwaDI4TDUgMjdaIi8+CiAgPC9tYXJrZXI+CiAgPHBhdGggZmlsbD0ibm9uZSIgbWFya2VyLW1pZD0idXJsKCN1cy1hKSIgZD0ibTAgMCAxNiAxMWg2MSA2MSA2MSA2MSA2MEw0NyAzN2g2MSA2MSA2MCA2MUwxNiA2M2g2MSA2MSA2MSA2MSA2MEw0NyA4OWg2MSA2MSA2MCA2MUwxNiAxMTVoNjEgNjEgNjEgNjEgNjBMNDcgMTQxaDYxIDYxIDYwIDYxTDE2IDE2Nmg2MSA2MSA2MSA2MSA2MEw0NyAxOTJoNjEgNjEgNjAgNjFMMTYgMjE4aDYxIDYxIDYxIDYxIDYweiIvPgo8L3N2Zz4='); }
+  #langContainer.es::before { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb25zLWVzIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI0FBMUUyQiIgZD0iTTAgMGg2NDB2NDgwSDB6Ii8+CiAgPHBhdGggZmlsbD0iI0ZGRkYwMCIgZD0iTTAgMTIwaDY0MHYyNDBIMHoiLz4KPC9zdmc+'); }
+  #langContainer.fr::before { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb25zLWZyIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGg2NDB2NDgwSDAiLz4KICA8cGF0aCBmaWxsPSIjMDAwMDkxIiBkPSJNMCAwaDIxMy4zdjQ4MEgweiIvPgogIDxwYXRoIGZpbGw9IiNlMTAwMGYiIGQ9Ik00MjYuNyAwSDY0MHY0ODBINDQyNi43eiIvPgo8L3N2Zz4='); }
+  #langContainer.de::before { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb25zLWRlIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2ZjMCIgZD0iTTAgMzIwaDY0MHYxNjBIMHoiLz4KICA8cGF0aCBmaWxsPSIjMDAwMDAxIiBkPSJNMCAwaDY0MHYxNjBIMHoiLz4KICA8cGF0aCBmaWxsPSJyZWQiIGQ9Ik0wIDE2MGg2NDB2MTYwSDB6Ii8+Cjwvc3ZnPg=='); }
+  #langContainer.it::before { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb25zLWl0IiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGcgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjFwdCI+CiAgICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAwaDY0MHY0ODBIMHoiLz4KICAgIDxwYXRoIGZpbGw9IiMwMDkyNDYiIGQ9Ik0wIDBoMjEzLjN2NDgwSDB6Ii8+CiAgICA8cGF0aCBmaWxsPSIjY2UyYjM3IiBkPSJNNDI2LjcgMEg2NDB2NDgwSDQyNi43eiIvPgogIDwvZz4KPC9zdmc+'); }
+  #langContainer.ru::before { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb25zLXJ1IiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGg2NDB2MTYwSDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMzlhNiIgZD0iTTAgMTYwaDY0MHYxNjBIMHoiLz4KICA8cGF0aCBmaWxsPSIjZDUyYjFlIiBkPSJNMCAzMjBoNjQwdjE2MEgweiIvPgo8L3N2Zz4='); }
   /* #resetBtn additional overrides can go here if needed */
     main { max-width:1400px; margin:0 auto; padding:0.75rem 1rem 2rem; }
     .categories { display:flex; flex-direction:column; gap:1rem; }
@@ -275,13 +274,19 @@
 <header>
   <div class="hero">
   <div class="controls" role="group" aria-label="Utility controls">
+    <div id="langContainer" class="lang-container">
       <label for="langSel" class="sr-only">Language</label>
       <select id="langSel" aria-label="Language">
         <option value="en">EN</option>
         <option value="es">ES</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="it">IT</option>
+        <option value="ru">RU</option>
       </select>
-          <button id="resetBtn" data-i18n="reset">Reset</button>
     </div>
+    <button id="resetBtn" data-i18n="reset">Reset</button>
+  </div>
     <img src="./assets/images/ss3.png" alt="Silksong" loading="lazy" decoding="async" />
     <h1 data-i18n="app.title">100% Completion Checklist</h1>
     <div class="search-bar-wrap">
@@ -446,11 +451,12 @@
   // Dynamically update <html lang> and flag icon when language changes
   (function(){
     const sel = document.getElementById('langSel');
-    if(!sel) return;
+    const container = document.getElementById('langContainer');
+    if(!sel || !container) return;
     function applyLangAndFlag(){
       const v = sel.value || 'en';
       document.documentElement.setAttribute('lang', v);
-      sel.className = v; // Set class for flag styling
+      container.className = 'lang-container ' + v; // Apply class to container
     }
     sel.addEventListener('change', applyLangAndFlag);
     applyLangAndFlag(); // Initial setup
