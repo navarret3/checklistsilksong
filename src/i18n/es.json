@@ -6,7 +6,6 @@
   "reset.confirm1": "¿Reiniciar todo el progreso?",
   "reset.confirm2": "Esta acción no se puede deshacer. ¿Continuar?",
   "percent.tooltip": "Progreso total",
-  "footer.note": "Dataset enriquecido con info pública actual de Silksong (los pesos suman 100%).",
   "done.label": "Completado",
   "items.remaining.singular": "1 ítem restante",
   "items.remaining.plural": "{n} ítems restantes",
@@ -15,15 +14,15 @@
   "dataset.errors.title": "Problemas de validación del dataset:",
   "category.needle_upgrade": "Mejora de Aguja",
   "category.ancient_mask": "Máscara Antigua",
-  "category.silk_spool": "Carrete de Seda",
-  "category.silk_heart": "Corazón de Seda",
-  "category.misc": "Misceláneo",
-  "category.crest": "Emblema",
-  "category.silk_skill": "Habilidad de Seda",
-  "category.crafting_kit_upgrade": "Mejora de Kit de Artesanía",
-  "category.tool_pouch_upgrade": "Mejora de Bolsa de Herramientas",
-  "category.ability": "Habilidad",
-  "category.tool": "Herramienta"
+  "category.silk_spool": "Fragmentos de carrete",
+  "category.silk_heart": "Corazones de Seda",
+  "category.misc": "Misc",
+  "category.crest": "Blasones",
+  "category.silk_skill": "Habilidades de Seda",
+  "category.crafting_kit_upgrade": "Mejoras de Kit de Fabricacion",
+  "category.tool_pouch_upgrade": "Mejoras de Bolsa de Herramientas",
+  "category.ability": "Habilidades",
+  "category.tool": "Herramientas"
   ,"intro.heading": "Rastreador de Compleción de Hollow Knight: Silksong"
   ,"intro.p1": "Usa este checklist interactivo gratuito para planificar y verificar tu progreso hacia el 100% (y futuro 112% si aplica) en Hollow Knight: Silksong. Marca mejoras de la aguja, bobinas de seda, crestas, habilidades, herramientas y más. Tu progreso se guarda de forma local (sin cuenta) para que puedas volver cuando quieras."
   ,"intro.p2": "La interfaz en español está disponible: cambia el idioma con el selector superior. Los datos irán evolucionando a medida que se publique información oficial."
@@ -39,4 +38,28 @@
   ,"fallback.categories.abilities": "Habilidades"
   ,"fallback.categories.tools": "Herramientas"
   ,"fallback.categories.misc": "Misceláneo"
+  ,"section.howto.title": "Cómo usar este checklist"
+  ,"section.howto.p1": "Navega por las categorías y haz clic en un ítem para marcarlo. El progreso vive solo en tu navegador (localStorage). Al limpiar datos se reinicia."
+  ,"section.howto.p2": "Entradas provisionales o inferidas serán reemplazadas por datos verificados de Silksong cuando haya información oficial."
+  ,"section.howto.p3": "Puedes cambiar idioma (EN/ES) en cualquier momento – el progreso se comparte. Contribuye mejoras en el repositorio."
+  ,"section.features.title": "Características"
+  ,"section.features.list1": "Ligero, seguimiento mínimo."
+  ,"section.features.list2": "Recursos básicos disponibles offline."
+  ,"section.features.list3": "Porcentaje de progreso + ítems restantes."
+  ,"section.features.list4": "Localización en inglés / español."
+  ,"section.features.list5": "Paneles de categoría expandibles."
+  ,"section.faq.title": "FAQ"
+  ,"section.faq.q.data": "¿Se guarda mi progreso en línea?"
+  ,"section.faq.a.data": "No. Solo en tu navegador. Habrá función de exportar."
+  ,"section.faq.q.change": "¿Cambiarán los valores cuando salga el juego?"
+  ,"section.faq.a.change": "Sí: las entradas provisionales se actualizan; la estructura intenta mantenerse estable."
+  ,"section.faq.q.ads": "¿Por qué todavía no veo anuncios?"
+  ,"section.faq.a.ads": "El sitio está en revisión inicial de AdSense; aparecerán al aprobarse."
+  ,"section.faq.q.suggest": "¿Puedo sugerir nuevas categorías?"
+  ,"section.faq.a.suggest": "Sí — abre un issue en el repositorio."
+  ,"section.faq.q.official": "¿Es oficial?"
+  ,"section.faq.a.official": "No. Proyecto fan independiente."
+  ,"section.disclaimer.title": "Aviso legal"
+  ,"section.disclaimer.text": "Hollow Knight y Silksong son marcas de Team Cherry. Este sitio fan no está afiliado ni respaldado por Team Cherry."
+  ,"footer.note": "Dataset provisional inspirado en Hollow Knight hasta disponer de datos oficiales de Silksong; será reemplazado por información verificada."
 }
