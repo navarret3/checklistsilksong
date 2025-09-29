@@ -121,6 +121,7 @@
     .ad-slot-wrap { width:100%; display:flex; justify-content:center; align-items:center; min-height:90px; position:relative; }
     .ad-slot-wrap::after { content:""; position:absolute; inset:0; border:1px dashed rgba(255,255,255,0.08); border-radius:6px; pointer-events:none; }
     .ad-container:hover .ad-slot-wrap::after { border-color:rgba(255,255,255,0.15); }
+    .ad-container--mid { margin:1.2rem auto 1.4rem; }
     @media (max-width:760px){ .ad-container { padding:0.75rem .75rem 0.85rem; } }
   </style>
   <style>
@@ -188,7 +189,7 @@
   .progress-bar { height:14px; width:100%; background:#1f2730; border-radius:8px; overflow:hidden; position:relative; box-shadow:0 2px 6px -2px rgba(0,0,0,.5) inset,0 0 0 1px #1d252d; }
   .progress-bar__fill { position:absolute; top:0; left:0; height:100%; width:0; background:var(--accent-grad); transition:width .45s cubic-bezier(.55,.12,.25,.9); }
   #itemsRemaining { font-size:.7rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; color:#b9c5cf; background:#25313c; padding:.3rem .65rem .32rem; border-radius:999px; box-shadow:0 2px 4px -2px rgba(0,0,0,.5),0 0 0 1px #2b3741; }
-  .controls { position:fixed; top:.65rem; right:.7rem; display:flex; gap:.5rem; z-index:80; align-items:center; }
+  .controls { position:fixed; top:.55rem; right:.15rem; display:flex; gap:.4rem; z-index:80; align-items:center; }
   /* Controls stay fixed at very top now; floating bar will shift below them dynamically via JS */
   .controls { transition:opacity .4s ease, transform .45s ease; }
   .controls.hide-on-scroll { opacity:0; transform:translateY(-14px); pointer-events:none; }
@@ -200,6 +201,11 @@
     .controls:focus-within, .controls:hover { opacity:1; }
   }
   #langSel, button { background:rgba(32,40,48,.55); backdrop-filter:blur(4px); color:var(--fg); border:1px solid #2a3541; padding:0.45rem 0.7rem; border-radius:6px; font-size:0.65rem; letter-spacing:.6px; text-transform:uppercase; font-weight:600; }
+  /* Reset icon */
+  #resetBtn { position:relative; padding-left:1.4rem; }
+  #resetBtn::before { content:"↺"; position:absolute; left:.55rem; top:50%; transform:translateY(-52%); font-size:.7rem; opacity:.85; }
+  /* Guide button icon handled via own markup; language flags for select */
+  #langSel.flagged { padding-left:1.6rem; background-position:.45rem center; background-size:1.05rem auto; background-repeat:no-repeat; }
   button:hover, #langSel:hover { border-color:var(--accent); }
   /* #resetBtn additional overrides can go here if needed */
     main { max-width:1400px; margin:0 auto; padding:0.75rem 1rem 2rem; }
@@ -314,13 +320,7 @@
   <!-- Intro content moved into an on-demand modal to keep immediate focus on the checklist -->
   <noscript><p data-i18n="intro.noscript" style="max-width:760px;margin:0 auto 1rem;padding:0 .9rem;font-size:.7rem;line-height:1.4;color:#d1d9df;"><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
   <!-- (Moved ad below expanded textual content for better content/ad ratio during review) -->
-  <div class="ad-container ad-container--top" style="margin-top:1.8rem;">
-    <small class="ad-label">Advertisement</small>
-    <div class="ad-slot-wrap">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
+  <!-- Top ad removed; will be injected after the 2nd category dynamically once categories render -->
   <div class="categories" id="categories" aria-live="polite"></div>
 </main>
 <footer>
@@ -332,7 +332,7 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </div>
-  <span data-i18n="footer.note">Provisional dataset inspired by Hollow Knight pending official Silksong data; will be replaced with verified information.</span>
+  <span data-i18n="footer.note">Fan-made project. Hollow Knight & Silksong are trademarks of Team Cherry. Provisional data will be updated with official information.</span>
   <br><a href="/about.html" style="color:var(--accent);font-size:0.65rem;">About / Disclaimer</a>
   <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
 </footer>
@@ -401,7 +401,7 @@
       btn.type='button';
       btn.className='guide-btn';
       btn.setAttribute('aria-haspopup','dialog');
-      btn.textContent='?';
+  btn.innerHTML='<span aria-hidden="true" style="font-size:.85rem;margin-right:.25rem;opacity:.9;">ℹ</span><span class="g-label" data-i18n="guide.open">Guide</span>';
       btn.title='Guide / Help';
       controls.insertBefore(btn, controls.firstChild); // appear first
       const modal = document.getElementById('guideModal');
@@ -413,6 +413,33 @@
       modal.addEventListener('click', e=>{ if(e.target===modal) close(); });
       document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')) close(); });
     }
+    // Language flag decoration
+    const sel = document.getElementById('langSel');
+    function applyFlag(){
+      if(!sel) return;
+      sel.classList.add('flagged');
+      const v = sel.value || 'en';
+      const flag = v==='es' ? 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2"><rect width="3" height="2" fill="%23AA151B"/><rect y="0.5" width="3" height="1" fill="%23F1BF00"/></svg>' : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(%23s)"><path d="M0,0 v30 h60 v-30 z" fill="%23012862"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="%23fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="%23C8102E" stroke-width="4" clip-path="url(%23t)"/><path d="M30,0 v30 M0,15 h60" stroke="%23fff" stroke-width="6"/><path d="M30,0 v30 M0,15 h60" stroke="%23C8102E" stroke-width="4"/></g></svg>';
+      sel.style.backgroundImage = `url(${flag})`;
+    }
+    if(sel){ sel.addEventListener('change', applyFlag); applyFlag(); }
+  })();
+  // Deferred mid-content ad insertion after 2nd category render
+  (function(){
+    const observer = new MutationObserver(()=>{
+      const cats = document.querySelectorAll('.categories > .cat');
+      if(cats.length >= 2 && !document.getElementById('midAd')){
+        const ad = document.createElement('div');
+        ad.id='midAd';
+        ad.className='ad-container ad-container--mid';
+        ad.innerHTML=`<small class="ad-label">Advertisement</small><div class="ad-slot-wrap"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins></div>`;
+        cats[1].after(ad);
+        try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
+        observer.disconnect();
+      }
+    });
+    const target = document.getElementById('categories');
+    if(target) observer.observe(target,{ childList:true });
   })();
 </script>
 <script type="module" src="./src/js/main.js"></script>
