@@ -1,7 +1,7 @@
 {
-  "dataVersion": 11,
+  "dataVersion": 12,
   "source": "official_listofrequirements_alignment_v1",
-  "generatedAt": "2025-09-25T16:53:53.569Z",
+  "generatedAt": "2025-09-29T13:06:35.157Z",
   "licenseNote": "124 checklist entries. Weights: mask shards 0.25 (20 shards = 5%), silk spool fragments 0.5 (18 fragments = 9%), remaining 86 items at weight 1 (86%). Total weight = 100. Variant / upgrade pairs aggregated with '-all' suffix where needed.",
   "categories": [
     "needle_upgrade",
@@ -40,7 +40,15 @@
       },
       "location_img": "assets/images/abilities_locations/clawline.jpg",
       "numId": 68,
-      "image": "assets/images/abilities/clawline.png"
+      "image": "assets/images/abilities/clawline.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "cling-grip",
@@ -65,7 +73,15 @@
       },
       "location_img": "assets/images/abilities_locations/cling_rip.jpg",
       "numId": 69,
-      "image": "assets/images/abilities/cling_grip.png"
+      "image": "assets/images/abilities/cling_grip.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "needle-strike",
@@ -90,7 +106,15 @@
       },
       "location_img": "assets/images/abilities_locations/needle_strike.jpg",
       "numId": 70,
-      "image": "assets/images/abilities/needle_strike.png"
+      "image": "assets/images/abilities/needle_strike.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "needolin",
@@ -115,7 +139,15 @@
       },
       "location_img": "assets/images/abilities_locations/needolin.jpg",
       "numId": 71,
-      "image": "assets/images/abilities/needolin.png"
+      "image": "assets/images/abilities/needolin.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-soar",
@@ -140,7 +172,15 @@
       },
       "location_img": "assets/images/abilities_locations/silk_soar.jpg",
       "numId": 72,
-      "image": "assets/images/abilities/silk_soar.png"
+      "image": "assets/images/abilities/silk_soar.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "swift-step",
@@ -165,7 +205,15 @@
       },
       "location_img": "assets/images/abilities_locations/swift_step.jpg",
       "numId": 73,
-      "image": "assets/images/abilities/swift_step.png"
+      "image": "assets/images/abilities/swift_step.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "cross-stitch",
@@ -191,7 +239,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cross-stitch-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 54,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-cross-stitch.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cross-stitch-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cross-stitch-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "pale-nails",
@@ -217,7 +273,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pale-nails-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 55,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pale-nails.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pale-nails-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pale-nails-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "sharpdart",
@@ -243,7 +307,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sharpdart-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 56,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-sharpdart.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sharpdart-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sharpdart-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silkspear",
@@ -269,7 +341,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspear-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 57,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-silkspear.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspear-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspear-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "rune-rage",
@@ -295,7 +375,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rune-rage-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 58,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-rune-rage.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rune-rage-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rune-rage-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "thread-storm",
@@ -321,7 +409,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thread-storm-map-1.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 59,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-thread-storm.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thread-storm-map-1.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thread-storm-map-1.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "sylphsong",
@@ -364,7 +460,15 @@
       "location_img": null,
       "numId": 47,
       "image": "assets/images/everbloom.png",
-      "icon": "assets/images/everbloom.png"
+      "icon": "assets/images/everbloom.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ascendants-grip",
@@ -390,7 +494,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-ascendants-grip-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 74,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-ascendants-grip.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-ascendants-grip-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-ascendants-grip-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "barbed-bracelet",
@@ -416,7 +528,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-barbed-bracelet-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 75,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-barbed-bracelet.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-barbed-bracelet-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-barbed-bracelet-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "claw-mirror-all",
@@ -442,7 +562,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-claw-mirror-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 76,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-claw-mirror.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-claw-mirror-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-claw-mirror-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "cogfly",
@@ -468,7 +596,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogfly-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 77,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-cogfly.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogfly-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogfly-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "cogwork-wheel",
@@ -494,7 +630,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogwork-wheel-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 78,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-cogwork-wheel.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogwork-wheel-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogwork-wheel-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "compass",
@@ -520,7 +664,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-compass-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 79,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-compass.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-compass-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-compass-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "conchcutter",
@@ -546,7 +698,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-conchcutter-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 80,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-conchcutter.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-conchcutter-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-conchcutter-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "curveclaw-all",
@@ -572,7 +732,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-curveclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 81,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-curveclaw.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-curveclaw-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-curveclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "dead-bugs-purse-all",
@@ -598,7 +766,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-dead-bugs-purse-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 82,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-dead-bugs-purse.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-dead-bugs-purse-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-dead-bugs-purse-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "delvers-drill",
@@ -624,7 +800,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-delvers-drill-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 83,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-delvers-drill.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-delvers-drill-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-delvers-drill-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "druids-eye-all",
@@ -650,7 +834,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-druids-eye-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 84,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-druids-eye.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-druids-eye-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-druids-eye-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "egg-of-flealia",
@@ -676,7 +868,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-egg-of-flealia-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 85,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-egg-of-flealia.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-egg-of-flealia-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-egg-of-flealia-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "flea-brew",
@@ -702,7 +902,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flea-brew-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 86,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-flea-brew.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flea-brew-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flea-brew-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "flintslate",
@@ -728,7 +936,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flintslate-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 87,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-flintslate.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flintslate-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flintslate-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "fractured-mask",
@@ -754,7 +970,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-fractured-mask-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 88,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-fractured-mask.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-fractured-mask-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-fractured-mask-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "injector-band",
@@ -780,7 +1004,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-injector-band-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 89,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-injector-band.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-injector-band-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-injector-band-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "longclaw",
@@ -806,7 +1038,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 90,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-longclaw.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longclaw-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "longpin",
@@ -832,7 +1072,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longpin-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 91,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-longpin.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longpin-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longpin-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "magma-bell",
@@ -858,7 +1106,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magma-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 92,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-magma-bell.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magma-bell-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magma-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "magnetite-brooch",
@@ -884,7 +1140,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-brooch-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 93,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-magnetite-brooch.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-brooch-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-brooch-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "magnetite-dice",
@@ -910,7 +1174,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-dice-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 94,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-magnetite-dice.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-dice-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-dice-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "memory-crystal",
@@ -936,7 +1208,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-memory-crystal-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 95,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-memory-crystal.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-memory-crystal-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-memory-crystal-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "multibinder",
@@ -962,7 +1242,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-multibinder-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 96,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-multibinder.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-multibinder-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-multibinder-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "pin-badge",
@@ -988,7 +1276,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pin-badge-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 97,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pin-badge.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pin-badge-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pin-badge-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "pimpillo",
@@ -1014,7 +1310,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pimpillo-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 98,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pimpillo.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pimpillo-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pimpillo-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "plasmium-phial",
@@ -1040,7 +1344,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-plasmium-phial-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 99,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-plasmium-phial.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-plasmium-phial-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-plasmium-phial-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "pollip-pouch",
@@ -1066,7 +1378,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pollip-pouch-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 100,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pollip-pouch.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pollip-pouch-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pollip-pouch-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "quick-sling",
@@ -1092,7 +1412,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-quick-sling-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 101,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-quick-sling.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-quick-sling-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-quick-sling-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "reserve-bind",
@@ -1118,7 +1446,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-reserve-bind-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 102,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-reserve-bind.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-reserve-bind-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-reserve-bind-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "rosary-cannon",
@@ -1144,7 +1480,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rosary-cannon-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 103,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-rosary-cannon.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rosary-cannon-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rosary-cannon-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "sawtooth-circlet",
@@ -1170,7 +1514,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sawtooth-circlet-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 104,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-sawtooth-circlet.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sawtooth-circlet-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sawtooth-circlet-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "scuttlebrace",
@@ -1196,7 +1548,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-scuttlebrace-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 105,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-scuttlebrace.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-scuttlebrace-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-scuttlebrace-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "shard-pendant",
@@ -1222,7 +1582,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-shard-pendant-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 106,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-shard-pendant.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-shard-pendant-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-shard-pendant-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silkshot-all",
@@ -1248,7 +1616,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkshot-i-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 107,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-silkshot.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkshot-i-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkshot-i-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silkspeed-anklets",
@@ -1274,7 +1650,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspeed-anklets-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 108,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-silkspeed-anklets.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspeed-anklets-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspeed-anklets-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "snitch-pick",
@@ -1300,7 +1684,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-snitch-pick-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 109,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-snitch-pick.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-snitch-pick-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-snitch-pick-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "spider-strings",
@@ -1326,7 +1718,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spider-strings-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 110,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-spider-strings.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spider-strings-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spider-strings-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "spool-extender",
@@ -1352,7 +1752,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spool-extender-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 111,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-spool-extender.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spool-extender-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spool-extender-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "sting-shard",
@@ -1378,7 +1786,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sting-shard-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 112,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-sting-shard.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sting-shard-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sting-shard-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "straight-pin",
@@ -1404,7 +1820,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-straight-pin-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 113,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-straight-pin.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-straight-pin-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-straight-pin-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "tacks",
@@ -1430,7 +1854,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-tacks-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 114,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-tacks.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-tacks-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-tacks-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "thiefs-mark",
@@ -1456,7 +1888,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thiefs-mark-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 115,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-thiefs-mark.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thiefs-mark-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thiefs-mark-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "threefold-pin",
@@ -1482,7 +1922,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-threefold-pin-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 116,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-threefold-pin.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-threefold-pin-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-threefold-pin-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "throwing-ring",
@@ -1508,7 +1956,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-throwing-ring-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 117,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-throwing-ring.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-throwing-ring-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-throwing-ring-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "volt-filament",
@@ -1534,7 +1990,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-volt-filament-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 118,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-volt-filament.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-volt-filament-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-volt-filament-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "voltvessels",
@@ -1560,7 +2024,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-voltvessels-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 119,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-voltvessels.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-voltvessels-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-voltvessels-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "warding-bell",
@@ -1586,7 +2058,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-warding-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 120,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-warding-bell.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-warding-bell-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-warding-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "weavelight",
@@ -1612,7 +2092,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weavelight-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 121,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-weavelight.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weavelight-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weavelight-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "weighted-belt",
@@ -1638,7 +2126,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weighted-belt-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 122,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-weighted-belt.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weighted-belt-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weighted-belt-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "wispfire-lantern",
@@ -1664,7 +2160,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wispfire-lantern-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 123,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-wispfire-lantern.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wispfire-lantern-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wispfire-lantern-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "wreath-of-purity",
@@ -1690,7 +2194,15 @@
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wreath-of-purity-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 124,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-wreath-of-purity.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wreath-of-purity-map.jpg?q=49&fit=crop&w=480&dpr=2"
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wreath-of-purity-map.jpg?q=49&fit=crop&w=480&dpr=2",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-1-1",
@@ -1715,7 +2227,15 @@
       "location_img": "assets/images/mask shards location/1.png",
       "numId": 5,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-1-2",
@@ -1740,7 +2260,15 @@
       "location_img": "assets/images/mask shards location/2.jpg",
       "numId": 6,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-1-3",
@@ -1765,7 +2293,15 @@
       "location_img": "assets/images/mask shards location/3.jpg",
       "numId": 7,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-1-4",
@@ -1790,7 +2326,15 @@
       "location_img": "assets/images/mask shards location/4.jpg",
       "numId": 8,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-2-1",
@@ -1815,7 +2359,15 @@
       "location_img": "assets/images/mask shards location/5.jpg",
       "numId": 9,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-2-2",
@@ -1840,7 +2392,15 @@
       "location_img": "assets/images/mask shards location/6.jpg",
       "numId": 10,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-2-3",
@@ -1865,7 +2425,15 @@
       "location_img": "assets/images/mask shards location/7.jpg",
       "numId": 11,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-2-4",
@@ -1890,7 +2458,15 @@
       "location_img": "assets/images/mask shards location/8.jpg",
       "numId": 12,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-3-1",
@@ -1915,7 +2491,15 @@
       "location_img": "assets/images/mask shards location/9.jpg",
       "numId": 13,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-3-2",
@@ -1940,7 +2524,15 @@
       "location_img": "assets/images/mask shards location/10.jpg",
       "numId": 14,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-3-3",
@@ -1965,7 +2557,15 @@
       "location_img": "assets/images/mask shards location/11.jpg",
       "numId": 15,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-3-4",
@@ -1990,7 +2590,15 @@
       "location_img": "assets/images/mask shards location/12.jpg",
       "numId": 16,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-4-1",
@@ -2015,7 +2623,15 @@
       "location_img": "assets/images/mask shards location/13.jpg",
       "numId": 17,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-4-2",
@@ -2040,7 +2656,15 @@
       "location_img": "assets/images/mask shards location/14.jpg",
       "numId": 18,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-4-3",
@@ -2065,7 +2689,15 @@
       "location_img": "assets/images/mask shards location/15.jpg",
       "numId": 19,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-4-4",
@@ -2090,7 +2722,15 @@
       "location_img": "assets/images/mask shards location/16.jpg",
       "numId": 20,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-5-1",
@@ -2115,7 +2755,15 @@
       "location_img": "assets/images/mask shards location/17.jpg",
       "numId": 21,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-5-2",
@@ -2140,7 +2788,15 @@
       "location_img": "assets/images/mask shards location/18.jpg",
       "numId": 22,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-5-3",
@@ -2165,7 +2821,15 @@
       "location_img": "assets/images/mask shards location/19.jpg",
       "numId": 23,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "ancient-mask-shard-5-4",
@@ -2190,7 +2854,15 @@
       "location_img": "assets/images/mask shards location/20.jpg",
       "numId": 24,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png"
+      "icon": "assets/images/shardmask.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-1",
@@ -2215,7 +2887,15 @@
       "location_img": "assets/images/silk_spool_locations/1.jpg",
       "numId": 25,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-2",
@@ -2240,7 +2920,15 @@
       "location_img": "assets/images/silk_spool_locations/2.jpg",
       "numId": 26,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-3",
@@ -2265,7 +2953,15 @@
       "location_img": "assets/images/silk_spool_locations/3.jpg",
       "numId": 27,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-4",
@@ -2290,7 +2986,15 @@
       "location_img": "assets/images/silk_spool_locations/4.jpg",
       "numId": 28,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-5",
@@ -2315,7 +3019,15 @@
       "location_img": "assets/images/silk_spool_locations/5.jpg",
       "numId": 29,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-6",
@@ -2340,7 +3052,15 @@
       "location_img": "assets/images/silk_spool_locations/6.jpg",
       "numId": 30,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-7",
@@ -2365,7 +3085,15 @@
       "location_img": "assets/images/silk_spool_locations/7.jpg",
       "numId": 31,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-8",
@@ -2390,7 +3118,15 @@
       "location_img": "assets/images/silk_spool_locations/8.jpg",
       "numId": 32,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-9",
@@ -2415,7 +3151,15 @@
       "location_img": "assets/images/silk_spool_locations/9.jpg",
       "numId": 33,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-10",
@@ -2440,7 +3184,15 @@
       "location_img": "assets/images/silk_spool_locations/10.jpg",
       "numId": 34,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-11",
@@ -2465,7 +3217,15 @@
       "location_img": "assets/images/silk_spool_locations/11.jpg",
       "numId": 35,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-12",
@@ -2490,7 +3250,15 @@
       "location_img": "assets/images/silk_spool_locations/12.jpg",
       "numId": 36,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-13",
@@ -2515,7 +3283,15 @@
       "location_img": "assets/images/silk_spool_locations/13.jpg",
       "numId": 37,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-14",
@@ -2540,7 +3316,15 @@
       "location_img": "assets/images/silk_spool_locations/14.jpg",
       "numId": 38,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-15",
@@ -2565,7 +3349,15 @@
       "location_img": "assets/images/silk_spool_locations/15.jpg",
       "numId": 39,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-16",
@@ -2590,7 +3382,15 @@
       "location_img": "assets/images/silk_spool_locations/16.jpg",
       "numId": 40,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-17",
@@ -2615,7 +3415,15 @@
       "location_img": "assets/images/silk_spool_locations/17.jpg",
       "numId": 41,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-spool-18",
@@ -2640,7 +3448,15 @@
       "location_img": "assets/images/silk_spool_locations/18.jpg",
       "numId": 42,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
+      "icon": "assets/images/silkspool.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-heart-1",
@@ -2665,7 +3481,15 @@
       "location_img": "assets/images/silk hearts/1.jpg",
       "numId": 43,
       "image": "assets/images/silk_heart.png",
-      "icon": "assets/images/silk_heart.png"
+      "icon": "assets/images/silk_heart.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-heart-2",
@@ -2690,7 +3514,15 @@
       "location_img": "assets/images/silk hearts/2.jpg",
       "numId": 44,
       "image": "assets/images/silk_heart.png",
-      "icon": "assets/images/silk_heart.png"
+      "icon": "assets/images/silk_heart.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "silk-heart-3",
@@ -2715,7 +3547,15 @@
       "location_img": "assets/images/silk hearts/3.jpg",
       "numId": 45,
       "image": "assets/images/silk_heart.png",
-      "icon": "assets/images/silk_heart.png"
+      "icon": "assets/images/silk_heart.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crest-of-architect",
@@ -2740,7 +3580,15 @@
       "location_img": "assets/images/crests/location_architect.jpg",
       "numId": 48,
       "image": "assets/images/crests/crest_architect.png",
-      "icon": "assets/images/crests/crest_architect.png"
+      "icon": "assets/images/crests/crest_architect.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crest-of-beast",
@@ -2765,7 +3613,15 @@
       "location_img": "assets/images/crests/location_beast.jpg",
       "numId": 49,
       "image": "assets/images/crests/crest_beast.png",
-      "icon": "assets/images/crests/crest_beast.png"
+      "icon": "assets/images/crests/crest_beast.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crest-of-reaper",
@@ -2790,7 +3646,15 @@
       "location_img": "assets/images/crests/location_reaper.jpg",
       "numId": 50,
       "image": "assets/images/crests/crest_reaper.png",
-      "icon": "assets/images/crests/crest_reaper.png"
+      "icon": "assets/images/crests/crest_reaper.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crest-of-shaman",
@@ -2815,7 +3679,15 @@
       "location_img": "assets/images/crests/location_shaman.jpg",
       "numId": 51,
       "image": "assets/images/crests/crest_shaman.png",
-      "icon": "assets/images/crests/crest_shaman.png"
+      "icon": "assets/images/crests/crest_shaman.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crest-of-wanderer",
@@ -2840,7 +3712,15 @@
       "location_img": "assets/images/crests/location_wanderer.jpg",
       "numId": 52,
       "image": "assets/images/crests/crest_wanderer.png",
-      "icon": "assets/images/crests/crest_wanderer.png"
+      "icon": "assets/images/crests/crest_wanderer.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crest-of-witch",
@@ -2865,7 +3745,15 @@
       "location_img": "assets/images/crests/location_witch.jpg",
       "numId": 53,
       "image": "assets/images/crests/crest_witch.png",
-      "icon": "assets/images/crests/crest_witch.png"
+      "icon": "assets/images/crests/crest_witch.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crafting-kit-upgrade-1",
@@ -2890,7 +3778,15 @@
       "location_img": "assets/images/craft_upgrades_locations/1.jpg",
       "numId": 60,
       "image": "assets/images/crafting_upgrade_kit.png",
-      "icon": "assets/images/crafting_upgrade_kit.png"
+      "icon": "assets/images/crafting_upgrade_kit.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crafting-kit-upgrade-2",
@@ -2915,7 +3811,15 @@
       "location_img": "assets/images/craft_upgrades_locations/2.jpg",
       "numId": 61,
       "image": "assets/images/crafting_upgrade_kit.png",
-      "icon": "assets/images/crafting_upgrade_kit.png"
+      "icon": "assets/images/crafting_upgrade_kit.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crafting-kit-upgrade-3",
@@ -2940,7 +3844,15 @@
       "location_img": "assets/images/craft_upgrades_locations/3.jpg",
       "numId": 62,
       "image": "assets/images/crafting_upgrade_kit.png",
-      "icon": "assets/images/crafting_upgrade_kit.png"
+      "icon": "assets/images/crafting_upgrade_kit.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "crafting-kit-upgrade-4",
@@ -2965,7 +3877,15 @@
       "location_img": "assets/images/craft_upgrades_locations/4.jpg",
       "numId": 63,
       "image": "assets/images/crafting_upgrade_kit.png",
-      "icon": "assets/images/crafting_upgrade_kit.png"
+      "icon": "assets/images/crafting_upgrade_kit.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "tool-pouch-upgrade-1",
@@ -2990,7 +3910,15 @@
       "location_img": "assets/images/tool_pouch_locations/1.jpg",
       "numId": 64,
       "image": "assets/images/tool_pouch_upgrade.png",
-      "icon": "assets/images/tool_pouch_upgrade.png"
+      "icon": "assets/images/tool_pouch_upgrade.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "tool-pouch-upgrade-2",
@@ -3015,7 +3943,15 @@
       "location_img": "assets/images/tool_pouch_locations/2.jpg",
       "numId": 65,
       "image": "assets/images/tool_pouch_upgrade.png",
-      "icon": "assets/images/tool_pouch_upgrade.png"
+      "icon": "assets/images/tool_pouch_upgrade.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "tool-pouch-upgrade-3",
@@ -3040,7 +3976,15 @@
       "location_img": "assets/images/tool_pouch_locations/3.jpg",
       "numId": 66,
       "image": "assets/images/tool_pouch_upgrade.png",
-      "icon": "assets/images/tool_pouch_upgrade.png"
+      "icon": "assets/images/tool_pouch_upgrade.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "tool-pouch-upgrade-4",
@@ -3065,7 +4009,15 @@
       "location_img": "assets/images/tool_pouch_locations/4.jpg",
       "numId": 67,
       "image": "assets/images/tool_pouch_upgrade.png",
-      "icon": "assets/images/tool_pouch_upgrade.png"
+      "icon": "assets/images/tool_pouch_upgrade.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "weapon-upgrade-sharpened",
@@ -3090,7 +4042,15 @@
       "location_img": "https://www.gamespot.com/a/uploads/scale_super/1816/18167535/4567251-hollow-knight-silksong-pale-oil-weapon-upgrades-guide-1.jpg",
       "numId": 1,
       "image": "assets/images/needle.png",
-      "icon": "assets/images/needle.png"
+      "icon": "assets/images/needle.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     },
     {
       "id": "weapon-upgrade-shining",
@@ -3151,7 +4111,40 @@
       "location_img": null,
       "numId": 4,
       "image": "assets/images/needle.png",
-      "icon": "assets/images/needle.png"
+      "icon": "assets/images/needle.png",
+      "translationTodo": {
+        "location_text": [
+          "fr",
+          "de",
+          "it",
+          "ru"
+        ]
+      }
     }
-  ]
+  ],
+  "translationStatus": {
+    "field": "location_text",
+    "targetLangs": [
+      "fr",
+      "de",
+      "it",
+      "ru"
+    ],
+    "items": 124,
+    "itemsNeedingAny": 121,
+    "perLangMissing": {
+      "fr": 121,
+      "de": 121,
+      "it": 121,
+      "ru": 121
+    },
+    "perLangTotal": {
+      "fr": 121,
+      "de": 121,
+      "it": 121,
+      "ru": 121
+    },
+    "generatedAt": "2025-09-29T13:06:35.157Z",
+    "note": "Entries listed in per-item translationTodo need official translation for the given languages."
+  }
 }
