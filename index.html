@@ -12,8 +12,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Silksong Checklist" />
-  <title>Silksong 100% Checklist &amp; Guide</title>
-  <meta name="description" content="A complete, interactive Hollow Knight: Silksong checklist. Track every item, shard, fragment, ability and upgrade to reach 100% completion." />
+  <title>Hollow Knight: Silksong | Interactive 100% checklist &amp; Guide</title>
+  <meta name="description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
   <!-- Spanish alternate description (used on ES static variant) -->
   <meta name="description" lang="es" content="Checklist interactivo completo de Hollow Knight: Silksong. Marca cada objeto, fragmento, mejora y habilidad para alcanzar el 100% de progreso." />
   <!-- AdSense account meta (recommended) -->
@@ -35,16 +35,16 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Silksong 100% Checklist" />
   <meta property="og:url" content="https://checklistsilksong.com/" />
-  <meta property="og:title" content="Silksong 100% Checklist & Guide" />
-  <meta property="og:description" content="Track all Hollow Knight: Silksong collectibles, abilities & upgrades toward 100% completion." />
+  <meta property="og:title" content="Hollow Knight: Silksong | Interactive 100% checklist & Guide" />
+  <meta property="og:description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
   <meta property="og:image" content="https://checklistsilksong.com/assets/images/ss_og_preview.png" />
   <meta property="og:image:alt" content="Silksong 100% Checklist interface preview" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Silksong 100% Checklist & Guide" />
-  <meta name="twitter:description" content="Interactive Hollow Knight: Silksong checklist to reach 100% completion." />
+  <meta name="twitter:title" content="Hollow Knight: Silksong | Interactive 100% checklist & Guide" />
+  <meta name="twitter:description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
   <meta name="twitter:image" content="https://checklistsilksong.com/assets/images/ss_og_preview.png" />
   <!-- TODO: Add your Twitter handle here. Example: <meta name="twitter:site" content="@mytwitter" /> -->
 
@@ -73,7 +73,7 @@
         "@type": "WebSite",
         "@id": "https://checklistsilksong.com/#website",
         "url": "https://checklistsilksong.com/",
-        "name": "Silksong 100% Checklist",
+        "name": "Hollow Knight: Silksong | Interactive 100% checklist & Guide",
         "inLanguage": ["en","es"],
         "potentialAction": {
           "@type": "SearchAction",
@@ -83,11 +83,11 @@
       },
       {
         "@type": "WebApplication",
-        "name": "Silksong 100% Checklist",
+        "name": "Hollow Knight: Silksong | Interactive 100% checklist & Guide",
         "url": "https://checklistsilksong.com/",
         "applicationCategory": "GameApplication",
         "operatingSystem": "Any",
-        "description": "Interactive Hollow Knight: Silksong checklist to track collectibles, abilities and upgrades toward 100% completion.",
+        "description": "Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc.",
         "inLanguage": ["en","es"],
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
       }
@@ -103,7 +103,7 @@
     gtag('config', 'G-6ZCGX9CG55');
   </script>
   <!-- Ads / Monetization (AdSense snippet inserted when client ID provided) -->
-  <!-- Google AdSense -->
+  <!-- Google AdSense (script activo; unidades de anuncio ocultas hasta aprobación) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9707168065012640" crossorigin="anonymous"></script>
 
   <style>
@@ -313,6 +313,7 @@
 </main>
 <footer>
   <!-- Ad Unit: Footer Responsive (with framed wrapper) -->
+  <!-- Ad Unit: Footer Responsive (comentado temporalmente hasta aprobación AdSense)
   <div class="ad-container ad-container--footer" style="margin-top:1.5rem;">
     <small class="ad-label">Advertisement</small>
     <div class="ad-slot-wrap">
@@ -320,6 +321,7 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </div>
+  -->
   <span data-i18n="footer.note">Fan-made project. Hollow Knight & Silksong are trademarks of Team Cherry. Provisional data will be updated with official information.</span>
   <br><a href="/about.html" style="color:var(--accent);font-size:0.65rem;">About / Disclaimer</a>
   <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
@@ -403,6 +405,7 @@
     }
   })();
   // Deferred mid-content ad insertion after 2nd category render
+  /* Mid-content Ad insertion deshabilitada temporalmente
   (function(){
     const observer = new MutationObserver(()=>{
       const cats = document.querySelectorAll('.categories > .cat');
@@ -419,6 +422,7 @@
     const target = document.getElementById('categories');
     if(target) observer.observe(target,{ childList:true });
   })();
+  */
 </script>
 <script type="module" src="./src/js/main.js"></script>
 <!-- (Removed custom lazy / retry script; using pure default one-line pushes above each ad) -->

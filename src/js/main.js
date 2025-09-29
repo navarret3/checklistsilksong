@@ -198,14 +198,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
       onScroll();
     })();
 
-    // Register service worker (PWA)
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('/src/js/sw.js').then(()=>{
-        // No analytics push in simplified mode
-      }).catch(err => {
-        console.warn('SW registration failed', err);
-      });
-    }
+    // Service worker removed during cleanup for simplicity (offline support disabled)
 
   } catch(e){
     console.error('[INIT] Failure', e);
