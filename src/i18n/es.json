@@ -11,7 +11,7 @@
   "items.remaining.plural": "{n} ítems restantes",
   "export.data": "Exportar Datos",
   "import.data": "Importar Datos",
-  "dataset.errors.title": "Problemas de validación del dataset:",
+  "dataset.errors.title": "Problemas de validación de datos:",
   "category.needle_upgrade": "Mejora de Aguja",
   "category.ancient_mask": "Máscara Antigua",
   "category.silk_spool": "Fragmentos de carrete",
@@ -24,7 +24,7 @@
   "category.ability": "Habilidades",
   "category.tool": "Herramientas"
   ,"intro.heading": "Rastreador de Compleción de Hollow Knight: Silksong"
-  ,"intro.p1": "Usa este checklist interactivo gratuito para planificar y verificar tu progreso hacia el 100% (y futuro 112% si aplica) en Hollow Knight: Silksong. Marca mejoras de la aguja, bobinas de seda, crestas, habilidades, herramientas y más. Tu progreso se guarda de forma local (sin cuenta) para que puedas volver cuando quieras."
+  ,"intro.p1": "Usa este checklist interactivo gratuito para planificar y verificar tu progreso hacia el 100% (y futuro 112% si aplica) en Hollow Knight: Silksong. Marca mejoras de la aguja, bobinas de seda, blasones, habilidades, herramientas y más. Tu progreso se guarda automáticamente en tu navegador, así que puedes volver cuando quieras sin necesidad de iniciar sesión."
   ,"intro.p2": "La interfaz en español está disponible: cambia el idioma con el selector superior. Los datos irán evolucionando a medida que se publique información oficial."
   ,"intro.noscript": "Nota: Este checklist necesita JavaScript activado para funcionar. Aun así puedes ver abajo una lista simplificada de categorías."
   ,"fallback.categories.needle_upgrades": "Mejoras de la Aguja"
@@ -39,28 +39,28 @@
   ,"fallback.categories.tools": "Herramientas"
   ,"fallback.categories.misc": "Misceláneo"
   ,"section.howto.title": "Cómo usar este checklist"
-  ,"section.howto.p1": "Navega por las categorías y haz clic en un ítem para marcarlo. El progreso vive solo en tu navegador (localStorage). Al limpiar datos se reinicia."
-  ,"section.howto.p2": "Entradas provisionales o inferidas serán reemplazadas por datos verificados de Silksong cuando haya información oficial."
-  ,"section.howto.p3": "Puedes cambiar idioma (EN/ES) en cualquier momento – el progreso se comparte. Contribuye mejoras en el repositorio."
+  ,"section.howto.p1": "Navega por las categorías y haz clic en un objeto para marcarlo como obtenido. Tu progreso se guarda directamente en tu navegador, así que si borras los datos de navegación de esta página, tu checklist se reiniciará."
+  ,"section.howto.p2": "Las entradas provisionales o inferidas serán reemplazadas por datos verificados de Silksong cuando haya información oficial."
+  ,"section.howto.p3": "Puedes cambiar entre inglés y español en cualquier momento y tu progreso se mantendrá. ¡Agradecemos cualquier sugerencia para mejorar!"
   ,"section.features.title": "Características"
-  ,"section.features.list1": "Ligero, seguimiento mínimo."
-  ,"section.features.list2": "Recursos básicos disponibles offline."
-  ,"section.features.list3": "Porcentaje de progreso + ítems restantes."
-  ,"section.features.list4": "Localización en inglés / español."
-  ,"section.features.list5": "Paneles de categoría expandibles."
+  ,"section.features.list1": "Un checklist rápido, sencillo y fácil de usar."
+  ,"section.features.list2": "Funciona sin conexión después de tu primera visita."
+  ,"section.features.list3": "Sigue tu porcentaje de compleción y ve cuántos objetos te quedan."
+  ,"section.features.list4": "Disponible en inglés y español."
+  ,"section.features.list5": "Las categorías se pueden expandir o contraer para centrarte en lo que necesitas."
   ,"section.faq.title": "FAQ"
   ,"section.faq.q.data": "¿Se guarda mi progreso en línea?"
-  ,"section.faq.a.data": "No. Solo en tu navegador. Habrá función de exportar."
+  ,"section.faq.a.data": "No. Tus datos se guardan únicamente en tu navegador. Planeamos añadir una opción para guardar tu progreso en un archivo en el futuro."
   ,"section.faq.q.change": "¿Cambiarán los valores cuando salga el juego?"
-  ,"section.faq.a.change": "Sí: las entradas provisionales se actualizan; la estructura intenta mantenerse estable."
+  ,"section.faq.a.change": "Sí. Las entradas provisionales se actualizarán; la estructura intentará mantenerse estable."
   ,"section.faq.q.ads": "¿Por qué todavía no veo anuncios?"
-  ,"section.faq.a.ads": "El sitio está en revisión inicial de AdSense; aparecerán al aprobarse."
+  ,"section.faq.a.ads": "El sitio está siendo revisado para mostrar anuncios, que aparecerán una vez se aprueben."
   ,"section.faq.q.suggest": "¿Puedo sugerir nuevas categorías?"
-  ,"section.faq.a.suggest": "Sí — abre un issue en el repositorio."
+  ,"section.faq.a.suggest": "¡Sí, por supuesto! Nos encantaría escuchar tus ideas. Puedes compartirlas en nuestra página del proyecto."
   ,"section.faq.q.official": "¿Es oficial?"
-  ,"section.faq.a.official": "No. Proyecto fan independiente."
+  ,"section.faq.a.official": "No. Es un proyecto independiente hecho por fans."
   ,"section.disclaimer.title": "Aviso legal"
   ,"section.disclaimer.text": "Hollow Knight y Silksong son marcas de Team Cherry. Este sitio fan no está afiliado ni respaldado por Team Cherry."
-  ,"guide.open": "Guía"
+  ,"guide.open": "GUÍA"
   ,"footer.note": "Proyecto hecho por fans. Hollow Knight y Silksong son marcas de Team Cherry. Los datos provisionales se actualizarán con información oficial."
 }
