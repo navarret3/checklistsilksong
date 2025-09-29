@@ -1,7 +1,7 @@
 {
-  "dataVersion": 12,
+  "dataVersion": 13,
   "source": "official_listofrequirements_alignment_v1",
-  "generatedAt": "2025-09-29T13:06:35.157Z",
+  "generatedAt": "2025-09-29T13:13:51.341Z",
   "licenseNote": "124 checklist entries. Weights: mask shards 0.25 (20 shards = 5%), silk spool fragments 0.5 (18 fragments = 9%), remaining 86 items at weight 1 (86%). Total weight = 100. Variant / upgrade pairs aggregated with '-all' suffix where needed.",
   "categories": [
     "needle_upgrade",
@@ -33,22 +33,14 @@
       "location_text": {
         "en": "Effect: Fling needle as a harpoon with silk.",
         "es": "Efecto: Lanza la aguja como un arpón con seda.",
-        "fr": "Effect: Fling needle as a harpoon with silk.",
-        "de": "Effect: Fling needle as a harpoon with silk.",
-        "it": "Effect: Fling needle as a harpoon with silk.",
-        "ru": "Effect: Fling needle as a harpoon with silk."
+        "fr": "Effet : Fling needle as a harpoon with silk.",
+        "de": "Effekt: Fling needle as a harpoon with silk.",
+        "it": "Effetto: Fling needle as a harpoon with silk.",
+        "ru": "Эффект: Fling needle as a harpoon with silk."
       },
       "location_img": "assets/images/abilities_locations/clawline.jpg",
       "numId": 68,
-      "image": "assets/images/abilities/clawline.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "image": "assets/images/abilities/clawline.png"
     },
     {
       "id": "cling-grip",
@@ -66,22 +58,14 @@
       "location_text": {
         "en": "Effect: Wall-jump.",
         "es": "Efecto: Salto en pared.",
-        "fr": "Effect: Wall-jump.",
-        "de": "Effect: Wall-jump.",
-        "it": "Effect: Wall-jump.",
-        "ru": "Effect: Wall-jump."
+        "fr": "Effet : Wall-jump.",
+        "de": "Effekt: Wall-jump.",
+        "it": "Effetto: Wall-jump.",
+        "ru": "Эффект: Wall-jump."
       },
       "location_img": "assets/images/abilities_locations/cling_rip.jpg",
       "numId": 69,
-      "image": "assets/images/abilities/cling_grip.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "image": "assets/images/abilities/cling_grip.png"
     },
     {
       "id": "needle-strike",
@@ -99,22 +83,14 @@
       "location_text": {
         "en": "Effect: Charged attack.",
         "es": "Efecto: Ataque cargado.",
-        "fr": "Effect: Charged attack.",
-        "de": "Effect: Charged attack.",
-        "it": "Effect: Charged attack.",
-        "ru": "Effect: Charged attack."
+        "fr": "Effet : Charged attack.",
+        "de": "Effekt: Charged attack.",
+        "it": "Effetto: Charged attack.",
+        "ru": "Эффект: Charged attack."
       },
       "location_img": "assets/images/abilities_locations/needle_strike.jpg",
       "numId": 70,
-      "image": "assets/images/abilities/needle_strike.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "image": "assets/images/abilities/needle_strike.png"
     },
     {
       "id": "needolin",
@@ -132,22 +108,14 @@
       "location_text": {
         "en": "Required: Defeat Widow. Effect: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.",
         "es": "Requisito: Derrotar a la Viuda. Efecto: Toca canciones que pueden abrir Puertas de Aguidolín especiales, revelar historia secreta y hacer que los enemigos / NPCs canten.",
-        "fr": "Required: Defeat Widow. Effect: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.",
-        "de": "Required: Defeat Widow. Effect: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.",
-        "it": "Required: Defeat Widow. Effect: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.",
-        "ru": "Required: Defeat Widow. Effect: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing."
+        "fr": "Requis : Defeat Widow. Effet : Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.",
+        "de": "Erfordert: Defeat Widow. Effekt: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.",
+        "it": "Richiesto: Defeat Widow. Effetto: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing.",
+        "ru": "Требуется: Defeat Widow. Эффект: Play songs that can open special Needolin Doors, reveal secret lore, and make enemies / NPCs sing."
       },
       "location_img": "assets/images/abilities_locations/needolin.jpg",
       "numId": 71,
-      "image": "assets/images/abilities/needolin.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "image": "assets/images/abilities/needolin.png"
     },
     {
       "id": "silk-soar",
@@ -165,22 +133,14 @@
       "location_text": {
         "en": "ACT 3: Effect: Fling upwards.",
         "es": "ACTO 3: Efecto: Impulso hacia arriba.",
-        "fr": "ACT 3: Effect: Fling upwards.",
-        "de": "ACT 3: Effect: Fling upwards.",
-        "it": "ACT 3: Effect: Fling upwards.",
-        "ru": "ACT 3: Effect: Fling upwards."
+        "fr": "ACT 3: Effet : Fling upwards.",
+        "de": "ACT 3: Effekt: Fling upwards.",
+        "it": "ACT 3: Effetto: Fling upwards.",
+        "ru": "ACT 3: Эффект: Fling upwards."
       },
       "location_img": "assets/images/abilities_locations/silk_soar.jpg",
       "numId": 72,
-      "image": "assets/images/abilities/silk_soar.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "image": "assets/images/abilities/silk_soar.png"
     },
     {
       "id": "swift-step",
@@ -198,22 +158,14 @@
       "location_text": {
         "en": "Effect: Sprint at blinding speed, beyond one's natural limits. Tip: You can press the sprint button while in the air to gain distance quickly.",
         "es": "Efecto: Corre a una velocidad cegadora, más allá de los límites naturales. Consejo: Puedes presionar el botón de sprint en el aire para ganar distancia rápidamente.",
-        "fr": "Effect: Sprint at blinding speed, beyond one's natural limits. Tip: You can press the sprint button while in the air to gain distance quickly.",
-        "de": "Effect: Sprint at blinding speed, beyond one's natural limits. Tip: You can press the sprint button while in the air to gain distance quickly.",
-        "it": "Effect: Sprint at blinding speed, beyond one's natural limits. Tip: You can press the sprint button while in the air to gain distance quickly.",
-        "ru": "Effect: Sprint at blinding speed, beyond one's natural limits. Tip: You can press the sprint button while in the air to gain distance quickly."
+        "fr": "Effet : Sprint at blinding speed, beyond one's natural limits. Astuce : You can press the sprint button while in the air to gain distance quickly.",
+        "de": "Effekt: Sprint at blinding speed, beyond one's natural limits. Tipp: You can press the sprint button while in the air to gain distance quickly.",
+        "it": "Effetto: Sprint at blinding speed, beyond one's natural limits. Suggerimento: You can press the sprint button while in the air to gain distance quickly.",
+        "ru": "Эффект: Sprint at blinding speed, beyond one's natural limits. Подсказка: You can press the sprint button while in the air to gain distance quickly."
       },
       "location_img": "assets/images/abilities_locations/swift_step.jpg",
       "numId": 73,
-      "image": "assets/images/abilities/swift_step.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "image": "assets/images/abilities/swift_step.png"
     },
     {
       "id": "cross-stitch",
@@ -231,23 +183,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the Phantom boss fight in the Exhaust Organ area of Bilewater.",
         "es": "Se obtiene como recompensa por vencer al jefe Fantasma en el área del Órgano de Escape de Aguabil.",
-        "fr": "Obtained as a reward for beating the Phantom boss fight in the Exhaust Organ area of Bilewater.",
-        "de": "Obtained as a reward for beating the Phantom boss fight in the Exhaust Organ area of Bilewater.",
-        "it": "Obtained as a reward for beating the Phantom boss fight in the Exhaust Organ area of Bilewater.",
-        "ru": "Obtained as a reward for beating the Phantom boss fight in the Exhaust Organ area of Bilewater."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la Phantom boss fight in the Exhaust Organ area of Bilewater.",
+        "de": "Als Belohnung erhalten für den Sieg über Phantom boss fight in the Exhaust Organ area of Bilewater.",
+        "it": "Ottenuto come ricompensa per aver sconfitto Phantom boss fight in the Exhaust Organ area of Bilewater.",
+        "ru": "Получается в награду за победу над Phantom boss fight in the Exhaust Organ area of Bilewater."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cross-stitch-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 54,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-cross-stitch.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cross-stitch-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cross-stitch-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "pale-nails",
@@ -265,23 +209,15 @@
       "location_text": {
         "en": "Bind Grand Mother Silk's arm at the top of The Cradle during Act 3.",
         "es": "Ata el brazo de la Abuela Seda en la cima de La Cuna durante el Acto 3.",
-        "fr": "Bind Grand Mother Silk's arm at the top of The Cradle during Act 3.",
-        "de": "Bind Grand Mother Silk's arm at the top of The Cradle during Act 3.",
-        "it": "Bind Grand Mother Silk's arm at the top of The Cradle during Act 3.",
-        "ru": "Bind Grand Mother Silk's arm at the top of The Cradle during Act 3."
+        "fr": "Lier le bras de Grand-Mère Soie au sommet du Berceau pendant l'Acte 3.",
+        "de": "Binde den Arm der Großmutter Seide an der Spitze der Wiege während Akt 3.",
+        "it": "Lega il braccio della Nonna Seta in cima alla Culla durante l'Atto 3.",
+        "ru": "Свяжите руку Великой Матери Шёлк на вершине Колыбели во время Акта 3."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pale-nails-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 55,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pale-nails.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pale-nails-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pale-nails-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "sharpdart",
@@ -299,23 +235,15 @@
       "location_text": {
         "en": "Bind the statue in the Weavenest Karn area to the west of the Wormways.",
         "es": "Ata la estatua en el área de Karn del Nido Tejido, al oeste de las Vías de Gusanos.",
-        "fr": "Bind the statue in the Weavenest Karn area to the west of the Wormways.",
-        "de": "Bind the statue in the Weavenest Karn area to the west of the Wormways.",
-        "it": "Bind the statue in the Weavenest Karn area to the west of the Wormways.",
-        "ru": "Bind the statue in the Weavenest Karn area to the west of the Wormways."
+        "fr": "Lier la statue dans le/la Weavenest Karn area to the west of the Wormways.",
+        "de": "Binde die Statue im/in der Weavenest Karn area to the west of the Wormways.",
+        "it": "Lega la statua nel/nella Weavenest Karn area to the west of the Wormways.",
+        "ru": "Свяжите статую в Weavenest Karn area to the west of the Wormways."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sharpdart-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 56,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-sharpdart.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sharpdart-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sharpdart-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "silkspear",
@@ -333,23 +261,15 @@
       "location_text": {
         "en": "Bind the statue in the Mosshome area of Moss Grotto.",
         "es": "Ata la estatua en el área de Hogar de Musgo en la Gruta de Musgo.",
-        "fr": "Bind the statue in the Mosshome area of Moss Grotto.",
-        "de": "Bind the statue in the Mosshome area of Moss Grotto.",
-        "it": "Bind the statue in the Mosshome area of Moss Grotto.",
-        "ru": "Bind the statue in the Mosshome area of Moss Grotto."
+        "fr": "Lier la statue dans le/la Mosshome area of Moss Grotto.",
+        "de": "Binde die Statue im/in der Mosshome area of Moss Grotto.",
+        "it": "Lega la statua nel/nella Mosshome area of Moss Grotto.",
+        "ru": "Свяжите статую в Mosshome area of Moss Grotto."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspear-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 57,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-silkspear.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspear-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspear-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "rune-rage",
@@ -367,23 +287,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the First Sinner boss fight at The Slab.",
         "es": "Se obtiene como recompensa por vencer al jefe Primer Pecador en La Losa.",
-        "fr": "Obtained as a reward for beating the First Sinner boss fight at The Slab.",
-        "de": "Obtained as a reward for beating the First Sinner boss fight at The Slab.",
-        "it": "Obtained as a reward for beating the First Sinner boss fight at The Slab.",
-        "ru": "Obtained as a reward for beating the First Sinner boss fight at The Slab."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la First Sinner boss fight at The Slab.",
+        "de": "Als Belohnung erhalten für den Sieg über First Sinner boss fight at The Slab.",
+        "it": "Ottenuto come ricompensa per aver sconfitto First Sinner boss fight at The Slab.",
+        "ru": "Получается в награду за победу над First Sinner boss fight at The Slab."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rune-rage-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 58,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-rune-rage.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rune-rage-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rune-rage-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "thread-storm",
@@ -401,23 +313,15 @@
       "location_text": {
         "en": "Bind the statue in the Craw Lake area of Greymoor.",
         "es": "Ata la estatua en el área del Lago de Arrastre en Greymoor.",
-        "fr": "Bind the statue in the Craw Lake area of Greymoor.",
-        "de": "Bind the statue in the Craw Lake area of Greymoor.",
-        "it": "Bind the statue in the Craw Lake area of Greymoor.",
-        "ru": "Bind the statue in the Craw Lake area of Greymoor."
+        "fr": "Lier la statue dans le/la Craw Lake area of Greymoor.",
+        "de": "Binde die Statue im/in der Craw Lake area of Greymoor.",
+        "it": "Lega la statua nel/nella Craw Lake area of Greymoor.",
+        "ru": "Свяжите статую в Craw Lake area of Greymoor."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thread-storm-map-1.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 59,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-thread-storm.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thread-storm-map-1.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thread-storm-map-1.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "sylphsong",
@@ -486,23 +390,15 @@
       "location_text": {
         "en": "Purchase from Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish.",
         "es": "Cómpralo a Jubilana en Clavecanto por 350 Rosarios después de completar el Deseo del Mercader Errante.",
-        "fr": "Purchase from Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish.",
-        "de": "Purchase from Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish.",
-        "it": "Purchase from Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish.",
-        "ru": "Purchase from Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish."
+        "fr": "Acheter auprès de Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish.",
+        "de": "Kaufen bei Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish.",
+        "it": "Acquistare da Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish.",
+        "ru": "Купить у Jubilana in Songclave for 350 Rosaries after completing the The Wandering Merchant Wish."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-ascendants-grip-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 74,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-ascendants-grip.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-ascendants-grip-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-ascendants-grip-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "barbed-bracelet",
@@ -554,23 +450,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the Trobbio boss fight in the Stage area of the Whispering Vaults.",
         "es": "Se obtiene como recompensa por vencer al jefe Trobbio en el área del Escenario de las Bóvedas Susurrantes.",
-        "fr": "Obtained as a reward for beating the Trobbio boss fight in the Stage area of the Whispering Vaults.",
-        "de": "Obtained as a reward for beating the Trobbio boss fight in the Stage area of the Whispering Vaults.",
-        "it": "Obtained as a reward for beating the Trobbio boss fight in the Stage area of the Whispering Vaults.",
-        "ru": "Obtained as a reward for beating the Trobbio boss fight in the Stage area of the Whispering Vaults."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la Trobbio boss fight in the Stage area of the Whispering Vaults.",
+        "de": "Als Belohnung erhalten für den Sieg über Trobbio boss fight in the Stage area of the Whispering Vaults.",
+        "it": "Ottenuto come ricompensa per aver sconfitto Trobbio boss fight in the Stage area of the Whispering Vaults.",
+        "ru": "Получается в награду за победу над Trobbio boss fight in the Stage area of the Whispering Vaults."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-claw-mirror-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 76,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-claw-mirror.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-claw-mirror-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-claw-mirror-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "cogfly",
@@ -588,23 +476,15 @@
       "location_text": {
         "en": "Crafted at a table in the High Falls area. Requires one Craftmetal.",
         "es": "Fabricado en una mesa en el área de las Cataratas Altas. Requiere un Metal de Artesanía.",
-        "fr": "Crafted at a table in the High Falls area. Requires one Craftmetal.",
-        "de": "Crafted at a table in the High Falls area. Requires one Craftmetal.",
-        "it": "Crafted at a table in the High Falls area. Requires one Craftmetal.",
-        "ru": "Crafted at a table in the High Falls area. Requires one Craftmetal."
+        "fr": "Forgé sur une table dans la zone High Falls area. Requires one Craftmetal.",
+        "de": "Gefertigt an einem Tisch im Gebiet High Falls area. Requires one Craftmetal.",
+        "it": "For giato su un tavolo nell'area High Falls area. Requires one Craftmetal.",
+        "ru": "Создано на столе в области High Falls area. Requires one Craftmetal."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogfly-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 77,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-cogfly.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogfly-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogfly-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "cogwork-wheel",
@@ -622,23 +502,15 @@
       "location_text": {
         "en": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 360 Rosaries.",
         "es": "Fabricado por el Duodécimo Arquitecto en el área de las Subobras. Requiere un Metal de Artesanía y 360 Rosarios.",
-        "fr": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 360 Rosaries.",
-        "de": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 360 Rosaries.",
-        "it": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 360 Rosaries.",
-        "ru": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 360 Rosaries."
+        "fr": "Forgé par le Douzième Architecte dans la zone Souterrang. Nécessite un Métal d'Artisanat et 360 Rosaries.",
+        "de": "Geschmiedet vom Zwölften Architekten im Gebiet Unterwerke. Benötigt ein Handwerksmetall und 360 Rosaries.",
+        "it": "Forgiato dal Dodicesimo Architetto nell'area Sotto-Officine. Richiede un Metallo da Forgiare e 360 Rosaries.",
+        "ru": "Создано Двенадцатым Архитектором в области Подмастерских. Требует один Крафтметалл и 360 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogwork-wheel-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 78,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-cogwork-wheel.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogwork-wheel-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-cogwork-wheel-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "compass",
@@ -656,23 +528,15 @@
       "location_text": {
         "en": "Purchase from Shakra for 70 Rosaries.",
         "es": "Cómpralo a Shakra por 70 Rosarios.",
-        "fr": "Purchase from Shakra for 70 Rosaries.",
-        "de": "Purchase from Shakra for 70 Rosaries.",
-        "it": "Purchase from Shakra for 70 Rosaries.",
-        "ru": "Purchase from Shakra for 70 Rosaries."
+        "fr": "Acheter auprès de Shakra for 70 Rosaries.",
+        "de": "Kaufen bei Shakra for 70 Rosaries.",
+        "it": "Acquistare da Shakra for 70 Rosaries.",
+        "ru": "Купить у Shakra for 70 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-compass-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 79,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-compass.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-compass-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-compass-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "conchcutter",
@@ -690,23 +554,15 @@
       "location_text": {
         "en": "Found in the Coral Tower cave in the Sands of Karak area.",
         "es": "Encontrado en la cueva de la Torre de Coral en el área de las Arenas de Karak.",
-        "fr": "Found in the Coral Tower cave in the Sands of Karak area.",
-        "de": "Found in the Coral Tower cave in the Sands of Karak area.",
-        "it": "Found in the Coral Tower cave in the Sands of Karak area.",
-        "ru": "Found in the Coral Tower cave in the Sands of Karak area."
+        "fr": "Trouvé dans le/la Coral Tower cave in the Sands of Karak area.",
+        "de": "Gefunden im/in der Coral Tower cave in the Sands of Karak area.",
+        "it": "Trovato nel/nella Coral Tower cave in the Sands of Karak area.",
+        "ru": "Найдено в Coral Tower cave in the Sands of Karak area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-conchcutter-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 80,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-conchcutter.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-conchcutter-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-conchcutter-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "curveclaw-all",
@@ -724,23 +580,15 @@
       "location_text": {
         "en": "Purchase from Mottled Skarr in the Hunter's March area for 140 Rosaries.",
         "es": "Cómpralo a Skarr Moteado en el área de la Marcha del Cazador por 140 Rosarios.",
-        "fr": "Purchase from Mottled Skarr in the Hunter's March area for 140 Rosaries.",
-        "de": "Purchase from Mottled Skarr in the Hunter's March area for 140 Rosaries.",
-        "it": "Purchase from Mottled Skarr in the Hunter's March area for 140 Rosaries.",
-        "ru": "Purchase from Mottled Skarr in the Hunter's March area for 140 Rosaries."
+        "fr": "Acheter auprès de Mottled Skarr in the Hunter's March area for 140 Rosaries.",
+        "de": "Kaufen bei Mottled Skarr in the Hunter's March area for 140 Rosaries.",
+        "it": "Acquistare da Mottled Skarr in the Hunter's March area for 140 Rosaries.",
+        "ru": "Купить у Mottled Skarr in the Hunter's March area for 140 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-curveclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 81,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-curveclaw.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-curveclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-curveclaw-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "dead-bugs-purse-all",
@@ -792,23 +640,15 @@
       "location_text": {
         "en": "Found on a table in the southwestern part of the Underworks area.",
         "es": "Encontrado en una mesa en la parte suroeste del área de las Subobras.",
-        "fr": "Found on a table in the southwestern part of the Underworks area.",
-        "de": "Found on a table in the southwestern part of the Underworks area.",
-        "it": "Found on a table in the southwestern part of the Underworks area.",
-        "ru": "Found on a table in the southwestern part of the Underworks area."
+        "fr": "Trouvé sur une table dans le/la southwestern part of the Underworks area.",
+        "de": "Gefunden auf einem Tisch im/in der southwestern part of the Underworks area.",
+        "it": "Trovato su un tavolo nel/nella southwestern part of the Underworks area.",
+        "ru": "Найдено на столе в southwestern part of the Underworks area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-delvers-drill-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 83,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-delvers-drill.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-delvers-drill-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-delvers-drill-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "druids-eye-all",
@@ -826,23 +666,15 @@
       "location_text": {
         "en": "Obtained as a reward for completing the Berry Picking Wish for Moss Druid in the Moss Home area.",
         "es": "Se obtiene como recompensa por completar el Deseo de Recolección de Bayas para el Druida de Musgo en el área de Hogar de Musgo.",
-        "fr": "Obtained as a reward for completing the Berry Picking Wish for Moss Druid in the Moss Home area.",
-        "de": "Obtained as a reward for completing the Berry Picking Wish for Moss Druid in the Moss Home area.",
-        "it": "Obtained as a reward for completing the Berry Picking Wish for Moss Druid in the Moss Home area.",
-        "ru": "Obtained as a reward for completing the Berry Picking Wish for Moss Druid in the Moss Home area."
+        "fr": "Obtenu en récompense pour avoir terminé le/la Berry Picking Wish for Moss Druid in the Moss Home area.",
+        "de": "Als Belohnung erhalten für den Abschluss von Berry Picking Wish for Moss Druid in the Moss Home area.",
+        "it": "Ottenuto come ricompensa per aver completato Berry Picking Wish for Moss Druid in the Moss Home area.",
+        "ru": "Получается в награду за выполнение Berry Picking Wish for Moss Druid in the Moss Home area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-druids-eye-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 84,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-druids-eye.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-druids-eye-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-druids-eye-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "egg-of-flealia",
@@ -860,23 +692,15 @@
       "location_text": {
         "en": "Obtained as a reward for completing the Lost Fleas Wish for Fleamaster Mooshka in The Marrow.",
         "es": "Se obtiene como recompensa por completar el Deseo de las Pulgas Perdidas para el Maestro de Pulgas Mooshka en La Médula.",
-        "fr": "Obtained as a reward for completing the Lost Fleas Wish for Fleamaster Mooshka in The Marrow.",
-        "de": "Obtained as a reward for completing the Lost Fleas Wish for Fleamaster Mooshka in The Marrow.",
-        "it": "Obtained as a reward for completing the Lost Fleas Wish for Fleamaster Mooshka in The Marrow.",
-        "ru": "Obtained as a reward for completing the Lost Fleas Wish for Fleamaster Mooshka in The Marrow."
+        "fr": "Obtenu en récompense pour avoir terminé le/la Lost Fleas Wish for Fleamaster Mooshka in The Marrow.",
+        "de": "Als Belohnung erhalten für den Abschluss von Lost Fleas Wish for Fleamaster Mooshka in The Marrow.",
+        "it": "Ottenuto come ricompensa per aver completato Lost Fleas Wish for Fleamaster Mooshka in The Marrow.",
+        "ru": "Получается в награду за выполнение Lost Fleas Wish for Fleamaster Mooshka in The Marrow."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-egg-of-flealia-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 85,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-egg-of-flealia.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-egg-of-flealia-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-egg-of-flealia-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "flea-brew",
@@ -928,23 +752,15 @@
       "location_text": {
         "en": "Found on a table in the Deep Docks area.",
         "es": "Encontrado en una mesa en el área de los Muelles Profundos.",
-        "fr": "Found on a table in the Deep Docks area.",
-        "de": "Found on a table in the Deep Docks area.",
-        "it": "Found on a table in the Deep Docks area.",
-        "ru": "Found on a table in the Deep Docks area."
+        "fr": "Trouvé sur une table dans le/la Deep Docks area.",
+        "de": "Gefunden auf einem Tisch im/in der Deep Docks area.",
+        "it": "Trovato su un tavolo nel/nella Deep Docks area.",
+        "ru": "Найдено на столе в Deep Docks area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flintslate-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 87,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-flintslate.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flintslate-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-flintslate-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "fractured-mask",
@@ -962,23 +778,15 @@
       "location_text": {
         "en": "Purchase from Mottled Skarr in the Hunter's March area for 260 Rosaries.",
         "es": "Cómpralo a Skarr Moteado en el área de la Marcha del Cazador por 260 Rosarios.",
-        "fr": "Purchase from Mottled Skarr in the Hunter's March area for 260 Rosaries.",
-        "de": "Purchase from Mottled Skarr in the Hunter's March area for 260 Rosaries.",
-        "it": "Purchase from Mottled Skarr in the Hunter's March area for 260 Rosaries.",
-        "ru": "Purchase from Mottled Skarr in the Hunter's March area for 260 Rosaries."
+        "fr": "Acheter auprès de Mottled Skarr in the Hunter's March area for 260 Rosaries.",
+        "de": "Kaufen bei Mottled Skarr in the Hunter's March area for 260 Rosaries.",
+        "it": "Acquistare da Mottled Skarr in the Hunter's March area for 260 Rosaries.",
+        "ru": "Купить у Mottled Skarr in the Hunter's March area for 260 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-fractured-mask-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 88,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-fractured-mask.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-fractured-mask-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-fractured-mask-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "injector-band",
@@ -996,23 +804,15 @@
       "location_text": {
         "en": "Found on a table in the Whiteward area.",
         "es": "Encontrado en una mesa en el área de la Guardia Blanca.",
-        "fr": "Found on a table in the Whiteward area.",
-        "de": "Found on a table in the Whiteward area.",
-        "it": "Found on a table in the Whiteward area.",
-        "ru": "Found on a table in the Whiteward area."
+        "fr": "Trouvé sur une table dans le/la Whiteward area.",
+        "de": "Gefunden auf einem Tisch im/in der Whiteward area.",
+        "it": "Trovato su un tavolo nel/nella Whiteward area.",
+        "ru": "Найдено на столе в Whiteward area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-injector-band-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 89,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-injector-band.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-injector-band-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-injector-band-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "longclaw",
@@ -1030,23 +830,15 @@
       "location_text": {
         "en": "Obtained as a reward for completing the Broodfeast Wish for the Huntress in the Putrefied Ducts area.",
         "es": "Se obtiene como recompensa por completar el Deseo del Festín de Crías para la Cazadora en el área de los Conductos Putrefactos.",
-        "fr": "Obtained as a reward for completing the Broodfeast Wish for the Huntress in the Putrefied Ducts area.",
-        "de": "Obtained as a reward for completing the Broodfeast Wish for the Huntress in the Putrefied Ducts area.",
-        "it": "Obtained as a reward for completing the Broodfeast Wish for the Huntress in the Putrefied Ducts area.",
-        "ru": "Obtained as a reward for completing the Broodfeast Wish for the Huntress in the Putrefied Ducts area."
+        "fr": "Obtenu en récompense pour avoir terminé le/la Broodfeast Wish for the Huntress in the Putrefied Ducts area.",
+        "de": "Als Belohnung erhalten für den Abschluss von Broodfeast Wish for the Huntress in the Putrefied Ducts area.",
+        "it": "Ottenuto come ricompensa per aver completato Broodfeast Wish for the Huntress in the Putrefied Ducts area.",
+        "ru": "Получается в награду за выполнение Broodfeast Wish for the Huntress in the Putrefied Ducts area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 90,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-longclaw.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longclaw-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longclaw-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "longpin",
@@ -1064,23 +856,15 @@
       "location_text": {
         "en": "Found behind the pink wasp nest in the Shellwood area.",
         "es": "Encontrado detrás del nido de avispas rosas en el área del Bosque de Conchas.",
-        "fr": "Found behind the pink wasp nest in the Shellwood area.",
-        "de": "Found behind the pink wasp nest in the Shellwood area.",
-        "it": "Found behind the pink wasp nest in the Shellwood area.",
-        "ru": "Found behind the pink wasp nest in the Shellwood area."
+        "fr": "Trouvé derrière le/la pink wasp nest in the Shellwood area.",
+        "de": "Gefunden hinter pink wasp nest in the Shellwood area.",
+        "it": "Trovato dietro il/la pink wasp nest in the Shellwood area.",
+        "ru": "Найдено позади pink wasp nest in the Shellwood area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longpin-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 91,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-longpin.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longpin-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-longpin-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "magma-bell",
@@ -1098,23 +882,15 @@
       "location_text": {
         "en": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 110 Rosaries.",
         "es": "Fabricada por la Hija de la Forja en el área de los Muelles Profundos. Requiere un Metal de Artesanía y 110 Rosarios.",
-        "fr": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 110 Rosaries.",
-        "de": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 110 Rosaries.",
-        "it": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 110 Rosaries.",
-        "ru": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 110 Rosaries."
+        "fr": "Forgé par la Fille de la Forge dans la zone Docks Profonds. Nécessite un Métal d'Artisanat et 110 Rosaries.",
+        "de": "Geschmiedet von der Schmiedetochter im Gebiet Tiefe Docks. Benötigt ein Handwerksmetall und 110 Rosaries.",
+        "it": "For giato dalla Figlia della Forgia nell'area Darsene Profonde. Richiede un Metallo da Forgiare e 110 Rosaries.",
+        "ru": "Создано Дочерью Кузни в районе Глубоких Доков. Требует один Крафтметалл и 110 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magma-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 92,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-magma-bell.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magma-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magma-bell-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "magnetite-brooch",
@@ -1132,23 +908,15 @@
       "location_text": {
         "en": "Purchase from Pebb in the Bonebottom area for 120 Rosaries.",
         "es": "Cómpralo a Pebb en el área de Fondohueso por 120 Rosarios.",
-        "fr": "Purchase from Pebb in the Bonebottom area for 120 Rosaries.",
-        "de": "Purchase from Pebb in the Bonebottom area for 120 Rosaries.",
-        "it": "Purchase from Pebb in the Bonebottom area for 120 Rosaries.",
-        "ru": "Purchase from Pebb in the Bonebottom area for 120 Rosaries."
+        "fr": "Acheter auprès de Pebb in the Bonebottom area for 120 Rosaries.",
+        "de": "Kaufen bei Pebb in the Bonebottom area for 120 Rosaries.",
+        "it": "Acquistare da Pebb in the Bonebottom area for 120 Rosaries.",
+        "ru": "Купить у Pebb in the Bonebottom area for 120 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-brooch-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 93,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-magnetite-brooch.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-brooch-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-magnetite-brooch-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "magnetite-dice",
@@ -1200,23 +968,15 @@
       "location_text": {
         "en": "Found behind a wall of ice in the Mount Fay area.",
         "es": "Encontrado detrás de una pared de hielo en el área del Monte Fay.",
-        "fr": "Found behind a wall of ice in the Mount Fay area.",
-        "de": "Found behind a wall of ice in the Mount Fay area.",
-        "it": "Found behind a wall of ice in the Mount Fay area.",
-        "ru": "Found behind a wall of ice in the Mount Fay area."
+        "fr": "Trouvé derrière un mur de glace dans le/la Mount Fay area.",
+        "de": "Hinter einer Eiswand gefunden im/in der Mount Fay area.",
+        "it": "Trovato dietro un muro di ghiaccio nel/nella Mount Fay area.",
+        "ru": "Найдено за ледяной стеной в Mount Fay area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-memory-crystal-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 95,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-memory-crystal.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-memory-crystal-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-memory-crystal-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "multibinder",
@@ -1234,23 +994,15 @@
       "location_text": {
         "en": "Purchase from Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish.",
         "es": "Cómpralo a Frey en el área de Corazón de Campana por 880 Rosarios después de completar el Deseo de Mi Mensajero Perdido.",
-        "fr": "Purchase from Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish.",
-        "de": "Purchase from Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish.",
-        "it": "Purchase from Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish.",
-        "ru": "Purchase from Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish."
+        "fr": "Acheter auprès de Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish.",
+        "de": "Kaufen bei Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish.",
+        "it": "Acquistare da Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish.",
+        "ru": "Купить у Frey in the Bellheart area for 880 Rosaries after completing the My Missing Courier Wish."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-multibinder-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 96,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-multibinder.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-multibinder-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-multibinder-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "pin-badge",
@@ -1268,23 +1020,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the Pinstress boss fight in the Mount Fay area during Act 3.",
         "es": "Se obtiene como recompensa por vencer a la jefa Pinstress en el área del Monte Fay durante el Acto 3.",
-        "fr": "Obtained as a reward for beating the Pinstress boss fight in the Mount Fay area during Act 3.",
-        "de": "Obtained as a reward for beating the Pinstress boss fight in the Mount Fay area during Act 3.",
-        "it": "Obtained as a reward for beating the Pinstress boss fight in the Mount Fay area during Act 3.",
-        "ru": "Obtained as a reward for beating the Pinstress boss fight in the Mount Fay area during Act 3."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la Pinstress boss fight in the Mount Fay area during Act 3.",
+        "de": "Als Belohnung erhalten für den Sieg über Pinstress boss fight in the Mount Fay area during Act 3.",
+        "it": "Ottenuto come ricompensa per aver sconfitto Pinstress boss fight in the Mount Fay area during Act 3.",
+        "ru": "Получается в награду за победу над Pinstress boss fight in the Mount Fay area during Act 3."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pin-badge-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 97,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pin-badge.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pin-badge-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pin-badge-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "pimpillo",
@@ -1302,23 +1046,15 @@
       "location_text": {
         "en": "Crafted at a table in the area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal.",
         "es": "Fabricado en una mesa en el área sobre el hogar de campana de Yarnaby en Greymoor. Requiere un Metal de Artesanía.",
-        "fr": "Crafted at a table in the area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal.",
-        "de": "Crafted at a table in the area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal.",
-        "it": "Crafted at a table in the area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal.",
-        "ru": "Crafted at a table in the area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal."
+        "fr": "Forgé sur une table dans la zone area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal.",
+        "de": "Gefertigt an einem Tisch im Gebiet area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal.",
+        "it": "For giato su un tavolo nell'area area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal.",
+        "ru": "Создано на столе в области area above Yarnaby's bellhome in Greymoor. Requires one Craftmetal."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pimpillo-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 98,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pimpillo.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pimpillo-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pimpillo-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "plasmium-phial",
@@ -1336,23 +1072,15 @@
       "location_text": {
         "en": "Obtained as a reward for completing the Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area.",
         "es": "Se obtiene como recompensa por completar el Deseo del Asistente de Alquimista para el Alquimista Zylotol en el área de las Vías de Gusanos.",
-        "fr": "Obtained as a reward for completing the Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area.",
-        "de": "Obtained as a reward for completing the Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area.",
-        "it": "Obtained as a reward for completing the Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area.",
-        "ru": "Obtained as a reward for completing the Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area."
+        "fr": "Obtenu en récompense pour avoir terminé le/la Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area.",
+        "de": "Als Belohnung erhalten für den Abschluss von Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area.",
+        "it": "Ottenuto come ricompensa per aver completato Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area.",
+        "ru": "Получается в награду за выполнение Alchemist's Assistant Wish for Alchemist Zylotol in the Wormways area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-plasmium-phial-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 99,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-plasmium-phial.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-plasmium-phial-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-plasmium-phial-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "pollip-pouch",
@@ -1370,23 +1098,15 @@
       "location_text": {
         "en": "Obtained as a reward for completing the Rite of the Pollip Wish for Greyroot in the Shellwood area.",
         "es": "Se obtiene como recompensa por completar el Deseo del Rito del Pollip para Raíz Gris en el área del Bosque de Conchas.",
-        "fr": "Obtained as a reward for completing the Rite of the Pollip Wish for Greyroot in the Shellwood area.",
-        "de": "Obtained as a reward for completing the Rite of the Pollip Wish for Greyroot in the Shellwood area.",
-        "it": "Obtained as a reward for completing the Rite of the Pollip Wish for Greyroot in the Shellwood area.",
-        "ru": "Obtained as a reward for completing the Rite of the Pollip Wish for Greyroot in the Shellwood area."
+        "fr": "Obtenu en récompense pour avoir terminé le/la Rite of the Pollip Wish for Greyroot in the Shellwood area.",
+        "de": "Als Belohnung erhalten für den Abschluss von Rite of the Pollip Wish for Greyroot in the Shellwood area.",
+        "it": "Ottenuto come ricompensa per aver completato Rite of the Pollip Wish for Greyroot in the Shellwood area.",
+        "ru": "Получается в награду за выполнение Rite of the Pollip Wish for Greyroot in the Shellwood area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pollip-pouch-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 100,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-pollip-pouch.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pollip-pouch-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-pollip-pouch-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "quick-sling",
@@ -1404,23 +1124,15 @@
       "location_text": {
         "en": "Found by breaking through a false ceiling in the Bilewater area.",
         "es": "Encontrado al romper un techo falso en el área de Aguabil.",
-        "fr": "Found by breaking through a false ceiling in the Bilewater area.",
-        "de": "Found by breaking through a false ceiling in the Bilewater area.",
-        "it": "Found by breaking through a false ceiling in the Bilewater area.",
-        "ru": "Found by breaking through a false ceiling in the Bilewater area."
+        "fr": "Trouvé en brisant un faux plafond dans le/la Bilewater area.",
+        "de": "Gefunden durch Durchbrechen einer falschen Decke im/in der Bilewater area.",
+        "it": "Trovato rompendo un soffitto falso nel/nella Bilewater area.",
+        "ru": "Найдено, пробив ложный потолок в Bilewater area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-quick-sling-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 101,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-quick-sling.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-quick-sling-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-quick-sling-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "reserve-bind",
@@ -1438,23 +1150,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the Second Sentinel boss fight in the southeastern part of The Forum.",
         "es": "Se obtiene como recompensa por vencer al jefe Segundo Centinela en la parte sureste de El Foro.",
-        "fr": "Obtained as a reward for beating the Second Sentinel boss fight in the southeastern part of The Forum.",
-        "de": "Obtained as a reward for beating the Second Sentinel boss fight in the southeastern part of The Forum.",
-        "it": "Obtained as a reward for beating the Second Sentinel boss fight in the southeastern part of The Forum.",
-        "ru": "Obtained as a reward for beating the Second Sentinel boss fight in the southeastern part of The Forum."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la Second Sentinel boss fight in the southeastern part of The Forum.",
+        "de": "Als Belohnung erhalten für den Sieg über Second Sentinel boss fight in the southeastern part of The Forum.",
+        "it": "Ottenuto come ricompensa per aver sconfitto Second Sentinel boss fight in the southeastern part of The Forum.",
+        "ru": "Получается в награду за победу над Second Sentinel boss fight in the southeastern part of The Forum."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-reserve-bind-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 102,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-reserve-bind.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-reserve-bind-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-reserve-bind-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "rosary-cannon",
@@ -1472,23 +1176,15 @@
       "location_text": {
         "en": "Found on a table in the Forum area of High Halls.",
         "es": "Encontrado en una mesa en el área del Foro de los Altos Salones.",
-        "fr": "Found on a table in the Forum area of High Halls.",
-        "de": "Found on a table in the Forum area of High Halls.",
-        "it": "Found on a table in the Forum area of High Halls.",
-        "ru": "Found on a table in the Forum area of High Halls."
+        "fr": "Trouvé sur une table dans le/la Forum area of High Halls.",
+        "de": "Gefunden auf einem Tisch im/in der Forum area of High Halls.",
+        "it": "Trovato su un tavolo nel/nella Forum area of High Halls.",
+        "ru": "Найдено на столе в Forum area of High Halls."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rosary-cannon-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 103,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-rosary-cannon.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rosary-cannon-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-rosary-cannon-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "sawtooth-circlet",
@@ -1506,23 +1202,15 @@
       "location_text": {
         "en": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 230 Rosaries.",
         "es": "Fabricada por el Duodécimo Arquitecto en el área de las Subobras. Requiere un Metal de Artesanía y 230 Rosarios.",
-        "fr": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 230 Rosaries.",
-        "de": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 230 Rosaries.",
-        "it": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 230 Rosaries.",
-        "ru": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 230 Rosaries."
+        "fr": "Forgé par le Douzième Architecte dans la zone Souterrang. Nécessite un Métal d'Artisanat et 230 Rosaries.",
+        "de": "Geschmiedet vom Zwölften Architekten im Gebiet Unterwerke. Benötigt ein Handwerksmetall und 230 Rosaries.",
+        "it": "Forgiato dal Dodicesimo Architetto nell'area Sotto-Officine. Richiede un Metallo da Forgiare e 230 Rosaries.",
+        "ru": "Создано Двенадцатым Архитектором в области Подмастерских. Требует один Крафтметалл и 230 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sawtooth-circlet-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 104,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-sawtooth-circlet.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sawtooth-circlet-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sawtooth-circlet-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "scuttlebrace",
@@ -1540,23 +1228,15 @@
       "location_text": {
         "en": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 140 Rosaries.",
         "es": "Fabricada por el Duodécimo Arquitecto en el área de las Subobras. Requiere un Metal de Artesanía y 140 Rosarios.",
-        "fr": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 140 Rosaries.",
-        "de": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 140 Rosaries.",
-        "it": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 140 Rosaries.",
-        "ru": "Crafted by Twelfth Architect in the Underworks area. Requires one Craftmetal and 140 Rosaries."
+        "fr": "Forgé par le Douzième Architecte dans la zone Souterrang. Nécessite un Métal d'Artisanat et 140 Rosaries.",
+        "de": "Geschmiedet vom Zwölften Architekten im Gebiet Unterwerke. Benötigt ein Handwerksmetall und 140 Rosaries.",
+        "it": "Forgiato dal Dodicesimo Architetto nell'area Sotto-Officine. Richiede un Metallo da Forgiare e 140 Rosaries.",
+        "ru": "Создано Двенадцатым Архитектором в области Подмастерских. Требует один Крафтметалл и 140 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-scuttlebrace-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 105,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-scuttlebrace.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-scuttlebrace-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-scuttlebrace-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "shard-pendant",
@@ -1642,23 +1322,15 @@
       "location_text": {
         "en": "Obtained after sprinting across the chamber in the Weavenest Cindril area of Far Fields.",
         "es": "Se obtiene después de correr a través de la cámara en el área de Cindril del Nido Tejido en los Campos Lejanos.",
-        "fr": "Obtained after sprinting across the chamber in the Weavenest Cindril area of Far Fields.",
-        "de": "Obtained after sprinting across the chamber in the Weavenest Cindril area of Far Fields.",
-        "it": "Obtained after sprinting across the chamber in the Weavenest Cindril area of Far Fields.",
-        "ru": "Obtained after sprinting across the chamber in the Weavenest Cindril area of Far Fields."
+        "fr": "Obtenu après avoir traversé en sprint la salle dans le/la Weavenest Cindril area of Far Fields.",
+        "de": "Erhalten nachdem man die Kammer im/ in der Weavenest Cindril area of Far Fields.",
+        "it": "Ottenuto dopo aver corso attraverso la camera nel Weavenest Cindril area of Far Fields.",
+        "ru": "Получается после стремительного забега через зал в области Weavenest Cindril area of Far Fields."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspeed-anklets-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 108,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-silkspeed-anklets.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspeed-anklets-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-silkspeed-anklets-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "snitch-pick",
@@ -1676,23 +1348,15 @@
       "location_text": {
         "en": "Purchase from Grindle in the Blasted Steps area for 740 Rosaries.",
         "es": "Cómpralo a Grindle en el área de los Pasos Arrasados por 740 Rosarios.",
-        "fr": "Purchase from Grindle in the Blasted Steps area for 740 Rosaries.",
-        "de": "Purchase from Grindle in the Blasted Steps area for 740 Rosaries.",
-        "it": "Purchase from Grindle in the Blasted Steps area for 740 Rosaries.",
-        "ru": "Purchase from Grindle in the Blasted Steps area for 740 Rosaries."
+        "fr": "Acheter auprès de Grindle in the Blasted Steps area for 740 Rosaries.",
+        "de": "Kaufen bei Grindle in the Blasted Steps area for 740 Rosaries.",
+        "it": "Acquistare da Grindle in the Blasted Steps area for 740 Rosaries.",
+        "ru": "Купить у Grindle in the Blasted Steps area for 740 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-snitch-pick-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 109,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-snitch-pick.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-snitch-pick-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-snitch-pick-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "spider-strings",
@@ -1710,23 +1374,15 @@
       "location_text": {
         "en": "Purchase from Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish.",
         "es": "Cómpralo a Jubilana en Clavecanto por 320 Rosarios después de completar el Deseo del Mercader Perdido.",
-        "fr": "Purchase from Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish.",
-        "de": "Purchase from Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish.",
-        "it": "Purchase from Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish.",
-        "ru": "Purchase from Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish."
+        "fr": "Acheter auprès de Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish.",
+        "de": "Kaufen bei Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish.",
+        "it": "Acquistare da Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish.",
+        "ru": "Купить у Jubilana in Songclave for 320 Rosaries after completing the The Lost Merchant Wish."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spider-strings-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 110,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-spider-strings.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spider-strings-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spider-strings-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "spool-extender",
@@ -1744,23 +1400,15 @@
       "location_text": {
         "en": "Purchase from Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish.",
         "es": "Cómpralo a Jubilana en Clavecanto por 720 Rosarios después de completar el Deseo del Mercader Errante.",
-        "fr": "Purchase from Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish.",
-        "de": "Purchase from Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish.",
-        "it": "Purchase from Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish.",
-        "ru": "Purchase from Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish."
+        "fr": "Acheter auprès de Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish.",
+        "de": "Kaufen bei Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish.",
+        "it": "Acquistare da Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish.",
+        "ru": "Купить у Jubilana in Songclave for 720 Rosaries after completing the The Wandering Merchant Wish."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spool-extender-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 111,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-spool-extender.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spool-extender-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-spool-extender-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "sting-shard",
@@ -1778,23 +1426,15 @@
       "location_text": {
         "en": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 140 Rosaries.",
         "es": "Fabricada por la Hija de la Forja en el área de los Muelles Profundos. Requiere un Metal de Artesanía y 140 Rosarios.",
-        "fr": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 140 Rosaries.",
-        "de": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 140 Rosaries.",
-        "it": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 140 Rosaries.",
-        "ru": "Crafted by Forge Daughter in the Deep Docks area. Requires one Craftmetal and 140 Rosaries."
+        "fr": "Forgé par la Fille de la Forge dans la zone Docks Profonds. Nécessite un Métal d'Artisanat et 140 Rosaries.",
+        "de": "Geschmiedet von der Schmiedetochter im Gebiet Tiefe Docks. Benötigt ein Handwerksmetall und 140 Rosaries.",
+        "it": "For giato dalla Figlia della Forgia nell'area Darsene Profonde. Richiede un Metallo da Forgiare e 140 Rosaries.",
+        "ru": "Создано Дочерью Кузни в районе Глубоких Доков. Требует один Крафтметалл и 140 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sting-shard-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 112,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-sting-shard.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sting-shard-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-sting-shard-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "straight-pin",
@@ -1812,23 +1452,15 @@
       "location_text": {
         "en": "Found on a table in the area above Grindle's cell in The Marrow.",
         "es": "Encontrado en una mesa en el área sobre la celda de Grindle en La Médula.",
-        "fr": "Found on a table in the area above Grindle's cell in The Marrow.",
-        "de": "Found on a table in the area above Grindle's cell in The Marrow.",
-        "it": "Found on a table in the area above Grindle's cell in The Marrow.",
-        "ru": "Found on a table in the area above Grindle's cell in The Marrow."
+        "fr": "Trouvé sur une table dans le/la area above Grindle's cell in The Marrow.",
+        "de": "Gefunden auf einem Tisch im/in der area above Grindle's cell in The Marrow.",
+        "it": "Trovato su un tavolo nel/nella area above Grindle's cell in The Marrow.",
+        "ru": "Найдено на столе в area above Grindle's cell in The Marrow."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-straight-pin-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 113,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-straight-pin.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-straight-pin-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-straight-pin-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "tacks",
@@ -1846,23 +1478,15 @@
       "location_text": {
         "en": "Obtained as a reward for completing the Roach Guts Wish for Crull and Benjin in the Sinner's Road area.",
         "es": "Se obtiene como recompensa por completar el Deseo de las Tripas de Cucaracha para Crull y Benjin en el área del Camino del Pecador.",
-        "fr": "Obtained as a reward for completing the Roach Guts Wish for Crull and Benjin in the Sinner's Road area.",
-        "de": "Obtained as a reward for completing the Roach Guts Wish for Crull and Benjin in the Sinner's Road area.",
-        "it": "Obtained as a reward for completing the Roach Guts Wish for Crull and Benjin in the Sinner's Road area.",
-        "ru": "Obtained as a reward for completing the Roach Guts Wish for Crull and Benjin in the Sinner's Road area."
+        "fr": "Obtenu en récompense pour avoir terminé le/la Roach Guts Wish for Crull and Benjin in the Sinner's Road area.",
+        "de": "Als Belohnung erhalten für den Abschluss von Roach Guts Wish for Crull and Benjin in the Sinner's Road area.",
+        "it": "Ottenuto come ricompensa per aver completato Roach Guts Wish for Crull and Benjin in the Sinner's Road area.",
+        "ru": "Получается в награду за выполнение Roach Guts Wish for Crull and Benjin in the Sinner's Road area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-tacks-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 114,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-tacks.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-tacks-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-tacks-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "thiefs-mark",
@@ -1880,23 +1504,15 @@
       "location_text": {
         "en": "Purchase from Grindle in the Blasted Steps area for 350 Rosaries.",
         "es": "Cómpralo a Grindle en el área de los Pasos Arrasados por 350 Rosarios.",
-        "fr": "Purchase from Grindle in the Blasted Steps area for 350 Rosaries.",
-        "de": "Purchase from Grindle in the Blasted Steps area for 350 Rosaries.",
-        "it": "Purchase from Grindle in the Blasted Steps area for 350 Rosaries.",
-        "ru": "Purchase from Grindle in the Blasted Steps area for 350 Rosaries."
+        "fr": "Acheter auprès de Grindle in the Blasted Steps area for 350 Rosaries.",
+        "de": "Kaufen bei Grindle in the Blasted Steps area for 350 Rosaries.",
+        "it": "Acquistare da Grindle in the Blasted Steps area for 350 Rosaries.",
+        "ru": "Купить у Grindle in the Blasted Steps area for 350 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thiefs-mark-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 115,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-thiefs-mark.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thiefs-mark-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-thiefs-mark-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "threefold-pin",
@@ -1982,23 +1598,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the Voltvyrm boss fight in the Voltnest area of Sands of Karak.",
         "es": "Se obtiene como recompensa por vencer al jefe Sierpe Voltio en el área del Nido de Voltios de las Arenas de Karak.",
-        "fr": "Obtained as a reward for beating the Voltvyrm boss fight in the Voltnest area of Sands of Karak.",
-        "de": "Obtained as a reward for beating the Voltvyrm boss fight in the Voltnest area of Sands of Karak.",
-        "it": "Obtained as a reward for beating the Voltvyrm boss fight in the Voltnest area of Sands of Karak.",
-        "ru": "Obtained as a reward for beating the Voltvyrm boss fight in the Voltnest area of Sands of Karak."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la Voltvyrm boss fight in the Voltnest area of Sands of Karak.",
+        "de": "Als Belohnung erhalten für den Sieg über Voltvyrm boss fight in the Voltnest area of Sands of Karak.",
+        "it": "Ottenuto come ricompensa per aver sconfitto Voltvyrm boss fight in the Voltnest area of Sands of Karak.",
+        "ru": "Получается в награду за победу над Voltvyrm boss fight in the Voltnest area of Sands of Karak."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-volt-filament-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 118,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-volt-filament.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-volt-filament-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-volt-filament-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "voltvessels",
@@ -2016,23 +1624,15 @@
       "location_text": {
         "en": "Found on a table in the northeastern part of the Memorium area during Act 3.",
         "es": "Encontrado en una mesa en la parte noreste del área del Memorium durante el Acto 3.",
-        "fr": "Found on a table in the northeastern part of the Memorium area during Act 3.",
-        "de": "Found on a table in the northeastern part of the Memorium area during Act 3.",
-        "it": "Found on a table in the northeastern part of the Memorium area during Act 3.",
-        "ru": "Found on a table in the northeastern part of the Memorium area during Act 3."
+        "fr": "Trouvé sur une table dans le/la northeastern part of the Memorium area during Act 3.",
+        "de": "Gefunden auf einem Tisch im/in der northeastern part of the Memorium area during Act 3.",
+        "it": "Trovato su un tavolo nel/nella northeastern part of the Memorium area during Act 3.",
+        "ru": "Найдено на столе в northeastern part of the Memorium area during Act 3."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-voltvessels-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 119,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-voltvessels.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-voltvessels-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-voltvessels-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "warding-bell",
@@ -2050,23 +1650,15 @@
       "location_text": {
         "en": "Found on a platform in the Far Fields area.",
         "es": "Encontrado en una plataforma en el área de los Campos Lejanos.",
-        "fr": "Found on a platform in the Far Fields area.",
-        "de": "Found on a platform in the Far Fields area.",
-        "it": "Found on a platform in the Far Fields area.",
-        "ru": "Found on a platform in the Far Fields area."
+        "fr": "Trouvé sur une plateforme dans le/la Far Fields area.",
+        "de": "Gefunden auf einer Plattform im/in der Far Fields area.",
+        "it": "Trovato su una piattaforma nel/nella Far Fields area.",
+        "ru": "Найдено на платформе в Far Fields area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-warding-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 120,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-warding-bell.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-warding-bell-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-warding-bell-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "weavelight",
@@ -2084,23 +1676,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the Moss Mothers boss fight in Weavenest Atla.",
         "es": "Se obtiene como recompensa por vencer al jefe Madres de Musgo en Atla del Nido Tejido.",
-        "fr": "Obtained as a reward for beating the Moss Mothers boss fight in Weavenest Atla.",
-        "de": "Obtained as a reward for beating the Moss Mothers boss fight in Weavenest Atla.",
-        "it": "Obtained as a reward for beating the Moss Mothers boss fight in Weavenest Atla.",
-        "ru": "Obtained as a reward for beating the Moss Mothers boss fight in Weavenest Atla."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la Moss Mothers boss fight in Weavenest Atla.",
+        "de": "Als Belohnung erhalten für den Sieg über Moss Mothers boss fight in Weavenest Atla.",
+        "it": "Ottenuto come ricompensa per aver sconfitto Moss Mothers boss fight in Weavenest Atla.",
+        "ru": "Получается в награду за победу над Moss Mothers boss fight in Weavenest Atla."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weavelight-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 121,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-weavelight.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weavelight-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weavelight-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "weighted-belt",
@@ -2118,23 +1702,15 @@
       "location_text": {
         "en": "Purchase from Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries.",
         "es": "Cómpralo a Mort en el área del Descanso del Peregrino de los Campos Lejanos por 160 Rosarios.",
-        "fr": "Purchase from Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries.",
-        "de": "Purchase from Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries.",
-        "it": "Purchase from Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries.",
-        "ru": "Purchase from Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries."
+        "fr": "Acheter auprès de Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries.",
+        "de": "Kaufen bei Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries.",
+        "it": "Acquistare da Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries.",
+        "ru": "Купить у Mort in the Pilgrim's Rest area of Far Fields for 160 Rosaries."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weighted-belt-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 122,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-weighted-belt.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weighted-belt-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-weighted-belt-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "wispfire-lantern",
@@ -2152,23 +1728,15 @@
       "location_text": {
         "en": "Obtained as a reward for beating the Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket.",
         "es": "Se obtiene como recompensa por vencer al jefe Padre de la Llama en la sección de Corazón de Campana al oeste del Matorral de Fuego Fatuo.",
-        "fr": "Obtained as a reward for beating the Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket.",
-        "de": "Obtained as a reward for beating the Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket.",
-        "it": "Obtained as a reward for beating the Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket.",
-        "ru": "Obtained as a reward for beating the Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket."
+        "fr": "Obtenu en récompense pour avoir vaincu le/la Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket.",
+        "de": "Als Belohnung erhalten für den Sieg über Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket.",
+        "it": "Ottenuto come ricompensa per aver sconfitto Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket.",
+        "ru": "Получается в награду за победу над Father of the Flame boss fight in the section of Bellheart to the west of Wisp Thicket."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wispfire-lantern-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 123,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-wispfire-lantern.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wispfire-lantern-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wispfire-lantern-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "wreath-of-purity",
@@ -2186,23 +1754,15 @@
       "location_text": {
         "en": "Found on a platform in the Putrified Ducts area.",
         "es": "Encontrado en una plataforma en el área de los Conductos Putrefactos.",
-        "fr": "Found on a platform in the Putrified Ducts area.",
-        "de": "Found on a platform in the Putrified Ducts area.",
-        "it": "Found on a platform in the Putrified Ducts area.",
-        "ru": "Found on a platform in the Putrified Ducts area."
+        "fr": "Trouvé sur une plateforme dans le/la Putrified Ducts area.",
+        "de": "Gefunden auf einer Plattform im/in der Putrified Ducts area.",
+        "it": "Trovato su una piattaforma nel/nella Putrified Ducts area.",
+        "ru": "Найдено на платформе в Putrified Ducts area."
       },
       "location_img": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wreath-of-purity-map.jpg?q=49&fit=crop&w=480&dpr=2",
       "numId": 124,
       "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-wreath-of-purity.png?fit=contain&h=22&w=22",
-      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wreath-of-purity-map.jpg?q=49&fit=crop&w=480&dpr=2",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "mapImage": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/silksong-tools-wreath-of-purity-map.jpg?q=49&fit=crop&w=480&dpr=2"
     },
     {
       "id": "ancient-mask-shard-1-1",
@@ -2219,23 +1779,15 @@
       "location_text": {
         "en": "Can be bought from Pebb for 300 rosaries",
         "es": "Se puede comprar a Pebb por 300 rosarios",
-        "fr": "Can be bought from Pebb for 300 rosaries",
-        "de": "Can be bought from Pebb for 300 rosaries",
-        "it": "Can be bought from Pebb for 300 rosaries",
-        "ru": "Can be bought from Pebb for 300 rosaries"
+        "fr": "Peut être acheté auprès de Pebb for 300 rosaries",
+        "de": "Kann gekauft werden bei Pebb for 300 rosaries",
+        "it": "Può essere acquistato da Pebb for 300 rosaries",
+        "ru": "Можно купить у Pebb for 300 rosaries"
       },
       "location_img": "assets/images/mask shards location/1.png",
       "numId": 5,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-1-2",
@@ -2252,23 +1804,15 @@
       "location_text": {
         "en": "Required: Cling Grip",
         "es": "Requisito: Agarre Adherente",
-        "fr": "Required: Cling Grip",
-        "de": "Required: Cling Grip",
-        "it": "Required: Cling Grip",
-        "ru": "Required: Cling Grip"
+        "fr": "Requis : Cling Grip",
+        "de": "Erfordert: Cling Grip",
+        "it": "Richiesto: Cling Grip",
+        "ru": "Требуется: Cling Grip"
       },
       "location_img": "assets/images/mask shards location/2.jpg",
       "numId": 6,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-1-3",
@@ -2285,23 +1829,15 @@
       "location_text": {
         "en": "Required: Drifter's Cloak",
         "es": "Requisito: Capa de Vagabundo",
-        "fr": "Required: Drifter's Cloak",
-        "de": "Required: Drifter's Cloak",
-        "it": "Required: Drifter's Cloak",
-        "ru": "Required: Drifter's Cloak"
+        "fr": "Requis : Drifter's Cloak",
+        "de": "Erfordert: Drifter's Cloak",
+        "it": "Richiesto: Drifter's Cloak",
+        "ru": "Требуется: Drifter's Cloak"
       },
       "location_img": "assets/images/mask shards location/3.jpg",
       "numId": 7,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-1-4",
@@ -2417,23 +1953,15 @@
       "location_text": {
         "en": "Required: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height",
         "es": "Requisito: Ascenso de Seda, o:\n\nPaso Veloz desde la plataforma en la primera captura de pantalla de arriba\nGarfio inmediatamente después\nCapa de Faydown para ganar un poco más de altura",
-        "fr": "Required: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height",
-        "de": "Required: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height",
-        "it": "Required: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height",
-        "ru": "Required: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height"
+        "fr": "Requis : Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height",
+        "de": "Erfordert: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height",
+        "it": "Richiesto: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height",
+        "ru": "Требуется: Silk Soar, or:\n\nSwift Step from the platform in the first screenshot above\nClawline immediately after\nFaydown Cloak to gain a bit more height"
       },
       "location_img": "assets/images/mask shards location/7.jpg",
       "numId": 11,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-2-4",
@@ -2483,23 +2011,15 @@
       "location_text": {
         "en": "Required: Hit the box in the corridor below, entered via Breakable Ceiling.",
         "es": "Requisito: Golpea la caja en el pasillo de abajo, al que se entra a través de un Techo Rompible.",
-        "fr": "Required: Hit the box in the corridor below, entered via Breakable Ceiling.",
-        "de": "Required: Hit the box in the corridor below, entered via Breakable Ceiling.",
-        "it": "Required: Hit the box in the corridor below, entered via Breakable Ceiling.",
-        "ru": "Required: Hit the box in the corridor below, entered via Breakable Ceiling."
+        "fr": "Requis : Hit the box in the corridor below, entered via Breakable Ceiling.",
+        "de": "Erfordert: Hit the box in the corridor below, entered via Breakable Ceiling.",
+        "it": "Richiesto: Hit the box in the corridor below, entered via Breakable Ceiling.",
+        "ru": "Требуется: Hit the box in the corridor below, entered via Breakable Ceiling."
       },
       "location_img": "assets/images/mask shards location/9.jpg",
       "numId": 13,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-3-2",
@@ -2516,23 +2036,15 @@
       "location_text": {
         "en": "Required: Complete Savage Beastfly Wish",
         "es": "Requisito: Completar el Deseo de la Mosca Bestia Salvaje",
-        "fr": "Required: Complete Savage Beastfly Wish",
-        "de": "Required: Complete Savage Beastfly Wish",
-        "it": "Required: Complete Savage Beastfly Wish",
-        "ru": "Required: Complete Savage Beastfly Wish"
+        "fr": "Requis : Complete Savage Beastfly Wish",
+        "de": "Erfordert: Complete Savage Beastfly Wish",
+        "it": "Richiesto: Complete Savage Beastfly Wish",
+        "ru": "Требуется: Complete Savage Beastfly Wish"
       },
       "location_img": "assets/images/mask shards location/10.jpg",
       "numId": 14,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-3-3",
@@ -2549,23 +2061,15 @@
       "location_text": {
         "en": "Required: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible.",
         "es": "Requisito: En la cima de la Caverna Calavera. Necesitarás llegar al fondo antes de que sea accesible.",
-        "fr": "Required: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible.",
-        "de": "Required: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible.",
-        "it": "Required: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible.",
-        "ru": "Required: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible."
+        "fr": "Requis : At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible.",
+        "de": "Erfordert: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible.",
+        "it": "Richiesto: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible.",
+        "ru": "Требуется: At the top of the Skull Cavern. You'll need to reach the bottom before it becomes accessible."
       },
       "location_img": "assets/images/mask shards location/11.jpg",
       "numId": 15,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-3-4",
@@ -2582,23 +2086,15 @@
       "location_text": {
         "en": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nRequired: Clawline",
         "es": "Al final de una precaria serie de pasillos, llenos de Slubberlug y aguas infestadas de parásitos.\n\nRequisito: Garfio",
-        "fr": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nRequired: Clawline",
-        "de": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nRequired: Clawline",
-        "it": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nRequired: Clawline",
-        "ru": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nRequired: Clawline"
+        "fr": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nRequis : Clawline",
+        "de": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nErfordert: Clawline",
+        "it": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nRichiesto: Clawline",
+        "ru": "At the end of a precarious series of corridors, filled with Slubberlug and parasite-infested waters.\n\nТребуется: Clawline"
       },
       "location_img": "assets/images/mask shards location/12.jpg",
       "numId": 16,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-4-1",
@@ -2681,23 +2177,15 @@
       "location_text": {
         "en": "Inside a large hollow cylinder.\n\nRequired: Faydown Cloak",
         "es": "Dentro de un gran cilindro hueco.\n\nRequisito: Capa de Faydown",
-        "fr": "Inside a large hollow cylinder.\n\nRequired: Faydown Cloak",
-        "de": "Inside a large hollow cylinder.\n\nRequired: Faydown Cloak",
-        "it": "Inside a large hollow cylinder.\n\nRequired: Faydown Cloak",
-        "ru": "Inside a large hollow cylinder.\n\nRequired: Faydown Cloak"
+        "fr": "Inside a large hollow cylinder.\n\nRequis : Faydown Cloak",
+        "de": "Inside a large hollow cylinder.\n\nErfordert: Faydown Cloak",
+        "it": "Inside a large hollow cylinder.\n\nRichiesto: Faydown Cloak",
+        "ru": "Inside a large hollow cylinder.\n\nТребуется: Faydown Cloak"
       },
       "location_img": "assets/images/mask shards location/15.jpg",
       "numId": 19,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-4-4",
@@ -2714,23 +2202,15 @@
       "location_text": {
         "en": "Required: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge.",
         "es": "Requisito: Capa de Faydown + Garfio\n\nAl final de un desafío de plataformas.",
-        "fr": "Required: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge.",
-        "de": "Required: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge.",
-        "it": "Required: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge.",
-        "ru": "Required: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge."
+        "fr": "Requis : Faydown Cloak + Clawline\n\nAt the end of a platforming challenge.",
+        "de": "Erfordert: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge.",
+        "it": "Richiesto: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge.",
+        "ru": "Требуется: Faydown Cloak + Clawline\n\nAt the end of a platforming challenge."
       },
       "location_img": "assets/images/mask shards location/16.jpg",
       "numId": 20,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-5-1",
@@ -2747,23 +2227,15 @@
       "location_text": {
         "en": "Required: Complete Fastest in Pharloom Wish",
         "es": "Requisito: Completar el Deseo del Más Rápido de Pharloom",
-        "fr": "Required: Complete Fastest in Pharloom Wish",
-        "de": "Required: Complete Fastest in Pharloom Wish",
-        "it": "Required: Complete Fastest in Pharloom Wish",
-        "ru": "Required: Complete Fastest in Pharloom Wish"
+        "fr": "Requis : Complete Fastest in Pharloom Wish",
+        "de": "Erfordert: Complete Fastest in Pharloom Wish",
+        "it": "Richiesto: Complete Fastest in Pharloom Wish",
+        "ru": "Требуется: Complete Fastest in Pharloom Wish"
       },
       "location_img": "assets/images/mask shards location/17.jpg",
       "numId": 21,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-5-2",
@@ -2780,23 +2252,15 @@
       "location_text": {
         "en": "Required: Complete The Hidden Hunter Wish in Act 3",
         "es": "Requisito: Completar el Deseo del Cazador Oculto en el Acto 3",
-        "fr": "Required: Complete The Hidden Hunter Wish in Act 3",
-        "de": "Required: Complete The Hidden Hunter Wish in Act 3",
-        "it": "Required: Complete The Hidden Hunter Wish in Act 3",
-        "ru": "Required: Complete The Hidden Hunter Wish in Act 3"
+        "fr": "Requis : Complete The Hidden Hunter Wish in Act 3",
+        "de": "Erfordert: Complete The Hidden Hunter Wish in Act 3",
+        "it": "Richiesto: Complete The Hidden Hunter Wish in Act 3",
+        "ru": "Требуется: Complete The Hidden Hunter Wish in Act 3"
       },
       "location_img": "assets/images/mask shards location/18.jpg",
       "numId": 22,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-5-3",
@@ -2813,23 +2277,15 @@
       "location_text": {
         "en": "Required: Complete Dark Hearts Wish in Act 3.",
         "es": "Requisito: Completar el Deseo de los Corazones Oscuros en el Acto 3.",
-        "fr": "Required: Complete Dark Hearts Wish in Act 3.",
-        "de": "Required: Complete Dark Hearts Wish in Act 3.",
-        "it": "Required: Complete Dark Hearts Wish in Act 3.",
-        "ru": "Required: Complete Dark Hearts Wish in Act 3."
+        "fr": "Requis : Complete Dark Hearts Wish in Act 3.",
+        "de": "Erfordert: Complete Dark Hearts Wish in Act 3.",
+        "it": "Richiesto: Complete Dark Hearts Wish in Act 3.",
+        "ru": "Требуется: Complete Dark Hearts Wish in Act 3."
       },
       "location_img": "assets/images/mask shards location/19.jpg",
       "numId": 23,
       "image": "assets/images/shardmask.png",
-      "icon": "assets/images/shardmask.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/shardmask.png"
     },
     {
       "id": "ancient-mask-shard-5-4",
@@ -2945,23 +2401,15 @@
       "location_text": {
         "en": "Required: Cling Grip. Tip: To reach this room, jump up the wall above this Breakable Wall.",
         "es": "Requisito: Agarre Adherente. Consejo: Para llegar a esta habitación, salta por la pared sobre esta Pared Rompible.",
-        "fr": "Required: Cling Grip. Tip: To reach this room, jump up the wall above this Breakable Wall.",
-        "de": "Required: Cling Grip. Tip: To reach this room, jump up the wall above this Breakable Wall.",
-        "it": "Required: Cling Grip. Tip: To reach this room, jump up the wall above this Breakable Wall.",
-        "ru": "Required: Cling Grip. Tip: To reach this room, jump up the wall above this Breakable Wall."
+        "fr": "Requis : Cling Grip. Astuce : To reach this room, jump up the wall above this Breakable Wall.",
+        "de": "Erfordert: Cling Grip. Tipp: To reach this room, jump up the wall above this Breakable Wall.",
+        "it": "Richiesto: Cling Grip. Suggerimento: To reach this room, jump up the wall above this Breakable Wall.",
+        "ru": "Требуется: Cling Grip. Подсказка: To reach this room, jump up the wall above this Breakable Wall."
       },
       "location_img": "assets/images/silk_spool_locations/3.jpg",
       "numId": 27,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-4",
@@ -2978,23 +2426,15 @@
       "location_text": {
         "en": "Required: Cling Grip.",
         "es": "Requisito: Agarre Adherente.",
-        "fr": "Required: Cling Grip.",
-        "de": "Required: Cling Grip.",
-        "it": "Required: Cling Grip.",
-        "ru": "Required: Cling Grip."
+        "fr": "Requis : Cling Grip.",
+        "de": "Erfordert: Cling Grip.",
+        "it": "Richiesto: Cling Grip.",
+        "ru": "Требуется: Cling Grip."
       },
       "location_img": "assets/images/silk_spool_locations/4.jpg",
       "numId": 28,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-5",
@@ -3011,23 +2451,15 @@
       "location_text": {
         "en": "Required: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries.",
         "es": "Requisito: Completar Mi Mensajero Perdido. Se puede comprar a Frey por 270 Rosarios.",
-        "fr": "Required: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries.",
-        "de": "Required: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries.",
-        "it": "Required: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries.",
-        "ru": "Required: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries."
+        "fr": "Requis : Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries.",
+        "de": "Erfordert: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries.",
+        "it": "Richiesto: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries.",
+        "ru": "Требуется: Complete My Missing Courier. Can be purchased from Frey for 270 Rosaries."
       },
       "location_img": "assets/images/silk_spool_locations/5.jpg",
       "numId": 29,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-6",
@@ -3044,23 +2476,15 @@
       "location_text": {
         "en": "At the top of a frosty area. Required: Cling Grip.",
         "es": "En la cima de un área helada. Requisito: Agarre Adherente.",
-        "fr": "At the top of a frosty area. Required: Cling Grip.",
-        "de": "At the top of a frosty area. Required: Cling Grip.",
-        "it": "At the top of a frosty area. Required: Cling Grip.",
-        "ru": "At the top of a frosty area. Required: Cling Grip."
+        "fr": "At the top of a frosty area. Requis : Cling Grip.",
+        "de": "At the top of a frosty area. Erfordert: Cling Grip.",
+        "it": "At the top of a frosty area. Richiesto: Cling Grip.",
+        "ru": "At the top of a frosty area. Требуется: Cling Grip."
       },
       "location_img": "assets/images/silk_spool_locations/6.jpg",
       "numId": 30,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-7",
@@ -3110,23 +2534,15 @@
       "location_text": {
         "en": "At the very top of the platforming puzzle in the room below. Tip: You can hit the bottom of the platforms to change their positions!",
         "es": "En lo más alto del puzzle de plataformas en la habitación de abajo. Consejo: ¡Puedes golpear la parte inferior de las plataformas para cambiar sus posiciones!",
-        "fr": "At the very top of the platforming puzzle in the room below. Tip: You can hit the bottom of the platforms to change their positions!",
-        "de": "At the very top of the platforming puzzle in the room below. Tip: You can hit the bottom of the platforms to change their positions!",
-        "it": "At the very top of the platforming puzzle in the room below. Tip: You can hit the bottom of the platforms to change their positions!",
-        "ru": "At the very top of the platforming puzzle in the room below. Tip: You can hit the bottom of the platforms to change their positions!"
+        "fr": "At the very top of the platforming puzzle in the room below. Astuce : You can hit the bottom of the platforms to change their positions!",
+        "de": "At the very top of the platforming puzzle in the room below. Tipp: You can hit the bottom of the platforms to change their positions!",
+        "it": "At the very top of the platforming puzzle in the room below. Suggerimento: You can hit the bottom of the platforms to change their positions!",
+        "ru": "At the very top of the platforming puzzle in the room below. Подсказка: You can hit the bottom of the platforms to change their positions!"
       },
       "location_img": "assets/images/silk_spool_locations/8.jpg",
       "numId": 32,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-9",
@@ -3209,23 +2625,15 @@
       "location_text": {
         "en": "Required: Find 14 Lost Fleas.",
         "es": "Requisito: Encontrar 14 Pulgas Perdidas.",
-        "fr": "Required: Find 14 Lost Fleas.",
-        "de": "Required: Find 14 Lost Fleas.",
-        "it": "Required: Find 14 Lost Fleas.",
-        "ru": "Required: Find 14 Lost Fleas."
+        "fr": "Requis : Find 14 Lost Fleas.",
+        "de": "Erfordert: Find 14 Lost Fleas.",
+        "it": "Richiesto: Find 14 Lost Fleas.",
+        "ru": "Требуется: Find 14 Lost Fleas."
       },
       "location_img": "assets/images/silk_spool_locations/11.jpg",
       "numId": 35,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-12",
@@ -3242,23 +2650,15 @@
       "location_text": {
         "en": "At the end of a platforming sequence (starting elsewhere). Required: Clawline.",
         "es": "Al final de una secuencia de plataformas (que empieza en otro lugar). Requisito: Garfio.",
-        "fr": "At the end of a platforming sequence (starting elsewhere). Required: Clawline.",
-        "de": "At the end of a platforming sequence (starting elsewhere). Required: Clawline.",
-        "it": "At the end of a platforming sequence (starting elsewhere). Required: Clawline.",
-        "ru": "At the end of a platforming sequence (starting elsewhere). Required: Clawline."
+        "fr": "At the end of a platforming sequence (starting elsewhere). Requis : Clawline.",
+        "de": "At the end of a platforming sequence (starting elsewhere). Erfordert: Clawline.",
+        "it": "At the end of a platforming sequence (starting elsewhere). Richiesto: Clawline.",
+        "ru": "At the end of a platforming sequence (starting elsewhere). Требуется: Clawline."
       },
       "location_img": "assets/images/silk_spool_locations/12.jpg",
       "numId": 36,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-13",
@@ -3275,23 +2675,15 @@
       "location_text": {
         "en": "Required: Faydown Cloak.",
         "es": "Requisito: Capa de Faydown.",
-        "fr": "Required: Faydown Cloak.",
-        "de": "Required: Faydown Cloak.",
-        "it": "Required: Faydown Cloak.",
-        "ru": "Required: Faydown Cloak."
+        "fr": "Requis : Faydown Cloak.",
+        "de": "Erfordert: Faydown Cloak.",
+        "it": "Richiesto: Faydown Cloak.",
+        "ru": "Требуется: Faydown Cloak."
       },
       "location_img": "assets/images/silk_spool_locations/13.jpg",
       "numId": 37,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-14",
@@ -3341,23 +2733,15 @@
       "location_text": {
         "en": "Required: Faydown Cloak + Clawline.",
         "es": "Requisito: Capa de Faydown + Garfio.",
-        "fr": "Required: Faydown Cloak + Clawline.",
-        "de": "Required: Faydown Cloak + Clawline.",
-        "it": "Required: Faydown Cloak + Clawline.",
-        "ru": "Required: Faydown Cloak + Clawline."
+        "fr": "Requis : Faydown Cloak + Clawline.",
+        "de": "Erfordert: Faydown Cloak + Clawline.",
+        "it": "Richiesto: Faydown Cloak + Clawline.",
+        "ru": "Требуется: Faydown Cloak + Clawline."
       },
       "location_img": "assets/images/silk_spool_locations/15.jpg",
       "numId": 39,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-16",
@@ -3374,23 +2758,15 @@
       "location_text": {
         "en": "Required: Complete Balm for The Wounded Wish.",
         "es": "Requisito: Completar el Deseo del Bálsamo para los Heridos.",
-        "fr": "Required: Complete Balm for The Wounded Wish.",
-        "de": "Required: Complete Balm for The Wounded Wish.",
-        "it": "Required: Complete Balm for The Wounded Wish.",
-        "ru": "Required: Complete Balm for The Wounded Wish."
+        "fr": "Requis : Complete Balm for The Wounded Wish.",
+        "de": "Erfordert: Complete Balm for The Wounded Wish.",
+        "it": "Richiesto: Complete Balm for The Wounded Wish.",
+        "ru": "Требуется: Complete Balm for The Wounded Wish."
       },
       "location_img": "assets/images/silk_spool_locations/16.jpg",
       "numId": 40,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-17",
@@ -3407,23 +2783,15 @@
       "location_text": {
         "en": "Required: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries.",
         "es": "Requisito: Completar el Deseo del Mercader Perdido. Se puede comprar a Jubilana por 500 Rosarios.",
-        "fr": "Required: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries.",
-        "de": "Required: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries.",
-        "it": "Required: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries.",
-        "ru": "Required: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries."
+        "fr": "Requis : Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries.",
+        "de": "Erfordert: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries.",
+        "it": "Richiesto: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries.",
+        "ru": "Требуется: Complete The Lost Merchant Wish. Can be purchased from Jubilana for 500 Rosaries."
       },
       "location_img": "assets/images/silk_spool_locations/17.jpg",
       "numId": 41,
       "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/silkspool.png"
     },
     {
       "id": "silk-spool-18",
@@ -3572,23 +2940,15 @@
       "location_text": {
         "en": "Required: Complete Chapel of the Architect",
         "es": "Requisito: Completar la Capilla del Arquitecta",
-        "fr": "Required: Complete Chapel of the Architect",
-        "de": "Required: Complete Chapel of the Architect",
-        "it": "Required: Complete Chapel of the Architect",
-        "ru": "Required: Complete Chapel of the Architect"
+        "fr": "Requis : Complete Chapel of the Architect",
+        "de": "Erfordert: Complete Chapel of the Architect",
+        "it": "Richiesto: Complete Chapel of the Architect",
+        "ru": "Требуется: Complete Chapel of the Architect"
       },
       "location_img": "assets/images/crests/location_architect.jpg",
       "numId": 48,
       "image": "assets/images/crests/crest_architect.png",
-      "icon": "assets/images/crests/crest_architect.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/crests/crest_architect.png"
     },
     {
       "id": "crest-of-beast",
@@ -3605,23 +2965,15 @@
       "location_text": {
         "en": "Required: Complete Chapel of the Beast",
         "es": "Requisito: Completar la Capilla de la Bestia",
-        "fr": "Required: Complete Chapel of the Beast",
-        "de": "Required: Complete Chapel of the Beast",
-        "it": "Required: Complete Chapel of the Beast",
-        "ru": "Required: Complete Chapel of the Beast"
+        "fr": "Requis : Complete Chapel of the Beast",
+        "de": "Erfordert: Complete Chapel of the Beast",
+        "it": "Richiesto: Complete Chapel of the Beast",
+        "ru": "Требуется: Complete Chapel of the Beast"
       },
       "location_img": "assets/images/crests/location_beast.jpg",
       "numId": 49,
       "image": "assets/images/crests/crest_beast.png",
-      "icon": "assets/images/crests/crest_beast.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/crests/crest_beast.png"
     },
     {
       "id": "crest-of-reaper",
@@ -3638,23 +2990,15 @@
       "location_text": {
         "en": "Required: Defeat the ambush in the Chapel of the Reaper and climb to the top.",
         "es": "Requisito: Derrota la emboscada en la Capilla de la parca y sube a la cima.",
-        "fr": "Required: Defeat the ambush in the Chapel of the Reaper and climb to the top.",
-        "de": "Required: Defeat the ambush in the Chapel of the Reaper and climb to the top.",
-        "it": "Required: Defeat the ambush in the Chapel of the Reaper and climb to the top.",
-        "ru": "Required: Defeat the ambush in the Chapel of the Reaper and climb to the top."
+        "fr": "Requis : Defeat the ambush in the Chapel of the Reaper and climb to the top.",
+        "de": "Erfordert: Defeat the ambush in the Chapel of the Reaper and climb to the top.",
+        "it": "Richiesto: Defeat the ambush in the Chapel of the Reaper and climb to the top.",
+        "ru": "Требуется: Defeat the ambush in the Chapel of the Reaper and climb to the top."
       },
       "location_img": "assets/images/crests/location_reaper.jpg",
       "numId": 50,
       "image": "assets/images/crests/crest_reaper.png",
-      "icon": "assets/images/crests/crest_reaper.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/crests/crest_reaper.png"
     },
     {
       "id": "crest-of-shaman",
@@ -3704,23 +3048,15 @@
       "location_text": {
         "en": "Required: Complete Chapel of the Wanderer",
         "es": "Requisito: Completar la Capilla del Vagabundo",
-        "fr": "Required: Complete Chapel of the Wanderer",
-        "de": "Required: Complete Chapel of the Wanderer",
-        "it": "Required: Complete Chapel of the Wanderer",
-        "ru": "Required: Complete Chapel of the Wanderer"
+        "fr": "Requis : Complete Chapel of the Wanderer",
+        "de": "Erfordert: Complete Chapel of the Wanderer",
+        "it": "Richiesto: Complete Chapel of the Wanderer",
+        "ru": "Требуется: Complete Chapel of the Wanderer"
       },
       "location_img": "assets/images/crests/location_wanderer.jpg",
       "numId": 52,
       "image": "assets/images/crests/crest_wanderer.png",
-      "icon": "assets/images/crests/crest_wanderer.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/crests/crest_wanderer.png"
     },
     {
       "id": "crest-of-witch",
@@ -3737,23 +3073,15 @@
       "location_text": {
         "en": "Required: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish",
         "es": "Requisito: Lleva el Capullo Retorcido a Raíz Gris; Completa el Deseo del Rito del Renacimiento; Completa el Deseo de la Operación de Infestación",
-        "fr": "Required: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish",
-        "de": "Required: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish",
-        "it": "Required: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish",
-        "ru": "Required: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish"
+        "fr": "Requis : Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish",
+        "de": "Erfordert: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish",
+        "it": "Richiesto: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish",
+        "ru": "Требуется: Take Twisted Bud to Greyroot; Complete Rite of Rebirth Wish; Complete Infestation Operation Wish"
       },
       "location_img": "assets/images/crests/location_witch.jpg",
       "numId": 53,
       "image": "assets/images/crests/crest_witch.png",
-      "icon": "assets/images/crests/crest_witch.png",
-      "translationTodo": {
-        "location_text": [
-          "fr",
-          "de",
-          "it",
-          "ru"
-        ]
-      }
+      "icon": "assets/images/crests/crest_witch.png"
     },
     {
       "id": "crafting-kit-upgrade-1",
@@ -4146,5 +3474,6 @@
     },
     "generatedAt": "2025-09-29T13:06:35.157Z",
     "note": "Entries listed in per-item translationTodo need official translation for the given languages."
-  }
+  },
+  "autoTranslationNote": "Heuristic auto-translation applied for location_text fr,de,it,ru. Review recommended."
 }
