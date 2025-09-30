@@ -94,13 +94,70 @@
     ]
   }</script>
 
-  <!-- Google Analytics 4 (solo, configuración mínima) -->
+  <!-- Google Analytics 4 (configuración avanzada personalizada) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZD7H8X2CE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-  gtag('config', 'G-3ZD7H8X2CE');
+    
+    // Configuración avanzada con parámetros personalizados
+    gtag('config', 'G-3ZD7H8X2CE', {
+      // Configuraciones de privacidad y tracking
+      anonymize_ip: true,
+      allow_google_signals: true,
+      send_page_view: true,
+      
+      // Parámetros personalizados para el checklist
+      custom_map: {
+        'custom_parameter_1': 'progress_percentage',
+        'custom_parameter_2': 'language_selected', 
+        'custom_parameter_3': 'items_completed',
+        'custom_parameter_4': 'categories_completed'
+      },
+      
+      // Enhanced measurements
+      enhanced_measurements: {
+        scrolls: true,
+        outbound_clicks: true,
+        site_search: true,
+        video_engagement: false,
+        file_downloads: true
+      }
+    });
+
+    // Función helper para tracking de progreso del checklist
+    window.trackChecklistProgress = function(action, category, itemName, progressPercent) {
+      gtag('event', action, {
+        event_category: 'Checklist',
+        event_label: itemName || category,
+        custom_parameter_1: progressPercent,
+        custom_parameter_2: document.getElementById('langSel')?.value || 'en',
+        custom_parameter_3: document.querySelectorAll('.item[aria-checked="true"]').length,
+        value: Math.round(progressPercent)
+      });
+    };
+
+    // Función para tracking de búsquedas
+    window.trackSearch = function(searchTerm, resultsCount) {
+      gtag('event', 'search', {
+        search_term: searchTerm,
+        event_category: 'Site Search',
+        custom_parameter_2: document.getElementById('langSel')?.value || 'en',
+        value: resultsCount
+      });
+    };
+
+    // Función para conversiones (100% completado)
+    window.trackCompletion = function(completionType, totalItems) {
+      gtag('event', 'conversion', {
+        event_category: 'Checklist Completion',
+        event_label: completionType,
+        custom_parameter_1: 100,
+        custom_parameter_3: totalItems,
+        value: totalItems
+      });
+    };
   </script>
   <!-- Ads / Monetization (AdSense snippet inserted when client ID provided) -->
   <!-- Google AdSense (script activo; unidades de anuncio ocultas hasta aprobación) -->
