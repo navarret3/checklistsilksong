@@ -66,6 +66,5 @@
   "optional.label": "Optional",
   "category.pulgas": "Fleas",
   "category.bosses": "Bosses",
-  "category.optional.note": "This category does not count towards the 100% completion.",
-  "category.pulgas.note": "Fleas are required to obtain the 'Egg of Flealia' which is needed for 100%"
+  "category.optional.note": "This category does not count towards the 100% completion."
 }
