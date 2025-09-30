@@ -225,6 +225,39 @@
   #progressPercentText { font-size:1.05rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; background:var(--accent-grad); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 18px rgba(79,179,255,.28); }
   .progress-bar { height:14px; width:100%; background:#1f2730; border-radius:8px; overflow:hidden; position:relative; box-shadow:0 2px 6px -2px rgba(0,0,0,.5) inset,0 0 0 1px #1d252d; }
   .progress-bar__fill { position:absolute; top:0; left:0; height:100%; width:0; background:var(--accent-grad); transition:width .45s cubic-bezier(.55,.12,.25,.9); }
+  /* Badge y notas para categorías/ítems opcionales */
+  .badge-opt { display:inline-block; font-size:.55rem; line-height:1; background:#2a3340; color:#ffc94d; padding:.15rem .35rem .22rem; border-radius:6px; margin-left:.4rem; letter-spacing:.5px; box-shadow:0 0 0 1px #394653; vertical-align:middle; }
+  .item.optional-item { position:relative; }
+  .item .optional-note { margin:0 0 .35rem 0; font-size:.55rem; letter-spacing:1px; font-weight:600; text-transform:uppercase; display:inline-inline; background:#25313c; padding:.22rem .55rem .26rem; border-radius:999px; color:#d7e4ed; box-shadow:0 0 0 1px #2e3b46; opacity:.9; align-self:flex-start; }
+  /* Nueva insignia inline para jefes (debajo del nombre) */
+  .item .meta { display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
+  .item .optional-inline { 
+    display:inline-block;
+    font-size:.5rem;
+    line-height:1;
+    letter-spacing:1px;
+    font-weight:600;
+    text-transform:uppercase;
+    background:linear-gradient(90deg,#2c3642,#1f262d);
+    color:#ffc94d;
+    padding:.2rem .5rem .24rem;
+    border-radius:999px;
+    box-shadow:0 0 0 1px #3a4753,0 0 0 2px rgba(255,201,77,0.12);
+    position:relative;
+  }
+  .item .optional-inline::before{ content:"★"; font-size:.55rem; margin-right:.3rem; opacity:.9; }
+  .item .optional-inline { filter:drop-shadow(0 2px 4px rgba(0,0,0,.45)); }
+  .category-optional-note { grid-column:1/-1; background:#202830; border:1px dashed #33414d; color:#c2ced6; font-size:.55rem; letter-spacing:.6px; padding:.45rem .6rem .5rem; border-radius:8px; margin:0 0 .4rem; line-height:1.35; }
+  .category-optional-note.boss-note { display:flex; align-items:center; gap:.55rem; border-style:solid; border-color:#3a2d55; background:linear-gradient(135deg,#1d1f27,#232838 65%,#1c2027); box-shadow:0 0 0 1px #2e3744,0 4px 10px -4px rgba(0,0,0,.55); }
+  .boss-note-row { display:flex; align-items:center; gap:.55rem; flex-wrap:wrap; }
+  .boss-note-icon { background:#3e2b63; color:#ffd36b; width:22px; height:22px; font-size:.7rem; display:flex; align-items:center; justify-content:center; border-radius:6px; box-shadow:0 0 0 1px #4d3b75,0 0 0 2px rgba(255,211,107,0.25); }
+  .boss-note-text { font-size:.6rem; letter-spacing:.8px; font-weight:600; color:#d5d9e1; text-transform:uppercase; }
+  .boss-note-progress { font-size:.55rem; background:#2c3644; padding:.25rem .55rem .28rem; border-radius:999px; letter-spacing:1px; color:#d8e3ec; box-shadow:0 0 0 1px #3a4855; }
+  .cat-opt-progress { margin-left:.6rem; font-size:.5rem; letter-spacing:1px; background:#25313c; padding:.2rem .45rem .25rem; border-radius:6px; color:#b9c8d2; box-shadow:0 0 0 1px #33414d; text-transform:uppercase; font-weight:600; }
+  .non-100-separator { margin:1.2rem 0 .2rem; padding:.65rem .75rem .7rem; border:1px solid #2a3440; border-left:4px solid #ffb347; background:linear-gradient(90deg,#1d242b,#1a2026); font-size:.6rem; letter-spacing:.85px; text-transform:uppercase; color:#d7dee5; display:flex; align-items:center; gap:.75rem; border-radius:10px; box-shadow:0 4px 12px -6px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,0.03); }
+  .non-100-separator .sep-icon { font-size:.55rem; opacity:.75; letter-spacing:2px; background:#25313c; padding:.35rem .55rem .4rem; border-radius:8px; box-shadow:0 0 0 1px #34424e; }
+  .non-100-separator .sep-text { flex:1; }
+  .item.optional-item .checkmark { color:#ffc94d; }
   #itemsRemaining { font-size:.7rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; color:#b9c5cf; background:#25313c; padding:.3rem .65rem .32rem; border-radius:999px; box-shadow:0 2px 4px -2px rgba(0,0,0,.5),0 0 0 1px #2b3741; }
   .controls { position:fixed; top:.55rem; right:6px; left:auto; display:flex; gap:.4rem; z-index:80; align-items:center; justify-content:flex-end; margin:0; padding:0; white-space:nowrap; }
   .controls > * { margin:0; }

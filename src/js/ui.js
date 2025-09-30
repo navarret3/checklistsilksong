@@ -15,7 +15,8 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
   const grouped = groupByCategory(items);
   rootEl.innerHTML='';
   const frag = document.createDocumentFragment();
-  for(const cat of Object.keys(grouped)){
+  const categoryKeys = Object.keys(grouped);
+  for(const cat of categoryKeys){
     const list = grouped[cat];
     const catEl = document.createElement('section');
     catEl.className = 'cat';
@@ -23,7 +24,11 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     const header = document.createElement('div');
     header.className = 'cat-header';
     const counts = countCompletedWeighted(list, progress);
-    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}</h2><span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
+    const anyOptional = list.some(it => it.optional || it.weight === 0);
+    const showMainCount = !(cat === 'bosses' || cat === 'pulgas');
+    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${anyOptional ? ' <span class="badge-opt" title="Opcional / Optional">★</span>' : ''}</h2>` +
+      (showMainCount ? `<span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>` : '') +
+      (cat === 'bosses' || cat === 'pulgas' ? `<span class="cat-opt-progress" data-opt-progress></span>`: '');
     header.onclick = () => { 
       const wasCollapsed = catEl.classList.contains('collapsed');
       catEl.classList.toggle('collapsed');
@@ -41,6 +46,23 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     body.className = 'cat-body';
     for(const it of list){
       body.appendChild(renderItem(it, progress, onToggle));
+    }
+    if(cat === 'bosses'){
+      const note = document.createElement('div');
+      note.className = 'category-optional-note boss-note';
+      const loc = activeLocale();
+      const bossMsg = loc==='es' ? 'Estos jefes no cuentan para el 100%' : 'These bosses do not count toward 100%';
+      note.innerHTML = `<div class="boss-note-row"><span class="boss-note-icon">★</span><span class="boss-note-text">${bossMsg}</span><span class="boss-note-progress" data-boss-note-progress></span></div>`;
+      body.insertBefore(note, body.firstChild);
+    }
+    // Insertar separador antes de pulgas (una sola vez) justo cuando cat es pulgas y existe una categoría previa distinta
+    if(cat === 'pulgas' && !rootEl.querySelector('.non-100-separator')){
+      const sep = document.createElement('div');
+      sep.className = 'non-100-separator';
+      const loc = activeLocale();
+      const sepMsg = loc==='es' ? 'A partir de aquí los elementos no cuentan para el 100%' : 'From here items do NOT count toward 100%';
+      sep.innerHTML = `<span class="sep-text">${sepMsg}</span>`;
+      frag.appendChild(sep);
     }
     catEl.appendChild(header); catEl.appendChild(body);
     frag.appendChild(catEl);
@@ -75,10 +97,10 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
 }
 
 export function updatePercent(percentEl, fillEl, items, progress){
-  const { percent } = computePercent(items, progress);
+  const { percent, optionalCompleted, optionalTotal } = computePercent(items, progress);
   percentEl.textContent = percent + '%';
   if(fillEl) fillEl.style.width = percent + '%';
-  percentEl.title = t('percent.tooltip') + ' ' + percent + '%';
+  percentEl.title = t('percent.tooltip') + ' ' + percent + '%' + (optionalTotal ? ` (Opcionales: ${optionalCompleted}/${optionalTotal})` : '');
   // Pass items to the category counter so it doesn't need to query the DOM
   updateCategoryCounts(items, progress);
 }
@@ -114,14 +136,29 @@ function renderItem(it, progress, onToggle){
     el.setAttribute('data-weight', String(it.weight));
   }
   // Build inner HTML conditionally (omit desc/map blocks if empty)
+  // For bosses queremos la insignia opcional justo debajo del nombre
+  const isBoss = it.category === 'bosses';
   let html = `
     <span class="checkmark">✔</span>
     <div class="top">
       <div class="thumb"><img src="${imgSrc}" alt="${label}" loading="lazy" decoding="async"></div>
-      <div class="meta"><span class="label">${label}</span></div>
+      <div class="meta"><span class="label">${label}</span>`;
+  if(isBoss && (it.optional || it.weight === 0)){
+    const optTxt = t ? (t('optional.label') || 'Optional') : 'Optional';
+    html += `<div class="optional-inline" title="${optTxt}">${optTxt}</div>`;
+  }
+  html += `</div>
     </div>`;
   if(desc) html += `\n    <div class="desc">${desc}</div>`;
   if(mapSrc && !/placeholder-map\.png$/.test(mapSrc)) html += `\n    <div class="map-img"><img src="${mapSrc}" alt="Location of ${label}" loading="lazy" decoding="async"><button type="button" class="zoom-btn" aria-label="Ampliar" title="Ampliar">⤢</button></div>`;
+  // Show per-item optional badge only if explicitly flagged optional (not just weight 0 in pulgas)
+  if(it.optional || (it.weight === 0 && it.category !== 'pulgas')){
+    // Mantener clase para estilos existentes, pero evitamos duplicar para bosses ya que ya se agregó arriba
+    if(!isBoss){
+      html += `\n    <div class="optional-note" title="${t ? (t('optional.label') || 'Optional') : 'Optional'}">${t ? (t('optional.label') || 'Optional') : 'Optional'}</div>`;
+    }
+    el.classList.add('optional-item');
+  }
   el.innerHTML = html;  
   // After image loads, if it is obviously tiny (<48 logical px in either dimension), upscale smoothly via canvas
   const imgEl = el.querySelector('.thumb img');
@@ -186,9 +223,22 @@ export function updateCategoryCounts(items, progress){
     const categoryItems = grouped[categoryId];
     const counts = countCompletedWeighted(categoryItems, progress);
 
-    const badge = catEl.querySelector('[data-count]');
-    if(badge) {
-      badge.textContent = `${counts.done}/${counts.total} (${counts.categoryPercentStr}%)`;
+    if(categoryId !== 'bosses' && categoryId !== 'pulgas'){
+      const badge = catEl.querySelector('[data-count]');
+      if(badge) {
+        badge.textContent = `${counts.done}/${counts.total} (${counts.categoryPercentStr}%)`;
+      }
+    }
+    const optEl = catEl.querySelector('[data-opt-progress]');
+    if(optEl){
+      optEl.textContent = `Opcionales: ${counts.optionalDone}/${counts.optionalCount}`;
+      optEl.title = 'Optional progress';
+    }
+    if(categoryId === 'bosses'){
+      const bossNoteEl = catEl.querySelector('[data-boss-note-progress]');
+      if(bossNoteEl){
+        bossNoteEl.textContent = `${counts.optionalDone}/${counts.optionalCount}`;
+      }
     }
   });
 }
@@ -198,14 +248,21 @@ function countCompleted(list, progress){
 }
 
 function countCompletedWeighted(list, progress){
-  let done=0, total=list.length, doneWeight=0, totalWeight=0;
+  let done=0, total=0, doneWeight=0, totalWeight=0;
+  let optionalCount=0, optionalDone=0;
   for(const it of list){
+    const isOptional = !!it.optional || it.weight === 0;
+    if(isOptional){
+      optionalCount++;
+      if(progress[it.id]) optionalDone++;
+      continue;
+    }
     const w = typeof it.weight==='number' && it.weight>0 ? it.weight : 1;
-    totalWeight += w;
+    totalWeight += w; total++;
     if(progress[it.id]){ done++; doneWeight += w; }
   }
   const catPercent = totalWeight ? (doneWeight/totalWeight)*100 : 0;
-  return { done, total, doneWeight, totalWeight, catPercent, categoryPercentStr: formatPercent(catPercent) };
+  return { done, total, doneWeight, totalWeight, catPercent, categoryPercentStr: formatPercent(catPercent), optionalCount, optionalDone };
 }
 
 function formatPercent(v){
