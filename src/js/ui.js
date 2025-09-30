@@ -23,7 +23,8 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     const header = document.createElement('div');
     header.className = 'cat-header';
     const counts = countCompletedWeighted(list, progress);
-    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}</h2><span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
+    const anyOptional = list.some(it => it.optional || it.weight === 0);
+    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${anyOptional ? ' <span class="badge-opt" title="Opcional / Optional">★</span>' : ''}</h2><span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
     header.onclick = () => { 
       const wasCollapsed = catEl.classList.contains('collapsed');
       catEl.classList.toggle('collapsed');
@@ -75,10 +76,10 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
 }
 
 export function updatePercent(percentEl, fillEl, items, progress){
-  const { percent } = computePercent(items, progress);
+  const { percent, optionalCompleted, optionalTotal } = computePercent(items, progress);
   percentEl.textContent = percent + '%';
   if(fillEl) fillEl.style.width = percent + '%';
-  percentEl.title = t('percent.tooltip') + ' ' + percent + '%';
+  percentEl.title = t('percent.tooltip') + ' ' + percent + '%' + (optionalTotal ? ` (Opcionales: ${optionalCompleted}/${optionalTotal})` : '');
   // Pass items to the category counter so it doesn't need to query the DOM
   updateCategoryCounts(items, progress);
 }
@@ -122,6 +123,10 @@ function renderItem(it, progress, onToggle){
     </div>`;
   if(desc) html += `\n    <div class="desc">${desc}</div>`;
   if(mapSrc && !/placeholder-map\.png$/.test(mapSrc)) html += `\n    <div class="map-img"><img src="${mapSrc}" alt="Location of ${label}" loading="lazy" decoding="async"><button type="button" class="zoom-btn" aria-label="Ampliar" title="Ampliar">⤢</button></div>`;
+  if(it.optional || it.weight === 0){
+    html += `\n    <div class="optional-note" title="${t ? (t('optional.label') || 'Optional') : 'Optional'}">${t ? (t('optional.label') || 'Optional') : 'Optional'}</div>`;
+    el.classList.add('optional-item');
+  }
   el.innerHTML = html;  
   // After image loads, if it is obviously tiny (<48 logical px in either dimension), upscale smoothly via canvas
   const imgEl = el.querySelector('.thumb img');
@@ -198,14 +203,16 @@ function countCompleted(list, progress){
 }
 
 function countCompletedWeighted(list, progress){
-  let done=0, total=list.length, doneWeight=0, totalWeight=0;
+  let done=0, total=0, doneWeight=0, totalWeight=0; let optionalCount=0;
   for(const it of list){
+    const isOptional = !!it.optional || it.weight === 0;
+    if(isOptional){ optionalCount++; continue; }
     const w = typeof it.weight==='number' && it.weight>0 ? it.weight : 1;
-    totalWeight += w;
+    totalWeight += w; total++;
     if(progress[it.id]){ done++; doneWeight += w; }
   }
   const catPercent = totalWeight ? (doneWeight/totalWeight)*100 : 0;
-  return { done, total, doneWeight, totalWeight, catPercent, categoryPercentStr: formatPercent(catPercent) };
+  return { done, total, doneWeight, totalWeight, catPercent, categoryPercentStr: formatPercent(catPercent), optionalCount };
 }
 
 function formatPercent(v){

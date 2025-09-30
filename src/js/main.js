@@ -40,8 +40,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
         updateBothPercents();
         
         // GA4 Tracking: Item toggle
-        const item = items.find(i => i.id === id);
-        const { completed, total, completedWeight, totalWeight } = computePercent(items, progress);
+  const item = items.find(i => i.id === id);
+  const { completed, total, completedWeight, totalWeight, percent } = computePercent(items, progress);
         const currentPercent = totalWeight ? (completedWeight / totalWeight) * 100 : 0;
         
         if (typeof window.trackChecklistProgress === 'function') {
@@ -54,9 +54,9 @@ import { setLocale, t, activeLocale } from './i18n.js';
           );
           
           // Check if category is now complete
-          if (progress[id] && item?.category) {
+          if (progress[id] && item?.category && !(item.optional || item.weight===0)) {
             const categoryItems = items.filter(i => i.category === item.category);
-            const categoryCompleted = categoryItems.every(i => progress[i.id]);
+            const categoryCompleted = categoryItems.filter(ci => !(ci.optional || ci.weight===0)).every(i => progress[i.id]);
             if (categoryCompleted) {
               window.trackCompletion('category_complete', categoryItems.length);
               gtag('event', 'category_completed', {
@@ -69,14 +69,16 @@ import { setLocale, t, activeLocale } from './i18n.js';
           }
           
           // Track milestone achievements
-          if (currentPercent === 100 && progress[id]) {
-            window.trackCompletion('full_checklist', total);
-          } else if (currentPercent >= 25 && currentPercent < 30 && progress[id]) {
-            window.trackChecklistProgress('milestone_25', 'Progress', '25% Completed', 25);
-          } else if (currentPercent >= 50 && currentPercent < 55 && progress[id]) {
-            window.trackChecklistProgress('milestone_50', 'Progress', '50% Completed', 50);
-          } else if (currentPercent >= 75 && currentPercent < 80 && progress[id]) {
-            window.trackChecklistProgress('milestone_75', 'Progress', '75% Completed', 75);
+          if (!(item?.optional || item?.weight===0)) {
+            if (percent === 100 && progress[id]) {
+              window.trackCompletion('full_checklist', total);
+            } else if (percent >= 25 && percent < 30 && progress[id]) {
+              window.trackChecklistProgress('milestone_25', 'Progress', '25% Completed', 25);
+            } else if (percent >= 50 && percent < 55 && progress[id]) {
+              window.trackChecklistProgress('milestone_50', 'Progress', '50% Completed', 50);
+            } else if (percent >= 75 && percent < 80 && progress[id]) {
+              window.trackChecklistProgress('milestone_75', 'Progress', '75% Completed', 75);
+            }
           }
         }
       }

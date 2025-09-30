@@ -14,7 +14,9 @@
     "crafting_kit_upgrade",
     "tool_pouch_upgrade",
     "ability",
-    "tool"
+    "tool",
+    "bosses",
+    "pulgas"
   ],
   "items": [
     {
@@ -2175,6 +2177,78 @@
       "numId": 4,
       "image": "assets/images/needle.png",
       "icon": "assets/images/needle.png"
+    },
+    {
+      "id": "boss-widow",
+      "category": "bosses",
+      "name": {
+        "en": "Widow (Boss)",
+        "es": "La Viuda (Jefe)"
+      },
+      "optional": true,
+      "weight": 0,
+      "location_text": {
+        "en": "Defeat the Widow boss. This boss does not contribute to 100% completion on this tracker.",
+        "es": "Derrota al jefe Viuda. Este jefe no contribuye al 100% de compleción en este tracker."
+      },
+      "location_img": null,
+      "numId": 1001,
+      "image": "assets/images/ss3.png",
+      "icon": "assets/images/ss3.png"
+    },
+    {
+      "id": "boss-phantom",
+      "category": "bosses",
+      "name": {
+        "en": "Phantom (Boss)",
+        "es": "Fantasma (Jefe)"
+      },
+      "optional": true,
+      "weight": 0,
+      "location_text": {
+        "en": "Defeat the Phantom boss encounter. Optional for 100%.",
+        "es": "Derrota al jefe Fantasma. Opcional para el 100%."
+      },
+      "location_img": null,
+      "numId": 1002,
+      "image": "assets/images/ss3.png",
+      "icon": "assets/images/ss3.png"
+    },
+    {
+      "id": "boss-grand-mother-silk",
+      "category": "bosses",
+      "name": {
+        "en": "Grand Mother Silk (Boss)",
+        "es": "Abuela Seda (Jefe)"
+      },
+      "optional": true,
+      "weight": 0,
+      "location_text": {
+        "en": "Defeat Grand Mother Silk. Optional for 100%.",
+        "es": "Derrota a la Abuela Seda. Opcional para el 100%."
+      },
+      "location_img": null,
+      "numId": 1003,
+      "image": "assets/images/ss3.png",
+      "icon": "assets/images/ss3.png"
+    },
+    {
+      "id": "pulgas-30",
+      "category": "pulgas",
+      "name": {
+        "en": "All 30 Lost Fleas",
+        "es": "Las 30 Pulgas Perdidas"
+      },
+      "optional": true,
+      "weight": 0,
+      "location_text": {
+        "en": "Rescue all 30 Lost Fleas in Pharloom (tracking goal only, no % weight).",
+        "es": "Rescata las 30 Pulgas Perdidas en Pharloom (solo objetivo de seguimiento, sin peso de %)."
+      },
+      "location_img": null,
+      "numId": 1004,
+      "image": "assets/images/silkspool.png",
+      "icon": "assets/images/silkspool.png"
     }
   ]
 }
