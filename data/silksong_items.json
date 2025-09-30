@@ -328,14 +328,17 @@
       "category": "misc",
       "name": {
         "en": "Sylphsong",
-        "es": "Sylphsong",
+        "es": "Silfonía",
         "fr": "Sylphsong",
         "de": "Sylphsong",
         "it": "Sylphsong",
         "ru": "Sylphsong"
       },
       "weight": 1,
-      "location_text": null,
+      "location_text": {
+        "en": "Obtained by bonding with Eva after receiving her 3 upgrades.",
+        "es": "Se consigue vinculando a Eva, después de recibir sus 3 mejoras."
+      },
       "location_img": "https://cdn.wikimg.net/en/hkwiki/images/c/ce/Mapshot_SS_Eva_01.png",
       "numId": 46,
       "image": "assets/images/sylphsong.png",
@@ -1277,7 +1280,7 @@
       "category": "tool",
       "name": {
         "en": "Silkshot (All Variants)",
-        "es": "Disparo de Seda (Todas las Variantes)",
+        "es": "Honda Sedeña (Todas las Variantes)",
         "fr": "Silkshot (All Variants)",
         "de": "Silkshot (All Variants)",
         "it": "Silkshot (All Variants)",
@@ -1287,7 +1290,7 @@
       "icon": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/09/all-hollow-knight-silksong-tools-silkshot.png?fit=contain&h=22&w=22",
       "location_text": {
         "en": "Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
-        "es": "Encuentra la Herramienta Arruinada en la parte sureste de Aguabil y luego llévala a la Hija de la Forja en el área de los Muelles Profundos.",
+        "es": "Encuentra la Herramienta Arruinada en la parte sureste de Aguas Biliales y luego llévala a la Hija de la Forja en el área de los Muelles Profundos.",
         "fr": "[auto] Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
         "de": "[auto] Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
         "it": "[auto] Find the Ruined Tool in the southeastern part of Bilewater and then take it to Forge Daughter in the Deep Docks area.",
@@ -3005,7 +3008,7 @@
       "category": "crest",
       "name": {
         "en": "Crest of Shaman",
-        "es": "Emblema del Chamán",
+        "es": "Blasón de la Chamana",
         "fr": "Crest of Shaman",
         "de": "Crest of Shaman",
         "it": "Crest of Shaman",
@@ -3038,7 +3041,7 @@
       "category": "crest",
       "name": {
         "en": "Crest of Wanderer",
-        "es": "Emblema del Errante",
+        "es": "Blasón del errante",
         "fr": "Crest of Wanderer",
         "de": "Crest of Wanderer",
         "it": "Crest of Wanderer",
