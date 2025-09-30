@@ -38,6 +38,47 @@ import { setLocale, t, activeLocale } from './i18n.js';
       if (changed) {
         saveProgress(progress);
         updateBothPercents();
+        
+        // GA4 Tracking: Item toggle
+        const item = items.find(i => i.id === id);
+        const { completed, total, completedWeight, totalWeight } = computePercent(items, progress);
+        const currentPercent = totalWeight ? (completedWeight / totalWeight) * 100 : 0;
+        
+        if (typeof window.trackChecklistProgress === 'function') {
+          const action = progress[id] ? 'item_completed' : 'item_unchecked';
+          window.trackChecklistProgress(
+            action,
+            item?.category || 'Unknown',
+            item?.name || id,
+            currentPercent
+          );
+          
+          // Check if category is now complete
+          if (progress[id] && item?.category) {
+            const categoryItems = items.filter(i => i.category === item.category);
+            const categoryCompleted = categoryItems.every(i => progress[i.id]);
+            if (categoryCompleted) {
+              window.trackCompletion('category_complete', categoryItems.length);
+              gtag('event', 'category_completed', {
+                event_category: 'Checklist',
+                event_label: item.category,
+                custom_parameter_1: currentPercent,
+                value: categoryItems.length
+              });
+            }
+          }
+          
+          // Track milestone achievements
+          if (currentPercent === 100 && progress[id]) {
+            window.trackCompletion('full_checklist', total);
+          } else if (currentPercent >= 25 && currentPercent < 30 && progress[id]) {
+            window.trackChecklistProgress('milestone_25', 'Progress', '25% Completed', 25);
+          } else if (currentPercent >= 50 && currentPercent < 55 && progress[id]) {
+            window.trackChecklistProgress('milestone_50', 'Progress', '50% Completed', 50);
+          } else if (currentPercent >= 75 && currentPercent < 80 && progress[id]) {
+            window.trackChecklistProgress('milestone_75', 'Progress', '75% Completed', 75);
+          }
+        }
       }
       return changed;
     };
@@ -70,21 +111,50 @@ import { setLocale, t, activeLocale } from './i18n.js';
     if (searchInput) {
       searchInput.addEventListener('input', () => {
         // Prevent re-render if value is identical (e.g., pressing arrow keys)
-        if (searchInput.value.trim().toLowerCase() !== lastQuery) {
+        const newQuery = searchInput.value.trim().toLowerCase();
+        if (newQuery !== lastQuery) {
           rerenderList();
+          
+          // GA4 Tracking: Search events
+          if (newQuery.length > 0 && typeof window.trackSearch === 'function') {
+            // Debounce search tracking to avoid spam
+            clearTimeout(searchInput._searchTimeout);
+            searchInput._searchTimeout = setTimeout(() => {
+              const visibleItems = document.querySelectorAll('.item:not([style*="display: none"])').length;
+              window.trackSearch(newQuery, visibleItems);
+            }, 1000);
+          }
         }
       });
     }
 
     langSel.onchange = async () => {
-      await setLocale(langSel.value.toLowerCase());
+      const newLang = langSel.value.toLowerCase();
+      await setLocale(newLang);
       applyI18n();
       rerenderList();
+      
+      // GA4 Tracking: Language change
+      gtag('event', 'language_change', {
+        event_category: 'User Interaction',
+        event_label: newLang,
+        custom_parameter_2: newLang
+      });
     };
 
     resetBtn.onclick = () => {
       if (!confirm(t('reset.confirm1') || 'Confirm reset?')) return;
       if (!confirm(t('reset.confirm2') || 'Really reset?')) return;
+      
+      // GA4 Tracking: Reset action
+      const completedCount = Object.values(progress).filter(Boolean).length;
+      gtag('event', 'checklist_reset', {
+        event_category: 'User Interaction',
+        event_label: 'Reset Progress',
+        custom_parameter_3: completedCount,
+        value: completedCount
+      });
+      
       clearProgress();
       for (const k of Object.keys(progress)) progress[k] = false;
       saveProgress(progress);
@@ -199,6 +269,71 @@ import { setLocale, t, activeLocale } from './i18n.js';
     })();
 
     // Service worker removed during cleanup for simplicity (offline support disabled)
+    
+    // Advanced GA4 Tracking Setup
+    (function setupAdvancedTracking() {
+      // Track session engagement
+      let sessionStart = Date.now();
+      let isEngaged = false;
+      
+      // Track engagement after 30 seconds or first interaction
+      setTimeout(() => {
+        if (!isEngaged) {
+          gtag('event', 'session_engaged', {
+            event_category: 'Engagement',
+            engagement_time_msec: Date.now() - sessionStart
+          });
+          isEngaged = true;
+        }
+      }, 30000);
+      
+      // Track page visibility changes
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          gtag('event', 'page_hidden', {
+            event_category: 'Engagement',
+            value: Math.round((Date.now() - sessionStart) / 1000)
+          });
+        } else {
+          sessionStart = Date.now();
+          gtag('event', 'page_visible', {
+            event_category: 'Engagement'
+          });
+        }
+      });
+      
+      // Track scroll depth
+      let maxScrollDepth = 0;
+      const trackScrollDepth = () => {
+        const scrollPercent = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+        if (scrollPercent > maxScrollDepth && scrollPercent >= 25) {
+          maxScrollDepth = Math.floor(scrollPercent / 25) * 25; // Track in 25% increments
+          gtag('event', 'scroll_depth', {
+            event_category: 'Engagement',
+            event_label: `${maxScrollDepth}%`,
+            value: maxScrollDepth
+          });
+        }
+      };
+      
+      window.addEventListener('scroll', trackScrollDepth, { passive: true });
+      
+      // Track performance metrics
+      if ('performance' in window && 'getEntriesByType' in performance) {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const navigation = performance.getEntriesByType('navigation')[0];
+            if (navigation) {
+              gtag('event', 'page_load_timing', {
+                event_category: 'Performance',
+                custom_parameter_1: Math.round(navigation.loadEventEnd - navigation.fetchStart),
+                value: Math.round(navigation.loadEventEnd - navigation.fetchStart)
+              });
+            }
+          }, 0);
+        });
+      }
+    })();
 
   } catch(e){
     console.error('[INIT] Failure', e);

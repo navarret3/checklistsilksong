@@ -24,7 +24,19 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     header.className = 'cat-header';
     const counts = countCompletedWeighted(list, progress);
     header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}</h2><span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
-    header.onclick = () => { catEl.classList.toggle('collapsed'); };
+    header.onclick = () => { 
+      const wasCollapsed = catEl.classList.contains('collapsed');
+      catEl.classList.toggle('collapsed');
+      
+      // GA4 Tracking: Category expand/collapse
+      if (typeof gtag === 'function') {
+        gtag('event', wasCollapsed ? 'category_expand' : 'category_collapse', {
+          event_category: 'User Interaction',
+          event_label: cat,
+          custom_parameter_2: document.getElementById('langSel')?.value || 'en'
+        });
+      }
+    };
     const body = document.createElement('div');
     body.className = 'cat-body';
     for(const it of list){
