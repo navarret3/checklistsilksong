@@ -15,8 +15,8 @@
     "tool_pouch_upgrade",
     "ability",
     "tool",
-    "bosses",
-    "pulgas"
+    "pulgas",
+    "bosses"
   ],
   "items": [
     {
@@ -2178,77 +2178,38 @@
       "image": "assets/images/needle.png",
       "icon": "assets/images/needle.png"
     },
-    {
-      "id": "boss-widow",
-      "category": "bosses",
-      "name": {
-        "en": "Widow (Boss)",
-        "es": "La Viuda (Jefe)"
-      },
-      "optional": true,
-      "weight": 0,
-      "location_text": {
-        "en": "Defeat the Widow boss. This boss does not contribute to 100% completion on this tracker.",
-        "es": "Derrota al jefe Viuda. Este jefe no contribuye al 100% de compleción en este tracker."
-      },
-      "location_img": null,
-      "numId": 1001,
-      "image": "assets/images/ss3.png",
-      "icon": "assets/images/ss3.png"
-    },
-    {
-      "id": "boss-phantom",
-      "category": "bosses",
-      "name": {
-        "en": "Phantom (Boss)",
-        "es": "Fantasma (Jefe)"
-      },
-      "optional": true,
-      "weight": 0,
-      "location_text": {
-        "en": "Defeat the Phantom boss encounter. Optional for 100%.",
-        "es": "Derrota al jefe Fantasma. Opcional para el 100%."
-      },
-      "location_img": null,
-      "numId": 1002,
-      "image": "assets/images/ss3.png",
-      "icon": "assets/images/ss3.png"
-    },
-    {
-      "id": "boss-grand-mother-silk",
-      "category": "bosses",
-      "name": {
-        "en": "Grand Mother Silk (Boss)",
-        "es": "Abuela Seda (Jefe)"
-      },
-      "optional": true,
-      "weight": 0,
-      "location_text": {
-        "en": "Defeat Grand Mother Silk. Optional for 100%.",
-        "es": "Derrota a la Abuela Seda. Opcional para el 100%."
-      },
-      "location_img": null,
-      "numId": 1003,
-      "image": "assets/images/ss3.png",
-      "icon": "assets/images/ss3.png"
-    },
-    {
-      "id": "pulgas-30",
-      "category": "pulgas",
-      "name": {
-        "en": "All 30 Lost Fleas",
-        "es": "Las 30 Pulgas Perdidas"
-      },
-      "optional": true,
-      "weight": 0,
-      "location_text": {
-        "en": "Rescue all 30 Lost Fleas in Pharloom (tracking goal only, no % weight).",
-        "es": "Rescata las 30 Pulgas Perdidas en Pharloom (solo objetivo de seguimiento, sin peso de %)."
-      },
-      "location_img": null,
-      "numId": 1004,
-      "image": "assets/images/silkspool.png",
-      "icon": "assets/images/silkspool.png"
-    }
+    { "id": "flea-1", "category": "pulgas", "name": { "en": "Lost Flea 1", "es": "Pulga Perdida 1" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #1", "es": "Rescata la Pulga Perdida #1" }, "location_img": "assets/images/Flea/1.jpg", "numId": 2001, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-2", "category": "pulgas", "name": { "en": "Lost Flea 2", "es": "Pulga Perdida 2" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #2", "es": "Rescata la Pulga Perdida #2" }, "location_img": "assets/images/Flea/2.jpg", "numId": 2002, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-3", "category": "pulgas", "name": { "en": "Lost Flea 3", "es": "Pulga Perdida 3" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #3", "es": "Rescata la Pulga Perdida #3" }, "location_img": "assets/images/Flea/3.jpg", "numId": 2003, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-4", "category": "pulgas", "name": { "en": "Lost Flea 4", "es": "Pulga Perdida 4" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #4", "es": "Rescata la Pulga Perdida #4" }, "location_img": "assets/images/Flea/4.jpg", "numId": 2004, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-5", "category": "pulgas", "name": { "en": "Lost Flea 5", "es": "Pulga Perdida 5" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #5", "es": "Rescata la Pulga Perdida #5" }, "location_img": "assets/images/Flea/5.jpg", "numId": 2005, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-6", "category": "pulgas", "name": { "en": "Lost Flea 6", "es": "Pulga Perdida 6" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #6", "es": "Rescata la Pulga Perdida #6" }, "location_img": "assets/images/Flea/6.jpg", "numId": 2006, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-7", "category": "pulgas", "name": { "en": "Lost Flea 7", "es": "Pulga Perdida 7" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #7", "es": "Rescata la Pulga Perdida #7" }, "location_img": "assets/images/Flea/7.jpg", "numId": 2007, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-8", "category": "pulgas", "name": { "en": "Lost Flea 8", "es": "Pulga Perdida 8" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #8", "es": "Rescata la Pulga Perdida #8" }, "location_img": "assets/images/Flea/8.jpg", "numId": 2008, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-9", "category": "pulgas", "name": { "en": "Lost Flea 9", "es": "Pulga Perdida 9" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #9", "es": "Rescata la Pulga Perdida #9" }, "location_img": "assets/images/Flea/9.jpg", "numId": 2009, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-10", "category": "pulgas", "name": { "en": "Lost Flea 10", "es": "Pulga Perdida 10" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #10", "es": "Rescata la Pulga Perdida #10" }, "location_img": "assets/images/Flea/10.jpg", "numId": 2010, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-11", "category": "pulgas", "name": { "en": "Lost Flea 11", "es": "Pulga Perdida 11" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #11", "es": "Rescata la Pulga Perdida #11" }, "location_img": "assets/images/Flea/11.jpg", "numId": 2011, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-12", "category": "pulgas", "name": { "en": "Lost Flea 12", "es": "Pulga Perdida 12" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #12", "es": "Rescata la Pulga Perdida #12" }, "location_img": "assets/images/Flea/12.jpg", "numId": 2012, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-13", "category": "pulgas", "name": { "en": "Lost Flea 13", "es": "Pulga Perdida 13" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #13", "es": "Rescata la Pulga Perdida #13" }, "location_img": "assets/images/Flea/13.jpg", "numId": 2013, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-14", "category": "pulgas", "name": { "en": "Lost Flea 14", "es": "Pulga Perdida 14" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #14", "es": "Rescata la Pulga Perdida #14" }, "location_img": "assets/images/Flea/14.jpg", "numId": 2014, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-15", "category": "pulgas", "name": { "en": "Lost Flea 15", "es": "Pulga Perdida 15" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #15", "es": "Rescata la Pulga Perdida #15" }, "location_img": "assets/images/Flea/15.jpg", "numId": 2015, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-16", "category": "pulgas", "name": { "en": "Lost Flea 16", "es": "Pulga Perdida 16" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #16", "es": "Rescata la Pulga Perdida #16" }, "location_img": "assets/images/Flea/16.jpg", "numId": 2016, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-17", "category": "pulgas", "name": { "en": "Lost Flea 17", "es": "Pulga Perdida 17" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #17", "es": "Rescata la Pulga Perdida #17" }, "location_img": "assets/images/Flea/17.jpg", "numId": 2017, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-18", "category": "pulgas", "name": { "en": "Lost Flea 18", "es": "Pulga Perdida 18" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #18", "es": "Rescata la Pulga Perdida #18" }, "location_img": "assets/images/Flea/18.jpg", "numId": 2018, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-19", "category": "pulgas", "name": { "en": "Lost Flea 19", "es": "Pulga Perdida 19" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #19", "es": "Rescata la Pulga Perdida #19" }, "location_img": "assets/images/Flea/19.jpg", "numId": 2019, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-20", "category": "pulgas", "name": { "en": "Lost Flea 20", "es": "Pulga Perdida 20" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #20", "es": "Rescata la Pulga Perdida #20" }, "location_img": "assets/images/Flea/20.jpg", "numId": 2020, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-21", "category": "pulgas", "name": { "en": "Lost Flea 21", "es": "Pulga Perdida 21" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #21", "es": "Rescata la Pulga Perdida #21" }, "location_img": "assets/images/Flea/21.jpg", "numId": 2021, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-22", "category": "pulgas", "name": { "en": "Lost Flea 22", "es": "Pulga Perdida 22" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #22", "es": "Rescata la Pulga Perdida #22" }, "location_img": "assets/images/Flea/22.jpg", "numId": 2022, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-23", "category": "pulgas", "name": { "en": "Lost Flea 23", "es": "Pulga Perdida 23" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #23", "es": "Rescata la Pulga Perdida #23" }, "location_img": "assets/images/Flea/23.jpg", "numId": 2023, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-24", "category": "pulgas", "name": { "en": "Lost Flea 24", "es": "Pulga Perdida 24" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #24", "es": "Rescata la Pulga Perdida #24" }, "location_img": "assets/images/Flea/24.jpg", "numId": 2024, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-25", "category": "pulgas", "name": { "en": "Lost Flea 25", "es": "Pulga Perdida 25" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #25", "es": "Rescata la Pulga Perdida #25" }, "location_img": "assets/images/Flea/25.jpg", "numId": 2025, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-26", "category": "pulgas", "name": { "en": "Lost Flea 26", "es": "Pulga Perdida 26" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #26", "es": "Rescata la Pulga Perdida #26" }, "location_img": "assets/images/Flea/26.jpg", "numId": 2026, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-27", "category": "pulgas", "name": { "en": "Lost Flea 27", "es": "Pulga Perdida 27" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #27", "es": "Rescata la Pulga Perdida #27" }, "location_img": "assets/images/Flea/27.jpg", "numId": 2027, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-28", "category": "pulgas", "name": { "en": "Lost Flea 28", "es": "Pulga Perdida 28" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #28", "es": "Rescata la Pulga Perdida #28" }, "location_img": "assets/images/Flea/28.jpg", "numId": 2028, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-29", "category": "pulgas", "name": { "en": "Lost Flea 29", "es": "Pulga Perdida 29" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #29", "es": "Rescata la Pulga Perdida #29" }, "location_img": "assets/images/Flea/29.jpg", "numId": 2029, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "flea-30", "category": "pulgas", "name": { "en": "Lost Flea 30", "es": "Pulga Perdida 30" }, "optional": true, "weight": 0, "location_text": { "en": "Rescue Lost Flea #30", "es": "Rescata la Pulga Perdida #30" }, "location_img": "assets/images/Flea/30.jpg", "numId": 2030, "image": "assets/images/Flea/Flea.png", "icon": "assets/images/Flea/Flea.png" },
+    { "id": "boss-widow", "category": "bosses", "name": { "en": "Widow (Boss)", "es": "La Viuda (Jefe)" }, "optional": true, "weight": 0, "location_text": { "en": "Defeat the Widow boss. This boss does not contribute to 100% completion on this tracker.", "es": "Derrota al jefe Viuda. Este jefe no contribuye al 100% de compleción en este tracker." }, "location_img": null, "numId": 1001, "image": "assets/images/ss3.png", "icon": "assets/images/ss3.png" },
+    { "id": "boss-phantom", "category": "bosses", "name": { "en": "Phantom (Boss)", "es": "Fantasma (Jefe)" }, "optional": true, "weight": 0, "location_text": { "en": "Defeat the Phantom boss encounter. Optional for 100%.", "es": "Derrota al jefe Fantasma. Opcional para el 100%." }, "location_img": null, "numId": 1002, "image": "assets/images/ss3.png", "icon": "assets/images/ss3.png" },
+    { "id": "boss-grand-mother-silk", "category": "bosses", "name": { "en": "Grand Mother Silk (Boss)", "es": "Abuela Seda (Jefe)" }, "optional": true, "weight": 0, "location_text": { "en": "Defeat Grand Mother Silk. Optional for 100%.", "es": "Derrota a la Abuela Seda. Opcional para el 100%." }, "location_img": null, "numId": 1003, "image": "assets/images/ss3.png", "icon": "assets/images/ss3.png" }
   ]
 }

@@ -63,5 +63,8 @@
   ,"section.disclaimer.text": "Hollow Knight and Silksong are trademarks of Team Cherry. This fan site is not affiliated with or endorsed by Team Cherry."
   ,"guide.open": "GUIDE"
   ,"footer.note": "Fan-made project. Hollow Knight & Silksong are trademarks of Team Cherry. Provisional data will be updated with official information.",
-  "optional.label": "Optional"
+  "optional.label": "Optional",
+  "category.pulgas": "Fleas",
+  "category.bosses": "Bosses",
+  "category.optional.note": "This category does not count towards the 100% completion."
 }

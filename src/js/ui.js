@@ -43,6 +43,15 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     for(const it of list){
       body.appendChild(renderItem(it, progress, onToggle));
     }
+    if(cat === 'pulgas' || cat === 'bosses'){
+      const note = document.createElement('div');
+      note.className = 'category-optional-note';
+      // Text i18n fallback
+      const msgKey = 'category.optional.note';
+      const txt = (typeof t === 'function' ? (t(msgKey) !== msgKey ? t(msgKey) : 'Esta categoría no suma para el 100% del juego / This category does not count towards 100%.') : 'Esta categoría no suma para el 100% del juego / This category does not count towards 100%.');
+      note.textContent = txt;
+      body.insertBefore(note, body.firstChild);
+    }
     catEl.appendChild(header); catEl.appendChild(body);
     frag.appendChild(catEl);
   }
