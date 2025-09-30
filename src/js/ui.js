@@ -22,9 +22,11 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     catEl.dataset.category = cat;
     const header = document.createElement('div');
     header.className = 'cat-header';
-    const counts = countCompletedWeighted(list, progress);
-    const anyOptional = list.some(it => it.optional || it.weight === 0);
-    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${anyOptional ? ' <span class="badge-opt" title="Opcional / Optional">★</span>' : ''}</h2><span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
+  const counts = countCompletedWeighted(list, progress);
+  const anyOptional = list.some(it => it.optional || it.weight === 0);
+  // No mostrar badge para pulgas aunque sean opcionales en peso
+  const showBadge = anyOptional && cat !== 'pulgas';
+  header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${showBadge ? ' <span class="badge-opt" title="Opcional / Optional">★</span>' : ''}</h2><span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>`;
     header.onclick = () => { 
       const wasCollapsed = catEl.classList.contains('collapsed');
       catEl.classList.toggle('collapsed');
@@ -43,10 +45,17 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     for(const it of list){
       body.appendChild(renderItem(it, progress, onToggle));
     }
-    if(cat === 'pulgas' || cat === 'bosses'){
+    if(cat === 'pulgas'){
       const note = document.createElement('div');
       note.className = 'category-optional-note';
-      // Text i18n fallback
+      const msgKey = 'category.pulgas.note';
+      const fallback = 'Las pulgas son necesarias para conseguir el objeto "Egg of Flealia" que es necesario para el 100%';
+      const txt = (typeof t === 'function' ? (t(msgKey) !== msgKey ? t(msgKey) : fallback) : fallback);
+      note.textContent = txt;
+      body.insertBefore(note, body.firstChild);
+    } else if(cat === 'bosses'){
+      const note = document.createElement('div');
+      note.className = 'category-optional-note';
       const msgKey = 'category.optional.note';
       const txt = (typeof t === 'function' ? (t(msgKey) !== msgKey ? t(msgKey) : 'Esta categoría no suma para el 100% del juego / This category does not count towards 100%.') : 'Esta categoría no suma para el 100% del juego / This category does not count towards 100%.');
       note.textContent = txt;
