@@ -79,6 +79,12 @@ header{display:flex;flex-direction:column;align-items:stretch;width:100%;positio
 @media (prefers-reduced-motion:reduce){.app-title .title-flair{animation:none}}
 /* Removed old flair & pulse animation */
 .toolbar{display:flex;align-items:center;gap:.45rem;flex-wrap:nowrap}
+.toolbar{-webkit-overflow-scrolling:touch}
+@media (max-width:560px){
+	.toolbar{overflow-x:auto;padding:.5rem .6rem .55rem;gap:.4rem;scroll-snap-type:x mandatory}
+	.toolbar > *{scroll-snap-align:start}
+	.toolbar::-webkit-scrollbar{display:none}
+}
 .toolbar select,#langSel{background:#1b232b;border:1px solid #2a343e;color:var(--fg);padding:.45rem .55rem .5rem;font-size:.6rem;letter-spacing:.9px;text-transform:uppercase;font-weight:600;border-radius:6px;cursor:pointer;transition:border-color .25s,background .25s}
 .toolbar select:hover{border-color:#39576a;background:#202b33}
 .btn-icon-labeled{display:inline-flex;align-items:center;gap:.18rem;background:#1b232b;border:1px solid #2a343e;color:var(--fg);padding:.44rem .6rem .44rem;font-size:.6rem;letter-spacing:.9px;text-transform:uppercase;font-weight:600;border-radius:6px;cursor:pointer;line-height:1;white-space:nowrap;transition:border-color .25s,background .25s,transform .25s}
@@ -163,6 +169,18 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 .cat.collapsed .collapse-icon{transform:rotate(-90deg)}
 .cat-body{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.55rem;padding:.75rem .85rem 1rem}
 @media (max-width:700px){.cat-body{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+@media (max-width:420px){.cat-body{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.5rem;padding:.65rem .7rem .85rem}}
+@media (max-width:360px){.cat-body{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
+@media (max-width:640px){
+	.boss-header-note,.pulgas-header-note{display:block;margin:.4rem 0 0 0;top:0;border-radius:8px;white-space:normal;line-height:1.25}
+	.cat-header{flex-wrap:wrap}
+	.cat-header h2{flex:1 1 100%;margin-bottom:.25rem}
+}
+@media (max-width:480px){
+	.floating-progress{padding:.5rem .55rem .55rem;gap:.5rem;bottom:calc(12px + env(safe-area-inset-bottom,0));}
+	.floating-progress__bar{height:8px}
+	.floating-progress__percent{font-size:.55rem;letter-spacing:1.1px}
+}
 .item{border:1px solid var(--border);padding:.6rem .65rem .75rem;border-radius:8px;background:#161d23;cursor:pointer;line-height:1.25;position:relative;font-size:.78rem;display:flex;flex-direction:column;gap:.55rem;contain:layout paint}
 .item:hover{border-color:#2d3944;background:#1b242b;box-shadow:0 0 0 1px #25313c,0 4px 10px -4px rgba(0,0,0,.6)}
 .item:active{transform:translateY(1px)}
@@ -178,6 +196,53 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 .item .thumb img{width:100%;height:100%;display:block;object-fit:contain;image-rendering:auto}
 .item .thumb img.hi-upscaled{filter:drop-shadow(0 0 2px rgba(0,0,0,.4))}
 @media (max-width:600px){:root{--icon-size:64px}}
+@media (max-width:420px){:root{--icon-size:58px}}
+@media (max-width:360px){:root{--icon-size:54px}}
+.item{will-change:transform}
+@media (max-width:420px){
+	.item{padding:.55rem .55rem .7rem;font-size:.74rem}
+	.item .label{font-size:.78rem}
+	.item .desc{font-size:.6rem}
+}
+@media (max-width:360px){
+	.item{padding:.5rem .5rem .65rem}
+	.item .top{gap:.5rem}
+}
+@media (max-width:480px){
+	.toolbar{padding-right:.4rem}
+	.logo-wrap .logo{height:50px}
+	.app-title{padding:.4rem .7rem .45rem}
+	.app-title .title-text{font-size:.9rem;letter-spacing:2px}
+	.btn-icon-labeled{padding:.42rem .55rem .42rem;font-size:.55rem}
+	.lang-toggle{padding:.4rem .55rem .44rem;font-size:.5rem}
+}
+@media (max-width:380px){
+	.btn-icon-labeled .btn-label{display:none}
+	.btn-icon-labeled::before{margin-right:0}
+	.toolbar{gap:.35rem}
+	.lang-toggle .lang-code{display:none}
+	.lang-toggle{gap:.25rem;padding:.38rem .5rem .4rem}
+}
+
+/* Prevent horizontal scroll on very narrow devices */
+@media (max-width:480px){html,body{overflow-x:hidden}}
+
+/* Improve tap target spacing when labels hidden */
+@media (max-width:380px){.btn-icon-labeled{min-width:34px;justify-content:center}}
+
+/* Category grid tighter on narrow devices */
+@media (max-width:480px){
+	.cat-header{padding:.65rem .75rem}
+	.cat-body{padding:.6rem .65rem .75rem}
+}
+
+/* Boss & Pulgas side counts stack under header on narrow widths */
+@media (max-width:640px){
+	.cat-count--side{margin-top:.35rem;display:inline-flex}
+}
+
+/* Ensure progress bar text doesn't overflow small widths */
+@media (max-width:400px){#progressPercentText{font-size:.9rem;letter-spacing:1.4px}}
 .item .meta{flex:1;display:flex;flex-direction:column;min-width:0}
 .item .label{font-weight:600;font-size:.82rem;line-height:1.15;display:block;margin:0 0 .2rem}
 .item .desc{font-size:.63rem;letter-spacing:.35px;color:#c2ccd4;line-height:1.25}
