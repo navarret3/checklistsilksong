@@ -514,7 +514,6 @@ import { setLocale, t, activeLocale } from './i18n.js';
       const form = document.getElementById('feedbackForm');
       const msgEl = document.getElementById('fbMsg');
       const typeEl = document.getElementById('fbType');
-      const includeProgressEl = document.getElementById('fbIncludeProgress');
       const statusEl = document.getElementById('fbStatus');
       const sendBtn = document.getElementById('fbSendBtn');
       const webhookMeta = document.querySelector('meta[name="feedback-webhook"]');
@@ -526,7 +525,6 @@ import { setLocale, t, activeLocale } from './i18n.js';
         statusEl.hidden = true;
         statusEl.className = 'fb-status';
         form.reset();
-        includeProgressEl.checked = true;
         msgEl.focus();
         gtag('event','feedback_open',{ event_category:'Feedback' });
       }
@@ -561,10 +559,10 @@ import { setLocale, t, activeLocale } from './i18n.js';
         const ua = navigator.userAgent.split(')')[0]+')';
         const bodyLines = [
           `${prefix} ${raw}`,
-          includeProgressEl.checked ? `Progress: ${percent}%` : null,
+          `Progress: ${percent}%`,
           `Locale: ${locale}`,
           `UA: ${ua}`
-        ].filter(Boolean);
+        ];
         const payload = { content: bodyLines.join('\n') };
         try {
           const res = await fetch(webhookBase, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
