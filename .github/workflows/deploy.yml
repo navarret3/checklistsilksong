@@ -37,6 +37,11 @@ jobs:
           # Escapar caracteres conflictivos en la URL
           ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
 
+          echo '--- PRE (grep feedback-webhook) ---'
+          grep -n 'feedback-webhook' index.html || true
+          echo 'SHA256 pre:'
+          sha256sum index.html || shasum -a 256 index.html || true
+
           # Reemplazar la meta, aunque tenga espacios o se cierre con > o />
           sed -i -E "s|<meta name=\"feedback-webhook\" content=\"[^\"]*\" */?>|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
 
@@ -49,6 +54,20 @@ jobs:
             echo "WARNING: Webhook meta NOT injected" >&2
             exit 1
           fi
+
+          echo '--- POST (grep feedback-webhook) ---'
+          grep -n 'feedback-webhook' index.html || true
+          echo 'SHA256 post:'
+          sha256sum index.html || shasum -a 256 index.html || true
+
+          # Guardar copia para análisis
+          cp index.html index.after-injection.html
+
+      - name: Upload index debug artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: index-after-injection
+          path: index.after-injection.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
