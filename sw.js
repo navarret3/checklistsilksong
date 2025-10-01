@@ -1,6 +1,6 @@
-// Cache version bump (v3) to invalidate old cached CSS/JS after header/title style changes.
-// Cada vez que cambies estilos críticos o JS, incrementa CACHE_VERSION.
-// Alternativa recomendable a medio plazo: filenames con hash (app.3f2ab.css) y un SW más granular.
+// Cache version bump (v4) para forzar clientes a actualizar tras cambios críticos (webhook, estilos, lógica).
+// Incrementa CACHE_VERSION con modificaciones de recursos esenciales.
+// Futuro: usar nombres con hash y estrategia de caché más granular.
 const CACHE_VERSION='v4';
 const CACHE_NAME=`sschecklist-${CACHE_VERSION}`;
 const CORE_ASSETS=[

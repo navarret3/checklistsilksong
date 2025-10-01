@@ -20,18 +20,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Inject Discord webhook (feedback)
         run: |
           WEBHOOK='${{ secrets.DISCORD_WEBHOOK }}'
           if [ -z "$WEBHOOK" ]; then
-            echo "No webhook secret provided (skipping injection)";
-            exit 0;
+            echo "No webhook secret provided (skipping injection)"
+            exit 0
           fi
+
           echo "Injecting feedback webhook into index.html"
+
+          # Escapar caracteres conflictivos en la URL
           ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
-          sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
+
+          # Reemplazar la meta, aunque tenga espacios o se cierre con > o />
+          sed -i -E "s|<meta name=\"feedback-webhook\" content=\"[^\"]*\" */?>|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
+
+          # Verificar que realmente se inyectó
           MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
           echo "$MATCH_LINE"
           if echo "$MATCH_LINE" | grep -q "content=\"$ESCAPED\""; then
@@ -40,10 +49,12 @@ jobs:
             echo "WARNING: Webhook meta NOT injected" >&2
             exit 1
           fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+
   deploy:
     needs: build
     runs-on: ubuntu-latest

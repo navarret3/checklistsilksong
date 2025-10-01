@@ -584,19 +584,10 @@ import { setLocale, t, activeLocale } from './i18n.js';
       const statusEl = document.getElementById('fbStatus');
       const sendBtn = document.getElementById('fbSendBtn');
       const webhookMeta = document.querySelector('meta[name="feedback-webhook"]');
-      // Allow debug override via ?wb=ENCODED_URL (only if meta empty) to help diagnose production injection issues
-      let webhookBase = (webhookMeta && webhookMeta.content || '').trim();
-      if(!webhookBase){
-        const params = new URLSearchParams(location.search);
-        const dbg = params.get('wb');
-        if(dbg){
-          try { webhookBase = decodeURIComponent(dbg); console.info('[FEEDBACK] Using debug webhook from query param'); } catch(_){}
-        }
-      }
-      if(!webhookBase){
-        console.warn('[FEEDBACK] Webhook meta tag empty. Expected meta[name="feedback-webhook"].content to be injected by CI.');
-      } else {
-        console.debug('[FEEDBACK] Webhook configured length=', webhookBase.length);
+      // Simplificación: solo leer meta inyectada por CI, sin overrides por query.
+      const webhookBase = (webhookMeta && webhookMeta.content || '').trim();
+      if(!webhookBase && location.hostname === 'checklistsilksong.com'){
+        console.warn('[FEEDBACK] Webhook no disponible (meta vacía). Si persiste tras Ctrl+F5, revisar workflow Pages.');
       }
       let activeSending = false;
 
