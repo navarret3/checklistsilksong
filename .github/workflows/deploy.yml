@@ -47,7 +47,7 @@ jobs:
           sha256sum index.html || shasum -a 256 index.html || true
 
           # Add cache busting comment to force CDN refresh
-          sed -i "s|</head>|<!-- CDN-BUST: $CACHE_BUST -->\n</head>|" index.html
+          sed -i "s|</head>|<!-- CDN-BUST: $CACHE_BUST -->\n  <!-- WEBHOOK-DEPLOY: $(date -u +%Y%m%d%H%M%S) -->\n</head>|" index.html
 
           # Reemplazar la meta simple (sin atributos extra)
           sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
@@ -111,7 +111,7 @@ jobs:
           echo "Deployment completed. Forcing Fastly CDN cache invalidation..."
           
           # Esperar a que el deploy se propague a GitHub
-          sleep 15
+          sleep 20
           
           # Multiple CDN cache invalidation strategies
           DOMAIN="https://checklistsilksong.com"
@@ -123,16 +123,23 @@ jobs:
           TIMESTAMP=$(date +%s)
           curl -I "$DOMAIN/?cb=$TIMESTAMP" || true
           
-          echo "=== Strategy 3: HEAD requests to warm CDN ==="
-          for i in {1..3}; do
-            curl -I -H "Cache-Control: max-age=0" "$DOMAIN/" || true
-            sleep 2
+          echo "=== Strategy 3: Multiple purge attempts ==="
+          for i in {1..5}; do
+            echo "Purge attempt $i"
+            curl -I -H "Cache-Control: max-age=0" -H "Pragma: no-cache" "$DOMAIN/" || true
+            curl -X PURGE "$DOMAIN/" || true
+            sleep 3
           done
           
           # Verificar que la nueva versión se está sirviendo
           echo "=== PRODUCTION VERIFICATION ==="
+          sleep 10
           PROD_CONTENT=$(curl -s -H "Cache-Control: no-cache" "${{ steps.deployment.outputs.page_url }}" | grep -n 'feedback-webhook' || echo "NO_WEBHOOK_LINE")
           echo "Production webhook line: $PROD_CONTENT"
+          
+          # También verificar en el dominio personalizado
+          CUSTOM_CONTENT=$(curl -s -H "Cache-Control: no-cache" "$DOMAIN/" | grep -n 'feedback-webhook' || echo "NO_WEBHOOK_LINE_CUSTOM")
+          echo "Custom domain webhook line: $CUSTOM_CONTENT"
           
           PROD_BUILD=$(curl -s -H "Cache-Control: no-cache" "${{ steps.deployment.outputs.page_url }}" | grep -n 'data-build-id' || echo "NO_BUILD_ID")
           echo "Production build ID: $PROD_BUILD"
