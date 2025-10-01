@@ -26,9 +26,22 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     const counts = countCompletedWeighted(list, progress);
     const anyOptional = list.some(it => it.optional || it.weight === 0);
     const showMainCount = !(cat === 'bosses' || cat === 'pulgas');
-    header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${anyOptional ? ' <span class="badge-opt" title="Opcional / Optional">★</span>' : ''}</h2>` +
-      (showMainCount ? `<span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>` : '') +
-      (cat === 'bosses' || cat === 'pulgas' ? `<span class="cat-opt-progress" data-opt-progress></span>`: '');
+    if(cat === 'bosses') {
+      const loc = activeLocale();
+      const bossMsg = loc==='es' ? 'Estos jefes no cuentan para el 100%' : 'These bosses do not count toward 100%';
+      header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)} <span class="boss-header-note">${bossMsg}</span></h2>` +
+        `<span class="cat-count cat-count--side" data-count-boss>${counts.optionalDone}/${counts.optionalCount}</span>`;
+    } else if(cat === 'pulgas') {
+      const loc = activeLocale();
+      const pulgasMsg = loc==='es' 
+        ? 'Es necesario encontrar las 30 pulgas para conseguir la herramienta "Egg of Flealia"' 
+        : 'You must find all 30 fleas to obtain the "Egg of Flealia" tool';
+      header.innerHTML = `<span class=\"collapse-icon\">▶</span><h2>${formatCategory(cat)} <span class=\"pulgas-header-note\">${pulgasMsg}</span></h2>` +
+        `<span class=\"cat-count cat-count--side\" data-count-pulgas>${counts.optionalDone}/${counts.optionalCount}</span>`;
+    } else {
+      header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${anyOptional ? ' <span class=\"badge-opt\" title=\"Opcional / Optional\">★</span>' : ''}</h2>` +
+        (showMainCount ? `<span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>` : '');
+    }
     header.onclick = () => { 
       const wasCollapsed = catEl.classList.contains('collapsed');
       catEl.classList.toggle('collapsed');
@@ -49,14 +62,7 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     for(const it of list){
       body.appendChild(renderItem(it, progress, onToggle));
     }
-    if(cat === 'bosses'){
-      const note = document.createElement('div');
-      note.className = 'category-optional-note boss-note';
-      const loc = activeLocale();
-      const bossMsg = loc==='es' ? 'Estos jefes no cuentan para el 100%' : 'These bosses do not count toward 100%';
-      note.innerHTML = `<div class="boss-note-row"><span class="boss-note-icon">★</span><span class="boss-note-text">${bossMsg}</span><span class="boss-note-progress" data-boss-note-progress></span></div>`;
-      body.insertBefore(note, body.firstChild);
-    }
+    // Removed separate bosses note block; message now appears in header
     // Insertar separador antes de pulgas (una sola vez) justo cuando cat es pulgas y existe una categoría previa distinta
     if(cat === 'pulgas' && !rootEl.querySelector('.non-100-separator')){
       const sep = document.createElement('div');
@@ -145,14 +151,15 @@ function renderItem(it, progress, onToggle){
     <div class="top">
       <div class="thumb"><img src="${imgSrc}" alt="${label}" loading="lazy" decoding="async"></div>
       <div class="meta"><span class="label">${label}</span>`;
-  if(isBoss && (it.optional || it.weight === 0)){
-    const optTxt = t ? (t('optional.label') || 'Optional') : 'Optional';
-    html += `<div class="optional-inline" title="${optTxt}">${optTxt}</div>`;
-  }
+  /* Removed boss inline optional badge */
   html += `</div>
     </div>`;
   if(desc) html += `\n    <div class="desc">${desc}</div>`;
-  if(mapSrc && !/placeholder-map\.png$/.test(mapSrc)) html += `\n    <div class="map-img"><img src="${mapSrc}" alt="Location of ${label}" loading="lazy" decoding="async"><button type="button" class="zoom-btn" aria-label="Ampliar" title="Ampliar">⤢</button></div>`;
+  if(mapSrc && !/placeholder-map\.png$/.test(mapSrc)) { 
+    const zLbl = activeLocale()==='es' ? 'Ampliar' : 'Zoom';
+    const zAria = activeLocale()==='es' ? 'Ampliar imagen' : 'Zoom image';
+    html += `\n    <div class="map-img"><img src="${mapSrc}" alt="Location of ${label}" loading="lazy" decoding="async"><button type="button" class="zoom-btn" aria-label="${zAria}" title="${zAria}"><span class="zoom-btn__icon" aria-hidden="true"></span><span class="zoom-btn__text">${zLbl}</span></button></div>`;
+  }
   // Show per-item optional badge only if explicitly flagged optional (not just weight 0 in pulgas)
   if(it.optional || (it.weight === 0 && it.category !== 'pulgas')){
     // Mantener clase para estilos existentes, pero evitamos duplicar para bosses ya que ya se agregó arriba
@@ -229,18 +236,19 @@ export function updateCategoryCounts(items, progress){
       const badge = catEl.querySelector('[data-count]');
       if(badge) {
         badge.textContent = `${counts.done}/${counts.total} (${counts.categoryPercentStr}%)`;
+        if(counts.total > 0 && counts.done === counts.total){
+          badge.classList.add('cat-count--complete');
+        } else {
+          badge.classList.remove('cat-count--complete');
+        }
       }
-    }
-    const optEl = catEl.querySelector('[data-opt-progress]');
-    if(optEl){
-      optEl.textContent = `Opcionales: ${counts.optionalDone}/${counts.optionalCount}`;
-      optEl.title = 'Optional progress';
     }
     if(categoryId === 'bosses'){
-      const bossNoteEl = catEl.querySelector('[data-boss-note-progress]');
-      if(bossNoteEl){
-        bossNoteEl.textContent = `${counts.optionalDone}/${counts.optionalCount}`;
-      }
+      const badge = catEl.querySelector('[data-count-boss]');
+      if(badge){ badge.textContent = `${counts.optionalDone}/${counts.optionalCount}`; badge.title = 'Bosses (no 100%)'; }
+    } else if(categoryId === 'pulgas'){
+      const badge = catEl.querySelector('[data-count-pulgas]');
+      if(badge){ badge.textContent = `${counts.optionalDone}/${counts.optionalCount}`; badge.title = 'Pulgas (no 100%)'; }
     }
   });
 }

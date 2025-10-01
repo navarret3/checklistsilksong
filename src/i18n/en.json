@@ -64,6 +64,8 @@
   ,"guide.open": "GUIDE"
   ,"footer.note": "Fan-made project. Hollow Knight & Silksong are trademarks of Team Cherry. Provisional data will be updated with official information.",
   "optional.label": "Optional",
+  "expand": "Expand",
+  "collapse": "Collapse",
   "category.pulgas": "Fleas",
   "category.bosses": "Bosses",
   "category.optional.note": "This category does not count towards the 100% completion."
