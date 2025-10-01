@@ -197,24 +197,39 @@ import { setLocale, t, activeLocale } from './i18n.js';
       if(!langMenu || langMenu.hidden) return;
       langMenu.hidden = true;
       langToggle?.setAttribute('aria-expanded','false');
+      // Cleanup inline positioning styles added when floating
+      langMenu.style.position='';
+      langMenu.style.top='';
+      langMenu.style.left='';
+      langMenu.style.right='';
+      langMenu.style.transform='';
+      langMenu.style.minWidth='';
+      langMenu.style.maxWidth='';
     }
     function openMenu(){
       if(!langMenu || !langMenu.hidden) return;
       langMenu.hidden = false;
       langToggle?.setAttribute('aria-expanded','true');
-      // For mobile: ensure menu is fully within viewport
+      // Overlay floating positioning so header height does not change (no layout shift)
       try {
-        const rect = langMenu.getBoundingClientRect();
-        if(rect.right > window.innerWidth){
-          langMenu.style.left = 'auto';
-          langMenu.style.right = '0';
-          langMenu.style.transform = 'none';
-        }
-        if(rect.left < 0){
-          langMenu.style.left = '0';
-          langMenu.style.right = 'auto';
-          langMenu.style.transform = 'none';
-        }
+        const toggleRect = langToggle.getBoundingClientRect();
+        // Temporarily ensure natural size for measurement
+        langMenu.style.position='fixed';
+        langMenu.style.top='0px';
+        langMenu.style.left='0px';
+        langMenu.style.transform='none';
+        langMenu.style.right='auto';
+        langMenu.style.maxWidth='min(240px, 92vw)';
+        // Force reflow to measure
+        const menuRect = langMenu.getBoundingClientRect();
+        const desiredTop = Math.round(toggleRect.bottom + 6);
+        let desiredLeft = Math.round(toggleRect.left + (toggleRect.width/2) - (menuRect.width/2));
+        const margin = 8;
+        if(desiredLeft < margin) desiredLeft = margin;
+        const maxLeft = window.innerWidth - menuRect.width - margin;
+        if(desiredLeft > maxLeft) desiredLeft = maxLeft;
+        langMenu.style.top = desiredTop + 'px';
+        langMenu.style.left = desiredLeft + 'px';
       } catch(_){}
       // focus first selected or first option
       const selected = langMenu.querySelector('[aria-selected="true"]') || langMenu.querySelector('[role="option"]');

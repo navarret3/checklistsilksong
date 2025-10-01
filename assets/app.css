@@ -367,6 +367,9 @@ footer p{margin:0}
 .lang-menu li .opt-code{font-weight:600}
 .lang-menu[hidden]{display:none}
 .lang-toggle[aria-expanded="true"] + .lang-menu{display:block}
+/* Floating overlay adjustments (JS sets position:fixed) */
+.lang-menu[style*='position:fixed']{animation:fadeInLang .18s ease;}
+@keyframes fadeInLang{0%{opacity:0;transform:translateY(-4px)}100%{opacity:1;transform:translateY(0)}}
 .lang-dropdown{position:relative;z-index:160}
 .lang-toggle[aria-expanded="true"]{position:relative}
 @media (max-width:640px){
