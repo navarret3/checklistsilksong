@@ -285,27 +285,30 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 .search-bar-wrap{width:100%;max-width:760px;padding:0 .75rem;display:flex;justify-content:center}
 /* === Mobile layout adjustments (appended) === */
 @media (max-width:640px){
-	/* Stack toolbar under logo and center */
-	/* New requirement: title on its own row, buttons below in full-width block */
+	/* Title single line full width; buttons stacked below */
 	.logo-wrap .logo{display:none}
-	.topbar{flex-direction:column;align-items:stretch;gap:.45rem;padding:.55rem .75rem .65rem}
+	.topbar{flex-direction:column;align-items:stretch;gap:.5rem;padding:.6rem .85rem .7rem}
 	.logo-wrap{justify-content:center}
-	.app-title{justify-content:center;width:100%;text-align:center;padding:.5rem .8rem .55rem}
-	.app-title .title-text{font-size:.9rem;letter-spacing:1.8px}
-	.toolbar{width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;padding:0;margin:0}
-	/* Slightly smaller buttons to keep neat grid */
-	.btn-icon-labeled{padding:.4rem .58rem .42rem;font-size:.55rem;letter-spacing:.75px}
-	.lang-toggle{padding:.4rem .55rem .42rem;font-size:.5rem;letter-spacing:.75px}
+	.app-title{justify-content:center;width:100%;text-align:center;padding:.55rem .9rem .6rem;max-width:100%;overflow:visible;text-overflow:unset}
+	.app-title .title-text{font-size:clamp(.8rem,4.7vw,1rem);letter-spacing:clamp(1px,0.75vw,2px);white-space:nowrap}
+	/* Toolbar: search first, no expand/collapse buttons */
+	.toolbar{order:2;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;padding:0;margin:0}
+	#expandAllBtn,#collapseAllBtn{display:none !important}
 	#importBtn,#exportBtn{display:none}
-	/* Ensure no horizontal scroll */
+	.search-inline{order:0}
+	.search-inline input{display:block !important;width:220px;max-width:70%;}
+	.btn-icon-labeled{padding:.38rem .55rem .4rem;font-size:.54rem;letter-spacing:.75px}
+	.lang-toggle{padding:.38rem .5rem .4rem;font-size:.5rem;letter-spacing:.75px}
 	.toolbar > *{flex:0 0 auto}
-	/* Category titles single line including bosses/pulgas */
-	.cat-header{flex-wrap:nowrap}
-	.cat-header h2{white-space:nowrap}
-	.boss-header-note,.pulgas-header-note{white-space:nowrap;font-size:.5rem;letter-spacing:.45px;margin-left:.45rem;top:0;position:relative}
+	/* Category titles single line; include bosses/pulgas, shrink their notes */
+	.cat-header{flex-wrap:nowrap;align-items:baseline}
+	.cat-header h2{white-space:nowrap;display:flex;align-items:center}
+	.boss-header-note,.pulgas-header-note{white-space:nowrap;font-size:.46rem;letter-spacing:.4px;margin-left:.5rem;top:0;position:static;line-height:1;display:inline-flex;align-items:center;padding:.22rem .45rem .25rem;border-radius:6px}
 	.cat[data-category="bosses"] .cat-header h2,
 	.cat[data-category="pulgas"] .cat-header h2{flex:0 0 auto;margin:0}
 	.cat-count,.cat-count--side{white-space:nowrap}
+	/* Progress bar side breathing room */
+	.progress-bar{margin:0 .9rem}
 }
 #searchInput{width:150px;max-width:150px}
 @media (max-width:560px){#searchInput{width:140px;max-width:140px}}
