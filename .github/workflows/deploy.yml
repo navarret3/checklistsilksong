@@ -54,8 +54,8 @@ jobs:
           echo 'SHA256 pre:'
           sha256sum index.html || shasum -a 256 index.html || true
 
-          # Reemplazar la meta, aunque tenga espacios o se cierre con > o />
-          sed -i -E "s|<meta name=\"feedback-webhook\" content=\"[^\"]*\" */?>|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
+          # Reemplazar la meta, permitiendo cualquier atributo intermedio como data-build-id
+          sed -i -E "s|<meta name=\"feedback-webhook\"[^>]*content=\"[^\"]*\"[^>]*>|<meta name=\"feedback-webhook\" data-build-id=\"$BUILD_ID\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
 
           # Verificar que realmente se inyectó
           MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
