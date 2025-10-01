@@ -2,6 +2,8 @@
 
 Aplicación estática pura servida con GitHub Pages. Sin build step obligatorio.
 
+<!-- Deploy trigger with cache invalidation - 2025-10-01 -->
+
 ## Estructura mínima
 ```
 index.html

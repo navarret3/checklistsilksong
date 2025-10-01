@@ -24,6 +24,18 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Generate cache-busting fingerprint
+        run: |
+          BUILD_ID="$(date -u +%Y%m%d_%H%M%S)-${GITHUB_SHA::8}"
+          echo "BUILD_ID=$BUILD_ID" >> $GITHUB_ENV
+          echo "Generated BUILD_ID: $BUILD_ID"
+          
+          # Reemplazar placeholder de timestamp para forzar invalidación
+          sed -i "s/<!-- BUILD_TIMESTAMP_CACHE_BUST -->/<!-- Build: $BUILD_ID -->/" index.html
+          sed -i "s/__BUILD_ID__/$BUILD_ID/" index.html
+          
+          echo "Cache-bust fingerprint applied"
+
       - name: Inject Discord webhook (feedback)
         run: |
           WEBHOOK='${{ secrets.DISCORD_WEBHOOK }}'
@@ -59,6 +71,10 @@ jobs:
           grep -n 'feedback-webhook' index.html || true
           echo 'SHA256 post:'
           sha256sum index.html || shasum -a 256 index.html || true
+          
+          echo '--- FINGERPRINT VERIFICATION ---'
+          grep -n 'data-build-id' index.html || echo 'NO BUILD ID FOUND'
+          grep -n 'Build:' index.html || echo 'NO BUILD COMMENT FOUND'
 
           # Guardar copia para análisis
           cp index.html index.after-injection.html
@@ -84,3 +100,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      
+      - name: Force cache invalidation
+        run: |
+          echo "Deployment completed. Forcing cache invalidation..."
+          
+          # Esperar un momento para que el deploy se propague
+          sleep 10
+          
+          # Intentar forzar invalidación con diferentes headers
+          curl -I -H "Cache-Control: no-cache" -H "Pragma: no-cache" "${{ steps.deployment.outputs.page_url }}" || true
+          curl -I -H "Cache-Control: max-age=0" "${{ steps.deployment.outputs.page_url }}" || true
+          
+          echo "Cache invalidation attempts completed"
+          
+          # Verificar que la nueva versión se está sirviendo
+          echo "=== PRODUCTION VERIFICATION ==="
+          PROD_CONTENT=$(curl -s -H "Cache-Control: no-cache" "${{ steps.deployment.outputs.page_url }}" | grep -n 'feedback-webhook' || echo "NO_WEBHOOK_LINE")
+          echo "Production webhook line: $PROD_CONTENT"
+          
+          PROD_BUILD=$(curl -s -H "Cache-Control: no-cache" "${{ steps.deployment.outputs.page_url }}" | grep -n 'data-build-id' || echo "NO_BUILD_ID")
+          echo "Production build ID: $PROD_BUILD"
