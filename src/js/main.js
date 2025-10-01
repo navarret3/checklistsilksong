@@ -392,6 +392,65 @@ import { setLocale, t, activeLocale } from './i18n.js';
     }
     applyI18n();
 
+    /* ===== Service Worker update notice (Option A) ===== */
+    // Creates (once) a small fixed banner prompting user to refresh when a new SW is waiting.
+    function ensureUpdateBanner(){
+      let banner = document.getElementById('updateAvailableBanner');
+      if(!banner){
+        banner = document.createElement('div');
+        banner.id = 'updateAvailableBanner';
+        banner.style.cssText = 'position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:400;display:flex;align-items:center;gap:.65rem;background:#1d262d;border:1px solid #32424d;padding:.6rem .85rem .65rem;border-radius:12px;font-size:.62rem;letter-spacing:.8px;font-weight:600;color:#d6e4ed;box-shadow:0 8px 28px -10px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04);';
+        banner.setAttribute('role','status');
+        banner.setAttribute('aria-live','polite');
+        banner.innerHTML = '<span data-i18n="update.available">New version available</span><button type="button" style="background:#25313a;color:#fff;border:1px solid #39576a;font-size:.6rem;font-weight:600;letter-spacing:.8px;padding:.4rem .65rem .45rem;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem" data-action="reload"><span data-i18n="update.reload">Reload</span></button><button type="button" aria-label="Dismiss" data-action="dismiss" style="background:none;border:none;color:#9fb2c0;font-size:1rem;line-height:1;cursor:pointer;padding:.2rem .3rem .25rem">×</button>';
+        document.body.appendChild(banner);
+        applyI18n();
+        banner.addEventListener('click', (e)=>{
+          const btn = e.target.closest('[data-action]');
+          if(!btn) return;
+          const action = btn.getAttribute('data-action');
+          if(action==='reload'){
+            // Attempt to tell waiting SW to skip waiting then reload
+            if(window._waitingServiceWorker){ window._waitingServiceWorker.postMessage({ type:'SKIP_WAITING' }); }
+            setTimeout(()=> window.location.reload(), 120);
+          } else if(action==='dismiss'){
+            banner.remove();
+          }
+        });
+      }
+    }
+
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.getRegistration().then(reg => {
+        if(!reg) return;
+        // Listen for updates after initial load
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          if(!newWorker) return;
+          newWorker.addEventListener('statechange', () => {
+            if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
+              window._waitingServiceWorker = newWorker;
+              ensureUpdateBanner();
+            }
+          });
+        });
+        // If a waiting worker already exists (page opened during update)
+        if(reg.waiting && navigator.serviceWorker.controller){
+          window._waitingServiceWorker = reg.waiting;
+          ensureUpdateBanner();
+        }
+      });
+      // Handle SKIP_WAITING -> controllerchange
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        // If we already triggered reload manually skip
+      });
+      // Message channel from SW (optional future use)
+      navigator.serviceWorker.addEventListener('message', (e)=>{
+        if(!e.data) return;
+        if(e.data.type === 'SW_READY'){ /* could log or show debug */ }
+      });
+    }
+
     function spawnCelebration(){
       if(celebrationShown) return;
       celebrationShown = true;
