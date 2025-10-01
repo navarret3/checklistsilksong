@@ -32,7 +32,14 @@ jobs:
           echo "Injecting feedback webhook into index.html"
           ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
           sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
-          grep -n "feedback-webhook" index.html || true
+          MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
+          echo "$MATCH_LINE"
+          if echo "$MATCH_LINE" | grep -q "content=\"$ESCAPED\""; then
+            echo "Webhook meta correctly injected (length ${#WEBHOOK})"
+          else
+            echo "WARNING: Webhook meta NOT injected" >&2
+            exit 1
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
