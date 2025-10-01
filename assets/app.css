@@ -141,6 +141,31 @@ select#langSel option{background:#141b21;color:#fff}
 .hero-side{height:150px;width:auto;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.65)) brightness(.97);opacity:.96;transition:transform .6s ease,opacity .5s ease}
 @media (min-width:900px){.hero-side{height:170px}}
 @media (max-width:780px){.hero-side{display:none}}
+/* Override: show side logos again on smaller devices with reduced size */
+@media (max-width:780px){
+	.hero-with-sides .hero-side{display:block}
+	.hero-side{height:120px}
+}
+@media (max-width:640px){
+	.hero-side{height:96px}
+	.hero-with-sides{gap:.9rem}
+	.hero-logo{height:120px}
+}
+@media (max-width:520px){
+	.hero-side{height:82px;opacity:.9}
+	.hero-logo{height:110px}
+	.hero-with-sides{gap:.75rem}
+}
+@media (max-width:420px){
+	.hero-side{height:70px;opacity:.85}
+	.hero-logo{height:100px}
+	.hero-with-sides{gap:.6rem}
+}
+@media (max-width:360px){
+	.hero-side{height:62px;opacity:.82}
+	.hero-logo{height:92px}
+	.hero-with-sides{gap:.5rem}
+}
 .hero-side--left{transform-origin:center right}
 .hero-side--right{transform-origin:center left}
 .hero.shrink{padding:.55rem 0 .5rem;background:linear-gradient(180deg,rgba(13,15,18,0.97),rgba(13,15,18,0.86) 70%,rgba(13,15,18,0));}
