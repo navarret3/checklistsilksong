@@ -136,8 +136,9 @@ function renderItem(it, progress, onToggle){
   // Real image sources (thumb + map) will be deferred for performance
   const realImgSrc = it.image || it.icon || 'assets/images/placeholder-item.png';
   // Heuristic: try to request a higher resolution if external gamerant URL with h=22&w=22
-  if(/gamerantimages\.com/.test(imgSrc) && /[?&]h=22&?/.test(imgSrc)){ // simple pattern
-    imgSrc = imgSrc.replace(/h=22/, 'h=96').replace(/w=22/, 'w=96');
+  let thumbSrc = realImgSrc;
+  if(/gamerantimages\.com/.test(thumbSrc) && /[?&]h=22&?/.test(thumbSrc)){
+    thumbSrc = thumbSrc.replace(/h=22/, 'h=96').replace(/w=22/, 'w=96');
   }
   // map image fallbacks: explicit alias -> location_img -> placeholder
   const realMapSrc = it.mapImage || it.location_img || 'assets/images/placeholder-map.png';
@@ -150,7 +151,7 @@ function renderItem(it, progress, onToggle){
   let html = `
     <span class="checkmark">✔</span>
     <div class="top">
-      <div class="thumb"><img data-src="${realImgSrc}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="${label}" loading="lazy" decoding="async" class="lazy-img" width="96" height="96"></div>
+      <div class="thumb"><img data-src="${thumbSrc}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="${label}" loading="lazy" decoding="async" class="lazy-img" width="96" height="96"></div>
       <div class="meta"><span class="label">${label}</span>`;
   /* Removed boss inline optional badge */
   html += `</div>
