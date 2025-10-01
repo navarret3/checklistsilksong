@@ -44,6 +44,10 @@ jobs:
             exit 0
           fi
 
+          # Regenerar BUILD_ID para asegurar consistencia
+          BUILD_ID="$(date -u +%Y%m%d_%H%M%S)-${GITHUB_SHA::8}"
+          echo "Using BUILD_ID: $BUILD_ID"
+
           echo "Injecting feedback webhook into index.html"
 
           # Escapar caracteres conflictivos en la URL
