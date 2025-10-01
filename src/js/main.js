@@ -166,6 +166,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
         clearTimeout(searchTimer);
         searchTimer = setTimeout(()=>{
           rerenderList();
+          // Re-setup lazy images after search re-renders content
+          requestAnimationFrame(() => setupLazyImages());
           if (newQuery && typeof window.trackSearch === 'function') {
             clearTimeout(searchInput._searchTimeout);
             searchInput._searchTimeout = setTimeout(() => {
@@ -261,6 +263,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
           syncLangVisual(next);
           applyI18n();
           rerenderList();
+          // Re-setup lazy images after language change re-renders the content
+          requestAnimationFrame(() => setupLazyImages());
           gtag('event', 'language_change', { event_category:'User Interaction', event_label: next, custom_parameter_2: next });
         }
         closeMenu();
@@ -317,6 +321,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
       // Reset search and re-render
       if (searchInput) searchInput.value = '';
       rerenderList();
+      // Re-setup lazy images after reset re-renders content
+      requestAnimationFrame(() => setupLazyImages());
     };
 
     // Expand / Collapse All
@@ -381,6 +387,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
               }
               saveProgress(progress);
               rerenderList();
+              // Re-setup lazy images after import re-renders content
+              requestAnimationFrame(() => setupLazyImages());
               updateBothPercents();
               alert('Import OK ('+changed+' items applied).');
             } else {
