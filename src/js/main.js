@@ -539,6 +539,38 @@ import { setLocale, t, activeLocale } from './i18n.js';
       }
     }
 
+    /* ===== Adaptive header overflow handling ===== */
+    (function headerOverflowManager(){
+      const topbar = document.querySelector('.topbar');
+      if(!topbar) return;
+      const toolbar = topbar.querySelector('.toolbar');
+      let framePending = false;
+      function measure(){
+        framePending = false;
+        if(!topbar || !toolbar) return;
+        topbar.classList.remove('compact','compact2');
+        // Stage 0: natural layout
+        if(topbar.scrollWidth > topbar.clientWidth){
+          topbar.classList.add('compact');
+          // Re-measure with compact
+          if(topbar.scrollWidth > topbar.clientWidth){
+            topbar.classList.add('compact2');
+          }
+        }
+      }
+      function schedule(){
+        if(framePending) return; framePending = true;
+        requestAnimationFrame(measure);
+      }
+      window.addEventListener('resize', schedule, { passive:true });
+      // MutationObserver to catch late-loading fonts / content changes
+      const mo = new MutationObserver(schedule);
+      mo.observe(topbar, { childList:true, subtree:true, attributes:true, attributeFilter:['class','style'] });
+      // Initial run after fonts likely loaded
+      setTimeout(schedule, 50);
+      setTimeout(schedule, 350);
+    })();
+
     /* ===== Feedback Modal & Submission (Discord Webhook) ===== */
     (function setupFeedback(){
       const feedbackBtn = document.getElementById('feedbackBtn');
