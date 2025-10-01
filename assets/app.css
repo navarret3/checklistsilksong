@@ -44,15 +44,14 @@ header{display:flex;flex-direction:column;align-items:stretch;width:100%;positio
 @media (max-width:700px){.logo-wrap .logo{height:54px}}
 .app-title{font-size:.78rem;margin:0;font-weight:600;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:38vw}
 /* Title adornment */
-.app-title{position:relative;display:inline-flex;align-items:center;gap:.65rem;font-size:1rem;line-height:1.05;color:#f5f2f1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6));text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 6px rgba(255,255,255,.05);letter-spacing:2.1px;font-weight:700;padding:.18rem .55rem .22rem;border-radius:10px;background:rgba(255,255,255,0.02);backdrop-filter:blur(2px) brightness(1.05)}
+.app-title{position:relative;display:inline-flex;align-items:center;gap:.65rem;font-size:1rem;line-height:1.05;color:#f5f2f1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6));text-shadow:0 1px 2px rgba(0,0,0,.55),0 0 6px rgba(255,255,255,.05);letter-spacing:2.1px;font-weight:700;padding:.18rem .0rem .22rem;border-radius:0;background:transparent;backdrop-filter:none}
 /* Modernized header title style */
-.app-title{--title-accent1:#f5d38c;--title-accent2:#e58f33;--title-accent3:#b92f1a;--title-bg:rgba(40,46,52,.55);--title-ring:rgba(255,255,255,.08);font-family:'Cinzel', 'Times New Roman', serif;letter-spacing:2.4px;font-weight:700;padding:.55rem 1.05rem .6rem;border-radius:16px;background:linear-gradient(150deg,rgba(30,34,38,.92),rgba(26,30,34,.78));position:relative;overflow:hidden;isolation:isolate;box-shadow:0 6px 24px -10px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.05);transition:letter-spacing .45s ease, padding .45s ease, transform .55s ease, box-shadow .6s ease;}
-.app-title::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(245,211,140,.4),rgba(240,132,46,.15),rgba(185,47,26,.45));-webkit-mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.85;mix-blend-mode:overlay}
-.app-title::after{content:"";position:absolute;left:0;top:0;width:110%;height:120%;background:radial-gradient(circle at 18% 28%,rgba(245,211,140,.18),rgba(245,211,140,0) 60%),radial-gradient(circle at 82% 70%,rgba(185,47,26,.22),rgba(185,47,26,0) 55%);pointer-events:none;opacity:.9}
+.app-title{--title-accent1:#f5d38c;--title-accent2:#e58f33;--title-accent3:#b92f1a;font-family:'Cinzel','Times New Roman',serif;letter-spacing:2.4px;font-weight:700;padding:.55rem 0 .6rem;border-radius:0;background:transparent;box-shadow:none;transition:letter-spacing .45s ease,padding .45s ease,transform .55s ease}
+.app-title::before,.app-title::after{content:none}
 .app-title .title-text{font-size:1.08rem;letter-spacing:3.1px;font-weight:700;background:linear-gradient(95deg,var(--title-accent1),var(--title-accent2) 55%,var(--title-accent3));-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;text-shadow:0 0 18px rgba(240,132,46,.28),0 2px 6px rgba(0,0,0,.55);}
 .app-title .title-text::before,.app-title .title-text::after{display:none} /* remove previous heavy outlines */
 .app-title .title-flair{display:none} /* Remove old flairs for a cleaner, modern look */
-@media (max-width:700px){.app-title{padding:.45rem .75rem .5rem;border-radius:14px}.app-title .title-text{font-size:.97rem;letter-spacing:2.2px}}
+@media (max-width:700px){.app-title{padding:.45rem 0 .5rem;border-radius:0}.app-title .title-text{font-size:.97rem;letter-spacing:2.2px}}
 @media (min-width:900px){.app-title .title-text{font-size:1.22rem}}
 
 /* Category count completion state */
@@ -71,9 +70,9 @@ header{display:flex;flex-direction:column;align-items:stretch;width:100%;positio
 .app-title .title-text::after{content:attr(data-outline);position:absolute;left:0;top:0;right:0;bottom:0;z-index:-2;-webkit-text-stroke:6px rgba(0,0,0,.4);color:transparent;opacity:.45;filter:blur(.8px)}
 @media (min-width:900px){.app-title{font-size:1.12rem}}
 @media (max-width:700px){.app-title{font-size:.9rem;gap:.5rem}}
-@media (max-width:520px){.app-title{font-size:.82rem;letter-spacing:1.6px;padding:.1rem .45rem .15rem}}
+@media (max-width:520px){.app-title{font-size:.82rem;letter-spacing:1.6px;padding:.1rem 0 .15rem}}
 /* Shrink variant inside hero.shrink */
-.hero.shrink .app-title{font-size:.82rem;letter-spacing:1.4px;gap:.45rem;padding:.05rem .4rem .1rem}
+.hero.shrink .app-title{font-size:.82rem;letter-spacing:1.4px;gap:.45rem;padding:.05rem 0 .1rem}
 .hero.shrink .app-title{transform:translateY(-2px);box-shadow:0 3px 14px -6px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04)}
 .hero.shrink .app-title .title-flair{font-size:.9rem;animation-duration:6s}
 @media (prefers-reduced-motion:reduce){.app-title .title-flair{animation:none}}
@@ -146,6 +145,8 @@ select#langSel option{background:#141b21;color:#fff}
 	.hero-with-sides .hero-side{display:block}
 	.hero-side{height:120px}
 }
+
+/* Mobile adjustments update */
 @media (max-width:640px){
 	.hero-side{height:96px}
 	.hero-with-sides{gap:.9rem}
@@ -285,22 +286,35 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 .search-bar-wrap{width:100%;max-width:760px;padding:0 .75rem;display:flex;justify-content:center}
 /* === Mobile layout adjustments (appended) === */
 @media (max-width:640px){
-	/* Stack toolbar under logo and center */
-	.topbar{flex-direction:column;align-items:center;gap:.55rem;padding:.55rem .75rem .7rem}
-	.toolbar{width:100%;justify-content:center;flex-wrap:wrap;overflow:visible;padding:.2rem 0 0;gap:.5rem}
+	/* Title single line full width; buttons stacked below */
+	.logo-wrap .logo{display:none}
+	.topbar{flex-direction:column;align-items:stretch;gap:.5rem;padding:.6rem .85rem .7rem}
+	.logo-wrap{justify-content:center}
+	.app-title{justify-content:center;width:100%;text-align:center;padding:.55rem 0 .5rem;max-width:100%;overflow:visible;text-overflow:unset}
+	.app-title .title-text{font-size:clamp(.82rem,4.5vw,1rem);letter-spacing:clamp(1px,0.7vw,1.9px);white-space:nowrap}
+	/* Toolbar: search first, no expand/collapse buttons */
+	.toolbar{order:2;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;padding:0;margin:0}
+	#expandAllBtn,#collapseAllBtn{display:none !important}
 	#importBtn,#exportBtn{display:none}
-	/* Remove previous horizontal scroll expectations */
-	.toolbar{-webkit-overflow-scrolling:auto}
-	/* Restrict wrapping only to bosses/pulgas headers */
-	.cat-header{flex-wrap:nowrap}
-	.cat[data-category="bosses"] .cat-header,
-	.cat[data-category="pulgas"] .cat-header{flex-wrap:wrap}
+	.search-inline{order:0}
+	.search-inline input{display:block !important;width:220px;max-width:70%;}
+	.btn-icon-labeled{padding:.38rem .55rem .4rem;font-size:.54rem;letter-spacing:.75px}
+	.lang-toggle{padding:.38rem .5rem .4rem;font-size:.5rem;letter-spacing:.75px}
+	.toolbar > *{flex:0 0 auto}
+	/* Category titles single line; include bosses/pulgas, shrink their notes */
+	.cat-header{flex-wrap:nowrap;align-items:baseline}
+	.cat-header h2{white-space:nowrap;display:flex;align-items:center}
+	.boss-header-note,.pulgas-header-note{white-space:nowrap;font-size:.46rem;letter-spacing:.4px;margin-left:.5rem;top:0;position:static;line-height:1;display:inline-flex;align-items:center;padding:.22rem .45rem .25rem;border-radius:6px}
 	.cat[data-category="bosses"] .cat-header h2,
-	.cat[data-category="pulgas"] .cat-header h2{flex:1 1 100%;margin-bottom:.25rem}
-	/* Single-line default titles (overridden below for special cases) */
-	.cat-header h2{white-space:nowrap}
-	.cat[data-category="bosses"] .cat-header h2,
-	.cat[data-category="pulgas"] .cat-header h2{white-space:normal}
+	.cat[data-category="pulgas"] .cat-header h2{flex:0 0 auto;margin:0}
+	.cat-count,.cat-count--side{white-space:nowrap}
+	/* Progress bar side breathing room */
+	.progress-bar{margin:0 auto;max-width:92%;width:92%}
+}
+
+/* Reduce mobile progress bar width slightly below 480 for better breathing room */
+@media (max-width:480px){
+	.progress-bar{max-width:88%;width:88%}
 }
 #searchInput{width:150px;max-width:150px}
 @media (max-width:560px){#searchInput{width:140px;max-width:140px}}
@@ -348,6 +362,13 @@ footer p{margin:0}
 .lang-menu li[aria-selected="true"]{background:#25313a;color:#fff}
 .lang-menu li .opt-code{font-weight:600}
 .lang-menu[hidden]{display:none}
+.lang-toggle[aria-expanded="true"] + .lang-menu{display:block}
+.lang-dropdown{position:relative;z-index:160}
+.lang-toggle[aria-expanded="true"]{position:relative}
+@media (max-width:640px){
+	.lang-dropdown{align-self:center}
+	.lang-menu{top:calc(100% + .3rem);left:50%;transform:translateX(-50%);}
+}
 .flag{position:relative;width:18px;height:12px;border:1px solid #2a343e;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.35) inset;flex-shrink:0}
 .flag-en{background:linear-gradient(#b22234 14.28%,#fff 14.28%,#fff 28.56%,#b22234 28.56%,#b22234 42.84%,#fff 42.84%,#fff 57.12%,#b22234 57.12%,#b22234 71.4%,#fff 71.4%,#fff 85.68%,#b22234 85.68%,#b22234 100%)}
 .flag-en::before{content:"";position:absolute;top:0;left:0;width:40%;height:50%;background:#3c3b6e}
@@ -366,4 +387,12 @@ footer p{margin:0}
 .btn-expand{--icon:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2'/><path d='M12 8v8'/><path d='M8 12h8'/></svg>")}
 .btn-collapse{--icon:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2'/><path d='M8 12h8'/></svg>")}
 .btn-reset{--icon:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 3v6h6'/><path d='M21 21v-6h-6'/><path d='M21 9A9 9 0 0 0 5.64 5.64L3 9'/><path d='M3 15a9 9 0 0 0 15.36 3.36L21 15'/></svg>")}
+
+/* === Header title simplification override (remove all backgrounds/gradients) === */
+.app-title{background:none!important;box-shadow:none!important;filter:none!important;text-shadow:none!important;position:relative;display:inline-flex;align-items:center;gap:.55rem;font-family:'Cinzel','Times New Roman',serif;font-weight:700;letter-spacing:2.2px;padding:.45rem 0 .5rem;border-radius:0}
+.app-title::before,.app-title::after{content:none!important}
+.app-title .title-text{background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;color:#f5f2f1!important;text-shadow:none!important;position:relative}
+/* Keep celebration scale/animation but without reintroducing background visuals */
+.app-title.celebrate{box-shadow:none!important}
+@media (max-width:700px){.app-title{padding:.4rem 0 .45rem;letter-spacing:2px}}
 
