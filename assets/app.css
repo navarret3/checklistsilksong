@@ -399,6 +399,17 @@ footer p{margin:0}
 	.lang-dropdown{align-self:center}
 	.lang-menu{top:calc(100% + .3rem);left:50%;transform:translateX(-50%);}
 }
+/* --- Dynamic overflow handling (desktop) --- */
+.topbar.compact .btn-icon-labeled .btn-label{display:none}
+.topbar.compact .btn-icon-labeled{padding:.46rem .55rem .48rem;font-size:0}
+.topbar.compact .search-inline input{width:120px}
+/* Second stage: hide search if still overflowing */
+.topbar.compact2 .search-inline{display:none}
+.topbar.compact2 .btn-icon-labeled{padding:.44rem .5rem .46rem}
+.topbar.compact .lang-toggle .lang-code{display:none}
+/* Provide subtle indicator that toolbar is truncated via gradient fade (optional) */
+.topbar.compact .toolbar{position:relative}
+.topbar.compact .toolbar::after{content:"";position:absolute;top:0;right:0;width:22px;height:100%;pointer-events:none;background:linear-gradient(90deg,rgba(18,21,24,0),rgba(18,21,24,.85));}
 .flag{position:relative;width:18px;height:12px;border:1px solid #2a343e;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.35) inset;flex-shrink:0}
 .flag-en{background:linear-gradient(#b22234 14.28%,#fff 14.28%,#fff 28.56%,#b22234 28.56%,#b22234 42.84%,#fff 42.84%,#fff 57.12%,#b22234 57.12%,#b22234 71.4%,#fff 71.4%,#fff 85.68%,#b22234 85.68%,#b22234 100%)}
 .flag-en::before{content:"";position:absolute;top:0;left:0;width:40%;height:50%;background:#3c3b6e}
