@@ -258,6 +258,25 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 .tooltip .muted{color:var(--muted);font-style:italic}
 @media (pointer:coarse){.tooltip{display:none}}
 .search-bar-wrap{width:100%;max-width:760px;padding:0 .75rem;display:flex;justify-content:center}
+/* === Mobile layout adjustments (appended) === */
+@media (max-width:640px){
+	/* Stack toolbar under logo and center */
+	.topbar{flex-direction:column;align-items:center;gap:.55rem;padding:.55rem .75rem .7rem}
+	.toolbar{width:100%;justify-content:center;flex-wrap:wrap;overflow:visible;padding:.2rem 0 0;gap:.5rem}
+	#importBtn,#exportBtn{display:none}
+	/* Remove previous horizontal scroll expectations */
+	.toolbar{-webkit-overflow-scrolling:auto}
+	/* Restrict wrapping only to bosses/pulgas headers */
+	.cat-header{flex-wrap:nowrap}
+	.cat[data-category="bosses"] .cat-header,
+	.cat[data-category="pulgas"] .cat-header{flex-wrap:wrap}
+	.cat[data-category="bosses"] .cat-header h2,
+	.cat[data-category="pulgas"] .cat-header h2{flex:1 1 100%;margin-bottom:.25rem}
+	/* Single-line default titles (overridden below for special cases) */
+	.cat-header h2{white-space:nowrap}
+	.cat[data-category="bosses"] .cat-header h2,
+	.cat[data-category="pulgas"] .cat-header h2{white-space:normal}
+}
 #searchInput{width:150px;max-width:150px}
 @media (max-width:560px){#searchInput{width:140px;max-width:140px}}
 footer p{margin:0}
