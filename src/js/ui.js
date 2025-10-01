@@ -41,6 +41,8 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
           custom_parameter_2: document.getElementById('langSel')?.value || 'en'
         });
       }
+      // Emit custom event so main.js can persist collapsed state
+      rootEl.dispatchEvent(new CustomEvent('categoryToggle', { detail: { category: cat, collapsed: !wasCollapsed }}));
     };
     const body = document.createElement('div');
     body.className = 'cat-body';

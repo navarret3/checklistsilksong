@@ -1,5 +1,5 @@
 import { loadData } from './dataLoader.js';
-import { loadProgress, saveProgress, clearProgress } from './storage.js';
+import { loadProgress, saveProgress, clearProgress, loadCollapsedCategories, saveCollapsedCategories, clearUIState } from './storage.js';
 import { toggle } from './progress.js';
 import { renderCategories, updatePercent, updateCategoryCounts } from './ui.js';
 import { computePercent } from './progress.js';
@@ -30,13 +30,15 @@ import { setLocale, t, activeLocale } from './i18n.js';
     // Validate dataset first
     validateDataset(items, issuesBox, issuesList, dismissIssues);
 
-    const globalTotalWeight = items.reduce((s,it)=> s + (typeof it.weight==='number' && it.weight>0 ? it.weight : 1), 0);
+  // Precompute once (avoid recalculation during renders)
+  const globalTotalWeight = items.reduce((s,it)=> s + (typeof it.weight==='number' && it.weight>0 ? it.weight : 1), 0);
 
     // Centralized toggle handler for items
     const handleItemToggle = (id) => {
       const changed = toggle(id, progress);
       if (changed) {
-        saveProgress(progress);
+        // Batch save operations using microtask to collapse rapid toggles
+        queueMicrotask(()=> saveProgress(progress));
         updateBothPercents();
         
         // GA4 Tracking: Item toggle
@@ -44,7 +46,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
   const { completed, total, completedWeight, totalWeight, percent } = computePercent(items, progress);
         const currentPercent = totalWeight ? (completedWeight / totalWeight) * 100 : 0;
         
-        if (typeof window.trackChecklistProgress === 'function') {
+  if (typeof window.trackChecklistProgress === 'function') {
           const action = progress[id] ? 'item_completed' : 'item_unchecked';
           window.trackChecklistProgress(
             action,
@@ -89,6 +91,17 @@ import { setLocale, t, activeLocale } from './i18n.js';
     let lastQuery = '';
 
     // Centralized function to render the item list based on current filters/language
+    const collapsedSet = new Set(loadCollapsedCategories());
+
+    function applyCollapsedState(){
+      // Only apply stored collapsed when no active search filter
+      if(searchInput && searchInput.value.trim()) return;
+      document.querySelectorAll('.cat').forEach(catEl => {
+        const id = catEl.dataset.category;
+        if(id && collapsedSet.has(id)) catEl.classList.add('collapsed');
+      });
+    }
+
     function rerenderList() {
       const lang = activeLocale();
       const q = searchInput ? searchInput.value.trim().toLowerCase() : '';
@@ -103,6 +116,10 @@ import { setLocale, t, activeLocale } from './i18n.js';
 
       if (q) {
         document.querySelectorAll('.cat').forEach(c => c.classList.remove('collapsed'));
+      } else {
+        applyCollapsedState();
+        // Re-apply in microtask in case CSS/layout or late inserted nodes appear
+        queueMicrotask(applyCollapsedState);
       }
     }
 
@@ -111,22 +128,22 @@ import { setLocale, t, activeLocale } from './i18n.js';
 
     // Event listeners
     if (searchInput) {
+      const SEARCH_DEBOUNCE = 180; // ms
+      let searchTimer;
       searchInput.addEventListener('input', () => {
-        // Prevent re-render if value is identical (e.g., pressing arrow keys)
         const newQuery = searchInput.value.trim().toLowerCase();
-        if (newQuery !== lastQuery) {
+        if (newQuery === lastQuery) return;
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(()=>{
           rerenderList();
-          
-          // GA4 Tracking: Search events
-          if (newQuery.length > 0 && typeof window.trackSearch === 'function') {
-            // Debounce search tracking to avoid spam
+          if (newQuery && typeof window.trackSearch === 'function') {
             clearTimeout(searchInput._searchTimeout);
             searchInput._searchTimeout = setTimeout(() => {
-              const visibleItems = document.querySelectorAll('.item:not([style*="display: none"])').length;
+              const visibleItems = document.querySelectorAll('.item').length; // simplified count
               window.trackSearch(newQuery, visibleItems);
-            }, 1000);
+            }, 700);
           }
-        }
+        }, SEARCH_DEBOUNCE);
       });
     }
 
@@ -158,6 +175,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
       });
       
       clearProgress();
+      clearUIState();
+      collapsedSet.clear();
       for (const k of Object.keys(progress)) progress[k] = false;
       saveProgress(progress);
 
@@ -270,10 +289,22 @@ import { setLocale, t, activeLocale } from './i18n.js';
       onScroll();
     })();
 
+    // Listen for category collapse/expand events to persist state
+    container.addEventListener('categoryToggle', (e) => {
+      const { category, collapsed } = e.detail || {};
+      if(!category) return;
+      if(collapsed) collapsedSet.add(category); else collapsedSet.delete(category);
+      if(typeof console!== 'undefined') console.log('[UI STATE] categoryToggle', category, '=>', collapsed ? 'collapsed' : 'expanded');
+      // Persist (low frequency) using microtask to batch if user clicks fast
+      queueMicrotask(()=> saveCollapsedCategories([...collapsedSet]));
+    });
+
     // Service worker removed during cleanup for simplicity (offline support disabled)
     
     // Advanced GA4 Tracking Setup
-    (function setupAdvancedTracking() {
+    // Lazy-init heavy tracking after first idle period for faster FCP
+    requestIdleCallback?.(setupAdvancedTracking) || setTimeout(setupAdvancedTracking, 1200);
+    function setupAdvancedTracking() {
       // Track session engagement
       let sessionStart = Date.now();
       let isEngaged = false;
@@ -335,7 +366,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
           }, 0);
         });
       }
-    })();
+    }
 
   } catch(e){
     console.error('[INIT] Failure', e);

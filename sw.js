@@ -1,0 +1,34 @@
+// Bumped cache version to v2 to pick new JS (collapsed categories persistence)
+const CACHE_NAME='sschecklist-v2';
+const CORE_ASSETS=[
+  '/',
+  '/index.html',
+  '/assets/app.css',
+  '/src/js/main.js',
+  '/src/js/ui.js',
+  '/src/js/progress.js',
+  '/src/js/dataLoader.js',
+  '/src/js/storage.js',
+  '/src/js/i18n.js',
+  '/data/silksong_items.json',
+  '/src/i18n/en.json'
+];
+self.addEventListener('install', e=>{
+  e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(CORE_ASSETS)).then(()=>self.skipWaiting()));
+});
+self.addEventListener('activate', e=>{
+  e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));
+});
+self.addEventListener('fetch', e=>{
+  const req=e.request;
+  if(req.method!=='GET') return;
+  e.respondWith(
+    caches.match(req).then(cached=>cached||fetch(req).then(res=>{
+      const copy=res.clone();
+      if(copy.ok && copy.type==='basic'){
+        caches.open(CACHE_NAME).then(c=>c.put(req, copy)).catch(()=>{});
+      }
+      return res;
+    }).catch(()=>cached))
+  );
+});
