@@ -582,7 +582,20 @@ import { setLocale, t, activeLocale } from './i18n.js';
       const statusEl = document.getElementById('fbStatus');
       const sendBtn = document.getElementById('fbSendBtn');
       const webhookMeta = document.querySelector('meta[name="feedback-webhook"]');
-      const webhookBase = (webhookMeta && webhookMeta.content || '').trim();
+      // Allow debug override via ?wb=ENCODED_URL (only if meta empty) to help diagnose production injection issues
+      let webhookBase = (webhookMeta && webhookMeta.content || '').trim();
+      if(!webhookBase){
+        const params = new URLSearchParams(location.search);
+        const dbg = params.get('wb');
+        if(dbg){
+          try { webhookBase = decodeURIComponent(dbg); console.info('[FEEDBACK] Using debug webhook from query param'); } catch(_){}
+        }
+      }
+      if(!webhookBase){
+        console.warn('[FEEDBACK] Webhook meta tag empty. Expected meta[name="feedback-webhook"].content to be injected by CI.');
+      } else {
+        console.debug('[FEEDBACK] Webhook configured length=', webhookBase.length);
+      }
       let activeSending = false;
 
       function openFb(){
@@ -610,7 +623,15 @@ import { setLocale, t, activeLocale } from './i18n.js';
           statusEl.hidden = false; statusEl.textContent = t('feedback.status.tooShort') || 'Message too short.'; statusEl.className='fb-status fb-status--err'; return;
         }
         if(!webhookBase){
-          statusEl.hidden = false; statusEl.textContent = 'Webhook not configured.'; statusEl.className='fb-status fb-status--err'; return;
+          statusEl.hidden = false;
+          statusEl.textContent = 'Webhook not configured.';
+          statusEl.className='fb-status fb-status--err';
+          // Provide a hint for debugging (only once)
+          if(!window._feedbackMissingWarned){
+            window._feedbackMissingWarned = true;
+            alert('Feedback webhook no configurado. Asegúrate de que el deploy inyectó la meta y que no hay un service worker antiguo cacheando index.html. Prueba Ctrl+F5 / borrar caché.');
+          }
+          return;
         }
         activeSending = true;
         sendBtn.disabled = true; sendBtn.style.opacity='.6';
