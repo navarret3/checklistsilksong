@@ -286,21 +286,27 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 /* === Mobile layout adjustments (appended) === */
 @media (max-width:640px){
 	/* Stack toolbar under logo and center */
-	.topbar{flex-direction:column;align-items:center;gap:.55rem;padding:.55rem .75rem .7rem}
-	.toolbar{width:100%;justify-content:center;flex-wrap:wrap;overflow:visible;padding:.2rem 0 0;gap:.5rem}
+	/* Revised: keep topbar in one row for visibility; hide logo to give title space */
+	.logo-wrap .logo{display:none}
+	.topbar{flex-direction:row;align-items:center;gap:.55rem;padding:.5rem .65rem .55rem}
+	.toolbar{flex-wrap:nowrap;overflow:hidden;gap:.35rem;padding:0;margin-left:auto}
 	#importBtn,#exportBtn{display:none}
-	/* Remove previous horizontal scroll expectations */
-	.toolbar{-webkit-overflow-scrolling:auto}
-	/* Restrict wrapping only to bosses/pulgas headers */
+	.btn-icon-labeled{padding:.38rem .5rem .38rem;font-size:.52rem;letter-spacing:.7px}
+	.lang-toggle{padding:.36rem .5rem .4rem;font-size:.48rem;letter-spacing:.7px}
+	.app-title{padding:.4rem .6rem .45rem}
+	.app-title .title-text{font-size:.85rem;letter-spacing:1.6px}
+	/* Prevent button wrap and shrinking issues */
+	.toolbar > *{flex:0 0 auto}
+	/* Category titles single-line including bosses & pulgas at mobile */
 	.cat-header{flex-wrap:nowrap}
-	.cat[data-category="bosses"] .cat-header,
-	.cat[data-category="pulgas"] .cat-header{flex-wrap:wrap}
-	.cat[data-category="bosses"] .cat-header h2,
-	.cat[data-category="pulgas"] .cat-header h2{flex:1 1 100%;margin-bottom:.25rem}
-	/* Single-line default titles (overridden below for special cases) */
 	.cat-header h2{white-space:nowrap}
+	.boss-header-note,.pulgas-header-note{white-space:nowrap;font-size:.48rem;letter-spacing:.45px;margin-left:.4rem;top:0;position:relative}
 	.cat[data-category="bosses"] .cat-header h2,
-	.cat[data-category="pulgas"] .cat-header h2{white-space:normal}
+	.cat[data-category="pulgas"] .cat-header h2{flex:0 0 auto;margin:0}
+	/* Tighten gap so boss/fleas header fits */
+	.cat-header{gap:.55rem}
+	/* Ensure progress badges never wrap the percent */
+	.cat-count, .cat-count--side{white-space:nowrap}
 }
 #searchInput{width:150px;max-width:150px}
 @media (max-width:560px){#searchInput{width:140px;max-width:140px}}
