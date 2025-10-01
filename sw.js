@@ -5,7 +5,7 @@ const CACHE_VERSION='v3';
 const CACHE_NAME=`sschecklist-${CACHE_VERSION}`;
 const CORE_ASSETS=[
   '/',
-  '/index.html',
+  // Excluimos index.html del precache para forzar siempre la versión de red (meta webhook dinámica)
   '/assets/app.css',
   '/src/js/main.js',
   '/src/js/ui.js',
@@ -25,6 +25,12 @@ self.addEventListener('activate', e=>{
 self.addEventListener('fetch', e=>{
   const req=e.request;
   if(req.method!=='GET') return;
+  const url = new URL(req.url);
+  // Nunca cachear index.html para que la meta del webhook refleje el último deploy
+  if(url.pathname==='/' || url.pathname==='/index.html'){
+    e.respondWith(fetch(req).catch(()=>caches.match('/assets/app.css')));
+    return;
+  }
   e.respondWith(
     caches.match(req).then(cached=>cached||fetch(req).then(res=>{
       const copy=res.clone();
