@@ -48,6 +48,8 @@
   <meta name="twitter:description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
   <meta name="twitter:image" content="https://checklistsilksong.com/assets/images/ss_og_preview.png" />
   <!-- TODO: Add your Twitter handle here. Example: <meta name="twitter:site" content="@mytwitter" /> -->
+  <!-- Optional: Provide Discord webhook endpoint at deploy time (leave empty in repo) -->
+  <meta name="feedback-webhook" content="" />
 
   <!-- Preconnect & Performance Hints -->
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
@@ -146,6 +148,7 @@
       <button id="importBtn" data-i18n="import" aria-label="Import data" class="btn-icon-labeled btn-import"><span class="btn-label" data-i18n="import">Import</span></button>
       <button id="exportBtn" data-i18n="export" aria-label="Export data" class="btn-icon-labeled btn-export"><span class="btn-label" data-i18n="export">Export</span></button>
       <button id="infoBtn" data-i18n="info" aria-haspopup="dialog" aria-controls="infoModal" class="btn-icon-labeled btn-info"><span class="btn-label" data-i18n="info">Info</span></button>
+  <button id="feedbackBtn" data-i18n="feedback.open" aria-haspopup="dialog" aria-controls="feedbackModal" class="btn-icon-labeled btn-feedback"><span class="btn-label" data-i18n="feedback.open">Feedback</span></button>
   <button id="expandAllBtn" aria-label="Expand categories" data-i18n="expand" class="btn-icon-labeled btn-expand"><span class="btn-label" data-i18n="expand">Expand</span></button>
   <button id="collapseAllBtn" aria-label="Collapse categories" data-i18n="collapse" class="btn-icon-labeled btn-collapse"><span class="btn-label" data-i18n="collapse">Collapse</span></button>
       <div class="lang-dropdown">
@@ -277,6 +280,34 @@
     <p style="font-size:.65rem;opacity:.65" data-i18n="info.disclaimer">Hollow Knight: Silksong assets / names are property of their respective owners. This is an unofficial community project.</p>
   </div>
 </div>
+<!-- Feedback Modal -->
+  <div id="feedbackModal" class="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" hidden>
+    <div class="feedback-modal__backdrop" data-close="feedbackModal"></div>
+    <div class="feedback-modal__dialog">
+      <button class="feedback-modal__close" data-close="feedbackModal" aria-label="Close">×</button>
+      <h2 id="feedbackModalTitle" data-i18n="feedback.title">Send Feedback</h2>
+      <form id="feedbackForm" novalidate>
+        <div class="fb-row">
+          <label for="fbType"><span data-i18n="feedback.type.label">Type</span></label>
+          <select id="fbType" name="type">
+            <option value="bug" data-i18n="feedback.type.bug">Bug</option>
+            <option value="idea" data-i18n="feedback.type.idea">Idea</option>
+            <option value="data" data-i18n="feedback.type.data">Incorrect data</option>
+            <option value="other" data-i18n="feedback.type.other">Other</option>
+          </select>
+        </div>
+        <div class="fb-row">
+          <label for="fbMsg"><span data-i18n="feedback.message.label">Message</span></label>
+          <textarea id="fbMsg" name="message" rows="5" minlength="10" required placeholder="Write your feedback (min 10 characters)..." data-i18n-placeholder="feedback.placeholder"></textarea>
+        </div>
+        <div class="fb-actions">
+          <button type="button" class="fb-cancel" data-close="feedbackModal" data-i18n="feedback.cancel">Cancel</button>
+          <button type="submit" id="fbSendBtn" class="fb-send" data-i18n="feedback.send">Send</button>
+        </div>
+        <div id="fbStatus" class="fb-status" role="status" aria-live="polite" hidden></div>
+      </form>
+    </div>
+  </div>
 <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

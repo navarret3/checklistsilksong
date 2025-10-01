@@ -22,6 +22,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Inject Discord webhook (feedback)
+        if: ${{ secrets.DISCORD_WEBHOOK != '' }}
+        run: |
+          WEBHOOK="${{ secrets.DISCORD_WEBHOOK }}"
+          if [ -z "$WEBHOOK" ]; then echo "No webhook secret provided"; exit 0; fi
+          echo "Injecting feedback webhook into index.html"
+          ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
+          sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
+          grep -n "feedback-webhook" index.html || true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

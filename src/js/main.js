@@ -197,11 +197,40 @@ import { setLocale, t, activeLocale } from './i18n.js';
       if(!langMenu || langMenu.hidden) return;
       langMenu.hidden = true;
       langToggle?.setAttribute('aria-expanded','false');
+      // Cleanup inline positioning styles added when floating
+      langMenu.style.position='';
+      langMenu.style.top='';
+      langMenu.style.left='';
+      langMenu.style.right='';
+      langMenu.style.transform='';
+      langMenu.style.minWidth='';
+      langMenu.style.maxWidth='';
     }
     function openMenu(){
       if(!langMenu || !langMenu.hidden) return;
       langMenu.hidden = false;
       langToggle?.setAttribute('aria-expanded','true');
+      // Overlay floating positioning so header height does not change (no layout shift)
+      try {
+        const toggleRect = langToggle.getBoundingClientRect();
+        // Temporarily ensure natural size for measurement
+        langMenu.style.position='fixed';
+        langMenu.style.top='0px';
+        langMenu.style.left='0px';
+        langMenu.style.transform='none';
+        langMenu.style.right='auto';
+        langMenu.style.maxWidth='min(240px, 92vw)';
+        // Force reflow to measure
+        const menuRect = langMenu.getBoundingClientRect();
+        const desiredTop = Math.round(toggleRect.bottom + 6);
+        let desiredLeft = Math.round(toggleRect.left + (toggleRect.width/2) - (menuRect.width/2));
+        const margin = 8;
+        if(desiredLeft < margin) desiredLeft = margin;
+        const maxLeft = window.innerWidth - menuRect.width - margin;
+        if(desiredLeft > maxLeft) desiredLeft = maxLeft;
+        langMenu.style.top = desiredTop + 'px';
+        langMenu.style.left = desiredLeft + 'px';
+      } catch(_){}
       // focus first selected or first option
       const selected = langMenu.querySelector('[aria-selected="true"]') || langMenu.querySelector('[role="option"]');
       selected && selected.focus?.();
@@ -211,7 +240,11 @@ import { setLocale, t, activeLocale } from './i18n.js';
       langToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         if(!langMenu) return;
-        if(langMenu.hidden) openMenu(); else closeMenu();
+        if(langMenu.hidden){
+          openMenu();
+        } else {
+          closeMenu();
+        }
       });
     }
     if (langMenu) {
@@ -505,6 +538,81 @@ import { setLocale, t, activeLocale } from './i18n.js';
         spawnCelebration();
       }
     }
+
+    /* ===== Feedback Modal & Submission (Discord Webhook) ===== */
+    (function setupFeedback(){
+      const feedbackBtn = document.getElementById('feedbackBtn');
+      const feedbackModal = document.getElementById('feedbackModal');
+      if(!feedbackBtn || !feedbackModal) return;
+      const form = document.getElementById('feedbackForm');
+      const msgEl = document.getElementById('fbMsg');
+      const typeEl = document.getElementById('fbType');
+      const statusEl = document.getElementById('fbStatus');
+      const sendBtn = document.getElementById('fbSendBtn');
+      const webhookMeta = document.querySelector('meta[name="feedback-webhook"]');
+      const webhookBase = (webhookMeta && webhookMeta.content || '').trim();
+      let activeSending = false;
+
+      function openFb(){
+        feedbackModal.hidden = false;
+        statusEl.hidden = true;
+        statusEl.className = 'fb-status';
+        form.reset();
+        msgEl.focus();
+        gtag('event','feedback_open',{ event_category:'Feedback' });
+      }
+      function closeFb(){
+        feedbackModal.hidden = true;
+      }
+      feedbackBtn.addEventListener('click', openFb);
+      feedbackModal.addEventListener('click', (e)=>{
+        if(e.target.matches('[data-close="feedbackModal"], .feedback-modal__backdrop')) closeFb();
+      });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !feedbackModal.hidden) closeFb(); });
+
+      async function submitFeedback(e){
+        e.preventDefault();
+        if(activeSending) return;
+        const raw = (msgEl.value||'').trim();
+        if(raw.length < 10){
+          statusEl.hidden = false; statusEl.textContent = t('feedback.status.tooShort') || 'Message too short.'; statusEl.className='fb-status fb-status--err'; return;
+        }
+        if(!webhookBase){
+          statusEl.hidden = false; statusEl.textContent = 'Webhook not configured.'; statusEl.className='fb-status fb-status--err'; return;
+        }
+        activeSending = true;
+        sendBtn.disabled = true; sendBtn.style.opacity='.6';
+        statusEl.hidden = false; statusEl.textContent = t('feedback.status.sending') || 'Sending...'; statusEl.className='fb-status';
+        const { completedWeight, totalWeight } = computePercent(items, progress);
+        const percent = totalWeight ? Math.round((completedWeight/totalWeight)*100) : 0;
+        const locale = activeLocale();
+        const type = typeEl.value || 'other';
+        const prefixKey = 'feedback.type.prefix.'+type;
+        const prefix = t(prefixKey) || `[${type.toUpperCase()}]`;
+        const ua = navigator.userAgent.split(')')[0]+')';
+        const bodyLines = [
+          `${prefix} ${raw}`,
+          `Progress: ${percent}%`,
+          `Locale: ${locale}`,
+          `UA: ${ua}`
+        ];
+        const payload = { content: bodyLines.join('\n') };
+        try {
+          const res = await fetch(webhookBase, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
+          if(!res.ok) throw new Error('HTTP '+res.status);
+          statusEl.textContent = t('feedback.status.sent') || 'Feedback sent. Thank you!';
+          statusEl.className = 'fb-status fb-status--ok';
+          gtag('event','feedback_submit',{ event_category:'Feedback', event_label:type, value: percent });
+          setTimeout(()=>{ closeFb(); }, 1400);
+        } catch(err){
+          statusEl.textContent = t('feedback.status.error') || 'Error sending feedback.';
+          statusEl.className = 'fb-status fb-status--err';
+        } finally {
+          activeSending = false; sendBtn.disabled = false; sendBtn.style.opacity='';
+        }
+      }
+      form.addEventListener('submit', submitFeedback);
+    })();
 
     function formatWeightedPercent(v){
       if(v >= 100) return '100';
