@@ -12,6 +12,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Silksong Checklist" />
+  <meta name="color-scheme" content="dark light" />
   <title>Hollow Knight: Silksong | Interactive 100% checklist &amp; Guide</title>
   <meta name="description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
   <!-- Spanish alternate description (used on ES static variant) -->
@@ -54,6 +55,9 @@
   <link rel="dns-prefetch" href="//www.googletagmanager.com">
   <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
   <link rel="preload" as="image" href="/assets/images/ss3.png" imagesrcset="/assets/images/ss3.png 1x" fetchpriority="high" />
+  <!-- Preload critical JSON (dataset + default locale) -->
+  <link rel="preload" href="/data/silksong_items.json" as="fetch" type="application/json" crossorigin>
+  <link rel="preload" href="/src/i18n/en.json" as="fetch" type="application/json" crossorigin>
 
   <!-- Structured Data (JSON-LD) consolidated -->
   <script type="application/ld+json">{
@@ -94,243 +98,33 @@
     ]
   }</script>
 
-  <!-- Google Analytics 4 (configuración avanzada personalizada) -->
+  <!-- Google Analytics 4 (mínimo + privacidad) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZD7H8X2CE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    
-    // Configuración avanzada con parámetros personalizados
-    gtag('config', 'G-3ZD7H8X2CE', {
-      // Configuraciones de privacidad y tracking
-      anonymize_ip: true,
-      allow_google_signals: true,
-      send_page_view: true,
-      
-      // Parámetros personalizados para el checklist
-      custom_map: {
-        'custom_parameter_1': 'progress_percentage',
-        'custom_parameter_2': 'language_selected', 
-        'custom_parameter_3': 'items_completed',
-        'custom_parameter_4': 'categories_completed'
-      },
-      
-      // Enhanced measurements
-      enhanced_measurements: {
-        scrolls: true,
-        outbound_clicks: true,
-        site_search: true,
-        video_engagement: false,
-        file_downloads: true
-      }
-    });
-
-    // Función helper para tracking de progreso del checklist
-    window.trackChecklistProgress = function(action, category, itemName, progressPercent) {
-      gtag('event', action, {
-        event_category: 'Checklist',
-        event_label: itemName || category,
-        custom_parameter_1: progressPercent,
-        custom_parameter_2: document.getElementById('langSel')?.value || 'en',
-        custom_parameter_3: document.querySelectorAll('.item[aria-checked="true"]').length,
-        value: Math.round(progressPercent)
-      });
-    };
-
-    // Función para tracking de búsquedas
-    window.trackSearch = function(searchTerm, resultsCount) {
-      gtag('event', 'search', {
-        search_term: searchTerm,
-        event_category: 'Site Search',
-        custom_parameter_2: document.getElementById('langSel')?.value || 'en',
-        value: resultsCount
-      });
-    };
-
-    // Función para conversiones (100% completado)
-    window.trackCompletion = function(completionType, totalItems) {
-      gtag('event', 'conversion', {
-        event_category: 'Checklist Completion',
-        event_label: completionType,
-        custom_parameter_1: 100,
-        custom_parameter_3: totalItems,
-        value: totalItems
-      });
-    };
+    gtag('config', 'G-3ZD7H8X2CE', { anonymize_ip: true });
   </script>
   <!-- Ads / Monetization (AdSense snippet inserted when client ID provided) -->
   <!-- Google AdSense (script activo; unidades de anuncio ocultas hasta aprobación) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9707168065012640" crossorigin="anonymous"></script>
 
+  <!-- Critical CSS mínimo; estilos completos en /assets/app.css -->
   <style>
-    /* Minimal (optional) subtle spacing for ad units */
-    .ad-container { margin:1.1rem auto; max-width:728px; padding:0.9rem 1rem 0.95rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:10px; display:flex; flex-direction:column; align-items:center; gap:.4rem; }
-    .ad-container .ad-label { font-size:0.55rem; letter-spacing:1.1px; text-transform:uppercase; color:var(--muted); opacity:.85; }
-    .ad-slot-wrap { width:100%; display:flex; justify-content:center; align-items:center; min-height:90px; position:relative; }
-    .ad-slot-wrap::after { content:""; position:absolute; inset:0; border:1px dashed rgba(255,255,255,0.08); border-radius:6px; pointer-events:none; }
-    .ad-container:hover .ad-slot-wrap::after { border-color:rgba(255,255,255,0.15); }
-    .ad-container--mid { margin:1.2rem auto 1.4rem; }
-    @media (max-width:760px){ .ad-container { padding:0.75rem .75rem 0.85rem; } }
+    :root { --bg:#0d0f12; --panel:#14181d; --panel-alt:#1c232b; --fg:#f5f7fa; --accent:#4fb3ff; --accent-grad:linear-gradient(90deg,#4fb3ff,#00ffa8); --muted:#6e7b88; --border:#242d36; --radius:8px; --focus:#ffe28a; --danger:#ff4f4f; font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif; }
+    body { margin:0; color:var(--fg); background:#161a1e linear-gradient(180deg,#181d22 0%, #161b20 55%, #14181c 100%) fixed; -webkit-font-smoothing:antialiased; }
+    header { display:flex; flex-direction:column; align-items:center; }
+    .hero { width:100%; padding:1.3rem 0 1rem; display:flex; flex-direction:column; align-items:center; gap:.75rem; background:linear-gradient(180deg,rgba(13,15,18,0.95),rgba(13,15,18,0.72) 60%,rgba(13,15,18,0)); }
+    h1 { font:600 0.95rem/1 system-ui,Segoe UI,Roboto,Arial,sans-serif; letter-spacing:2px; text-transform:uppercase; margin:0; }
+    .progress-center { width:100%; max-width:760px; display:flex; flex-direction:column; align-items:center; gap:.5rem; }
+    .progress-bar { height:14px; width:100%; background:#1f2730; border-radius:8px; overflow:hidden; position:relative; }
+    .progress-bar__fill { position:absolute; inset:0; width:0; background:var(--accent-grad); }
+    #progressPercentText { font-size:1.05rem; font-weight:700; letter-spacing:2px; background:var(--accent-grad); -webkit-background-clip:text; color:transparent; }
   </style>
-  <style>
-    :root {
-      --bg: #0d0f12;
-      --panel:#14181d;
-      --panel-alt:#1c232b;
-      --fg: #f5f7fa;
-      --accent: #4fb3ff;
-      --accent-grad: linear-gradient(90deg,#4fb3ff,#00ffa8);
-      --muted:#6e7b88;
-      --border:#242d36;
-      --radius:8px;
-      --focus:#ffe28a;
-      --danger:#ff4f4f;
-      --icon-size:78px; /* unified icon size for item thumbnails */
-      font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    * { box-sizing:border-box; }
-    /* Enhanced dark granular background */
-    body { margin:0; color:var(--fg); -webkit-font-smoothing:antialiased; position:relative;
-      /* SIMPLIFIED - Lighter neutral gray granular background */
-      background-color:#161a1e; /* fallback */
-      background-image: linear-gradient(180deg,#181d22 0%, #161b20 55%, #14181c 100%);
-      background-attachment:fixed;
-    }
-    /* SIMPLIFIED - Stronger grain variant (apply with body.grain-strong) */
-    body.grain-strong { background-image: linear-gradient(180deg,#1b2025 0%, #181c21 55%, #161a1e 100%); }
-  header { display:flex; flex-direction:column; align-items:center; width:100%; position:relative; }
-  .hero { width:100%; padding:1.4rem 0 1.1rem; display:flex; flex-direction:column; align-items:center; gap:.8rem; background:linear-gradient(180deg,rgba(13,15,18,0.95),rgba(13,15,18,0.75) 60%,rgba(13,15,18,0)); transition:opacity .4s ease, transform .5s ease; }
-  .hero.collapsed { opacity:0; pointer-events:none; }
-  /* Shrink behavior */
-  .hero { transition:padding .4s ease, background .4s ease; position:relative; }
-  .hero.shrink { padding:.7rem 0 .55rem; background:linear-gradient(180deg,rgba(13,15,18,0.97),rgba(13,15,18,0.82) 65%,rgba(13,15,18,0)); }
-  .hero img { transition:height .45s ease, transform .45s ease; }
-  .hero.shrink img { height:90px; transform:translateY(0); }
-  .hero.shrink .progress-center { gap:.35rem; }
-  .hero.shrink #progressPercentText { font-size:.9rem; letter-spacing:1.4px; text-shadow:0 0 12px rgba(79,179,255,.18); }
-  @media (max-width:700px){ .hero.shrink img { height:70px; } }
-  .hero img { height:150px; width:auto; filter:drop-shadow(0 6px 16px rgba(0,0,0,.65)); margin:0; }
-  @media (max-width:900px){ .hero img { height:140px; } }
-  @media (max-width:600px){ .hero img { height:120px; } }
-  h1 { font-size:0.95rem; margin:0; font-weight:600; letter-spacing:2px; text-transform:uppercase; opacity:.92; }
-  /* Progress inside hero + floating duplicate */
-  .progress-center { width:100%; max-width:760px; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center; gap:.55rem; padding-top:.4rem; }
-  .progress-floating { position:fixed; top:0; left:50%; transform:translateX(-50%); width:100%; max-width:760px; padding:.45rem clamp(.75rem,2vw,1.1rem) .55rem; backdrop-filter:blur(10px); background:rgba(15,18,22,0.85); border:1px solid #1f2730; border-top:none; border-radius:0 0 14px 14px; box-shadow:0 8px 18px -10px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,0.02); display:flex; flex-direction:column; align-items:center; gap:.4rem; opacity:0; pointer-events:none; transition:opacity .35s ease; z-index:70; }
-  .progress-floating.visible { opacity:1; pointer-events:auto; }
-  .progress-floating #progressPercentTextFloating { font-size:.85rem; letter-spacing:1.5px; font-weight:600; background:var(--accent-grad); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 12px rgba(79,179,255,.22); }
-  .progress-floating #itemsRemainingFloating { font-size:.55rem; letter-spacing:1.2px; text-transform:uppercase; font-weight:600; color:#b4c2cc; background:#25313c; padding:.25rem .55rem .28rem; border-radius:999px; box-shadow:0 0 0 1px #2a3741; }
-  .progress-floating .progress-bar { height:11px; border-radius:7px; }
-  body.with-floating-padding { padding-top:var(--floating-total, 82px); }
-  #progressPercentText { font-size:1.05rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; background:var(--accent-grad); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 18px rgba(79,179,255,.28); }
-  .progress-bar { height:14px; width:100%; background:#1f2730; border-radius:8px; overflow:hidden; position:relative; box-shadow:0 2px 6px -2px rgba(0,0,0,.5) inset,0 0 0 1px #1d252d; }
-  .progress-bar__fill { position:absolute; top:0; left:0; height:100%; width:0; background:var(--accent-grad); transition:width .45s cubic-bezier(.55,.12,.25,.9); }
-  /* Badge y notas para categorías/ítems opcionales */
-  .badge-opt { display:inline-block; font-size:.55rem; line-height:1; background:#2a3340; color:#ffc94d; padding:.15rem .35rem .22rem; border-radius:6px; margin-left:.4rem; letter-spacing:.5px; box-shadow:0 0 0 1px #394653; vertical-align:middle; }
-  .item.optional-item { position:relative; }
-  .item .optional-note { margin:0 0 .35rem 0; font-size:.55rem; letter-spacing:1px; font-weight:600; text-transform:uppercase; display:inline-inline; background:#25313c; padding:.22rem .55rem .26rem; border-radius:999px; color:#d7e4ed; box-shadow:0 0 0 1px #2e3b46; opacity:.9; align-self:flex-start; }
-  /* Nueva insignia inline para jefes (debajo del nombre) */
-  .item .meta { display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
-  .item .optional-inline { 
-    display:inline-block;
-    font-size:.5rem;
-    line-height:1;
-    letter-spacing:1px;
-    font-weight:600;
-    text-transform:uppercase;
-    background:linear-gradient(90deg,#2c3642,#1f262d);
-    color:#ffc94d;
-    padding:.2rem .5rem .24rem;
-    border-radius:999px;
-    box-shadow:0 0 0 1px #3a4753,0 0 0 2px rgba(255,201,77,0.12);
-    position:relative;
-  }
-  .item .optional-inline::before{ content:"★"; font-size:.55rem; margin-right:.3rem; opacity:.9; }
-  .item .optional-inline { filter:drop-shadow(0 2px 4px rgba(0,0,0,.45)); }
-  .category-optional-note { grid-column:1/-1; background:#202830; border:1px dashed #33414d; color:#c2ced6; font-size:.55rem; letter-spacing:.6px; padding:.45rem .6rem .5rem; border-radius:8px; margin:0 0 .4rem; line-height:1.35; }
-  .category-optional-note.boss-note { display:flex; align-items:center; gap:.55rem; border-style:solid; border-color:#3a2d55; background:linear-gradient(135deg,#1d1f27,#232838 65%,#1c2027); box-shadow:0 0 0 1px #2e3744,0 4px 10px -4px rgba(0,0,0,.55); }
-  .boss-note-row { display:flex; align-items:center; gap:.55rem; flex-wrap:wrap; }
-  .boss-note-icon { background:#3e2b63; color:#ffd36b; width:22px; height:22px; font-size:.7rem; display:flex; align-items:center; justify-content:center; border-radius:6px; box-shadow:0 0 0 1px #4d3b75,0 0 0 2px rgba(255,211,107,0.25); }
-  .boss-note-text { font-size:.6rem; letter-spacing:.8px; font-weight:600; color:#d5d9e1; text-transform:uppercase; }
-  .boss-note-progress { font-size:.55rem; background:#2c3644; padding:.25rem .55rem .28rem; border-radius:999px; letter-spacing:1px; color:#d8e3ec; box-shadow:0 0 0 1px #3a4855; }
-  .cat-opt-progress { margin-left:.6rem; font-size:.5rem; letter-spacing:1px; background:#25313c; padding:.2rem .45rem .25rem; border-radius:6px; color:#b9c8d2; box-shadow:0 0 0 1px #33414d; text-transform:uppercase; font-weight:600; }
-  .non-100-separator { margin:1.2rem 0 .2rem; padding:.65rem .75rem .7rem; border:1px solid #2a3440; border-left:4px solid #ffb347; background:linear-gradient(90deg,#1d242b,#1a2026); font-size:.6rem; letter-spacing:.85px; text-transform:uppercase; color:#d7dee5; display:flex; align-items:center; gap:.75rem; border-radius:10px; box-shadow:0 4px 12px -6px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,0.03); }
-  .non-100-separator .sep-icon { font-size:.55rem; opacity:.75; letter-spacing:2px; background:#25313c; padding:.35rem .55rem .4rem; border-radius:8px; box-shadow:0 0 0 1px #34424e; }
-  .non-100-separator .sep-text { flex:1; }
-  .item.optional-item .checkmark { color:#ffc94d; }
-  #itemsRemaining { font-size:.7rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; color:#b9c5cf; background:#25313c; padding:.3rem .65rem .32rem; border-radius:999px; box-shadow:0 2px 4px -2px rgba(0,0,0,.5),0 0 0 1px #2b3741; }
-  .controls { position:fixed; top:.55rem; right:6px; left:auto; display:flex; gap:.4rem; z-index:80; align-items:center; justify-content:flex-end; margin:0; padding:0; white-space:nowrap; }
-  .controls > * { margin:0; }
-  .controls > *:last-child { padding-right:0.45rem; border-top-right-radius:0; border-bottom-right-radius:0; }
-  /* Mobile refinement: tighter gap & smaller horizontal padding to reduce visual shift toward center */
-  @media (max-width:640px){
-    .controls { top:.4rem; gap:.28rem; }
-    .controls > * { padding:0.4rem 0.5rem; }
-    #resetBtn { padding-left:1.25rem; }
-    #resetBtn::before { left:.48rem; }
-  }
-  /* Controls stay fixed at very top now; floating bar will shift below them dynamically via JS */
-  .controls { transition:opacity .4s ease, transform .45s ease; }
-  .controls.hide-on-scroll { opacity:0; transform:translateY(-14px); pointer-events:none; }
-  @media (max-width:650px){
-    .controls { opacity:.55; transition:opacity .3s ease; }
-    .controls:focus-within, .controls:hover { opacity:1; }
-  }
-  #langSel, button { background:rgba(32,40,48,.55); backdrop-filter:blur(4px); color:var(--fg); border:1px solid #2a3541; padding:0.45rem 0.6rem; border-radius:6px; font-size:0.65rem; letter-spacing:.6px; text-transform:uppercase; font-weight:600; margin:0; }
-  /* Reset icon */
-  #resetBtn { position:relative; padding-left:1.4rem; }
-  #resetBtn::before { content:"↺"; position:absolute; left:.55rem; top:50%; transform:translateY(-52%); font-size:.7rem; opacity:.85; }
-  button:hover, #langSel:hover { border-color:var(--accent); }
-    main { max-width:1400px; margin:0 auto; padding:0.75rem 1rem 2rem; }
-    .categories { display:flex; flex-direction:column; gap:1rem; }
-    .cat { background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
-    .cat-header { cursor:pointer; padding:0.75rem 1rem; display:flex; align-items:center; gap:0.75rem; user-select:none; background:var(--panel-alt); }
-    .cat-header:hover { background:#202830; }
-    .cat-header h2 { flex:1; margin:0; font-size:0.9rem; letter-spacing:.5px; font-weight:600; }
-    .cat-count { font-size:0.7rem; background:#25313c; padding:0.25rem 0.5rem; border-radius:999px; color:var(--muted); }
-    .cat-body { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.55rem; padding:0.75rem 0.85rem 1rem; }
-  .item { border:1px solid var(--border); padding:0.6rem 0.65rem 0.75rem; border-radius:8px; background:#161d23; cursor:pointer; line-height:1.25; position:relative; font-size:0.78rem; display:flex; flex-direction:column; gap:.55rem; }
-  .item .top { display:flex; align-items:flex-start; gap:.65rem; }
-  .item .thumb { width:var(--icon-size); height:var(--icon-size); flex:0 0 var(--icon-size); border:1px solid #25313c; background:#10161b; border-radius:12px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 2px 6px -2px rgba(0,0,0,.6); }
-  .item .thumb img { width:100%; height:100%; display:block; object-fit:contain; image-rendering:auto; /* allow browser smoothing */ }
-  .item .thumb img.hi-upscaled { filter:drop-shadow(0 0 2px rgba(0,0,0,.4)); }
-  @media (max-width:600px){ :root { --icon-size:64px; } }
-  .item .meta { flex:1; display:flex; flex-direction:column; min-width:0; }
-  .item .label { font-weight:600; font-size:.82rem; line-height:1.15; display:block; margin:0 0 .2rem; }
-  .item .desc { font-size:.63rem; letter-spacing:.35px; color:#c2ccd4; line-height:1.25; }
-  .item[aria-checked="true"] .desc { opacity:.8; }
-  .item .map-img { width:100%; border:1px solid #25313c; background:#10161b; border-radius:8px; overflow:hidden; aspect-ratio: 5 / 2; display:flex; align-items:center; justify-content:center; margin-top:auto; }
-  .item .map-img img { width:100%; height:100%; object-fit:cover; opacity:.9; filter:contrast(1.05) brightness(.95); }
-  .item:hover { border-color:#2d3944; background:#1b242b; box-shadow:0 0 0 1px #25313c, 0 4px 10px -4px rgba(0,0,0,.6); }
-  .item:active { transform:translateY(1px); }
-  .item.pulse { animation:pulse .45s ease; }
-  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(79,179,255,.6);} 100%{box-shadow:0 0 0 22px rgba(79,179,255,0);} }
-    .item:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
-    .item[aria-checked="true"] { background:#1e2d20; border-color:#315136; }
-    .item[aria-checked="true"] .checkmark { opacity:1; transform:scale(1); }
-    .item .label { font-weight:500; }
-  .checkmark { position:absolute; top:6px; right:6px; font-size:0.85rem; opacity:0.15; transition:.18s ease; }
-    .item[aria-checked="true"] .label { text-decoration:line-through; opacity:.85; }
-    .collapse-icon { font-size:0.75rem; opacity:0.6; transition:transform .25s; }
-    .cat.collapsed .cat-body { display:none; }
-    .cat.collapsed .collapse-icon { transform:rotate(-90deg); }
-    footer { padding:1rem; font-size:0.7rem; color:var(--muted); text-align:center; border-top:1px solid var(--border); background:#0f1215; }
-    .actions { display:flex; gap:0.5rem; align-items:center; }
-    @media (max-width:700px){ .cat-body { grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); } }
-    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-  /* Tooltip */
-  .tooltip { position:fixed; z-index:100; pointer-events:none; max-width:280px; background:#0f1418; border:1px solid #25313c; padding:.6rem .7rem .65rem; border-radius:8px; font-size:.7rem; line-height:1.25; box-shadow:0 6px 18px -6px rgba(0,0,0,.55); opacity:0; transform:translateY(4px); transition:opacity .15s ease, transform .18s ease; }
-  .tooltip[data-show="true"] { opacity:1; transform:translateY(0); }
-  .tooltip h4 { margin:.1rem 0 .35rem; font-size:.75rem; font-weight:600; letter-spacing:.5px; background:var(--accent-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .tooltip .row { margin:0 0 .35rem; }
-  .tooltip .row:last-child { margin-bottom:0; }
-  .tooltip .muted { color:var(--muted); font-style:italic; }
-  @media (pointer:coarse){ .tooltip { display:none; } }
-  /* Search input narrower width */
-  .search-bar-wrap { width:100%; max-width:760px; padding:0 .75rem; display:flex; justify-content:center; }
-  #searchInput { width:320px; max-width:100%; }
-  @media (max-width:560px){ #searchInput { width:100%; } }
-  </style>
+  <link rel="preload" href="/assets/app.css" as="style">
+  <link rel="stylesheet" href="/assets/app.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/assets/app.css"></noscript>
 </head>
 <body>
 <!-- Removed legacy GTM noscript iframe to keep analytics minimal -->
@@ -345,6 +139,10 @@
       <select id="langSel" aria-label="Language">
         <option value="en">🇺🇸 EN</option>
         <option value="es">🇪🇸 ES</option>
+        <option value="fr">🇫🇷 FR</option>
+        <option value="de">🇩🇪 DE</option>
+        <option value="it">🇮🇹 IT</option>
+        <option value="ru">🇷🇺 RU</option>
       </select>
     </div>
     <button id="resetBtn" data-i18n="reset">Reset</button>
@@ -372,145 +170,12 @@
   </ul>
   <button id="dismissIssues" style="margin-top:.55rem;background:#592d2d;border:1px solid #a33;color:#f9e2e2;padding:.25rem .55rem;border-radius:5px;font-size:.6rem;cursor:pointer;">OK</button>
 </div>
-<style>
-  /* Light theme overrides */
-  body.theme-light {
-    --bg:#f5f7fa; --panel:#ffffff; --panel-alt:#f1f3f6; --fg:#1d242b; --accent:#0d6efd; --accent-grad:linear-gradient(90deg,#0d6efd,#22c68a); --muted:#5a6672; --border:#d4dde5; --focus:#d68b00; --danger:#d62f2f;
-  }
-  body.theme-light .item { background:#ffffff; }
-  body.theme-light .item:hover { background:#f2f6f9; }
-  body.theme-light .cat { border-color:#d4dde5; }
-  body.theme-light .cat-header { background:#eef2f6; }
-  body.theme-light .progress-floating { background:rgba(255,255,255,0.85); border-color:#cbd6df; }
-  body.theme-light #itemsRemaining, body.theme-light #itemsRemainingFloating { background:#dbe5ec; color:#2d3a44; box-shadow:0 0 0 1px #b8c8d3; }
-  body.theme-light .controls #toTopBtn, body.theme-light #resetBtn, body.theme-light #langSel { background:rgba(255,255,255,0.75); border-color:#c5d2db; color:#243039; }
-  body.theme-light .progress-bar { background:#d8e1e9; box-shadow:0 0 0 1px #c2ccd4 inset; }
-  body.theme-light footer { background:#e9edf0; color:#4d5963; }
-  body.theme-light .tooltip { background:#ffffff; border-color:#cfd9e1; color:#1d242b; }
-  body.theme-light .tooltip h4 { text-shadow:none; }
-  body.theme-light #datasetIssues { background:#f9e3e3; color:#5a2222; border-color:#d28a8a; }
-</style>
 <main>
-  <!-- Intro content moved into an on-demand modal to keep immediate focus on the checklist -->
-  <noscript><p data-i18n="intro.noscript" style="max-width:760px;margin:0 auto 1rem;padding:0 .9rem;font-size:.7rem;line-height:1.4;color:#d1d9df;"><strong>Note:</strong> This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below.</p></noscript>
-  <!-- (Moved ad below expanded textual content for better content/ad ratio during review) -->
-  <!-- Top ad removed; will be injected after the 2nd category dynamically once categories render -->
-  <div class="categories" id="categories" aria-live="polite"></div>
+  <div id="categories" class="categories" aria-live="polite"></div>
 </main>
-<footer>
-  <!-- Ad Unit: Footer Responsive (with framed wrapper) -->
-  <!-- Ad Unit: Footer Responsive (comentado temporalmente hasta aprobación AdSense)
-  <div class="ad-container ad-container--footer" style="margin-top:1.5rem;">
-    <small class="ad-label">Advertisement</small>
-    <div class="ad-slot-wrap">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="9354203965" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </div>
-  -->
-  <span data-i18n="footer.note">Fan-made project. Hollow Knight & Silksong are trademarks of Team Cherry. Provisional data will be updated with official information.</span>
-  <br><a href="/about.html" style="color:var(--accent);font-size:0.65rem;">About / Disclaimer</a>
-  <br><a href="/privacy.html" style="color:var(--accent);font-size:0.65rem;">Privacy & Cookies</a>
+<footer style="padding:1rem;font-size:.7rem;color:#6e7b88;text-align:center;border-top:1px solid #242d36;background:#0f1215;">
+  <p style="margin:0;">Silksong community project • <span data-i18n="footer.note">Data is unofficial and may change.</span></p>
 </footer>
-<!-- Help / Guide Modal -->
-<div id="guideModal" class="guide-modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
-  <div class="guide-dialog">
-    <button class="guide-close" data-close aria-label="Close">×</button>
-    <div class="guide-scroll">
-      <h2 id="guideModalTitle" data-i18n="intro.heading">Hollow Knight: Silksong Completion Tracker</h2>
-      <p data-i18n="intro.p1">Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in Hollow Knight: Silksong...</p>
-      <p data-i18n="intro.p2">A Spanish interface is available – switch languages with the selector above.</p>
-      <hr />
-      <h3 data-i18n="section.howto.title">How to Use This Checklist</h3>
-      <p data-i18n="section.howto.p1">Browse categories...</p>
-      <p data-i18n="section.howto.p2">Placeholder or inferred entries...</p>
-      <p data-i18n="section.howto.p3">Switch language...</p>
-      <h3 data-i18n="section.features.title">Features</h3>
-      <ul class="guide-list">
-        <li data-i18n="section.features.list1">Lightweight...</li>
-        <li data-i18n="section.features.list2">Offline capable...</li>
-        <li data-i18n="section.features.list3">Progress percent...</li>
-        <li data-i18n="section.features.list4">Internationalization...</li>
-        <li data-i18n="section.features.list5">Expandable categories...</li>
-      </ul>
-      <h3 data-i18n="section.faq.title">FAQ</h3>
-      <dl class="faq">
-        <dt data-i18n="section.faq.q.data">Does this store my data online?</dt>
-        <dd data-i18n="section.faq.a.data">No...</dd>
-        <dt data-i18n="section.faq.q.change">Will values change...</dt>
-        <dd data-i18n="section.faq.a.change">Yes...</dd>
-        <dt data-i18n="section.faq.q.ads">Why don't I see ads?</dt>
-        <dd data-i18n="section.faq.a.ads">Site under review...</dd>
-        <dt data-i18n="section.faq.q.suggest">Can I suggest...</dt>
-        <dd data-i18n="section.faq.a.suggest">Yes...</dd>
-        <dt data-i18n="section.faq.q.official">Is this official?</dt>
-        <dd data-i18n="section.faq.a.official">No...</dd>
-      </dl>
-      <h3 data-i18n="section.disclaimer.title">Disclaimer</h3>
-      <p data-i18n="section.disclaimer.text">Hollow Knight and Silksong are trademarks...</p>
-    </div>
-  </div>
-</div>
-<style>
-  .guide-btn { background:rgba(32,40,48,.55); border:1px solid #2a3541; color:var(--fg); padding:0.45rem 0.6rem; border-radius:6px; font-size:.55rem; letter-spacing:.6px; text-transform:uppercase; font-weight:600; cursor:pointer; }
-  .guide-btn:hover { border-color:var(--accent); }
-  .guide-modal { position:fixed; inset:0; z-index:220; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); padding:2.2rem 1rem 1.6rem; }
-  .guide-modal.hidden { display:none; }
-  .guide-dialog { width:100%; max-width:860px; max-height:90vh; background:#12171c; border:1px solid #25313c; border-radius:14px; box-shadow:0 18px 44px -12px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,0.04); position:relative; display:flex; flex-direction:column; }
-  .guide-scroll { overflow:auto; padding:1.1rem 1.25rem 1.4rem; font-size:.73rem; line-height:1.5; color:#c9d3db; }
-  .guide-scroll h2 { margin:.2rem 0 1rem; font-size:.95rem; letter-spacing:.6px; font-weight:600; }
-  .guide-scroll h3 { margin:1.2rem 0 .55rem; font-size:.8rem; letter-spacing:.5px; font-weight:600; }
-  .guide-scroll ul, .guide-scroll dl { margin:.4rem 0 1rem 1.1rem; padding:0; }
-  .guide-scroll ul { list-style:disc; }
-  .guide-scroll dl dt { font-weight:600; margin:.6rem 0 .25rem; }
-  .guide-scroll dl dd { margin:0 0 .35rem; }
-  .guide-close { position:absolute; top:8px; right:8px; background:#202830; border:1px solid #2a3541; color:var(--fg); width:34px; height:34px; border-radius:8px; cursor:pointer; font-size:1rem; line-height:1; display:flex; align-items:center; justify-content:center; }
-  .guide-close:hover { border-color:var(--accent); }
-  @media (max-width:720px){ .guide-dialog { max-width:100%; } .guide-scroll { font-size:.7rem; } }
-</style>
-<script>
-  (function(){
-    const controls = document.querySelector('.controls');
-    if(controls && !document.getElementById('guideBtn')){
-      const btn = document.createElement('button');
-      btn.id='guideBtn';
-      btn.type='button';
-      btn.className='guide-btn';
-      btn.setAttribute('aria-haspopup','dialog');
-  btn.innerHTML='<span aria-hidden="true" style="font-size:.85rem;margin-right:.25rem;opacity:.9;">ℹ</span><span class="g-label" data-i18n="guide.open">Guide</span>';
-      btn.title='Guide / Help';
-      controls.insertBefore(btn, controls.firstChild); // appear first
-      const modal = document.getElementById('guideModal');
-      const closeBtn = modal.querySelector('[data-close]');
-      function open(){ modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; btn.setAttribute('aria-expanded','true'); }
-      function close(){ modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; btn.setAttribute('aria-expanded','false'); }
-      btn.addEventListener('click', open);
-      closeBtn.addEventListener('click', close);
-      modal.addEventListener('click', e=>{ if(e.target===modal) close(); });
-      document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')) close(); });
-    }
-  })();
-  // Deferred mid-content ad insertion after 2nd category render
-  /* Mid-content Ad insertion deshabilitada temporalmente
-  (function(){
-    const observer = new MutationObserver(()=>{
-      const cats = document.querySelectorAll('.categories > .cat');
-      if(cats.length >= 2 && !document.getElementById('midAd')){
-        const ad = document.createElement('div');
-        ad.id='midAd';
-        ad.className='ad-container ad-container--mid';
-        ad.innerHTML=`<small class="ad-label">Advertisement</small><div class="ad-slot-wrap"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins></div>`;
-        cats[1].after(ad);
-        try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
-        observer.disconnect();
-      }
-    });
-    const target = document.getElementById('categories');
-    if(target) observer.observe(target,{ childList:true });
-  })();
-  */
-</script>
-<script type="module" src="./src/js/main.js"></script>
 <!-- (Removed custom lazy / retry script; using pure default one-line pushes above each ad) -->
 <script>
   // Dynamically update <html lang> when language changes
@@ -566,5 +231,14 @@
       onScroll();
   })();
 </script>
+<!-- Service Worker y script principal -->
+<script>
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    });
+  }
+</script>
+<script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
