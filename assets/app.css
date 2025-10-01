@@ -356,6 +356,8 @@ footer p{margin:0}
 .lang-menu li[aria-selected="true"]{background:#25313a;color:#fff}
 .lang-menu li .opt-code{font-weight:600}
 .lang-menu[hidden]{display:none}
+.lang-toggle[aria-expanded="true"] + .lang-menu{display:block}
+.lang-dropdown{position:relative;z-index:160}
 .flag{position:relative;width:18px;height:12px;border:1px solid #2a343e;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.35) inset;flex-shrink:0}
 .flag-en{background:linear-gradient(#b22234 14.28%,#fff 14.28%,#fff 28.56%,#b22234 28.56%,#b22234 42.84%,#fff 42.84%,#fff 57.12%,#b22234 57.12%,#b22234 71.4%,#fff 71.4%,#fff 85.68%,#b22234 85.68%,#b22234 100%)}
 .flag-en::before{content:"";position:absolute;top:0;left:0;width:40%;height:50%;background:#3c3b6e}
