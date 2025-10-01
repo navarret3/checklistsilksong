@@ -1,0 +1,25 @@
+name: Debug Webhook Secret
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check webhook secret
+        run: |
+          WEBHOOK='${{ secrets.DISCORD_WEBHOOK }}'
+          if [ -z "$WEBHOOK" ]; then
+            echo "❌ DISCORD_WEBHOOK secret is NOT configured or is empty"
+            exit 1
+          else
+            echo "✅ DISCORD_WEBHOOK secret is configured (length: ${#WEBHOOK})"
+            echo "First 20 chars: ${WEBHOOK:0:20}..."
+          fi
+      
+      - name: Check repository secrets
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Ref: ${{ github.ref }}"
