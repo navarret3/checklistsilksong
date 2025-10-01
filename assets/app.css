@@ -289,16 +289,20 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 	/* Title single line full width; buttons stacked below */
 	.logo-wrap .logo{display:none}
 	.topbar{flex-direction:column;align-items:stretch;gap:.5rem;padding:.6rem .85rem .7rem}
+	.topbar{overflow:visible}
 	.logo-wrap{justify-content:center}
 	.app-title{justify-content:center;width:100%;text-align:center;padding:.55rem 0 .5rem;max-width:100%;overflow:visible;text-overflow:unset}
 	.app-title .title-text{font-size:clamp(.82rem,4.5vw,1rem);letter-spacing:clamp(1px,0.7vw,1.9px);white-space:nowrap}
 	/* Toolbar: search first, no expand/collapse buttons */
 	.toolbar{order:2;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;padding:0;margin:0}
 	#expandAllBtn,#collapseAllBtn{display:none !important}
-	#importBtn,#exportBtn{display:none}
+	/* Show import/export/feedback buttons on mobile but more compact */
 	.search-inline{order:0}
 	.search-inline input{display:block !important;width:220px;max-width:70%;}
-	.btn-icon-labeled{padding:.38rem .55rem .4rem;font-size:.54rem;letter-spacing:.75px}
+	.btn-icon-labeled{padding:.42rem .52rem .44rem;font-size:.0rem;letter-spacing:0}
+	.btn-icon-labeled .btn-label{display:none}
+	.lang-toggle .lang-code{display:none}
+	/* Language menu centered */
 	.lang-toggle{padding:.38rem .5rem .4rem;font-size:.5rem;letter-spacing:.75px}
 	.toolbar > *{flex:0 0 auto}
 	/* Category titles single line; include bosses/pulgas, shrink their notes */

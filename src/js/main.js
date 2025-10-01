@@ -202,6 +202,20 @@ import { setLocale, t, activeLocale } from './i18n.js';
       if(!langMenu || !langMenu.hidden) return;
       langMenu.hidden = false;
       langToggle?.setAttribute('aria-expanded','true');
+      // For mobile: ensure menu is fully within viewport
+      try {
+        const rect = langMenu.getBoundingClientRect();
+        if(rect.right > window.innerWidth){
+          langMenu.style.left = 'auto';
+          langMenu.style.right = '0';
+          langMenu.style.transform = 'none';
+        }
+        if(rect.left < 0){
+          langMenu.style.left = '0';
+          langMenu.style.right = 'auto';
+          langMenu.style.transform = 'none';
+        }
+      } catch(_){}
       // focus first selected or first option
       const selected = langMenu.querySelector('[aria-selected="true"]') || langMenu.querySelector('[role="option"]');
       selected && selected.focus?.();
@@ -211,7 +225,11 @@ import { setLocale, t, activeLocale } from './i18n.js';
       langToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         if(!langMenu) return;
-        if(langMenu.hidden) openMenu(); else closeMenu();
+        if(langMenu.hidden){
+          openMenu();
+        } else {
+          closeMenu();
+        }
       });
     }
     if (langMenu) {
