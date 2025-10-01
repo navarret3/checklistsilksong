@@ -134,6 +134,9 @@
 <header>
   <div class="hero">
   <div class="controls" role="group" aria-label="Utility controls">
+    <button id="theme-toggle" title="Toggle theme" aria-label="Toggle theme" data-i18n-title="theme.toggle">🌙</button>
+    <button id="info-btn" title="About" data-i18n-title="about.title">ℹ️</button>
+    <button id="data-btn" title="Import/Export Data" data-i18n-title="data.title">💾</button>
     <div class="lang-container">
       <label for="langSel" class="sr-only">Language</label>
       <select id="langSel" aria-label="Language">
@@ -223,12 +226,20 @@
     const hero = document.querySelector('.hero');
       if(!hero) return;
       const shrinkStart = 40; // px
+
       function onScroll(){
         const y = window.scrollY || document.documentElement.scrollTop;
-        if(y > shrinkStart) hero.classList.add('shrink'); else hero.classList.remove('shrink');
+        const isShrunk = hero.classList.contains('shrink');
+
+        if (y > shrinkStart && !isShrunk) {
+          hero.classList.add('shrink');
+        } else if (y <= shrinkStart && isShrunk) {
+          hero.classList.remove('shrink');
+        }
       }
+
       window.addEventListener('scroll', onScroll, { passive:true });
-      onScroll();
+      onScroll(); // Run on load to set correct initial state
   })();
 </script>
 <!-- Service Worker y script principal -->
@@ -240,5 +251,29 @@
   }
 </script>
 <script type="module" src="/src/js/main.js"></script>
+
+<div id="data-modal" class="modal-container" style="display: none;">
+  <div class="modal-backdrop"></div>
+  <div class="modal-dialog">
+    <h2 data-i18n="data.title">Import / Export Data</h2>
+    <div class="modal-content">
+      <div class="data-section">
+        <h3 data-i18n="data.export_title">Export Your Progress</h3>
+        <p data-i18n="data.export_desc">Copy this text and save it in a file to back up your progress.</p>
+        <textarea id="export-data-area" readonly></textarea>
+      </div>
+      <div class="data-section">
+        <h3 data-i18n="data.import_title">Import Your Progress</h3>
+        <p data-i18n="data.import_desc">Paste your saved data here to restore your progress. This will overwrite your current progress.</p>
+        <textarea id="import-data-area" placeholder="Paste your data here..."></textarea>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button id="import-btn" data-i18n="data.import_btn">Import</button>
+      <button id="close-modal-btn" data-i18n="data.close_btn">Close</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

@@ -22,7 +22,20 @@
   "category.crafting_kit_upgrade": "Crafting Kit Upgrade",
   "category.tool_pouch_upgrade": "Tool Pouch Upgrade",
   "category.ability": "Ability",
-  "category.tool": "Tool"
+  "category.tool": "Tool",
+  "theme.toggle": "Toggle Theme",
+  "about.title": "About",
+  "data.title": "Import / Export Data",
+  "data.export_title": "Export Your Progress",
+  "data.export_desc": "Copy this text and save it in a file to back up your progress.",
+  "data.import_title": "Import Your Progress",
+  "data.import_desc": "Paste your saved data here to restore your progress. This will overwrite your current progress.",
+  "data.import_btn": "Import",
+  "data.close_btn": "Close",
+  "data.import.empty": "Import data cannot be empty.",
+  "data.import.confirm": "Are you sure you want to import this data? Your current progress will be overwritten.",
+  "data.import.success": "Progress imported successfully!",
+  "data.import.error": "Error importing data. Please check the format."
   ,"intro.heading": "Hollow Knight: Silksong Completion Tracker"
   ,"intro.p1": "Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in Hollow Knight: Silksong. Mark needle upgrades, silk spools, crests, abilities, tools and more. Your progress is saved in your browser automatically, so you can return any time without needing to log in."
   ,"intro.p2": "A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released."

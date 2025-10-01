@@ -185,7 +185,91 @@ import { setLocale, t, activeLocale } from './i18n.js';
       rerenderList();
     };
 
-    // Theme toggle removed (design decision): default dark theme retained
+    const themeToggle = document.getElementById('theme-toggle');
+    const infoBtn = document.getElementById('info-btn');
+    const dataBtn = document.getElementById('data-btn');
+
+    if (themeToggle) {
+        const applyTheme = (theme) => {
+            if (theme === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.textContent = '☀️';
+            } else {
+                document.body.classList.remove('light-theme');
+                themeToggle.textContent = '🌙';
+            }
+        };
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        themeToggle.onclick = () => {
+            const isLight = document.body.classList.toggle('light-theme');
+            const newTheme = isLight ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = isLight ? '☀️' : '🌙';
+        };
+    }
+
+    if (infoBtn) {
+      infoBtn.onclick = () => {
+        window.location.href = 'about.html';
+      };
+    }
+
+    const dataModal = document.getElementById('data-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const importBtn = document.getElementById('import-btn');
+    const exportDataArea = document.getElementById('export-data-area');
+    const importDataArea = document.getElementById('import-data-area');
+
+    if (dataBtn && dataModal) {
+      dataBtn.onclick = () => {
+        exportDataArea.value = JSON.stringify(progress);
+        dataModal.style.display = 'flex';
+        applyI18n();
+      };
+    }
+
+    if(closeModalBtn) {
+        closeModalBtn.onclick = () => {
+            dataModal.style.display = 'none';
+        };
+    }
+
+    if(importBtn) {
+        importBtn.onclick = () => {
+            const dataToImport = importDataArea.value;
+            if (!dataToImport) {
+                alert(t('data.import.empty') || 'Import data cannot be empty.');
+                return;
+            }
+            try {
+                const newProgress = JSON.parse(dataToImport);
+                // Basic validation
+                if (typeof newProgress !== 'object' || newProgress === null || Array.isArray(newProgress)) {
+                    throw new Error('Invalid data format.');
+                }
+                if (!confirm(t('data.import.confirm') || 'Are you sure you want to import this data? Your current progress will be overwritten.')) {
+                    return;
+                }
+                // Update progress safely
+                for (const key in newProgress) {
+                    if (Object.prototype.hasOwnProperty.call(progress, key)) {
+                        progress[key] = !!newProgress[key];
+                    }
+                }
+                saveProgress(progress);
+                rerenderList();
+                dataModal.style.display = 'none';
+                importDataArea.value = '';
+                alert(t('data.import.success') || 'Progress imported successfully!');
+            } catch (e) {
+                alert(t('data.import.error') || 'Error importing data. Please check the format.');
+                console.error("Import error:", e);
+            }
+        };
+    }
 
 
     function applyI18n(){
@@ -196,6 +280,10 @@ import { setLocale, t, activeLocale } from './i18n.js';
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
         const key = el.getAttribute('data-i18n-placeholder');
         el.placeholder = t(key);
+      });
+      document.querySelectorAll('[data-i18n-title]').forEach(el=>{
+        const key = el.getAttribute('data-i18n-title');
+        el.title = t(key);
       });
     }
     applyI18n();
