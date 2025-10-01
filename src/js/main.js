@@ -50,6 +50,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
   const issuesList = document.getElementById('datasetIssuesList');
   const dismissIssues = document.getElementById('dismissIssues');
   const searchInput = document.getElementById('searchInput');
+  // Celebration flag must be declared early to avoid TDZ if user already at 100% before later definitions
+  let celebrationShown = false;
 
     // Validate dataset first
     validateDataset(items, issuesBox, issuesList, dismissIssues);
@@ -390,7 +392,6 @@ import { setLocale, t, activeLocale } from './i18n.js';
     }
     applyI18n();
 
-    let celebrationShown = false;
     function spawnCelebration(){
       if(celebrationShown) return;
       celebrationShown = true;
