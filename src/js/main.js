@@ -7,7 +7,11 @@ import { setLocale, t, activeLocale } from './i18n.js';
 
 (async function init(){
   try {
-    await setLocale('en');
+    // Determine initial locale earlier (HTML bootstrap may have set data-locale)
+    const LOCALE_KEY = 'silksongChecklistLocale_v1';
+    const bootLocale = document.documentElement.getAttribute('data-locale') || localStorage.getItem(LOCALE_KEY) || 'en';
+    await setLocale(bootLocale);
+    document.documentElement.lang = bootLocale;
     const dataset = await loadData();
     const items = dataset.items;
     const progress = loadProgress(items.map(i=>i.id));
@@ -33,7 +37,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
   // Language dropdown elements
   const langToggle = document.getElementById('langToggle');
   const langMenu = document.getElementById('langMenu');
-  const LOCALE_KEY = 'silksongChecklistLocale_v1';
+  // LOCALE_KEY defined above
   const resetBtn = document.getElementById('resetBtn');
   const importBtn = document.getElementById('importBtn');
   const exportBtn = document.getElementById('exportBtn');
@@ -46,6 +50,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
   const issuesList = document.getElementById('datasetIssuesList');
   const dismissIssues = document.getElementById('dismissIssues');
   const searchInput = document.getElementById('searchInput');
+  // Celebration flag must be declared early to avoid TDZ if user already at 100% before later definitions
+  let celebrationShown = false;
 
     // Validate dataset first
     validateDataset(items, issuesBox, issuesList, dismissIssues);
@@ -143,8 +149,9 @@ import { setLocale, t, activeLocale } from './i18n.js';
       }
     }
 
-    // Initial render
-    rerenderList();
+  // Initial render (after locale set)
+  rerenderList();
+  document.body.classList.remove('pre-init');
     if(floatingProgress) floatingProgress.hidden = false;
 
     // Event listeners
@@ -168,12 +175,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
       });
     }
 
-    // Initialize persisted locale if present
-    let initialLocale = localStorage.getItem(LOCALE_KEY);
-    if (initialLocale && (initialLocale === 'en' || initialLocale === 'es')) {
-      await setLocale(initialLocale);
-      document.documentElement.lang = initialLocale;
-    }
+    // Locale already applied before first render
     // Sync toggle visuals with current locale
     function syncLangVisual(locale){
       if(!langToggle) return;
@@ -390,6 +392,31 @@ import { setLocale, t, activeLocale } from './i18n.js';
     }
     applyI18n();
 
+    function spawnCelebration(){
+      if(celebrationShown) return;
+      celebrationShown = true;
+      const root = document.createElement('div');
+      root.className = 'celebration-confetti';
+      root.setAttribute('aria-hidden','true');
+      const COUNT = 42;
+      for(let i=0;i<COUNT;i++){
+        const p = document.createElement('span');
+        p.className='confetti-piece';
+        p.style.setProperty('--rx', (Math.random()*100)+'vw');
+        p.style.setProperty('--delay', (Math.random()*0.6)+'s');
+        p.style.setProperty('--hue', Math.floor(20+Math.random()*40));
+        root.appendChild(p);
+      }
+      document.body.appendChild(root);
+      setTimeout(()=>{ root.classList.add('fade'); }, 3200);
+      setTimeout(()=>{ root.remove(); }, 5200);
+      // Title pulse highlight
+      const title = document.querySelector('.app-title');
+      if(title){
+        title.classList.add('celebrate');
+        setTimeout(()=> title.classList.remove('celebrate'), 4500);
+      }
+    }
     function updateBothPercents(){
       const { completed, total, completedWeight, totalWeight } = computePercent(items, progress);
       const rawPercent = totalWeight ? (completedWeight / totalWeight) * 100 : 0;
@@ -415,6 +442,9 @@ import { setLocale, t, activeLocale } from './i18n.js';
   percentValue.title = (percentValueFloating||percentValue).title = formattedPercent + '% (' + completedWeight.toFixed(2).replace(/\.00$/,'') + ' / ' + totalWeight.toFixed(2).replace(/\.00$/,'') + ' weight)';
       // Refresh per-category counts each time global progress updates
       updateCategoryCounts(items, progress);
+      if(rawPercent >= 100 && totalWeight > 0){
+        spawnCelebration();
+      }
     }
 
     function formatWeightedPercent(v){
