@@ -112,19 +112,20 @@
 
   <!-- Critical CSS mínimo; estilos completos en /assets/app.css -->
   <style>
-    :root { --bg:#0d0f12; --panel:#14181d; --panel-alt:#1c232b; --fg:#f5f7fa; --accent:#4fb3ff; --accent-grad:linear-gradient(90deg,#4fb3ff,#00ffa8); --muted:#6e7b88; --border:#242d36; --radius:8px; --focus:#ffe28a; --danger:#ff4f4f; font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif; }
+    :root { --bg:#0d0f12; --panel:#14181d; --panel-alt:#1c232b; --fg:#f5f7fa; --accent:#4fb3ff; --accent-grad:linear-gradient(90deg,#4fb3ff,#00ffa8); --muted:#6e7b88; --border:#242d36; --radius:8px; --focus:#ffe28a; --danger:#ff4f4f; --silksong-gold-grad:linear-gradient(90deg,#cf9a28,#e8c869,#f5e6b4,#e0bb55); font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif; }
     body { margin:0; color:var(--fg); background:#161a1e linear-gradient(180deg,#181d22 0%, #161b20 55%, #14181c 100%) fixed; -webkit-font-smoothing:antialiased; }
     header { display:flex; flex-direction:column; align-items:center; }
-    .hero { width:100%; padding:1.3rem 0 1rem; display:flex; flex-direction:column; align-items:center; gap:.75rem; background:linear-gradient(180deg,rgba(13,15,18,0.95),rgba(13,15,18,0.72) 60%,rgba(13,15,18,0)); }
+    .hero { width:100%; padding:1.1rem 0 .9rem; display:flex; flex-direction:column; align-items:center; gap:.75rem; background:linear-gradient(180deg,rgba(13,15,18,0.95),rgba(13,15,18,0.72) 60%,rgba(13,15,18,0)); }
     h1 { font:600 0.95rem/1 system-ui,Segoe UI,Roboto,Arial,sans-serif; letter-spacing:2px; text-transform:uppercase; margin:0; }
-    .progress-center { width:100%; max-width:760px; display:flex; flex-direction:column; align-items:center; gap:.5rem; }
-    .progress-bar { height:14px; width:100%; background:#1f2730; border-radius:8px; overflow:hidden; position:relative; }
-    .progress-bar__fill { position:absolute; inset:0; width:0; background:var(--accent-grad); }
-    #progressPercentText { font-size:1.05rem; font-weight:700; letter-spacing:2px; background:var(--accent-grad); -webkit-background-clip:text; color:transparent; }
+  #progressPercentText { font-size:1.05rem; font-weight:700; letter-spacing:2px; background:var(--silksong-gold-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
   </style>
   <link rel="preload" href="/assets/app.css" as="style">
   <link rel="stylesheet" href="/assets/app.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/assets/app.css"></noscript>
+  <!-- Display font for modernized title -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-- Removed legacy GTM noscript iframe to keep analytics minimal -->
@@ -132,38 +133,51 @@
 <!-- AdSense placeholder (uncomment when real publisher ID added) -->
 <!-- AdSense script already included in <head>; keep this placeholder commented to avoid double load -->
 <header>
-  <div class="hero">
-  <div class="controls" role="group" aria-label="Utility controls">
-    <div class="lang-container">
-      <label for="langSel" class="sr-only">Language</label>
-      <select id="langSel" aria-label="Language">
-        <option value="en">🇺🇸 EN</option>
-        <option value="es">🇪🇸 ES</option>
-        <option value="fr">🇫🇷 FR</option>
-        <option value="de">🇩🇪 DE</option>
-        <option value="it">🇮🇹 IT</option>
-        <option value="ru">🇷🇺 RU</option>
-      </select>
+  <div class="topbar" role="banner">
+    <div class="logo-wrap">
+      <img src="./assets/images/ss3.png" alt="Silksong" class="logo" loading="lazy" decoding="async" />
+  <h1 data-i18n="app.title" class="app-title"><span class="title-flair" aria-hidden="true">✦</span><span class="title-text" data-outline="100% Completion Checklist">100% Completion Checklist</span><span class="title-flair" aria-hidden="true">✦</span></h1>
     </div>
-    <button id="resetBtn" data-i18n="reset">Reset</button>
+    <div class="toolbar" role="group" aria-label="Primary toolbar">
+      <div class="search-inline">
+        <input id="searchInput" type="search" placeholder="Search..." aria-label="Search items" data-i18n-placeholder="search.placeholder" />
+      </div>
+      <button id="importBtn" data-i18n="import" aria-label="Import data" class="btn-icon-labeled btn-import"><span class="btn-label" data-i18n="import">Import</span></button>
+      <button id="exportBtn" data-i18n="export" aria-label="Export data" class="btn-icon-labeled btn-export"><span class="btn-label" data-i18n="export">Export</span></button>
+      <button id="infoBtn" data-i18n="info" aria-haspopup="dialog" aria-controls="infoModal" class="btn-icon-labeled btn-info"><span class="btn-label" data-i18n="info">Info</span></button>
+  <button id="expandAllBtn" aria-label="Expand categories" data-i18n="expand" class="btn-icon-labeled btn-expand"><span class="btn-label" data-i18n="expand">Expand</span></button>
+  <button id="collapseAllBtn" aria-label="Collapse categories" data-i18n="collapse" class="btn-icon-labeled btn-collapse"><span class="btn-label" data-i18n="collapse">Collapse</span></button>
+      <div class="lang-dropdown">
+        <button id="langToggle" type="button" class="lang-toggle" aria-label="Change language" aria-haspopup="listbox" aria-expanded="false" data-lang="en">
+          <span class="flag flag-en" aria-hidden="true"></span>
+          <span class="lang-code">EN</span>
+          <span class="lang-caret" aria-hidden="true"></span>
+        </button>
+        <ul id="langMenu" class="lang-menu" role="listbox" aria-label="Language" hidden>
+          <li role="option" data-lang="en" aria-selected="true"><span class="flag flag-en" aria-hidden="true"></span><span class="opt-code">EN</span></li>
+          <li role="option" data-lang="es" aria-selected="false"><span class="flag flag-es" aria-hidden="true"></span><span class="opt-code">ES</span></li>
+        </ul>
+      </div>
+      <button id="resetBtn" data-i18n="reset" class="btn-icon-labeled btn-reset"><span class="btn-label" data-i18n="reset">Reset</span></button>
+      <input type="file" id="importFileInput" accept="application/json" style="display:none" />
+    </div>
   </div>
-    <img src="./assets/images/ss3.png" alt="Silksong" loading="lazy" decoding="async" />
-    <h1 data-i18n="app.title">100% Completion Checklist</h1>
-    <div class="search-bar-wrap">
-      <input id="searchInput" type="search" placeholder="Search item..." aria-label="Search items" data-i18n-placeholder="search.placeholder" style="background:#141b21;border:1px solid #25313c;color:var(--fg);padding:.55rem .75rem .6rem;border-radius:8px;font-size:.7rem;letter-spacing:.5px;outline:none;box-shadow:0 2px 4px -2px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,0.02);transition:border-color .25s, background .25s;" />
-    </div>
-    <div class="progress-center">
-      <div id="progressPercentText">0% Done</div>
-      <div class="progress-bar" aria-hidden="true"><div class="progress-bar__fill"></div></div>
-      <div id="itemsRemaining">0 items remaining</div>
-    </div>
   </div>
 </header>
-<div class="progress-floating" id="progressFloating" aria-hidden="true">
-  <div id="progressPercentTextFloating">0% Done</div>
-  <div class="progress-bar" aria-hidden="true"><div class="progress-bar__fill progress-bar__fill--floating"></div></div>
-  <div id="itemsRemainingFloating">0 items remaining</div>
+<div class="hero" id="hero">
+  <div class="progress-center hero-with-sides">
+    <div class="hero-sides-row">
+      <img src="./assets/images/header_imgs/1.png" alt="" class="hero-side hero-side--left" loading="lazy" decoding="async" aria-hidden="true" />
+      <img src="./assets/images/ss3.png" alt="Silksong" class="hero-logo" loading="lazy" decoding="async" />
+      <img src="./assets/images/header_imgs/2.png" alt="" class="hero-side hero-side--right" loading="lazy" decoding="async" aria-hidden="true" />
+    </div>
+    <div id="progressPercentText">0% Done</div>
+    <div class="progress-bar" aria-hidden="true"><div class="progress-bar__fill"></div></div>
+    <div id="itemsRemaining">0 items remaining</div>
+  </div>
 </div>
+<div id="heroSentinel" aria-hidden="true" style="height:1px;width:100%;"></div>
+<!-- Removed floating progress: now always visible in topbar -->
 <div id="datasetIssues" style="display:none;position:fixed;left:50%;transform:translateX(-50%);top:56px;z-index:90;max-width:820px;width:calc(100% - 2rem);background:#3a1f1f;border:1px solid #a33;padding:.65rem .85rem .7rem;border-radius:10px;color:#f5d9d9;font-size:.65rem;line-height:1.25;box-shadow:0 4px 14px -6px rgba(0,0,0,.6);">
   <strong data-i18n="dataset.errors.title">Dataset validation issues:</strong>
   <ul id="datasetIssuesList" style="margin:.4rem 0 0 .9rem;padding:0;">
@@ -176,6 +190,11 @@
 <footer style="padding:1rem;font-size:.7rem;color:#6e7b88;text-align:center;border-top:1px solid #242d36;background:#0f1215;">
   <p style="margin:0;">Silksong community project • <span data-i18n="footer.note">Data is unofficial and may change.</span></p>
 </footer>
+<!-- Floating persistent progress widget -->
+<div id="floatingProgress" class="floating-progress" role="status" aria-live="polite" aria-label="Checklist progress" title="Progress" hidden>
+  <div class="floating-progress__bar"><div class="floating-progress__fill" id="floatingProgressFill"></div></div>
+  <div class="floating-progress__percent" id="floatingProgressPercent">0%</div>
+</div>
 <!-- (Removed custom lazy / retry script; using pure default one-line pushes above each ad) -->
 <script>
   // Dynamically update <html lang> when language changes
@@ -218,17 +237,19 @@
     }, 1200);
   })();
 </script>
+<!-- Stable header shrink via IntersectionObserver -->
 <script>
   (function(){
-    const hero = document.querySelector('.hero');
-      if(!hero) return;
-      const shrinkStart = 40; // px
-      function onScroll(){
-        const y = window.scrollY || document.documentElement.scrollTop;
-        if(y > shrinkStart) hero.classList.add('shrink'); else hero.classList.remove('shrink');
-      }
-      window.addEventListener('scroll', onScroll, { passive:true });
-      onScroll();
+    const sentinel = document.getElementById('heroSentinel');
+    const hero = document.getElementById('hero');
+    if(!sentinel || !hero || !('IntersectionObserver' in window)) return;
+    const rootMargin = '-80px 0px 0px 0px'; // shrink when top passes 80px
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        hero.classList.toggle('shrink', !e.isIntersecting);
+      });
+    }, { root:null, threshold:0, rootMargin });
+    obs.observe(sentinel);
   })();
 </script>
 <!-- Service Worker y script principal -->
@@ -239,6 +260,22 @@
     });
   }
 </script>
+<!-- Info Modal -->
+<div id="infoModal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" hidden>
+  <div class="info-modal__backdrop" data-close="infoModal"></div>
+  <div class="info-modal__dialog">
+    <button class="info-modal__close" data-close="infoModal" aria-label="Close">×</button>
+    <h2 id="infoModalTitle" data-i18n="info.title">About / Info</h2>
+    <p data-i18n="info.desc">This fan-made Silksong checklist lets you track progress offline (stored locally). Use Export to create a backup JSON and Import to restore it on another device or browser.</p>
+    <ul class="info-list">
+      <li data-i18n="info.point.progress">Progress & category collapse states are saved automatically.</li>
+      <li data-i18n="info.point.privacy">All data stays on your device. No account needed.</li>
+      <li data-i18n="info.point.backup">Use Export regularly to keep a backup.</li>
+      <li data-i18n="info.point.version">Format version may evolve; old imports will be adapted when possible.</li>
+    </ul>
+    <p style="font-size:.65rem;opacity:.65" data-i18n="info.disclaimer">Hollow Knight: Silksong assets / names are property of their respective owners. This is an unofficial community project.</p>
+  </div>
+</div>
 <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
