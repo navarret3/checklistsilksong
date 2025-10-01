@@ -76,6 +76,20 @@ jobs:
           name: index-after-injection
           path: index.after-injection.html
 
+      - name: Verify webhook injection before artifact upload
+        run: |
+          echo "=== FINAL VERIFICATION BEFORE ARTIFACT UPLOAD ==="
+          echo "Current directory contents:"
+          ls -la index.html
+          echo "Webhook line in main index.html:"
+          grep -n 'feedback-webhook' index.html || echo "NO WEBHOOK LINE FOUND!"
+          echo "SHA256 of index.html to be uploaded:"
+          sha256sum index.html || shasum -a 256 index.html || true
+          
+          # Force filesystem sync
+          sync
+          sleep 1
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
