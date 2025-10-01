@@ -594,7 +594,12 @@ import { setLocale, t, activeLocale } from './i18n.js';
         }
       }
       if(!webhookBase){
-        console.warn('[FEEDBACK] Webhook meta tag empty. Expected meta[name="feedback-webhook"].content to be injected by CI.');
+        const isProd = location.hostname === 'checklistsilksong.com';
+        if(isProd){
+          console.warn('[FEEDBACK] Webhook meta vacío en producción. Puede ser caché SW o fallo de inyección. Forzar recarga: Ctrl+F5.');
+        } else {
+          console.info('[FEEDBACK] Webhook meta vacío (entorno local / rama). Esto es normal.');
+        }
       } else {
         console.debug('[FEEDBACK] Webhook configured length=', webhookBase.length);
       }
