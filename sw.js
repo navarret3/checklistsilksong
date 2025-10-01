@@ -1,6 +1,6 @@
-// Cache version bump (v4) para forzar clientes a actualizar tras cambios en inyección webhook / estilos.
-// Incrementa CACHE_VERSION cuando modifiques recursos críticos.
-// A medio plazo: nombres con hash y estrategia más granular.
+// Cache version bump (v4) para forzar clientes a actualizar tras cambios críticos (webhook, estilos, lógica).
+// Incrementa CACHE_VERSION con modificaciones de recursos esenciales.
+// Futuro: usar nombres con hash y estrategia de caché más granular.
 const CACHE_VERSION='v4';
 const CACHE_NAME=`sschecklist-${CACHE_VERSION}`;
 const CORE_ASSETS=[
