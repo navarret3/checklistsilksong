@@ -22,6 +22,13 @@ import { setLocale, t, activeLocale } from './i18n.js';
   const floatingWrap = document.getElementById('progressFloating');
   const langSel = document.getElementById('langSel');
   const resetBtn = document.getElementById('resetBtn');
+  const importBtn = document.getElementById('importBtn');
+  const exportBtn = document.getElementById('exportBtn');
+  const importFileInput = document.getElementById('importFileInput');
+  const infoBtn = document.getElementById('infoBtn');
+  const infoModal = document.getElementById('infoModal');
+  const expandAllBtn = document.getElementById('expandAllBtn');
+  const collapseAllBtn = document.getElementById('collapseAllBtn');
   const issuesBox = document.getElementById('datasetIssues');
   const issuesList = document.getElementById('datasetIssuesList');
   const dismissIssues = document.getElementById('dismissIssues');
@@ -184,6 +191,102 @@ import { setLocale, t, activeLocale } from './i18n.js';
       if (searchInput) searchInput.value = '';
       rerenderList();
     };
+
+    // Expand / Collapse All
+    if (expandAllBtn) expandAllBtn.onclick = () => {
+      document.querySelectorAll('.cat').forEach(c => c.classList.remove('collapsed'));
+      collapsedSet.clear();
+      saveCollapsedCategories([...collapsedSet]);
+    };
+    if (collapseAllBtn) collapseAllBtn.onclick = () => {
+      document.querySelectorAll('.cat').forEach(c => c.classList.add('collapsed'));
+      collapsedSet.clear();
+      document.querySelectorAll('.cat').forEach(c => { const id = c.dataset.category; if(id) collapsedSet.add(id); });
+      saveCollapsedCategories([...collapsedSet]);
+    };
+
+    // Export
+    if (exportBtn) exportBtn.onclick = () => {
+      try {
+        const exportObj = {
+          format: 'silksong-checklist-v1',
+          exportedAt: new Date().toISOString(),
+          locale: activeLocale(),
+          progress,
+          collapsed: [...collapsedSet]
+        };
+        const blob = new Blob([JSON.stringify(exportObj,null,2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'silksong-checklist-backup.json';
+        document.body.appendChild(a); a.click(); a.remove();
+        URL.revokeObjectURL(url);
+      } catch(e){
+        alert('Export failed: '+ e.message);
+      }
+    };
+
+    // Import
+    if (importBtn && importFileInput){
+      importBtn.onclick = () => importFileInput.click();
+      importFileInput.onchange = (ev) => {
+        const file = ev.target.files && ev.target.files[0];
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const data = JSON.parse(reader.result);
+            if(!data || typeof data !== 'object') throw new Error('Invalid file');
+            if(data.progress && typeof data.progress === 'object'){
+              // merge only existing ids
+              let changed = 0;
+              for(const id of Object.keys(progress)){
+                if(Object.prototype.hasOwnProperty.call(data.progress,id)){
+                  const val = !!data.progress[id];
+                  if(progress[id] !== val){ progress[id]=val; changed++; }
+                }
+              }
+              if(Array.isArray(data.collapsed)){
+                collapsedSet.clear();
+                data.collapsed.filter(v=> typeof v==='string').forEach(v=> collapsedSet.add(v));
+                saveCollapsedCategories([...collapsedSet]);
+              }
+              saveProgress(progress);
+              rerenderList();
+              updateBothPercents();
+              alert('Import OK ('+changed+' items applied).');
+            } else {
+              throw new Error('Missing progress object');
+            }
+          } catch(e){
+            alert('Import failed: '+ e.message);
+          } finally {
+            importFileInput.value='';
+          }
+        };
+        reader.readAsText(file);
+      };
+    }
+
+    // Info Modal
+    if(infoBtn && infoModal){
+      const closeElementsHandler = (ev) => {
+        const target = ev.target;
+        if(target.matches('[data-close="infoModal"], .info-modal__backdrop')){
+          infoModal.hidden = true;
+          document.removeEventListener('keydown', escListener);
+        }
+      };
+      const escListener = (e) => { if(e.key==='Escape'){ infoModal.hidden = true; document.removeEventListener('keydown', escListener); } };
+      infoBtn.onclick = () => {
+        infoModal.hidden = false;
+        document.addEventListener('keydown', escListener);
+        const focusable = infoModal.querySelector('button, [href], input, select, textarea');
+        if(focusable) focusable.focus();
+      };
+      infoModal.addEventListener('click', closeElementsHandler);
+    }
 
     // Theme toggle removed (design decision): default dark theme retained
 
