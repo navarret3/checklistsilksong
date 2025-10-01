@@ -24,7 +24,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Inject Discord webhook (clean approach)
+      - name: Inject Discord webhook (feedback)
         run: |
           WEBHOOK='${{ secrets.DISCORD_WEBHOOK }}'
           if [ -z "$WEBHOOK" ]; then
@@ -32,11 +32,7 @@ jobs:
             exit 0
           fi
 
-          # Generar timestamp único para invalidación de caché
-          BUILD_TS="$(date -u +%Y%m%d_%H%M%S)-${GITHUB_SHA::8}"
-          echo "Using BUILD_TS: $BUILD_TS"
-
-          echo "Injecting feedback webhook into CLEAN index.html"
+          echo "Injecting feedback webhook into index.html"
 
           # Escapar caracteres conflictivos en la URL
           ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
@@ -46,16 +42,16 @@ jobs:
           echo 'SHA256 pre:'
           sha256sum index.html || shasum -a 256 index.html || true
 
-          # Reemplazar la meta limpia con timestamp y webhook
-          sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" data-build=\"$BUILD_TS\" content=\"$ESCAPED\" />|" index.html
+          # Reemplazar la meta, aunque tenga espacios o se cierre con > o />
+          sed -i -E "s|<meta name=\"feedback-webhook\"[^>]*content=\"[^\"]*\"[^>]*>|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
 
           # Verificar que realmente se inyectó
           MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
-          echo "RESULT: $MATCH_LINE"
+          echo "$MATCH_LINE"
           if echo "$MATCH_LINE" | grep -q "content=\"$ESCAPED\""; then
-            echo "✅ Webhook meta correctly injected (length ${#WEBHOOK})"
+            echo "Webhook meta correctly injected (length ${#WEBHOOK})"
           else
-            echo "❌ WARNING: Webhook meta NOT injected" >&2
+            echo "WARNING: Webhook meta NOT injected" >&2
             exit 1
           fi
 
