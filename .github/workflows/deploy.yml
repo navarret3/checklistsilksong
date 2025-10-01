@@ -29,17 +29,24 @@ jobs:
             echo "No webhook secret provided (skipping injection)";
             exit 0;
           fi
-          echo "Injecting feedback webhook into index.html"
+          echo "Injecting feedback webhook into index.html via placeholder token"
           ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
-          sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
-          MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
-          echo "$MATCH_LINE"
-          if echo "$MATCH_LINE" | grep -q "content=\"$ESCAPED\""; then
-            echo "Webhook meta correctly injected (length ${#WEBHOOK})"
+          # Replace only the placeholder token inside the meta tag
+          if grep -q '__FEEDBACK_WEBHOOK__' index.html; then
+            sed -i "s|__FEEDBACK_WEBHOOK__|$ESCAPED|g" index.html
           else
-            echo "WARNING: Webhook meta NOT injected" >&2
+            echo 'Placeholder token __FEEDBACK_WEBHOOK__ not found in index.html' >&2
             exit 1
           fi
+          # Verification
+            MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
+            echo "$MATCH_LINE"
+            if echo "$MATCH_LINE" | grep -q "content=\"$ESCAPED\""; then
+              echo "Webhook meta correctly injected (length ${#WEBHOOK})"
+            else
+              echo "WARNING: Webhook meta NOT injected" >&2
+              exit 1
+            fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
