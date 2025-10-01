@@ -1,7 +1,7 @@
-// Cache version bump (v5) para forzar clientes a actualizar tras cambios críticos (webhook, estilos, lógica).
+// Cache version bump (v6-CDN-BUST) para forzar clientes a actualizar tras cambios críticos (webhook, estilos, lógica).
 // Incrementa CACHE_VERSION con modificaciones de recursos esenciales.
-// Futuro: usar nombres con hash y estrategia de caché más granular.
-const CACHE_VERSION='v5';
+// v6: Force CDN invalidation for webhook injection on custom domain with Fastly CDN
+const CACHE_VERSION='v6-cdn-bust-20251001';
 const CACHE_NAME=`sschecklist-${CACHE_VERSION}`;
 const CORE_ASSETS=[
   '/',
