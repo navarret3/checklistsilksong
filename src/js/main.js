@@ -1,7 +1,7 @@
 import { loadData } from './dataLoader.js';
 import { loadProgress, saveProgress, clearProgress, loadCollapsedCategories, saveCollapsedCategories, clearUIState } from './storage.js';
 import { toggle } from './progress.js';
-import { renderCategories, updatePercent, updateCategoryCounts } from './ui.js';
+import { renderCategories, updatePercent, updateCategoryCounts, setupLazyImages } from './ui.js';
 import { computePercent } from './progress.js';
 import { setLocale, t, activeLocale } from './i18n.js';
 
@@ -153,6 +153,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
   rerenderList();
   document.body.classList.remove('pre-init');
     if(floatingProgress) floatingProgress.hidden = false;
+    // Defer lazy image wiring to next frame to avoid blocking first paint
+    requestAnimationFrame(()=> setupLazyImages());
 
     // Event listeners
     if (searchInput) {

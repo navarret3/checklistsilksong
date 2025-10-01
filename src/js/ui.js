@@ -133,13 +133,14 @@ function renderItem(it, progress, onToggle){
   // Provide raw location text as tooltip data if no explicit description
   if(locationString && !it.description) el.dataset.loc = locationString;
   // image fallbacks: explicit UI alias -> icon -> placeholder
-  let imgSrc = it.image || it.icon || 'assets/images/placeholder-item.png';
+  // Real image sources (thumb + map) will be deferred for performance
+  const realImgSrc = it.image || it.icon || 'assets/images/placeholder-item.png';
   // Heuristic: try to request a higher resolution if external gamerant URL with h=22&w=22
   if(/gamerantimages\.com/.test(imgSrc) && /[?&]h=22&?/.test(imgSrc)){ // simple pattern
     imgSrc = imgSrc.replace(/h=22/, 'h=96').replace(/w=22/, 'w=96');
   }
   // map image fallbacks: explicit alias -> location_img -> placeholder
-  const mapSrc = it.mapImage || it.location_img || 'assets/images/placeholder-map.png';
+  const realMapSrc = it.mapImage || it.location_img || 'assets/images/placeholder-map.png';
   if(typeof it.weight === 'number' && it.weight>0 && it.weight !== 1){
     el.setAttribute('data-weight', String(it.weight));
   }
@@ -149,16 +150,16 @@ function renderItem(it, progress, onToggle){
   let html = `
     <span class="checkmark">✔</span>
     <div class="top">
-      <div class="thumb"><img src="${imgSrc}" alt="${label}" loading="lazy" decoding="async"></div>
+      <div class="thumb"><img data-src="${realImgSrc}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="${label}" loading="lazy" decoding="async" class="lazy-img" width="96" height="96"></div>
       <div class="meta"><span class="label">${label}</span>`;
   /* Removed boss inline optional badge */
   html += `</div>
     </div>`;
   if(desc) html += `\n    <div class="desc">${desc}</div>`;
-  if(mapSrc && !/placeholder-map\.png$/.test(mapSrc)) { 
+  if(realMapSrc && !/placeholder-map\.png$/.test(realMapSrc)) { 
     const zLbl = activeLocale()==='es' ? 'Ampliar' : 'Zoom';
     const zAria = activeLocale()==='es' ? 'Ampliar imagen' : 'Zoom image';
-    html += `\n    <div class="map-img"><img src="${mapSrc}" alt="Location of ${label}" loading="lazy" decoding="async"><button type="button" class="zoom-btn" aria-label="${zAria}" title="${zAria}"><span class="zoom-btn__icon" aria-hidden="true"></span><span class="zoom-btn__text">${zLbl}</span></button></div>`;
+    html += `\n    <div class="map-img"><img data-src="${realMapSrc}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Location of ${label}" loading="lazy" decoding="async" class="lazy-img map-lazy" width="240" height="96"><button type="button" class="zoom-btn" aria-label="${zAria}" title="${zAria}"><span class="zoom-btn__icon" aria-hidden="true"></span><span class="zoom-btn__text">${zLbl}</span></button></div>`;
   }
   // Show per-item optional badge only if explicitly flagged optional (not just weight 0 in pulgas)
   if(it.optional || (it.weight === 0 && it.category !== 'pulgas')){
@@ -169,34 +170,7 @@ function renderItem(it, progress, onToggle){
     el.classList.add('optional-item');
   }
   el.innerHTML = html;  
-  // After image loads, if it is obviously tiny (<48 logical px in either dimension), upscale smoothly via canvas
-  const imgEl = el.querySelector('.thumb img');
-  if(imgEl){
-    imgEl.addEventListener('load', () => {
-      if(imgEl.naturalWidth && imgEl.naturalHeight && (imgEl.naturalWidth < 48 || imgEl.naturalHeight < 48)){
-        try {
-          const target = 96; // upscale base size
-            const canvas = document.createElement('canvas');
-            canvas.width = target; canvas.height = target;
-            const ctx = canvas.getContext('2d');
-            if(ctx){
-              ctx.imageSmoothingEnabled = true;
-              ctx.imageSmoothingQuality = 'high';
-              // center fit
-              const scale = Math.min(target/imgEl.naturalWidth, target/imgEl.naturalHeight);
-              const dw = imgEl.naturalWidth * scale;
-              const dh = imgEl.naturalHeight * scale;
-              const dx = (target - dw)/2;
-              const dy = (target - dh)/2;
-              ctx.drawImage(imgEl, dx, dy, dw, dh);
-              const dataUrl = canvas.toDataURL('image/png');
-              imgEl.src = dataUrl;
-              imgEl.classList.add('hi-upscaled');
-            }
-        } catch(e){ /* silent */ }
-      }
-    }, { once:true });
-  }
+  // Upscale logic will run after real image is swapped in (see setupLazyImages)
   return el;
 }
 
@@ -352,6 +326,57 @@ function positionTooltip(x,y){
   if(ny + th + pad > vh) ny = vh - th - pad;
   tooltipEl.style.left = nx + 'px';
   tooltipEl.style.top = ny + 'px';
+}
+
+// Progressive / lazy image loader exported for main.js
+export function setupLazyImages(){
+  const imgs = Array.from(document.querySelectorAll('img.lazy-img[data-src]'));
+  if(!imgs.length) return;
+  // Eager load first viewport-ish subset (e.g., first 18) for immediate visual completeness
+  const eager = imgs.slice(0, 18);
+  const rest = imgs.slice(18);
+  eager.forEach(loadReal);
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const img = e.target;
+          io.unobserve(img);
+          loadReal(img);
+        }
+      });
+    }, { root:null, rootMargin:'320px 0px' });
+    rest.forEach(img=> io.observe(img));
+  } else {
+    rest.forEach(loadReal);
+  }
+}
+
+function loadReal(img){
+  const src = img.getAttribute('data-src');
+  if(!src) return;
+  img.removeAttribute('data-src');
+  img.src = src;
+  // After real load, upscale tiny assets
+  img.addEventListener('load', ()=>{
+    if(img.naturalWidth && img.naturalHeight && (img.naturalWidth < 48 || img.naturalHeight < 48)){
+      try {
+        const target = 96;
+        const canvas = document.createElement('canvas');
+        canvas.width = target; canvas.height = target;
+        const ctx = canvas.getContext('2d');
+        if(ctx){
+          ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality='high';
+          const scale = Math.min(target/img.naturalWidth, target/img.naturalHeight);
+          const dw = img.naturalWidth * scale; const dh = img.naturalHeight * scale;
+          const dx = (target-dw)/2; const dy = (target-dh)/2;
+          ctx.drawImage(img, dx, dy, dw, dh);
+          const dataUrl = canvas.toDataURL('image/png');
+          img.src = dataUrl; img.classList.add('hi-upscaled');
+        }
+      } catch(_){}
+    }
+  }, { once:true });
 }
 
 /* Image modal (zoom) */
