@@ -24,13 +24,17 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Inject Discord webhook (feedback)
+      - name: Inject Discord webhook with CDN cache busting
         run: |
           WEBHOOK='${{ secrets.DISCORD_WEBHOOK }}'
           if [ -z "$WEBHOOK" ]; then
             echo "No webhook secret provided (skipping injection)"
             exit 0
           fi
+
+          # Generate cache busting timestamp for Fastly CDN invalidation
+          CACHE_BUST="$(date +%s)-${GITHUB_SHA::8}"
+          echo "CDN Cache bust ID: $CACHE_BUST"
 
           echo "Injecting feedback webhook into index.html"
 
@@ -41,6 +45,9 @@ jobs:
           grep -n 'feedback-webhook' index.html || true
           echo 'SHA256 pre:'
           sha256sum index.html || shasum -a 256 index.html || true
+
+          # Add cache busting comment to force CDN refresh
+          sed -i "s|</head>|<!-- CDN-BUST: $CACHE_BUST -->\n</head>|" index.html
 
           # Reemplazar la meta, aunque tenga espacios o se cierre con > o />
           sed -i -E "s|<meta name=\"feedback-webhook\"[^>]*content=\"[^\"]*\"[^>]*>|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
@@ -85,18 +92,28 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       
-      - name: Force cache invalidation
+      - name: Force Fastly CDN cache invalidation
         run: |
-          echo "Deployment completed. Forcing cache invalidation..."
+          echo "Deployment completed. Forcing Fastly CDN cache invalidation..."
           
-          # Esperar un momento para que el deploy se propague
-          sleep 10
+          # Esperar a que el deploy se propague a GitHub
+          sleep 15
           
-          # Intentar forzar invalidación con diferentes headers
-          curl -I -H "Cache-Control: no-cache" -H "Pragma: no-cache" "${{ steps.deployment.outputs.page_url }}" || true
-          curl -I -H "Cache-Control: max-age=0" "${{ steps.deployment.outputs.page_url }}" || true
+          # Multiple CDN cache invalidation strategies
+          DOMAIN="https://checklistsilksong.com"
           
-          echo "Cache invalidation attempts completed"
+          echo "=== Strategy 1: Aggressive cache headers ==="
+          curl -I -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" "$DOMAIN/" || true
+          
+          echo "=== Strategy 2: Force refetch with timestamp ==="
+          TIMESTAMP=$(date +%s)
+          curl -I "$DOMAIN/?cb=$TIMESTAMP" || true
+          
+          echo "=== Strategy 3: HEAD requests to warm CDN ==="
+          for i in {1..3}; do
+            curl -I -H "Cache-Control: max-age=0" "$DOMAIN/" || true
+            sleep 2
+          done
           
           # Verificar que la nueva versión se está sirviendo
           echo "=== PRODUCTION VERIFICATION ==="
