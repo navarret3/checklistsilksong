@@ -49,8 +49,8 @@ jobs:
           # Add cache busting comment to force CDN refresh
           sed -i "s|</head>|<!-- CDN-BUST: $CACHE_BUST -->\n</head>|" index.html
 
-          # Reemplazar la meta, aunque tenga espacios o se cierre con > o />
-          sed -i -E "s|<meta name=\"feedback-webhook\"[^>]*content=\"[^\"]*\"[^>]*>|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
+          # Reemplazar la meta simple (sin atributos extra)
+          sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
 
           # Verificar que realmente se inyectó
           MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
