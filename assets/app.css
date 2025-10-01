@@ -39,6 +39,29 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;mix
 @media (prefers-reduced-motion:reduce){body::after{opacity:.45}}
 header{display:flex;flex-direction:column;align-items:stretch;width:100%;position:relative;}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.55rem .9rem .6rem;background:linear-gradient(180deg,#121518,#12171b);position:sticky;top:0;z-index:90;border-bottom:1px solid #1f2730;backdrop-filter:blur(10px)}
+.topbar .logo-wrap{flex:0 0 auto}
+.topbar .toolbar{flex:0 0 auto}
+/* Prevent title/logo from being squeezed by forcing wrap before overlap */
+@media (max-width:1050px){
+	.topbar{flex-wrap:wrap;justify-content:center;padding:.6rem .9rem .65rem}
+	.topbar .logo-wrap{flex:1 1 100%;justify-content:center;order:0}
+	.topbar .toolbar{flex:1 1 100%;justify-content:center;order:1;margin-top:.4rem}
+	.logo-wrap .logo{height:58px}
+	.app-title{max-width:100%;}
+}
+/* Hide button text labels a bit earlier on narrow desktop to preserve header width */
+@media (max-width:900px){
+	.topbar .toolbar{gap:.4rem}
+	.btn-icon-labeled .btn-label{display:none}
+	.btn-icon-labeled{font-size:0;padding:.46rem .55rem .48rem}
+	.lang-toggle .lang-code{display:none}
+	.search-inline input{width:120px}
+}
+/* Further tighten before mobile breakpoint but keep two-line layout until 640px rules take over */
+@media (max-width:760px){
+	.search-inline input{width:100px}
+	.btn-icon-labeled{padding:.44rem .5rem .46rem}
+}
 .logo-wrap{display:flex;align-items:center;gap:.8rem;min-width:0}
 .logo-wrap .logo{height:62px;width:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.55));transition:transform .55s ease,height .55s ease}
 @media (max-width:700px){.logo-wrap .logo{height:54px}}
