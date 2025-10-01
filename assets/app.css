@@ -399,6 +399,9 @@ footer p{margin:0}
 	.lang-dropdown{align-self:center}
 	.lang-menu{top:calc(100% + .3rem);left:50%;transform:translateX(-50%);}
 }
+	/* Lazy image placeholders */
+	img.lazy-img{background:#141b21 linear-gradient(135deg,#141b21,#1c252d);filter:blur(2px);transition:filter .35s ease,opacity .35s ease}
+	img.lazy-img.hi-upscaled, img.lazy-img:not([data-src]){filter:blur(0);}
 /* --- Dynamic overflow handling (desktop) --- */
 .topbar.compact .btn-icon-labeled .btn-label{display:none}
 .topbar.compact .btn-icon-labeled{padding:.46rem .55rem .48rem;font-size:0}
