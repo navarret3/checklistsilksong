@@ -664,8 +664,11 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
               if(res.ok){
                 const txt = (await res.text()).trim();
                 if(/^https?:\/\//i.test(txt)) return _cachedWebhook = txt;
+                else if(txt) console.warn('[FEEDBACK] feedback-webhook.txt presente pero no parece una URL válida.');
+              } else {
+                console.warn('[FEEDBACK] No se pudo obtener feedback-webhook.txt (status ' + res.status + ')');
               }
-            } catch(e){}
+            } catch(e){ console.warn('[FEEDBACK] Error fetch feedback-webhook.txt', e); }
             // Intentar config.json
             try {
               const res = await fetch('/config.json?cb=' + Date.now(), { cache:'no-store' });
@@ -673,8 +676,11 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
                 const json = await res.json();
                 const cw = (json.feedbackWebhook||'').trim();
                 if(/^https?:\/\//i.test(cw)) return _cachedWebhook = cw;
+                else if(cw) console.warn('[FEEDBACK] config.json feedbackWebhook no válido.');
+              } else {
+                console.warn('[FEEDBACK] No se pudo obtener config.json (status ' + res.status + ')');
               }
-            } catch(e){}
+            } catch(e){ console.warn('[FEEDBACK] Error fetch config.json', e); }
             return _cachedWebhook = '';
         })();
         const val = await _webhookResolving; _webhookResolving = null; return val;
@@ -682,6 +688,17 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       if(!initialMetaWebhook && location.hostname === 'checklistsilksong.com'){
         console.warn('[FEEDBACK] Webhook no disponible en meta; se intentará fallback dinámico.');
       }
+      // Reintento diferido: si a los 1500ms la caché sigue vacía, forzar nueva resolución (por si CDN sirvió index anterior)
+      setTimeout(async ()=>{
+        if(!_cachedWebhook){
+          const v = await resolveWebhook();
+          if(!v){
+            console.warn('[FEEDBACK] Reintento diferido: webhook sigue vacío tras 1500ms.');
+          } else {
+            console.info('[FEEDBACK] Webhook obtenido correctamente tras reintento diferido.');
+          }
+        }
+      }, 1500);
       let activeSending = false;
 
       function openFb(){
