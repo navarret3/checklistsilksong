@@ -641,10 +641,46 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       const statusEl = document.getElementById('fbStatus');
       const sendBtn = document.getElementById('fbSendBtn');
       const webhookMeta = document.querySelector('meta[name="feedback-webhook"]');
-      // Simplificación: solo leer meta inyectada por CI, sin overrides por query.
-      const webhookBase = (webhookMeta && webhookMeta.content || '').trim();
-      if(!webhookBase && location.hostname === 'checklistsilksong.com'){
-        console.warn('[FEEDBACK] Webhook no disponible (meta vacía). Si persiste tras Ctrl+F5, revisar workflow Pages.');
+      // Resolución perezosa y robusta del webhook:
+      // 1. Meta inyectada por CI (no se guarda en repo) -> <meta name="feedback-webhook" content="URL" />
+      // 2. Fichero plano feedback-webhook.txt (inyectado por workflow con secret)
+      // 3. config.json (JSON con { feedbackWebhook: "..." })
+      // 4. Parámetro de URL ?feedbackWebhook=<url codificada> (solo para depuración local)
+      const initialMetaWebhook = (webhookMeta && webhookMeta.content || '').trim();
+      const urlParam = (()=>{ try { const p=new URLSearchParams(location.search); return decodeURIComponent(p.get('feedbackWebhook')||'').trim(); } catch(e){ return ''; } })();
+      let _cachedWebhook = null; // string ya resuelta
+      let _webhookResolving = null; // Promise en curso
+
+      async function resolveWebhook(){
+        if(_cachedWebhook) return _cachedWebhook;
+        if(_webhookResolving) return _webhookResolving;
+        _webhookResolving = (async ()=>{
+          // Prioridades
+            if(urlParam && /^https?:\/\//i.test(urlParam)) return _cachedWebhook = urlParam;
+            if(initialMetaWebhook && /^https?:\/\//i.test(initialMetaWebhook)) return _cachedWebhook = initialMetaWebhook;
+            // Intentar feedback-webhook.txt (sin cache)
+            try {
+              const res = await fetch('/feedback-webhook.txt?cb=' + Date.now(), { cache:'no-store' });
+              if(res.ok){
+                const txt = (await res.text()).trim();
+                if(/^https?:\/\//i.test(txt)) return _cachedWebhook = txt;
+              }
+            } catch(e){}
+            // Intentar config.json
+            try {
+              const res = await fetch('/config.json?cb=' + Date.now(), { cache:'no-store' });
+              if(res.ok){
+                const json = await res.json();
+                const cw = (json.feedbackWebhook||'').trim();
+                if(/^https?:\/\//i.test(cw)) return _cachedWebhook = cw;
+              }
+            } catch(e){}
+            return _cachedWebhook = '';
+        })();
+        const val = await _webhookResolving; _webhookResolving = null; return val;
+      }
+      if(!initialMetaWebhook && location.hostname === 'checklistsilksong.com'){
+        console.warn('[FEEDBACK] Webhook no disponible en meta; se intentará fallback dinámico.');
       }
       let activeSending = false;
 
@@ -672,7 +708,8 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         if(raw.length < 10){
           statusEl.hidden = false; statusEl.textContent = t('feedback.status.tooShort') || 'Message too short.'; statusEl.className='fb-status fb-status--err'; return;
         }
-        if(!webhookBase){
+        const webhookFinal = await resolveWebhook();
+        if(!webhookFinal){
           statusEl.hidden = false;
           statusEl.textContent = 'Webhook not configured.';
           statusEl.className='fb-status fb-status--err';
@@ -701,7 +738,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         ];
         const payload = { content: bodyLines.join('\n') };
         try {
-          const res = await fetch(webhookBase, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
+          const res = await fetch(webhookFinal, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
           if(!res.ok) throw new Error('HTTP '+res.status);
           statusEl.textContent = t('feedback.status.sent') || 'Feedback sent. Thank you!';
           statusEl.className = 'fb-status fb-status--ok';
