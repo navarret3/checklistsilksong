@@ -563,8 +563,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       setTimeout(schedule, 350);
     })();
 
-    /* ===== Feedback Modal & Submission (Discord Webhook) ===== */
-    // Feedback setup removed
+  /* (Former feedback/webhook feature fully removed) */
 
     function formatWeightedPercent(v){
       if(v >= 100) return '100';

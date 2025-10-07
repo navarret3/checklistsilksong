@@ -24,7 +24,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-  # Webhook injection removed (feature deprecated). Build now is a direct pass-through.
+  # Legacy injection step removed (feature deprecated). Build is a direct pass-through.
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -42,4 +42,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       
-  # Removed legacy Fastly/Webhook cache invalidation logic.
+  # Removed legacy cache invalidation logic tied to deprecated feature.

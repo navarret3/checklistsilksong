@@ -339,7 +339,7 @@ main{max-width:1400px;margin:0 auto;padding:.75rem 1rem 2rem}
 	/* Toolbar: search first, no expand/collapse buttons */
 	.toolbar{order:2;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;padding:0;margin:0}
 	#expandAllBtn,#collapseAllBtn{display:none !important}
-	/* Show import/export/info buttons on mobile but more compact (feedback removed) */
+	/* Show import/export/info buttons on mobile (lean mobile controls) */
 	.search-inline{order:0}
 	.search-inline input{display:block !important;width:220px;max-width:70%;}
 	.btn-icon-labeled{padding:.42rem .52rem .44rem;font-size:.0rem;letter-spacing:0}
