@@ -193,7 +193,7 @@
   <div id="categories" class="categories" aria-live="polite"></div>
 </main>
 <footer style="padding:1rem;font-size:.7rem;color:#6e7b88;text-align:center;border-top:1px solid #242d36;background:#0f1215;">
-  <p style="margin:0;">Silksong community project • <span data-i18n="footer.note">Data is unofficial and may change.</span></p>
+   <p style="margin:0;">Silksong community project</p>
 </footer>
 <!-- Floating persistent progress widget -->
 <div id="floatingProgress" class="floating-progress" role="status" aria-live="polite" aria-label="Checklist progress" title="Progress" hidden>
@@ -270,15 +270,16 @@
   <div class="info-modal__backdrop" data-close="infoModal"></div>
   <div class="info-modal__dialog">
     <button class="info-modal__close" data-close="infoModal" aria-label="Close">×</button>
-    <h2 id="infoModalTitle" data-i18n="info.title">About / Info</h2>
-    <p data-i18n="info.desc">This fan-made Silksong checklist lets you track progress offline (stored locally). Use Export to create a backup JSON and Import to restore it on another device or browser.</p>
+    <h2 id="infoModalTitle" data-i18n="info.short.title">Información</h2>
+    <p data-i18n="info.short.intro">Una checklist interactiva de Hollow Knight: Silksong que te ayuda a controlar tu progreso hasta el 100%.</p>
     <ul class="info-list">
-      <li data-i18n="info.point.progress">Progress & category collapse states are saved automatically.</li>
-      <li data-i18n="info.point.privacy">All data stays on your device. No account needed.</li>
-      <li data-i18n="info.point.backup">Use Export regularly to keep a backup.</li>
-      <li data-i18n="info.point.version">Format version may evolve; old imports will be adapted when possible.</li>
+      <li data-i18n="info.short.save">Tu progreso se guarda automáticamente en tu navegador (no necesitas cuenta).</li>
+      <li data-i18n="info.short.optional">Los elementos opcionales (Jefes, Pulgas) no cuentan para el 100%, pero puedes seguirlos igualmente.</li>
+      <li data-i18n="info.short.transfer">Exportar crea un archivo de copia de seguridad; Importar lo restaura en otro dispositivo.</li>
+      <li data-i18n="info.short.langs">Disponible en inglés y español; podrían añadirse más idiomas.</li>
+      <li data-i18n="info.short.feedback">Usa el botón Feedback si ves errores o quieres sugerir mejoras.</li>
     </ul>
-    <p style="font-size:.65rem;opacity:.65" data-i18n="info.disclaimer">Hollow Knight: Silksong assets / names are property of their respective owners. This is an unofficial community project.</p>
+    <div class="disclaimer" data-i18n="info.short.credits">Proyecto hecho por fans para fans. Team Cherry no participa.</div>
   </div>
 </div>
 <!-- Feedback Modal -->

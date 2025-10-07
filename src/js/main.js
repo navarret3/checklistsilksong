@@ -51,6 +51,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
   const issuesList = document.getElementById('datasetIssuesList');
   const dismissIssues = document.getElementById('dismissIssues');
   const searchInput = document.getElementById('searchInput');
+  const searchWrap = searchInput ? searchInput.closest('.search-inline') : null;
   // Celebration flag must be declared early to avoid TDZ if user already at 100% before later definitions
   let celebrationShown = false;
 
@@ -136,6 +137,86 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
           }
         }, SEARCH_DEBOUNCE);
       });
+
+      /* Collapsible search (mobile/icon-only) */
+      if(searchWrap){
+        // Start collapsed if viewport narrow
+        function shouldCollapseInitially(){
+          return window.innerWidth < 760; // heuristic breakpoint
+        }
+        function collapse(){
+          if(!searchWrap.classList.contains('collapsed')){
+            searchWrap.classList.add('collapsed');
+            searchWrap.classList.remove('expanded');
+            searchInput.blur();
+            searchWrap.setAttribute('aria-expanded','false');
+            searchWrap.classList.remove('manual-expanded');
+          }
+        }
+        function expand(){
+          searchWrap.classList.add('expanded');
+          searchWrap.classList.remove('collapsed');
+          // Delay focus slightly to allow width transition start
+          setTimeout(()=> searchInput.focus(), 40);
+          searchWrap.setAttribute('aria-expanded','true');
+          // Mark as user-forced to prevent auto collapse from overflow manager
+          searchWrap.classList.add('manual-expanded');
+        }
+        // Initialize state
+        if(shouldCollapseInitially()){
+          searchWrap.classList.add('collapsed');
+          searchWrap.setAttribute('aria-expanded','false');
+          searchWrap.setAttribute('role','button');
+          searchWrap.tabIndex = 0;
+        }
+        else { searchWrap.classList.add('expanded'); searchWrap.setAttribute('aria-expanded','true'); }
+        // Click on wrapper (icon) expands if collapsed
+        searchWrap.addEventListener('click', (e)=>{
+          // Only intercept when collapsed and click not on an already focused input
+            if(searchWrap.classList.contains('collapsed')){
+              e.preventDefault();
+              expand();
+            }
+        });
+        // Keyboard activation when collapsed
+        searchWrap.addEventListener('keydown', (e)=>{
+          if(searchWrap.classList.contains('collapsed') && (e.key === 'Enter' || e.key === ' ')){
+            e.preventDefault();
+            expand();
+          }
+        });
+        // Blur collapses if empty and viewport narrow
+        searchInput.addEventListener('blur', ()=>{
+          if(window.innerWidth < 760 && !searchInput.value.trim()){
+            collapse();
+          }
+        });
+        window.addEventListener('resize', ()=>{
+          if(window.innerWidth >= 760){
+            searchWrap.classList.remove('collapsed');
+            searchWrap.classList.add('expanded');
+            searchWrap.setAttribute('aria-expanded','true');
+            searchWrap.removeAttribute('role');
+            searchWrap.tabIndex = -1;
+          } else if(!searchInput.value.trim()){
+            collapse();
+            searchWrap.setAttribute('role','button');
+            searchWrap.tabIndex = 0;
+          }
+        }, { passive:true });
+        // Escape key to collapse when empty
+        searchInput.addEventListener('keydown', (ev)=>{
+          if(ev.key === 'Escape'){
+            if(searchInput.value){
+              searchInput.value = '';
+              const event = new Event('input');
+              searchInput.dispatchEvent(event);
+            } else if(window.innerWidth < 760){
+              collapse();
+            }
+          }
+        });
+      }
     }
 
     // Locale already applied before first render
@@ -507,6 +588,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       const topbar = document.querySelector('.topbar');
       if(!topbar) return;
       const toolbar = topbar.querySelector('.toolbar');
+      const searchWrapLocal = topbar.querySelector('.search-inline');
       let framePending = false;
       function measure(){
         framePending = false;
@@ -518,6 +600,20 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
           // Re-measure with compact
           if(topbar.scrollWidth > topbar.clientWidth){
             topbar.classList.add('compact2');
+          }
+        }
+        // After layout decision, ensure collapsed state if needed (only auto-collapse when narrow and input empty)
+        if(searchWrapLocal){
+          const input = searchWrapLocal.querySelector('input');
+          const userForced = searchWrapLocal.classList.contains('manual-expanded');
+          if(window.innerWidth < 760 && input && !input.value.trim() && !userForced){
+            searchWrapLocal.classList.add('collapsed');
+            searchWrapLocal.classList.remove('expanded');
+            searchWrapLocal.setAttribute('aria-expanded','false');
+          } else if(userForced || window.innerWidth >= 760 || (input && input.value.trim())){
+            searchWrapLocal.classList.add('expanded');
+            searchWrapLocal.classList.remove('collapsed');
+            searchWrapLocal.setAttribute('aria-expanded','true');
           }
         }
       }
