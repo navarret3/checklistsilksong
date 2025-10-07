@@ -90,4 +90,12 @@
   ,"feedback.type.prefix.data": "[DATO]"
   ,"feedback.type.prefix.other": "[OTRO]"
   ,"feedback.status.tooShort": "Mensaje demasiado corto."
+  ,"info.short.title": "Información"
+  ,"info.short.intro": "Una checklist interactiva de Hollow Knight: Silksong que te ayuda a controlar tu progreso hasta el 100%."
+  ,"info.short.save": "Tu progreso se guarda automáticamente en tu navegador (no necesitas cuenta)."
+  ,"info.short.optional": "Los elementos opcionales (Jefes, Pulgas) no cuentan para el 100%, pero puedes seguirlos igualmente."
+  ,"info.short.transfer": "Exportar crea un archivo de copia de seguridad; Importar lo restaura en otro dispositivo."
+  ,"info.short.langs": "Disponible en inglés y español; podrían añadirse más idiomas."
+  ,"info.short.feedback": "Usa el botón Feedback si ves errores o quieres sugerir mejoras."
+  ,"info.short.credits": "Proyecto hecho por fans para fans. Team Cherry no participa."
 }

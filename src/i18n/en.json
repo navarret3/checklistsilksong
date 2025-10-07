@@ -90,4 +90,12 @@
   ,"feedback.type.prefix.data": "[DATA]"
   ,"feedback.type.prefix.other": "[OTHER]"
   ,"feedback.status.tooShort": "Message too short."
+  ,"info.short.title": "Info"
+  ,"info.short.intro": "An interactive Hollow Knight: Silksong checklist to help you track progress toward 100%."
+  ,"info.short.save": "Your progress is saved automatically in your browser (no account needed)."
+  ,"info.short.optional": "Optional elements (Bosses, Fleas) don’t count toward the 100% but you can still track them."
+  ,"info.short.transfer": "Export creates a backup file you can keep; Import restores that file on another device."
+  ,"info.short.langs": "Available in English and Spanish; more languages may be added."
+  ,"info.short.feedback": "Use the Feedback button if you find mistakes or want to suggest improvements."
+  ,"info.short.credits": "Fan project made by fans for fans. Team Cherry is not involved."
 }

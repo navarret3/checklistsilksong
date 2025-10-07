@@ -4,6 +4,7 @@ import { toggle } from './progress.js';
 import { renderCategories, updatePercent, updateCategoryCounts, setupLazyImages } from './ui.js';
 import { computePercent } from './progress.js';
 import { setLocale, t, activeLocale } from './i18n.js';
+import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackSearch, trackFeedbackOpen, trackFeedbackSubmit } from './analytics.js';
 
 (async function init(){
   try {
@@ -50,6 +51,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
   const issuesList = document.getElementById('datasetIssuesList');
   const dismissIssues = document.getElementById('dismissIssues');
   const searchInput = document.getElementById('searchInput');
+  const searchWrap = searchInput ? searchInput.closest('.search-inline') : null;
   // Celebration flag must be declared early to avoid TDZ if user already at 100% before later definitions
   let celebrationShown = false;
 
@@ -63,52 +65,10 @@ import { setLocale, t, activeLocale } from './i18n.js';
     const handleItemToggle = (id) => {
       const changed = toggle(id, progress);
       if (changed) {
-        // Batch save operations using microtask to collapse rapid toggles
         queueMicrotask(()=> saveProgress(progress));
         updateBothPercents();
-        
-        // GA4 Tracking: Item toggle
-  const item = items.find(i => i.id === id);
-  const { completed, total, completedWeight, totalWeight, percent } = computePercent(items, progress);
-        const currentPercent = totalWeight ? (completedWeight / totalWeight) * 100 : 0;
-        
-  if (typeof window.trackChecklistProgress === 'function') {
-          const action = progress[id] ? 'item_completed' : 'item_unchecked';
-          window.trackChecklistProgress(
-            action,
-            item?.category || 'Unknown',
-            item?.name || id,
-            currentPercent
-          );
-          
-          // Check if category is now complete
-          if (progress[id] && item?.category && !(item.optional || item.weight===0)) {
-            const categoryItems = items.filter(i => i.category === item.category);
-            const categoryCompleted = categoryItems.filter(ci => !(ci.optional || ci.weight===0)).every(i => progress[i.id]);
-            if (categoryCompleted) {
-              window.trackCompletion('category_complete', categoryItems.length);
-              gtag('event', 'category_completed', {
-                event_category: 'Checklist',
-                event_label: item.category,
-                custom_parameter_1: currentPercent,
-                value: categoryItems.length
-              });
-            }
-          }
-          
-          // Track milestone achievements
-          if (!(item?.optional || item?.weight===0)) {
-            if (percent === 100 && progress[id]) {
-              window.trackCompletion('full_checklist', total);
-            } else if (percent >= 25 && percent < 30 && progress[id]) {
-              window.trackChecklistProgress('milestone_25', 'Progress', '25% Completed', 25);
-            } else if (percent >= 50 && percent < 55 && progress[id]) {
-              window.trackChecklistProgress('milestone_50', 'Progress', '50% Completed', 50);
-            } else if (percent >= 75 && percent < 80 && progress[id]) {
-              window.trackChecklistProgress('milestone_75', 'Progress', '75% Completed', 75);
-            }
-          }
-        }
+        const item = items.find(i => i.id === id);
+        if(item){ try { trackItemToggle(item); } catch(_){} }
       }
       return changed;
     };
@@ -168,15 +128,95 @@ import { setLocale, t, activeLocale } from './i18n.js';
           rerenderList();
           // Re-setup lazy images after search re-renders content
           requestAnimationFrame(() => setupLazyImages());
-          if (newQuery && typeof window.trackSearch === 'function') {
+          if (newQuery) {
             clearTimeout(searchInput._searchTimeout);
             searchInput._searchTimeout = setTimeout(() => {
               const visibleItems = document.querySelectorAll('.item').length; // simplified count
-              window.trackSearch(newQuery, visibleItems);
+              try { trackSearch(newQuery, visibleItems); } catch(_){}
             }, 700);
           }
         }, SEARCH_DEBOUNCE);
       });
+
+      /* Collapsible search (mobile/icon-only) */
+      if(searchWrap){
+        // Start collapsed if viewport narrow
+        function shouldCollapseInitially(){
+          return window.innerWidth < 760; // heuristic breakpoint
+        }
+        function collapse(){
+          if(!searchWrap.classList.contains('collapsed')){
+            searchWrap.classList.add('collapsed');
+            searchWrap.classList.remove('expanded');
+            searchInput.blur();
+            searchWrap.setAttribute('aria-expanded','false');
+            searchWrap.classList.remove('manual-expanded');
+          }
+        }
+        function expand(){
+          searchWrap.classList.add('expanded');
+          searchWrap.classList.remove('collapsed');
+          // Delay focus slightly to allow width transition start
+          setTimeout(()=> searchInput.focus(), 40);
+          searchWrap.setAttribute('aria-expanded','true');
+          // Mark as user-forced to prevent auto collapse from overflow manager
+          searchWrap.classList.add('manual-expanded');
+        }
+        // Initialize state
+        if(shouldCollapseInitially()){
+          searchWrap.classList.add('collapsed');
+          searchWrap.setAttribute('aria-expanded','false');
+          searchWrap.setAttribute('role','button');
+          searchWrap.tabIndex = 0;
+        }
+        else { searchWrap.classList.add('expanded'); searchWrap.setAttribute('aria-expanded','true'); }
+        // Click on wrapper (icon) expands if collapsed
+        searchWrap.addEventListener('click', (e)=>{
+          // Only intercept when collapsed and click not on an already focused input
+            if(searchWrap.classList.contains('collapsed')){
+              e.preventDefault();
+              expand();
+            }
+        });
+        // Keyboard activation when collapsed
+        searchWrap.addEventListener('keydown', (e)=>{
+          if(searchWrap.classList.contains('collapsed') && (e.key === 'Enter' || e.key === ' ')){
+            e.preventDefault();
+            expand();
+          }
+        });
+        // Blur collapses if empty and viewport narrow
+        searchInput.addEventListener('blur', ()=>{
+          if(window.innerWidth < 760 && !searchInput.value.trim()){
+            collapse();
+          }
+        });
+        window.addEventListener('resize', ()=>{
+          if(window.innerWidth >= 760){
+            searchWrap.classList.remove('collapsed');
+            searchWrap.classList.add('expanded');
+            searchWrap.setAttribute('aria-expanded','true');
+            searchWrap.removeAttribute('role');
+            searchWrap.tabIndex = -1;
+          } else if(!searchInput.value.trim()){
+            collapse();
+            searchWrap.setAttribute('role','button');
+            searchWrap.tabIndex = 0;
+          }
+        }, { passive:true });
+        // Escape key to collapse when empty
+        searchInput.addEventListener('keydown', (ev)=>{
+          if(ev.key === 'Escape'){
+            if(searchInput.value){
+              searchInput.value = '';
+              const event = new Event('input');
+              searchInput.dispatchEvent(event);
+            } else if(window.innerWidth < 760){
+              collapse();
+            }
+          }
+        });
+      }
     }
 
     // Locale already applied before first render
@@ -265,7 +305,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
           rerenderList();
           // Re-setup lazy images after language change re-renders the content
           requestAnimationFrame(() => setupLazyImages());
-          gtag('event', 'language_change', { event_category:'User Interaction', event_label: next, custom_parameter_2: next });
+          trackLanguageChange(next);
         }
         closeMenu();
       });
@@ -303,14 +343,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
       if (!confirm(t('reset.confirm1') || 'Confirm reset?')) return;
       if (!confirm(t('reset.confirm2') || 'Really reset?')) return;
       
-      // GA4 Tracking: Reset action
       const completedCount = Object.values(progress).filter(Boolean).length;
-      gtag('event', 'checklist_reset', {
-        event_category: 'User Interaction',
-        event_label: 'Reset Progress',
-        custom_parameter_3: completedCount,
-        value: completedCount
-      });
+      trackReset(completedCount);
       
       clearProgress();
       clearUIState();
@@ -554,6 +588,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
       const topbar = document.querySelector('.topbar');
       if(!topbar) return;
       const toolbar = topbar.querySelector('.toolbar');
+      const searchWrapLocal = topbar.querySelector('.search-inline');
       let framePending = false;
       function measure(){
         framePending = false;
@@ -565,6 +600,20 @@ import { setLocale, t, activeLocale } from './i18n.js';
           // Re-measure with compact
           if(topbar.scrollWidth > topbar.clientWidth){
             topbar.classList.add('compact2');
+          }
+        }
+        // After layout decision, ensure collapsed state if needed (only auto-collapse when narrow and input empty)
+        if(searchWrapLocal){
+          const input = searchWrapLocal.querySelector('input');
+          const userForced = searchWrapLocal.classList.contains('manual-expanded');
+          if(window.innerWidth < 760 && input && !input.value.trim() && !userForced){
+            searchWrapLocal.classList.add('collapsed');
+            searchWrapLocal.classList.remove('expanded');
+            searchWrapLocal.setAttribute('aria-expanded','false');
+          } else if(userForced || window.innerWidth >= 760 || (input && input.value.trim())){
+            searchWrapLocal.classList.add('expanded');
+            searchWrapLocal.classList.remove('collapsed');
+            searchWrapLocal.setAttribute('aria-expanded','true');
           }
         }
       }
@@ -605,7 +654,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
         statusEl.className = 'fb-status';
         form.reset();
         msgEl.focus();
-        gtag('event','feedback_open',{ event_category:'Feedback' });
+  trackFeedbackOpen();
       }
       function closeFb(){
         feedbackModal.hidden = true;
@@ -656,7 +705,7 @@ import { setLocale, t, activeLocale } from './i18n.js';
           if(!res.ok) throw new Error('HTTP '+res.status);
           statusEl.textContent = t('feedback.status.sent') || 'Feedback sent. Thank you!';
           statusEl.className = 'fb-status fb-status--ok';
-          gtag('event','feedback_submit',{ event_category:'Feedback', event_label:type, value: percent });
+          trackFeedbackSubmit(type, percent);
           setTimeout(()=>{ closeFb(); }, 1400);
         } catch(err){
           statusEl.textContent = t('feedback.status.error') || 'Error sending feedback.';
@@ -718,72 +767,8 @@ import { setLocale, t, activeLocale } from './i18n.js';
 
     // Service worker removed during cleanup for simplicity (offline support disabled)
     
-    // Advanced GA4 Tracking Setup
-    // Lazy-init heavy tracking after first idle period for faster FCP
-    requestIdleCallback?.(setupAdvancedTracking) || setTimeout(setupAdvancedTracking, 1200);
-    function setupAdvancedTracking() {
-      // Track session engagement
-      let sessionStart = Date.now();
-      let isEngaged = false;
-      
-      // Track engagement after 30 seconds or first interaction
-      setTimeout(() => {
-        if (!isEngaged) {
-          gtag('event', 'session_engaged', {
-            event_category: 'Engagement',
-            engagement_time_msec: Date.now() - sessionStart
-          });
-          isEngaged = true;
-        }
-      }, 30000);
-      
-      // Track page visibility changes
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          gtag('event', 'page_hidden', {
-            event_category: 'Engagement',
-            value: Math.round((Date.now() - sessionStart) / 1000)
-          });
-        } else {
-          sessionStart = Date.now();
-          gtag('event', 'page_visible', {
-            event_category: 'Engagement'
-          });
-        }
-      });
-      
-      // Track scroll depth
-      let maxScrollDepth = 0;
-      const trackScrollDepth = () => {
-        const scrollPercent = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
-        if (scrollPercent > maxScrollDepth && scrollPercent >= 25) {
-          maxScrollDepth = Math.floor(scrollPercent / 25) * 25; // Track in 25% increments
-          gtag('event', 'scroll_depth', {
-            event_category: 'Engagement',
-            event_label: `${maxScrollDepth}%`,
-            value: maxScrollDepth
-          });
-        }
-      };
-      
-      window.addEventListener('scroll', trackScrollDepth, { passive: true });
-      
-      // Track performance metrics
-      if ('performance' in window && 'getEntriesByType' in performance) {
-        window.addEventListener('load', () => {
-          setTimeout(() => {
-            const navigation = performance.getEntriesByType('navigation')[0];
-            if (navigation) {
-              gtag('event', 'page_load_timing', {
-                event_category: 'Performance',
-                custom_parameter_1: Math.round(navigation.loadEventEnd - navigation.fetchStart),
-                value: Math.round(navigation.loadEventEnd - navigation.fetchStart)
-              });
-            }
-          }, 0);
-        });
-      }
-    }
+    // Initialize analytics after idle to avoid impacting FCP
+    requestIdleCallback?.(()=> initAnalytics({ items, progress, getLocale: activeLocale })) || setTimeout(()=> initAnalytics({ items, progress, getLocale: activeLocale }), 900);
 
   } catch(e){
     console.error('[INIT] Failure', e);

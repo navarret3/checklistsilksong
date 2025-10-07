@@ -147,11 +147,31 @@ select#langSel option{background:#141b21;color:#fff}
 .toolbar #resetBtn{color:#ffd6d6;border-color:#503131;background:#301e1e}
 .toolbar #resetBtn:hover{background:#3a2424;border-color:#734444}
 .search-inline{position:relative;display:flex;align-items:center}
-.search-inline input{width:150px;max-width:24vw;min-width:140px;background:#141b21;border:1px solid #25313c;color:var(--fg);padding:.45rem .6rem;padding-left:30px;border-radius:6px;font-size:.62rem;letter-spacing:.5px;outline:none;transition:width .3s ease,border-color .25s,background .25s}
+.search-inline input{width:150px;max-width:24vw;min-width:140px;background:#141b21;border:1px solid #25313c;color:var(--fg);padding:.45rem .6rem;padding-left:30px;border-radius:6px;font-size:.62rem;letter-spacing:.5px;outline:none;transition:width .3s ease,border-color .25s,background .25s,opacity .25s ease}
+/* Collapsible (mobile icon-only) search states */
+.search-inline.collapsed{width:36px;min-width:36px;height:36px;justify-content:center;align-items:center;cursor:pointer;display:flex}
+.search-inline.collapsed{background:#1b232b;border:1px solid #2a343e;border-radius:6px;transition:background .25s,border-color .25s,box-shadow .25s}
+.search-inline.collapsed:hover{background:#202b33;border-color:#36424d}
+.search-inline.collapsed:active{transform:translateY(1px)}
+.search-inline.collapsed:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+/* Generic hiding rule for collapsed input */
+.search-inline.collapsed input{width:0!important;min-width:0!important;padding:0!important;border:0!important;opacity:0!important;pointer-events:none!important}
+/* Keep container visible in any compact stage */
+.topbar.compact2 .search-inline{display:flex}
+.search-inline.collapsed::before{left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);opacity:.85}
+.search-inline.expanded{width:180px;transition:width .28s ease}
+@media (max-width:560px){
+	.search-inline.expanded{width:140px}
+}
+/* Animate expansion */
+.search-inline.expanding .search-inline__input{transition:width .3s ease}
 @media (max-width:840px){.search-inline input{width:140px}}
 .search-inline::before{content:"";position:absolute;left:8px;top:50%;transform:translateY(-50%);width:14px;height:14px;background:currentColor;opacity:.68;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.35-4.35'/></svg>") no-repeat center/14px 14px;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.35-4.35'/></svg>") no-repeat center/14px 14px;pointer-events:none}
 @media (max-width:840px){.search-inline input{width:30px}}
-@media (max-width:640px){.search-inline input{display:none}}
+/* Remove full hide on very narrow screens; rely on collapsed state */
+@media (max-width:640px){
+	.search-inline.expanded{width:150px}
+}
 .search-inline input:focus{border-color:#39576a;background:#182028}
 /* Removed standalone mast logo block; logo now inline in topbar */
 @keyframes fadeIn{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
@@ -403,12 +423,16 @@ footer p{margin:0}
 	img.lazy-img{background:#141b21 linear-gradient(135deg,#141b21,#1c252d);filter:blur(2px);transition:filter .35s ease,opacity .35s ease}
 	img.lazy-img.hi-upscaled, img.lazy-img:not([data-src]){filter:blur(0);}
 /* --- Dynamic overflow handling (desktop) --- */
+/* Compact toolbar adjustments */
 .topbar.compact .btn-icon-labeled .btn-label{display:none}
-.topbar.compact .btn-icon-labeled{padding:.46rem .55rem .48rem;font-size:0}
+/* Base icon-only square */
+.topbar.compact .btn-icon-labeled,
+.topbar.compact2 .btn-icon-labeled{width:36px;height:36px;min-width:36px;display:inline-flex;justify-content:center;align-items:center;padding:0;font-size:0;gap:0}
+.topbar.compact .btn-icon-labeled::before,
+.topbar.compact2 .btn-icon-labeled::before{width:20px;height:20px;margin:0;display:block;position:static;opacity:.9}
 .topbar.compact .search-inline input{width:120px}
-/* Second stage: hide search if still overflowing */
-.topbar.compact2 .search-inline{display:none}
-.topbar.compact2 .btn-icon-labeled{padding:.44rem .5rem .46rem}
+/* Keep search visible in second stage (we manage collapse manually) */
+.topbar.compact2 .search-inline{display:flex}
 .topbar.compact .lang-toggle .lang-code{display:none}
 /* Provide subtle indicator that toolbar is truncated via gradient fade (optional) */
 .topbar.compact .toolbar{position:relative}
@@ -416,12 +440,14 @@ footer p{margin:0}
 /* Icon-only presentation when labels hidden (compact or narrow) */
 .btn-icon-labeled::before{content:none}
 .topbar.compact .btn-icon-labeled,
-.topbar.compact2 .btn-icon-labeled{justify-content:center;min-width:34px;gap:0}
+.topbar.compact2 .btn-icon-labeled{justify-content:center;align-items:center;min-width:34px;gap:0;display:inline-flex}
+.topbar.compact .btn-icon-labeled::before,
+.topbar.compact2 .btn-icon-labeled::before{margin-right:0;width:18px;height:18px}
 .topbar.compact .btn-icon-labeled::before,
 .topbar.compact2 .btn-icon-labeled::before{content:"";display:inline-block;width:16px;height:16px;background:currentColor;opacity:.9}
 @media (max-width:900px){
-	.btn-icon-labeled{justify-content:center;min-width:34px;gap:0}
-	.btn-icon-labeled::before{content:"";display:inline-block;width:16px;height:16px;background:currentColor;opacity:.9}
+  .btn-icon-labeled{justify-content:center;align-items:center;min-width:34px;gap:0;display:inline-flex}
+  .btn-icon-labeled::before{content:"";display:inline-block;width:18px;height:18px;background:currentColor;opacity:.9;position:relative;top:0;margin:0}
 }
 /* Individual icon masks (Lucide-style stroke icons simplified) */
 #importBtn::before{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v14'/><path d='m6 11 6 6 6-6'/><path d='M5 21h14'/></svg>") center/16px 16px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v14'/><path d='m6 11 6 6 6-6'/><path d='M5 21h14'/></svg>") center/16px 16px no-repeat}
@@ -438,11 +464,12 @@ footer p{margin:0}
 
 /* Toolbar button icons via CSS mask (no sprite to avoid flicker) */
 .btn-icon-labeled{position:relative}
-.btn-icon-labeled::before{content:"";width:14px;height:14px;display:inline-block;background:currentColor;-webkit-mask:var(--icon) no-repeat center/14px 14px;mask:var(--icon) no-repeat center/14px 14px;opacity:.85;transition:opacity .25s;margin-right:.12rem;position:relative;top:.5px}
+.btn-icon-labeled::before{content:"";width:20px;height:20px;display:block;background:currentColor;-webkit-mask:var(--icon) no-repeat center/20px 20px;mask:var(--icon) no-repeat center/20px 20px;opacity:.85;transition:opacity .25s;position:static;margin:0}
 /* Ensure label aligns perfectly vertical */
 .btn-icon-labeled .btn-label{display:inline-flex;align-items:center;line-height:1}
 .btn-icon-labeled:hover::before{opacity:1}
 /* Define per-button icons (24x24 viewBox stroke icons) */
+/* Icons adjusted per final direction: Import = arrow UP into tray (bringing in data), Export = arrow DOWN out of tray */
 .btn-import{--icon:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3v12'/><path d='M7 10l5 5 5-5'/><path d='M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2'/></svg>")}
 .btn-export{--icon:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21V9'/><path d='M17 14l-5-5-5 5'/><path d='M4 7V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2'/></svg>")}
 .btn-info{--icon:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'/><path d='M12 16v-4'/><path d='M12 8h.01'/></svg>")}
