@@ -24,38 +24,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Inject Discord webhook with CDN cache busting
-        run: |
-          WEBHOOK='${{ secrets.DISCORD_WEBHOOK }}'
-          if [ -z "$WEBHOOK" ]; then
-            echo "No webhook secret provided (skipping injection)"
-            exit 0
-          fi
-
-          # Generate cache busting timestamp for Fastly CDN invalidation
-          CACHE_BUST="$(date +%s)-${GITHUB_SHA::8}"
-          echo "CDN Cache bust ID: $CACHE_BUST"
-
-
-      - name: Upload index debug artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: index-after-injection
-          path: index.after-injection.html
-
-      - name: Verify webhook injection before artifact upload
-        run: |
-          echo "=== FINAL VERIFICATION BEFORE ARTIFACT UPLOAD ==="
-          echo "Current directory contents:"
-          ls -la index.html
-          echo "Webhook line in main index.html:"
-          grep -n 'feedback-webhook' index.html || echo "NO WEBHOOK LINE FOUND!"
-          echo "SHA256 of index.html to be uploaded:"
-          sha256sum index.html || shasum -a 256 index.html || true
-          
-          # Force filesystem sync
-          sync
-          sleep 1
+  # Webhook injection removed (feature deprecated). Build now is a direct pass-through.
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -73,40 +42,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       
-      - name: Force Fastly CDN cache invalidation
-        run: |
-          echo "Deployment completed. Forcing Fastly CDN cache invalidation..."
-          
-          # Esperar a que el deploy se propague a GitHub
-          sleep 20
-          
-          # Multiple CDN cache invalidation strategies
-          DOMAIN="https://checklistsilksong.com"
-          
-          echo "=== Strategy 1: Aggressive cache headers ==="
-          curl -I -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" "$DOMAIN/" || true
-          
-          echo "=== Strategy 2: Force refetch with timestamp ==="
-          TIMESTAMP=$(date +%s)
-          curl -I "$DOMAIN/?cb=$TIMESTAMP" || true
-          
-          echo "=== Strategy 3: Multiple purge attempts ==="
-          for i in {1..5}; do
-            echo "Purge attempt $i"
-            curl -I -H "Cache-Control: max-age=0" -H "Pragma: no-cache" "$DOMAIN/" || true
-            curl -X PURGE "$DOMAIN/" || true
-            sleep 3
-          done
-          
-          # Verificar que la nueva versión se está sirviendo
-          echo "=== PRODUCTION VERIFICATION ==="
-          sleep 10
-          PROD_CONTENT=$(curl -s -H "Cache-Control: no-cache" "${{ steps.deployment.outputs.page_url }}" | grep -n 'feedback-webhook' || echo "NO_WEBHOOK_LINE")
-          echo "Production webhook line: $PROD_CONTENT"
-          
-          # También verificar en el dominio personalizado
-          CUSTOM_CONTENT=$(curl -s -H "Cache-Control: no-cache" "$DOMAIN/" | grep -n 'feedback-webhook' || echo "NO_WEBHOOK_LINE_CUSTOM")
-          echo "Custom domain webhook line: $CUSTOM_CONTENT"
-          
-          PROD_BUILD=$(curl -s -H "Cache-Control: no-cache" "${{ steps.deployment.outputs.page_url }}" | grep -n 'data-build-id' || echo "NO_BUILD_ID")
-          echo "Production build ID: $PROD_BUILD"
+  # Removed legacy Fastly/Webhook cache invalidation logic.
