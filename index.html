@@ -259,14 +259,7 @@
     obs.observe(sentinel);
   })();
 </script>
-<!-- Service Worker y script principal -->
-<script>
-  if('serviceWorker' in navigator){
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    });
-  }
-</script>
+<!-- (Service worker removed for simpler maintenance) -->
 <!-- Info Modal -->
 <div id="infoModal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" hidden>
   <div class="info-modal__backdrop" data-close="infoModal"></div>

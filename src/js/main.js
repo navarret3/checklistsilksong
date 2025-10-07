@@ -7,7 +7,6 @@ import { setLocale, t, activeLocale } from './i18n.js';
 import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackSearch } from './analytics.js';
 
 (async function init(){
-  try {
     // Determine initial locale earlier (HTML bootstrap may have set data-locale)
     const LOCALE_KEY = 'silksongChecklistLocale_v1';
     const bootLocale = document.documentElement.getAttribute('data-locale') || localStorage.getItem(LOCALE_KEY) || 'en';
@@ -79,46 +78,9 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
     // Centralized function to render the item list based on current filters/language
     const collapsedSet = new Set(loadCollapsedCategories());
 
-    function applyCollapsedState(){
-      // Only apply stored collapsed when no active search filter
-      if(searchInput && searchInput.value.trim()) return;
-      document.querySelectorAll('.cat').forEach(catEl => {
-        const id = catEl.dataset.category;
-        if(id && collapsedSet.has(id)) catEl.classList.add('collapsed');
-      });
-    }
-
-    function rerenderList() {
-      const lang = activeLocale();
-      const q = searchInput ? searchInput.value.trim().toLowerCase() : '';
-      lastQuery = q;
-
-      const itemsToRender = !q
-        ? allItems
-        : allItems.filter(it => (it.name?.[lang] || it.name?.en || '').toLowerCase().includes(q));
-
-      renderCategories(container, itemsToRender, progress, handleItemToggle, globalTotalWeight);
-      updateBothPercents();
-
-      if (q) {
-        document.querySelectorAll('.cat').forEach(c => c.classList.remove('collapsed'));
-      } else {
-        applyCollapsedState();
-        // Re-apply in microtask in case CSS/layout or late inserted nodes appear
-        queueMicrotask(applyCollapsedState);
-      }
-    }
-
-  // Initial render (after locale set)
-  rerenderList();
-  document.body.classList.remove('pre-init');
-    if(floatingProgress) floatingProgress.hidden = false;
-    // Defer lazy image wiring to next frame to avoid blocking first paint
-    requestAnimationFrame(()=> setupLazyImages());
-
-    // Event listeners
+    // Search input listener (reconstructed after cleanup)
     if (searchInput) {
-      const SEARCH_DEBOUNCE = 180; // ms
+      const SEARCH_DEBOUNCE = 180;
       let searchTimer;
       searchInput.addEventListener('input', () => {
         const newQuery = searchInput.value.trim().toLowerCase();
@@ -126,17 +88,17 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         clearTimeout(searchTimer);
         searchTimer = setTimeout(()=>{
           rerenderList();
-          // Re-setup lazy images after search re-renders content
           requestAnimationFrame(() => setupLazyImages());
           if (newQuery) {
             clearTimeout(searchInput._searchTimeout);
             searchInput._searchTimeout = setTimeout(() => {
-              const visibleItems = document.querySelectorAll('.item').length; // simplified count
-              try { trackSearch(newQuery, visibleItems); } catch(_){}
+              const visibleItems = document.querySelectorAll('.item').length;
+              try { trackSearch(newQuery, visibleItems); } catch(_){ }
             }, 700);
           }
         }, SEARCH_DEBOUNCE);
       });
+    }
 
       /* Collapsible search (mobile/icon-only) */
       if(searchWrap){
@@ -217,7 +179,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
           }
         });
       }
-    }
+    
 
     // Locale already applied before first render
     // Sync toggle visuals with current locale
@@ -469,64 +431,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
     }
     applyI18n();
 
-    /* ===== Service Worker update notice (Option A) ===== */
-    // Creates (once) a small fixed banner prompting user to refresh when a new SW is waiting.
-    function ensureUpdateBanner(){
-      let banner = document.getElementById('updateAvailableBanner');
-      if(!banner){
-        banner = document.createElement('div');
-        banner.id = 'updateAvailableBanner';
-        banner.style.cssText = 'position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:400;display:flex;align-items:center;gap:.65rem;background:#1d262d;border:1px solid #32424d;padding:.6rem .85rem .65rem;border-radius:12px;font-size:.62rem;letter-spacing:.8px;font-weight:600;color:#d6e4ed;box-shadow:0 8px 28px -10px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04);';
-        banner.setAttribute('role','status');
-        banner.setAttribute('aria-live','polite');
-        banner.innerHTML = '<span data-i18n="update.available">New version available</span><button type="button" style="background:#25313a;color:#fff;border:1px solid #39576a;font-size:.6rem;font-weight:600;letter-spacing:.8px;padding:.4rem .65rem .45rem;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem" data-action="reload"><span data-i18n="update.reload">Reload</span></button><button type="button" aria-label="Dismiss" data-action="dismiss" style="background:none;border:none;color:#9fb2c0;font-size:1rem;line-height:1;cursor:pointer;padding:.2rem .3rem .25rem">×</button>';
-        document.body.appendChild(banner);
-        applyI18n();
-        banner.addEventListener('click', (e)=>{
-          const btn = e.target.closest('[data-action]');
-          if(!btn) return;
-          const action = btn.getAttribute('data-action');
-          if(action==='reload'){
-            // Attempt to tell waiting SW to skip waiting then reload
-            if(window._waitingServiceWorker){ window._waitingServiceWorker.postMessage({ type:'SKIP_WAITING' }); }
-            setTimeout(()=> window.location.reload(), 120);
-          } else if(action==='dismiss'){
-            banner.remove();
-          }
-        });
-      }
-    }
-
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.getRegistration().then(reg => {
-        if(!reg) return;
-        // Listen for updates after initial load
-        reg.addEventListener('updatefound', () => {
-          const newWorker = reg.installing;
-          if(!newWorker) return;
-          newWorker.addEventListener('statechange', () => {
-            if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
-              window._waitingServiceWorker = newWorker;
-              ensureUpdateBanner();
-            }
-          });
-        });
-        // If a waiting worker already exists (page opened during update)
-        if(reg.waiting && navigator.serviceWorker.controller){
-          window._waitingServiceWorker = reg.waiting;
-          ensureUpdateBanner();
-        }
-      });
-      // Handle SKIP_WAITING -> controllerchange
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        // If we already triggered reload manually skip
-      });
-      // Message channel from SW (optional future use)
-      navigator.serviceWorker.addEventListener('message', (e)=>{
-        if(!e.data) return;
-        if(e.data.type === 'SW_READY'){ /* could log or show debug */ }
-      });
-    }
+    // (Removed service worker update banner and SW listeners to simplify code.)
 
     function spawnCelebration(){
       if(celebrationShown) return;
@@ -686,9 +591,5 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
     // Initialize analytics after idle to avoid impacting FCP
     requestIdleCallback?.(()=> initAnalytics({ items, progress, getLocale: activeLocale })) || setTimeout(()=> initAnalytics({ items, progress, getLocale: activeLocale }), 900);
 
-  } catch(e){
-    console.error('[INIT] Failure', e);
-  const container = document.getElementById('categories');
-    if(container) container.innerHTML = `<p style="color:#f66">Init error: ${e.message}</p>`;
-  }
+  // (Removed outer try/catch for simplicity; rely on console errors.)
 })();
