@@ -36,50 +36,6 @@ jobs:
           CACHE_BUST="$(date +%s)-${GITHUB_SHA::8}"
           echo "CDN Cache bust ID: $CACHE_BUST"
 
-          echo "Injecting feedback webhook into index.html"
-
-          # Escapar caracteres conflictivos en la URL
-          ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
-
-          echo '--- PRE (grep feedback-webhook) ---'
-          grep -n 'feedback-webhook' index.html || true
-          echo 'SHA256 pre:'
-          sha256sum index.html || shasum -a 256 index.html || true
-
-          # Add cache busting comment to force CDN refresh
-          sed -i "s|</head>|<!-- CDN-BUST: $CACHE_BUST -->\n  <!-- WEBHOOK-DEPLOY: $(date -u +%Y%m%d%H%M%S) -->\n</head>|" index.html
-
-          # Reemplazar la meta simple (sin atributos extra)
-          sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || echo 'Meta tag not found'
-
-          echo "Writing fallback feedback-webhook.txt"
-          printf '%s\n' "$WEBHOOK" > feedback-webhook.txt
-          echo "Writing fallback config.json"
-          printf '{"feedbackWebhook":"%s"}\n' "$WEBHOOK" > config.json
-          echo 'Fallback files written:'
-          ls -l feedback-webhook.txt config.json || true
-
-          # Verificar que realmente se inyectó
-          MATCH_LINE=$(grep -n "feedback-webhook" index.html || true)
-          echo "$MATCH_LINE"
-          if echo "$MATCH_LINE" | grep -q "content=\"$ESCAPED\""; then
-            echo "Webhook meta correctly injected (length ${#WEBHOOK})"
-          else
-            echo "WARNING: Webhook meta NOT injected" >&2
-            exit 1
-          fi
-
-          echo '--- POST (grep feedback-webhook) ---'
-          grep -n 'feedback-webhook' index.html || true
-          echo 'SHA256 post:'
-          sha256sum index.html || shasum -a 256 index.html || true
-
-          echo 'Verifying fallback files contents (first 60 chars):'
-          head -c 60 feedback-webhook.txt || true; echo
-          head -c 80 config.json || true; echo
-
-          # Guardar copia para análisis
-          cp index.html index.after-injection.html
 
       - name: Upload index debug artifact
         uses: actions/upload-artifact@v4
