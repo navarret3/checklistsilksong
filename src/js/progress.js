@@ -37,11 +37,17 @@ export function computePercent(items, progress) {
   };
 }
 
+let _toggleCallback = null; // función opcional (itemId, nuevoValor)
+
+export function setToggleCallback(fn){
+  if(typeof fn === 'function') _toggleCallback = fn; else _toggleCallback = null;
+}
+
 export function toggle(id, progress) {
-  // Initialize missing IDs as false (happens when new items are added)
   if (!(id in progress)) {
-    progress[id] = false;
+    progress[id] = false; // inicializar si no existe
   }
   progress[id] = !progress[id];
+  try { if(_toggleCallback) _toggleCallback(id, progress[id]); } catch(_){ /* no romper flujo */ }
   return true;
 }

@@ -1,5 +1,6 @@
 import { computePercent } from './progress.js';
 import { t, activeLocale } from './i18n.js';
+import { trackCategoryToggle } from './analytics.js';
 
 let tooltipEl; // retained but tooltips disabled per latest requirement
 const ENABLE_TOOLTIPS = false; // feature flag to easily restore if needed
@@ -42,19 +43,10 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
       header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${anyOptional ? ' <span class=\"badge-opt\" title=\"Opcional / Optional\">★</span>' : ''}</h2>` +
         (showMainCount ? `<span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>` : '');
     }
-    header.onclick = () => { 
+    header.onclick = () => {
       const wasCollapsed = catEl.classList.contains('collapsed');
       catEl.classList.toggle('collapsed');
-      
-      // GA4 Tracking: Category expand/collapse
-      if (typeof gtag === 'function') {
-        gtag('event', wasCollapsed ? 'category_expand' : 'category_collapse', {
-          event_category: 'User Interaction',
-          event_label: cat,
-          custom_parameter_2: document.getElementById('langSel')?.value || 'en'
-        });
-      }
-      // Emit custom event so main.js can persist collapsed state
+      try { trackCategoryToggle(cat, wasCollapsed ? 'expand':'collapse'); } catch(_){}
       rootEl.dispatchEvent(new CustomEvent('categoryToggle', { detail: { category: cat, collapsed: !wasCollapsed }}));
     };
     const body = document.createElement('div');
