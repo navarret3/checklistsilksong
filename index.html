@@ -26,16 +26,16 @@
   <link rel="alternate" hreflang="x-default" href="https://checklistsilksong.com/" />
 
   <!-- Favicons & App Icons (Simplified) -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials" />
   <!-- Explicit PNG favicon sizes to help Google Search pick up the site icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64x64.png">
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="./assets/images/favicon-64x64.png">
+  <link rel="shortcut icon" href="./favicon.ico">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -60,10 +60,10 @@
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="//www.googletagmanager.com">
   <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
-  <link rel="preload" as="image" href="/assets/images/ss3.png" imagesrcset="/assets/images/ss3.png 1x" fetchpriority="high" />
+  <link rel="preload" as="image" href="./assets/images/ss3.png" imagesrcset="./assets/images/ss3.png 1x" fetchpriority="high" />
   <!-- Preload critical JSON (dataset + default locale) -->
-  <link rel="preload" href="/data/silksong_items.json" as="fetch" type="application/json" crossorigin>
-  <link rel="preload" href="/src/i18n/en.json" as="fetch" type="application/json" crossorigin>
+  <link rel="preload" href="./data/silksong_items.json" as="fetch" type="application/json" crossorigin>
+  <link rel="preload" href="./src/i18n/en.json" as="fetch" type="application/json" crossorigin>
 
   <!-- Structured Data (JSON-LD) consolidated -->
   <script type="application/ld+json">{
@@ -125,9 +125,9 @@
     h1 { font:600 0.95rem/1 system-ui,Segoe UI,Roboto,Arial,sans-serif; letter-spacing:2px; text-transform:uppercase; margin:0; }
   #progressPercentText { font-size:1.05rem; font-weight:700; letter-spacing:2px; background:var(--silksong-gold-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
   </style>
-  <link rel="preload" href="/assets/app.css" as="style">
-  <link rel="stylesheet" href="/assets/app.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/assets/app.css"></noscript>
+  <link rel="preload" href="./assets/app.css" as="style">
+  <link rel="stylesheet" href="./assets/app.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="./assets/app.css"></noscript>
   <!-- Display font for modernized title -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,7 +142,7 @@
 <header>
   <div class="topbar" role="banner">
     <div class="logo-wrap">
-      <img src="./assets/images/ss3.png" alt="Silksong" class="logo" loading="lazy" decoding="async" />
+  <img src="./assets/images/ss3.png" alt="Silksong" class="logo" loading="lazy" decoding="async" />
   <h1 data-i18n="app.title" class="app-title"><span class="title-flair" aria-hidden="true">✦</span><span class="title-text" data-outline="100% Completion Checklist">100% Completion Checklist</span><span class="title-flair" aria-hidden="true">✦</span></h1>
     </div>
     <div class="toolbar" role="group" aria-label="Primary toolbar">
@@ -175,7 +175,7 @@
   <div class="progress-center hero-with-sides">
     <div class="hero-sides-row">
   <img src="./assets/images/Header_imgs/1.png" alt="" class="hero-side hero-side--left" loading="lazy" decoding="async" aria-hidden="true" />
-      <img src="./assets/images/ss3.png" alt="Silksong" class="hero-logo" loading="lazy" decoding="async" />
+    <img src="./assets/images/ss3.png" alt="Silksong" class="hero-logo" loading="lazy" decoding="async" />
   <img src="./assets/images/Header_imgs/2.png" alt="" class="hero-side hero-side--right" loading="lazy" decoding="async" aria-hidden="true" />
     </div>
     <div id="progressPercentText">0% Done</div>
@@ -276,6 +276,28 @@
     <div class="disclaimer" data-i18n="info.short.credits">Proyecto hecho por fans para fans. Team Cherry no participa.</div>
   </div>
 </div>
-<script type="module" src="/src/js/main.js"></script>
+<script type="module" src="./src/js/main.js"></script>
+<script>
+// Diagnostics: warn if opened as file:// or images failing
+(function(){
+  if(location.protocol === 'file:'){
+    console.warn('[Checklist] Running from file://. Use a local server to enable fetch of JSON & modules.');
+    const warn = document.createElement('div');
+    warn.style.cssText='position:fixed;top:0;left:0;right:0;z-index:9999;background:#5a1e1e;color:#fff;padding:.7rem .9rem;font:600 .7rem system-ui;letter-spacing:.5px;text-align:center;box-shadow:0 4px 12px -6px rgba(0,0,0,.6)';
+    warn.textContent='Este archivo se abrió con file:// y no se cargarán datos. Inicia un servidor local (ej: python -m http.server).';
+    document.body.appendChild(warn);
+  }
+  // Quick check: if main image fails to load, show inline notice
+  window.addEventListener('load',()=>{
+    const heroLogo = document.querySelector('.hero-logo');
+    if(heroLogo && (!heroLogo.complete || heroLogo.naturalWidth === 0)){
+      const box = document.createElement('div');
+      box.style.cssText='margin:1rem auto;max-width:880px;padding:.8rem 1rem;border:1px solid #633;background:#3a1f1f;color:#f9dede;font:.7rem system-ui;border-radius:8px';
+      box.innerHTML='<strong>No se pudieron cargar imágenes.</strong> Revisa si las rutas relativas fueron alteradas o un service worker antiguo está en caché. Limpia el caché y fuerza recarga (Ctrl+F5).';
+      document.body.prepend(box);
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -32,5 +32,18 @@
   "info.short.optional": "Los elementos opcionales (Jefes, Pulgas) no cuentan para el 100%, pero puedes seguirlos igualmente.",
   "info.short.transfer": "Exportar crea un archivo de copia de seguridad; Importar lo restaura en otro dispositivo.",
   "info.short.langs": "Disponible en inglés y español; podrían añadirse más idiomas.",
-  "info.short.credits": "Proyecto hecho por fans para fans. Team Cherry no participa."
+  "info.short.credits": "Proyecto hecho por fans para fans. Team Cherry no participa.",
+  "category.needle_upgrade": "Mejoras de Aguja",
+  "category.ancient_mask": "Máscaras Antiguas",
+  "category.silk_spool": "Bobinas de Seda",
+  "category.silk_heart": "Corazones de Seda",
+  "category.misc": "Misceláneo",
+  "category.crest": "Crestas",
+  "category.silk_skill": "Habilidades de Seda",
+  "category.crafting_kit_upgrade": "Mejoras del Kit de Fabricación",
+  "category.tool_pouch_upgrade": "Mejoras de la Bolsa de Herramientas",
+  "category.ability": "Habilidades",
+  "category.tool": "Herramientas",
+  "category.pulgas": "Pulgas",
+  "category.bosses": "Jefes"
 }

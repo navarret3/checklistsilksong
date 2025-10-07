@@ -431,6 +431,34 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
     }
     applyI18n();
 
+    // ===== Render Helper (restored after cleanup) =====
+    function rerenderList(){
+      const q = (searchInput?.value || '').trim().toLowerCase();
+      lastQuery = q;
+      const locale = activeLocale();
+      const filtered = q ? allItems.filter(it => {
+        const name = (it.name?.[locale] || it.name?.en || '').toLowerCase();
+        const desc = (it.description?.[locale] || it.description?.en || it.location_text?.[locale] || it.location_text?.en || '').toLowerCase();
+        return name.includes(q) || desc.includes(q) || (it.id && it.id.toLowerCase().includes(q));
+      }) : allItems;
+      renderCategories(container, filtered, progress, handleItemToggle, globalTotalWeight);
+      // Re-apply collapsed state
+      container.querySelectorAll('.cat').forEach(catEl => {
+        const id = catEl.dataset.category;
+        if(id && collapsedSet.has(id)) catEl.classList.add('collapsed');
+      });
+      updateBothPercents();
+    }
+
+    // Initial render
+    rerenderList();
+    // Setup lazy images next frame
+    requestAnimationFrame(() => setupLazyImages());
+  // Ensure we exit pre-init visual state
+  document.body.classList.remove('pre-init');
+  // Safety: force removal if something blocks before this point
+  setTimeout(()=> document.body.classList.remove('pre-init'), 2000);
+
     // (Removed service worker update banner and SW listeners to simplify code.)
 
     function spawnCelebration(){
