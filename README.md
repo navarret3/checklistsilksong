@@ -1,88 +1,56 @@
-# Silksong 100% Checklist
+<h1 align="center">Silksong 100% Checklist</h1>
+<p align="center">
+Una checklist interactiva no oficial para seguir tu progreso en <strong>Hollow Knight: Silksong</strong> rumbo al 100%.
+<br>
+<a href="https://checklistsilksong.com" target="_blank"><b>Ir a la aplicación →</b></a>
+</p>
 
-Aplicación estática pura servida con GitHub Pages. Sin build step obligatorio.
+<p align="center">
+<img src="assets/images/ss3.png" alt="Silksong logo" width="96" height="96">
+</p>
 
-<!-- Deploy trigger with cache invalidation - 2025-10-01 -->
+---
 
-## Estructura mínima
-```
-index.html
-manifest.webmanifest
-robots.txt
-sitemap.xml
-privacy.html
-assets/ (imágenes, favicons, logos)
-data/silksong_items.json (dataset principal)
-src/js/*.js (lógica UI, progreso, i18n)
-src/i18n/en.json / es.json (traducciones)
-```
+## 🌟 ¿Qué es?
+Una página sencilla y rápida (sin registros) donde marcas objetos, mejoras, fragmentos, habilidades y otros elementos del juego para saber cuánto te falta. Todo se guarda automáticamente en tu navegador.
 
-## Características
-- Checklist interactivo (localStorage)
-- i18n EN/ES
-- Carga diferida de anuncios (AdSense)
-- Progreso ponderado
-- Fallback no‑JS básico
+## ✨ Características principales
+- Progreso automático guardado (localStorage).
+- Distinción entre elementos esenciales y opcionales.
+- Idiomas: Inglés y Español (cambio instantáneo desde el selector).
+- Exportar / importar tu progreso para llevarlo a otro dispositivo.
+- Interfaz adaptada a móvil y escritorio.
+- Modal de información y botón de Feedback para sugerencias o reportes.
 
-## Analítica (GA4) – Taxonomía de eventos
-Se ha centralizado la instrumentación en `src/js/analytics.js` para reducir ruido y aportar contexto semántico. Todos los eventos usan `gtag('event', ...)` con parámetros enriquecidos.
+## 🚀 Cómo usarla
+1. Entra a la web y espera que cargue la lista.
+2. Marca cada ítem que obtengas en el juego.
+3. Observa el porcentaje y los elementos restantes.
+4. Exporta tu progreso si quieres una copia de seguridad (botón Export), e impórtalo cuando cambies de dispositivo.
+5. Usa el buscador para filtrar ítems rápidamente.
 
-### Propiedades de usuario (user_properties)
-- `locale`: `en` | `es`
-- `returning_user`: `yes` | `no`
-- `stored_progress_percent`: Porcentaje core guardado al iniciar sesión.
-- `device_breakpoint`: `xs|sm|md|lg`
-- `session_id`: ID aleatorio por pestaña (sessionStorage).
+## 🗣 Feedback y sugerencias
+Pulsa el botón “Feedback” dentro de la aplicación. Puedes reportar datos incorrectos, ideas o bugs. ¡Las contribuciones ayudan a mejorar la herramienta!
 
-### Eventos clave
-| Evento | Cuándo | Parámetros principales |
-|--------|-------|------------------------|
-| `item_completed` / `item_unchecked` | Toggle de item | `item_id`, `item_name`, `item_category`, `item_weight`, `optional`, `progress_percent`, `progress_percent_floor`, `core_completed`, `core_total`, `optional_completed`, `optional_total` |
-| `category_completed` | Último ítem core de categoría marcado | `category`, `category_core_total`, `progress_percent` |
-| `progress_milestone` | Al alcanzar 25/50/75/90% (primera vez) | `milestone`, `progress_percent` |
-| `full_completion` | 100% core alcanzado (primera vez) | `core_total`, `core_completed`, `optional_completed`, `optional_total` |
-| `scroll_milestone` | Scroll alcanza 25/50/75/90/100% | `milestone` |
-| `session_summary` | Al ocultar pestaña / beforeunload | `duration_sec`, `toggles`, `core_percent`, `core_completed`, `core_total` |
-| `visibility_change` | Cambios visible/hidden | `state`, (`visible_ms` cuando hidden) |
-| `language_change` | Cambio de idioma | `event_label`=nuevo idioma |
-| `checklist_reset` | Reset confirmada | `completed_before_reset`, `value` |
-| `search` | Búsqueda tras debounce | `search_term`, `results_visible` |
-| `feedback_open` | Abrir modal feedback | (contexto mínimo) |
-| `feedback_submit` | Enviar feedback OK | `event_label`=tipo, `value`=progress |
+## 🧩 Traducciones
+Actualmente: EN / ES. Si deseas colaborar con otro idioma, abre un issue o envía feedback indicando el idioma que quieres aportar.
 
-### Notas
-- Los hitos (milestones) se guardan en `localStorage` para no duplicar durante visitas posteriores.
-- `session_summary` reinicia contadores tras cada envío (segmentos de visibilidad).
-- Para depurar: `window._analyticsDebug` expone `milestones()`.
+## 🛣 Pequeño roadmap (orientativo)
+- Mejoras visuales y accesibilidad.
+- Posible añadido de más idiomas.
+- Ajustes de datos cuando haya nueva información oficial.
 
-### Extender
-Para nuevos eventos: añadir función en `analytics.js` evitando duplicar parámetros ya incluidos en otros eventos salvo que cambien semánticamente.
+## 🙌 Créditos & Agradecimientos
+Proyecto hecho por fans para fans. No afiliado ni respaldado por Team Cherry. Gracias a la comunidad por la recopilación y validación de datos.
 
+## 📄 Privacidad
+No pedimos cuentas ni contraseñas. El progreso vive en tu dispositivo. Solo se usan métricas anónimas agregadas para entender uso general.
 
-## Ejecutar localmente
-Sin dependencias: cualquier server estático.
-Ejemplo rápido:
-```bash
-python -m http.server 8000
-```
-Abrir: http://localhost:8000
+## ⚖️ Disclaimer
+No es un producto oficial de Team Cherry. Hollow Knight: Silksong y todos los elementos relacionados pertenecen a sus respectivos dueños.
 
-## Despliegue (GitHub Pages)
-Solo push a `main`. No se requiere build; los artefactos ya están en el repositorio.
+## 🛠 ¿Quieres clonar el proyecto?
+Es un sitio estático. Puedes abrirlo con cualquier servidor local sencillo. (Detalles técnicos intencionalmente omitidos aquí para mantener el README ligero.)
 
-## Mantenimiento
-- Actualiza `sitemap.xml` manualmente si cambian URLs.
-- Incrementa `CACHE_NAME` en `src/js/sw.js` si mantienes service worker y modificas assets críticos.
-- Reemplaza imágenes en `assets/images/` según necesidad.
-- Mantén `ads.txt` en la raíz con tu línea de AdSense (y otras redes si las añades) para mejorar transparencia de inventario publicitario.
-
-## Quitar aún más
-Si quieres todavía menos:
-- Elimina service worker `src/js/sw.js` y registro en `main.js`.
-- Elimina AdSense si no monetizas.
-- Sustituye lista dinámica fallback por `<noscript>` estático.
-
-## Licencia
-Puedes añadir una licencia (MIT recomendada) si vas a abrirlo públicamente.
-
-<!-- deploy trigger: test webhook injection -->
+---
+<p align="center">Hecho con cariño por la comunidad de Silksong 🐛</p>
