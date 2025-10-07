@@ -4,7 +4,7 @@ import { toggle } from './progress.js';
 import { renderCategories, updatePercent, updateCategoryCounts, setupLazyImages } from './ui.js';
 import { computePercent } from './progress.js';
 import { setLocale, t, activeLocale } from './i18n.js';
-import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackSearch, trackFeedbackOpen, trackFeedbackSubmit } from './analytics.js';
+import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackSearch } from './analytics.js';
 
 (async function init(){
   try {
