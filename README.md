@@ -52,5 +52,26 @@ No es un producto oficial de Team Cherry. Hollow Knight: Silksong y todos los el
 ## 🛠 ¿Quieres clonar el proyecto?
 Es un sitio estático. Puedes abrirlo con cualquier servidor local sencillo. (Detalles técnicos intencionalmente omitidos aquí para mantener el README ligero.)
 
+## 💰 Monetización (Adsense Inline)
+Se han añadido tres espacios de anuncio horizontales fijos para minimizar distracciones y evitar desplazamientos bruscos (layout shift):
+
+- Después de la segunda categoría (`data-ad-position="mid-1"`, slot `8232693985`).
+- Después de la cuarta categoría (`data-ad-position="mid-2"`, slot `5405238139`).
+- Al final de la lista (`data-ad-position="end"`, slot `9354203965`).
+
+Características técnicas:
+- Marco CSS (`.ad-frame`) con altura mínima (120px desktop / 100px móvil) para reservar espacio y reducir CLS.
+- Skeleton interno (`.ad-skeleton`) que desaparece al inicializar el anuncio.
+- Inicialización diferida mediante `IntersectionObserver` (`src/js/ads-inline.js`) para cargar y ejecutar `adsbygoogle.push({})` sólo cuando el contenedor entra en el viewport o está cercano.
+- Un único script de AdSense en `<head>` (evita duplicados y penalizaciones de política).
+
+Para desactivar anuncios temporalmente sin tocar HTML: comenta la inserción del módulo `ads-inline.js` en `index.html` o añade `display:none` a `.ad-slot` en CSS.
+
+Cumplimiento esperado:
+- No se inyectan anuncios en mitad de la interacción de un ítem individual.
+- Se evita contenido engañoso (los marcos están rotulados con `data-slot-name` pero sin texto visible invasivo).
+
+Si necesitas agregar más formatos (ej. responsive in-article) es preferible reutilizar el helper `buildAdSlot` en `ui.js` para que respete el mismo marco y estilos.
+
 ---
 <p align="center">Hecho con cariño por la comunidad de Silksong 🐛</p>
