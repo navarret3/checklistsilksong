@@ -4,7 +4,10 @@
 body{margin:0;color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;background:#0e0a0b;position:relative;min-height:100vh;}
 /* Inline Ads Framework */
 .ad-slot{margin:1.5rem auto;max-width:980px;padding:0 .5rem;}
-.ad-frame{position:relative;min-height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#141a20,#101418);border:1px solid #212b33;border-radius:12px;overflow:hidden;box-shadow:0 4px 18px -6px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);}
+.ad-frame{position:relative;min-height:120px;width:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#141a20,#101418);border:1px solid #212b33;border-radius:12px;overflow:hidden;box-shadow:0 4px 18px -6px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);}
+.ad-slot .adsbygoogle{width:100%;}
+.ad-frame:not(.loaded) .adsbygoogle{min-height:100%;}
+.ad-frame.error::after{content:'Ad failed to load';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;letter-spacing:.5px;color:#6e7b88;background:linear-gradient(145deg,#1d252c,#161d22);}
 .ad-frame[data-slot-name]{--ad-slot-label-color:#6e7b88;}
 .ad-frame::before{content:attr(data-slot-name);position:absolute;top:6px;left:10px;font-size:.55rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--ad-slot-label-color);opacity:.65;}
 .ad-skeleton{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:600;letter-spacing:.6px;color:#4d5a66;background:repeating-linear-gradient(45deg,#192229,#1d262e 6px,#1a232a 6px,#1e2830 12px);animation:adPulse 1.4s linear infinite;}
