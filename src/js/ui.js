@@ -17,7 +17,7 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
   rootEl.innerHTML='';
   const frag = document.createDocumentFragment();
   const categoryKeys = Object.keys(grouped);
-  for(const cat of categoryKeys){
+  for(const [idx, cat] of categoryKeys.entries()){
     const list = grouped[cat];
     const catEl = document.createElement('section');
     catEl.className = 'cat';
@@ -66,7 +66,15 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     }
     catEl.appendChild(header); catEl.appendChild(body);
     frag.appendChild(catEl);
+    // Inline ad injection points: after 2nd (idx===1), after 4th (idx===3)
+    if(idx === 1){
+      frag.appendChild(buildAdSlot('mid-1', '8232693985', 'topad'));
+    } else if(idx === 3){
+      frag.appendChild(buildAdSlot('mid-2', '5405238139', 'midad'));
+    }
   }
+  // Final ad at end of list
+  frag.appendChild(buildAdSlot('end', '9354203965', 'botad'));
   rootEl.appendChild(frag);
   // Bind interactive listeners only once to avoid duplicate toggle (double-click effect after reset)
   if(!rootEl._bound){
@@ -415,4 +423,17 @@ function closeImageModal(){
   if(!imageModalEl) return;
   imageModalEl.classList.add('hidden');
   imageModalImg.src = '';
+}
+
+// Build ad slot wrapper (horizontal responsive frame). Actual ad initialization handled elsewhere.
+function buildAdSlot(position, slotId, slotName){
+  const wrap = document.createElement('section');
+  wrap.className = 'ad-slot';
+  wrap.dataset.adPosition = position;
+  wrap.innerHTML = `
+    <div class="ad-frame" aria-label="Advertisement" data-slot-name="${slotName}" data-slot-id="${slotId}">
+      <div class="ad-skeleton" aria-hidden="true"></div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="${slotId}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>`;
+  return wrap;
 }
