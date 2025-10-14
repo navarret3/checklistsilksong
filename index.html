@@ -17,8 +17,6 @@
   <meta name="description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
   <!-- Spanish alternate description (used on ES static variant) -->
   <meta name="description" lang="es" content="Checklist interactivo completo de Hollow Knight: Silksong. Marca cada objeto, fragmento, mejora y habilidad para alcanzar el 100% de progreso." />
-  <!-- AdSense account meta (recommended) -->
-  <meta name="google-adsense-account" content="ca-pub-9707168065012640" />
   <link rel="canonical" href="https://checklistsilksong.com/" />
   <!-- Internationalization (only EN & ES for now) -->
   <link rel="alternate" hreflang="en" href="https://checklistsilksong.com/" />
@@ -57,9 +55,7 @@
   
   <!-- Preconnect & Performance Hints -->
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
   <link rel="dns-prefetch" href="//www.googletagmanager.com">
-  <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
   <link rel="preload" as="image" href="./assets/images/ss3.png" imagesrcset="./assets/images/ss3.png 1x" fetchpriority="high" />
   <!-- Preload critical JSON (dataset + default locale) -->
   <link rel="preload" href="./data/silksong_items.json" as="fetch" type="application/json" crossorigin>
@@ -112,9 +108,6 @@
     gtag('js', new Date());
     gtag('config', 'G-3ZD7H8X2CE', { anonymize_ip: true });
   </script>
-  <!-- Ads / Monetization (AdSense snippet inserted when client ID provided) -->
-  <!-- Google AdSense (script activo; unidades de anuncio ocultas hasta aprobación) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9707168065012640" crossorigin="anonymous"></script>
 
   <!-- Critical CSS mínimo; estilos completos en /assets/app.css -->
   <style>
@@ -137,8 +130,6 @@
 <body class="pre-init">
 <!-- Removed legacy GTM noscript iframe to keep analytics minimal -->
 
-<!-- AdSense placeholder (uncomment when real publisher ID added) -->
-<!-- AdSense script already included in <head>; keep this placeholder commented to avoid double load -->
 <header>
   <div class="topbar" role="banner">
     <div class="logo-wrap">
@@ -276,7 +267,6 @@
     <div class="disclaimer" data-i18n="info.short.credits">Proyecto hecho por fans para fans. Team Cherry no participa.</div>
   </div>
 </div>
-<script type="module" src="./src/js/ads-inline.js"></script>
 <script type="module" src="./src/js/main.js"></script>
 <script>
 // Diagnostics: warn if opened as file:// or images failing
