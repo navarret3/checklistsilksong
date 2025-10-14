@@ -66,6 +66,17 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     }
     catEl.appendChild(header); catEl.appendChild(body);
     frag.appendChild(catEl);
+
+    // Simple AdSense insertion: one ad block after the second category (idx === 1)
+    if(idx === 1 && !document.getElementById('ad-mid-1')){
+      const adWrap = document.createElement('div');
+      adWrap.className = 'ad-container';
+      adWrap.id = 'ad-mid-1';
+      adWrap.innerHTML = `\n<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+      frag.appendChild(adWrap);
+      // Initialize after insertion (script already loaded in head)
+      queueMicrotask(()=>{ try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){ console.warn('AdSense init error', e); } });
+    }
   }
   rootEl.appendChild(frag);
   // Bind interactive listeners only once to avoid duplicate toggle (double-click effect after reset)

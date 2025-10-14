@@ -2,6 +2,9 @@
 :root { --bg:#0e0a0b; --panel:#171013; --panel-alt:#1f1619; --fg:#f5f2f1; --accent:#d0541f; --accent-grad:linear-gradient(90deg,#6d121b 0%,#b92f1a 22%,#d0541f 45%,#e58f33 68%,#f5d38c 100%); --muted:#a98780; --border:#2c1a1e; --radius:8px; --focus:#ffe28a; --danger:#ff4f4f; --icon-size:78px; --silksong-gold-grad:linear-gradient(90deg,#f5d38c,#e5a43a,#d0541f,#b92f1a,#6d121b); --progress-text-grad:linear-gradient(90deg,#f9e6c4 0%,#f5d38c 15%,#e5a43a 35%,#d0541f 65%,#b92f1a 85%,#6d121b 100%); }
 *{box-sizing:border-box;}
 body{margin:0;color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;background:#0e0a0b;position:relative;min-height:100vh;}
+/* Minimal ad container styling (single mid-page ad) */
+.ad-container{margin:1.5rem auto;max-width:1000px;padding:0 .5rem;min-height:120px;display:flex;align-items:center;justify-content:center}
+@media (max-width:720px){.ad-container{min-height:100px;margin:1.25rem auto}}
 body.pre-init .hero,body.pre-init header .logo-wrap img,body.pre-init .app-title{opacity:0;transform:translateY(8px);}
 body.pre-init .hero{pointer-events:none}
 body:not(.pre-init) .hero,body:not(.pre-init) header .logo-wrap img,body:not(.pre-init) .app-title{transition:opacity .45s ease,transform .55s ease}

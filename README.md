@@ -46,6 +46,11 @@ Proyecto hecho por fans para fans. No afiliado ni respaldado por Team Cherry. Gr
 ## 📄 Privacidad
 No pedimos cuentas ni contraseñas. El progreso vive en tu dispositivo. Solo se usan métricas anónimas agregadas para entender uso general.
 
+## 💰 Anuncios / Ads
+Se muestra un único bloque de Google AdSense para ayudar a cubrir costes de dominio/hosting. Bloquear el anuncio no afecta al funcionamiento principal.
+
+One lightweight Google AdSense unit helps cover hosting/domain costs. Blocking it will not break core functionality.
+
 ## ⚖️ Disclaimer
 No es un producto oficial de Team Cherry. Hollow Knight: Silksong y todos los elementos relacionados pertenecen a sus respectivos dueños.
 
