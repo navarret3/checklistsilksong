@@ -430,8 +430,8 @@ function buildAdSlot(position, slotId, slotName){
   const wrap = document.createElement('section');
   wrap.className = 'ad-slot';
   wrap.dataset.adPosition = position;
-  // Full Google-provided snippet per slot (kept isolated). We include script+push for reliability; ads-inline.js will ignore these.
-  const snippet = `\n<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9707168065012640\" crossorigin=\"anonymous\"></script>\n<!-- ${slotName} -->\n<ins class=\"adsbygoogle\" style=\"display:block\" data-ad-client=\"ca-pub-9707168065012640\" data-ad-slot=\"${slotId}\" data-ad-format=\"auto\" data-full-width-responsive=\"true\"></ins>\n<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`;
+  // Lean snippet: rely on single global AdSense script (in head) and lazy init via ads-inline.js
+  const snippet = `<!-- ${slotName} -->\n<ins class=\"adsbygoogle\" style=\"display:block\" data-ad-client=\"ca-pub-9707168065012640\" data-ad-slot=\"${slotId}\" data-ad-format=\"auto\" data-full-width-responsive=\"true\"></ins>`;
   wrap.innerHTML = `
     <div class="ad-frame" aria-label="Advertisement" data-slot-name="${slotName}" data-slot-id="${slotId}">
       <div class="ad-skeleton" aria-hidden="true"></div>

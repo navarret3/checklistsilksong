@@ -31,18 +31,7 @@
   }
   function observeSlots(){
     const slots = Array.from(document.querySelectorAll('.ad-frame ins.adsbygoogle'));
-    // Filter out those that already have a sibling inline <script> push (we assume immediate init)
-    const filtered = slots.filter(ins => {
-      const hasInlinePush = !!ins.parentElement?.querySelector('script:not([src])');
-      if(hasInlinePush){
-        // Mark loaded quickly (poller will still verify size but avoid double push)
-        ins.dataset.adInitialized = 'true';
-        const frame = ins.closest('.ad-frame');
-        frame && frame.classList.add('loaded');
-        return false;
-      }
-      return true;
-    });
+    const filtered = slots.filter(ins => !ins.dataset.adInitialized);
     if(!slots.length) return;
     if('IntersectionObserver' in window){
       const io = new IntersectionObserver((entries)=>{
@@ -53,7 +42,7 @@
           }
         });
       }, { root:null, rootMargin:'180px 0px 180px 0px', threshold:0 });
-      filtered.forEach(s=> io.observe(s));
+  filtered.forEach(s=> io.observe(s));
     } else {
       filtered.forEach(initSlot);
     }
