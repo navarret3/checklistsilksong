@@ -20,7 +20,7 @@ Una página sencilla y rápida (sin registros) donde marcas objetos, mejoras, fr
 - Idiomas: Inglés y Español (cambio instantáneo desde el selector).
 - Exportar / importar tu progreso para llevarlo a otro dispositivo.
 - Interfaz adaptada a móvil y escritorio.
-- Modal de información y botón de Feedback para sugerencias o reportes.
+- Modal de información.
 
 ## 🚀 Cómo usarla
 1. Entra a la web y espera que cargue la lista.
@@ -29,8 +29,8 @@ Una página sencilla y rápida (sin registros) donde marcas objetos, mejoras, fr
 4. Exporta tu progreso si quieres una copia de seguridad (botón Export), e impórtalo cuando cambies de dispositivo.
 5. Usa el buscador para filtrar ítems rápidamente.
 
-## 🗣 Feedback y sugerencias
-Pulsa el botón “Feedback” dentro de la aplicación. Puedes reportar datos incorrectos, ideas o bugs. ¡Las contribuciones ayudan a mejorar la herramienta!
+## 🗣 Sugerencias
+Si encuentras errores de datos o tienes ideas, abre un issue en el repositorio.
 
 ## 🧩 Traducciones
 Actualmente: EN / ES. Si deseas colaborar con otro idioma, abre un issue o envía feedback indicando el idioma que quieres aportar.
@@ -45,6 +45,22 @@ Proyecto hecho por fans para fans. No afiliado ni respaldado por Team Cherry. Gr
 
 ## 📄 Privacidad
 No pedimos cuentas ni contraseñas. El progreso vive en tu dispositivo. Solo se usan métricas anónimas agregadas para entender uso general.
+
+## 💰 Publicidad (AdSense)
+El sitio integra Google AdSense para ayudar a cubrir costes de dominio/hosting. La carga de los bloques se hace de forma diferida y solo cuando entran en el viewport para minimizar el impacto en el rendimiento y CLS.
+
+Ubicaciones actuales:
+- Debajo del hero (superior).
+- Mitad del contenido (tras listado inicial de categorías).
+- Antes del footer.
+
+Cómo añadir otro bloque manualmente (resumen):
+1. Copia un `<ins class="adsbygoogle" ...>` con tu `data-ad-slot` oficial.
+2. Ponlo dentro de un contenedor con clase `ad-wrap` (puedes crear variante `ad-wrap--custom`).
+3. El módulo `ads.js` lo detectará y lanzará `adsbygoogle.push({})` al entrar en el viewport.
+4. Ajusta estilos si necesitas una altura mínima para evitar layout shift.
+
+Para desactivar anuncios en un fork: elimina el script de AdSense en el `<head>` y los `<ins>` o sustituye el `data-ad-client` por un placeholder (ojo a las políticas de Google si publicas el fork).
 
 ## ⚖️ Disclaimer
 No es un producto oficial de Team Cherry. Hollow Knight: Silksong y todos los elementos relacionados pertenecen a sus respectivos dueños.

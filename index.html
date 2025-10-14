@@ -195,7 +195,34 @@
   <button id="dismissIssues" style="margin-top:.55rem;background:#592d2d;border:1px solid #a33;color:#f9e2e2;padding:.25rem .55rem;border-radius:5px;font-size:.6rem;cursor:pointer;">OK</button>
 </div>
 <main>
+  <!-- AdSense: top inline (below hero) -->
+  <div class="ad-wrap ad-wrap--top" data-ad-position="top-inline" aria-hidden="true">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9707168065012640"
+         data-ad-slot="0000000001"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
   <div id="categories" class="categories" aria-live="polite"></div>
+  <!-- AdSense: mid content -->
+  <div class="ad-wrap ad-wrap--mid" data-ad-position="mid-content" aria-hidden="true">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9707168065012640"
+         data-ad-slot="0000000002"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+  <!-- AdSense: footer before site footer -->
+  <div class="ad-wrap ad-wrap--footer" data-ad-position="pre-footer" aria-hidden="true">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9707168065012640"
+         data-ad-slot="0000000003"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
 </main>
 <footer style="padding:1rem;font-size:.7rem;color:#6e7b88;text-align:center;border-top:1px solid #242d36;background:#0f1215;">
    <p style="margin:0;">Silksong community project</p>
@@ -262,14 +289,7 @@
     obs.observe(sentinel);
   })();
 </script>
-<!-- Service Worker y script principal -->
-<script>
-  if('serviceWorker' in navigator){
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    });
-  }
-</script>
+<!-- (Service worker removed) -->
 <!-- Info Modal -->
 <div id="infoModal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" hidden>
   <div class="info-modal__backdrop" data-close="infoModal"></div>
@@ -287,34 +307,7 @@
     <div class="disclaimer" data-i18n="info.short.credits">Proyecto hecho por fans para fans. Team Cherry no participa.</div>
   </div>
 </div>
-<!-- Feedback Modal -->
-  <div id="feedbackModal" class="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" hidden>
-    <div class="feedback-modal__backdrop" data-close="feedbackModal"></div>
-    <div class="feedback-modal__dialog">
-      <button class="feedback-modal__close" data-close="feedbackModal" aria-label="Close">×</button>
-      <h2 id="feedbackModalTitle" data-i18n="feedback.title">Send Feedback</h2>
-      <form id="feedbackForm" novalidate>
-        <div class="fb-row">
-          <label for="fbType"><span data-i18n="feedback.type.label">Type</span></label>
-          <select id="fbType" name="type">
-            <option value="bug" data-i18n="feedback.type.bug">Bug</option>
-            <option value="idea" data-i18n="feedback.type.idea">Idea</option>
-            <option value="data" data-i18n="feedback.type.data">Incorrect data</option>
-            <option value="other" data-i18n="feedback.type.other">Other</option>
-          </select>
-        </div>
-        <div class="fb-row">
-          <label for="fbMsg"><span data-i18n="feedback.message.label">Message</span></label>
-          <textarea id="fbMsg" name="message" rows="5" minlength="10" required placeholder="Write your feedback (min 10 characters)..." data-i18n-placeholder="feedback.placeholder"></textarea>
-        </div>
-        <div class="fb-actions">
-          <button type="button" class="fb-cancel" data-close="feedbackModal" data-i18n="feedback.cancel">Cancel</button>
-          <button type="submit" id="fbSendBtn" class="fb-send" data-i18n="feedback.send">Send</button>
-        </div>
-        <div id="fbStatus" class="fb-status" role="status" aria-live="polite" hidden></div>
-      </form>
-    </div>
-  </div>
 <script type="module" src="/src/js/main.js"></script>
+<script type="module">import { initAds } from '/src/js/ads.js'; window.addEventListener('load', ()=> setTimeout(initAds, 500));</script>
 </body>
 </html>
