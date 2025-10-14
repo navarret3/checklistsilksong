@@ -5,6 +5,9 @@ body{margin:0;color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Arial,sans-s
 /* Minimal ad container styling (single mid-page ad) */
 .ad-container{margin:1.5rem auto;max-width:1000px;padding:0 .5rem;min-height:120px;display:flex;align-items:center;justify-content:center}
 @media (max-width:720px){.ad-container{min-height:100px;margin:1.25rem auto}}
+/* Multiplex ad container (autorelaxed) */
+.ad-multiplex{margin:2rem auto 1.5rem;max-width:1000px;padding:0 .5rem;}
+@media (max-width:720px){.ad-multiplex{margin:1.75rem auto 1.25rem}}
 body.pre-init .hero,body.pre-init header .logo-wrap img,body.pre-init .app-title{opacity:0;transform:translateY(8px);}
 body.pre-init .hero{pointer-events:none}
 body:not(.pre-init) .hero,body:not(.pre-init) header .logo-wrap img,body:not(.pre-init) .app-title{transition:opacity .45s ease,transform .55s ease}

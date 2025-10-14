@@ -17,6 +17,15 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
   rootEl.innerHTML='';
   const frag = document.createDocumentFragment();
   const categoryKeys = Object.keys(grouped);
+  // Ad configuration: insert after specific category indices (0-based)
+  const adDefs = [
+    { afterIndex: 1, id: 'ad-mid-1', slot: '8232693985' },
+    { afterIndex: 3, id: 'ad-mid-2', slot: '9354203965' },
+    { afterIndex: 5, id: 'ad-mid-3', slot: '5405238139' },
+    { afterIndex: 7, id: 'ad-mid-4', slot: '5960923281' },
+    { afterIndex: 9, id: 'ad-mid-5', slot: '2930116017' }
+  ];
+  const adClient = 'ca-pub-9707168065012640';
   for(const [idx, cat] of categoryKeys.entries()){
     const list = grouped[cat];
     const catEl = document.createElement('section');
@@ -67,14 +76,15 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     catEl.appendChild(header); catEl.appendChild(body);
     frag.appendChild(catEl);
 
-    // Simple AdSense insertion: one ad block after the second category (idx === 1)
-    if(idx === 1 && !document.getElementById('ad-mid-1')){
-      const adWrap = document.createElement('div');
-      adWrap.className = 'ad-container';
-      adWrap.id = 'ad-mid-1';
-      adWrap.innerHTML = `\n<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9707168065012640" data-ad-slot="8232693985" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
-      frag.appendChild(adWrap);
-      // Initialize after insertion (script already loaded in head)
+    // Multi AdSense insertion: check if current index matches any afterIndex
+    const adDef = adDefs.find(d => d.afterIndex === idx);
+    if(adDef && !document.getElementById(adDef.id)){
+      const wrap = document.createElement('div');
+      wrap.className = 'ad-container';
+      wrap.id = adDef.id;
+      wrap.setAttribute('data-ad-slot-id', adDef.slot);
+      wrap.innerHTML = `\n<ins class="adsbygoogle" style="display:block" data-ad-client="${adClient}" data-ad-slot="${adDef.slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+      frag.appendChild(wrap);
       queueMicrotask(()=>{ try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){ console.warn('AdSense init error', e); } });
     }
   }
