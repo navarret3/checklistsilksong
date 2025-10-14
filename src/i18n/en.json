@@ -1,101 +1,49 @@
 {
   "app.title": "100% Completion Checklist",
   "search.placeholder": "Search items...",
-  "title": "Silksong 100% Checklist",
   "reset": "Reset",
   "reset.confirm1": "Reset all progress?",
   "reset.confirm2": "This action cannot be undone. Proceed?",
-  "percent.tooltip": "Total completion",
   "done.label": "Done",
   "items.remaining.singular": "1 item remaining",
   "items.remaining.plural": "{n} items remaining",
-  "export.data": "Export Data",
-  "import.data": "Import Data",
-  "dataset.errors.title": "Dataset validation issues:",
-  "category.needle_upgrade": "Needle Upgrade",
-  "category.ancient_mask": "Ancient Mask",
-  "category.silk_spool": "Silk Spool",
-  "category.silk_heart": "Silk Heart",
-  "category.misc": "Miscellaneous",
-  "category.crest": "Crest",
-  "category.silk_skill": "Silk Skill",
-  "category.crafting_kit_upgrade": "Crafting Kit Upgrade",
-  "category.tool_pouch_upgrade": "Tool Pouch Upgrade",
-  "category.ability": "Ability",
-  "category.tool": "Tool"
-  ,"intro.heading": "Hollow Knight: Silksong Completion Tracker"
-  ,"intro.p1": "Use this free interactive checklist to plan and verify your 100% (and future 112% if applicable) progression in Hollow Knight: Silksong. Mark needle upgrades, silk spools, crests, abilities, tools and more. Your progress is saved in your browser automatically, so you can return any time without needing to log in."
-  ,"intro.p2": "A Spanish interface is available – switch languages with the selector above. Data will evolve as official information is released."
-  ,"intro.noscript": "Note: This checklist needs JavaScript enabled to function. You can still view a simplified list of item categories below."
-  ,"fallback.categories.needle_upgrades": "Needle Upgrades"
-  ,"fallback.categories.silk_spools": "Silk Spools"
-  ,"fallback.categories.silk_hearts": "Silk Hearts"
-  ,"fallback.categories.ancient_masks": "Ancient Masks"
-  ,"fallback.categories.crests": "Crests"
-  ,"fallback.categories.silk_skills": "Silk Skills"
-  ,"fallback.categories.crafting_kit_upgrades": "Crafting Kit Upgrades"
-  ,"fallback.categories.tool_pouch_upgrades": "Tool Pouch Upgrades"
-  ,"fallback.categories.abilities": "Abilities"
-  ,"fallback.categories.tools": "Tools"
-  ,"fallback.categories.misc": "Miscellaneous"
-  ,"section.howto.title": "How to Use This Checklist"
-  ,"section.howto.p1": "Browse the categories and click any item to mark it as obtained. Your progress is saved directly in your browser, so clearing your browser's data for this site will reset your checklist."
-  ,"section.howto.p2": "Placeholder or inferred entries will be replaced with verified Silksong data when official info is released."
-  ,"section.howto.p3": "You can switch between English and Spanish at any time, and your progress will be kept. We welcome any suggestions for improvement!"
-  ,"section.features.title": "Features"
-  ,"section.features.list1": "A fast, simple, and easy-to-use checklist."
-  ,"section.features.list2": "Works offline after your first visit."
-  ,"section.features.list3": "Track your completion percentage and see how many items are left."
-  ,"section.features.list4": "Available in both English and Spanish."
-  ,"section.features.list5": "Categories can be expanded or collapsed to focus on what you need."
-  ,"section.faq.title": "FAQ"
-  ,"section.faq.q.data": "Does this store my data online?"
-  ,"section.faq.a.data": "No. Your data is stored only in your browser. We plan to add an option to save your progress to a file in the future."
-  ,"section.faq.q.change": "Will values change when the game releases?"
-  ,"section.faq.a.change": "Yes—provisional entries are updated; structure aims to remain stable."
-  ,"section.faq.q.ads": "Why don't I see ads yet?"
-  ,"section.faq.a.ads": "The site is currently under review for ads, which will appear once approved."
-  ,"section.faq.q.suggest": "Can I suggest new categories?"
-  ,"section.faq.a.suggest": "Yes, absolutely! We'd love to hear your ideas. Feel free to share them on our project page."
-  ,"section.faq.q.official": "Is this official?"
-  ,"section.faq.a.official": "No. This is an independent fan project."
-  ,"section.disclaimer.title": "Disclaimer"
-  ,"section.disclaimer.text": "Hollow Knight and Silksong are trademarks of Team Cherry. This fan site is not affiliated with or endorsed by Team Cherry."
-  ,"guide.open": "GUIDE"
-  ,"footer.note": "Fan-made project. Hollow Knight & Silksong are trademarks of Team Cherry. Provisional data will be updated with official information.",
   "optional.label": "Optional",
   "expand": "Expand",
   "collapse": "Collapse",
+  "percent.tooltip": "Total completion",
+  "dataset.errors.title": "Dataset validation issues:",
+  "import": "Import",
+  "export": "Export",
+  "info": "Info",
+  "fallback.categories.needle_upgrades": "Needle Upgrades",
+  "fallback.categories.silk_spools": "Silk Spools",
+  "fallback.categories.silk_hearts": "Silk Hearts",
+  "fallback.categories.ancient_masks": "Ancient Masks",
+  "fallback.categories.crests": "Crests",
+  "fallback.categories.silk_skills": "Silk Skills",
+  "fallback.categories.crafting_kit_upgrades": "Crafting Kit Upgrades",
+  "fallback.categories.tool_pouch_upgrades": "Tool Pouch Upgrades",
+  "fallback.categories.abilities": "Abilities",
+  "fallback.categories.tools": "Tools",
+  "fallback.categories.misc": "Miscellaneous",
+  "info.short.title": "Info",
+  "info.short.intro": "An interactive Hollow Knight: Silksong checklist to help you track progress toward 100%.",
+  "info.short.save": "Your progress is saved automatically in your browser (no account needed).",
+  "info.short.optional": "Optional elements (Bosses, Fleas) don’t count toward the 100% but you can still track them.",
+  "info.short.transfer": "Export creates a backup file you can keep; Import restores that file on another device.",
+  "info.short.langs": "Available in English and Spanish; more languages may be added.",
+  "info.short.credits": "Fan project made by fans for fans. Team Cherry is not involved.",
+  "category.needle_upgrade": "Needle Upgrades",
+  "category.ancient_mask": "Ancient Masks",
+  "category.silk_spool": "Silk Spools",
+  "category.silk_heart": "Silk Hearts",
+  "category.misc": "Miscellaneous",
+  "category.crest": "Crests",
+  "category.silk_skill": "Silk Skills",
+  "category.crafting_kit_upgrade": "Crafting Kit Upgrades",
+  "category.tool_pouch_upgrade": "Tool Pouch Upgrades",
+  "category.ability": "Abilities",
+  "category.tool": "Tools",
   "category.pulgas": "Fleas",
-  "category.bosses": "Bosses",
-  "category.optional.note": "This category does not count towards the 100% completion."
-  ,"feedback.open": "Feedback"
-  ,"feedback.title": "Send Feedback"
-  ,"feedback.type.label": "Type"
-  ,"feedback.type.bug": "Bug"
-  ,"feedback.type.idea": "Idea"
-  ,"feedback.type.data": "Incorrect data"
-  ,"feedback.type.other": "Other"
-  ,"feedback.message.label": "Message"
-  ,"feedback.placeholder": "Write your feedback (min 10 chars)..."
-  ,"feedback.minchars": "Please write at least 10 characters."
-  ,"feedback.include.progress": "Include progress %"
-  ,"feedback.cancel": "Cancel"
-  ,"feedback.send": "Send"
-  ,"feedback.status.sending": "Sending..."
-  ,"feedback.status.sent": "Feedback sent. Thank you!"
-  ,"feedback.status.error": "Error sending feedback. Try again later."
-  ,"feedback.type.prefix.bug": "[BUG]"
-  ,"feedback.type.prefix.idea": "[IDEA]"
-  ,"feedback.type.prefix.data": "[DATA]"
-  ,"feedback.type.prefix.other": "[OTHER]"
-  ,"feedback.status.tooShort": "Message too short."
-  ,"info.short.title": "Info"
-  ,"info.short.intro": "An interactive Hollow Knight: Silksong checklist to help you track progress toward 100%."
-  ,"info.short.save": "Your progress is saved automatically in your browser (no account needed)."
-  ,"info.short.optional": "Optional elements (Bosses, Fleas) don’t count toward the 100% but you can still track them."
-  ,"info.short.transfer": "Export creates a backup file you can keep; Import restores that file on another device."
-  ,"info.short.langs": "Available in English and Spanish; more languages may be added."
-  ,"info.short.feedback": "Use the Feedback button if you find mistakes or want to suggest improvements."
-  ,"info.short.credits": "Fan project made by fans for fans. Team Cherry is not involved."
+  "category.bosses": "Bosses"
 }

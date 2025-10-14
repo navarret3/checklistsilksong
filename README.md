@@ -20,7 +20,7 @@ Una página sencilla y rápida (sin registros) donde marcas objetos, mejoras, fr
 - Idiomas: Inglés y Español (cambio instantáneo desde el selector).
 - Exportar / importar tu progreso para llevarlo a otro dispositivo.
 - Interfaz adaptada a móvil y escritorio.
-- Modal de información y botón de Feedback para sugerencias o reportes.
+- Modal de información con tips rápidos.
 
 ## 🚀 Cómo usarla
 1. Entra a la web y espera que cargue la lista.
@@ -29,11 +29,11 @@ Una página sencilla y rápida (sin registros) donde marcas objetos, mejoras, fr
 4. Exporta tu progreso si quieres una copia de seguridad (botón Export), e impórtalo cuando cambies de dispositivo.
 5. Usa el buscador para filtrar ítems rápidamente.
 
-## 🗣 Feedback y sugerencias
-Pulsa el botón “Feedback” dentro de la aplicación. Puedes reportar datos incorrectos, ideas o bugs. ¡Las contribuciones ayudan a mejorar la herramienta!
+## 🗣 Sugerencias
+Si quieres proponer mejoras o avisar de datos incorrectos, abre un issue o pull request en el repositorio.
 
 ## 🧩 Traducciones
-Actualmente: EN / ES. Si deseas colaborar con otro idioma, abre un issue o envía feedback indicando el idioma que quieres aportar.
+Actualmente: EN / ES. Si deseas colaborar con otro idioma, abre un issue indicando tu propuesta.
 
 ## 🛣 Pequeño roadmap (orientativo)
 - Mejoras visuales y accesibilidad.

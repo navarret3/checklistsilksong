@@ -75,8 +75,6 @@ export function trackItemToggle(item){
 }
 export function trackReset(count){ g()('event','checklist_reset',{ event_category:'User Interaction', value:count, completed_before_reset:count, locale:_getLocale() }); _toggleCount=0; }
 export function trackSearch(q, visible){ g()('event','search',{ search_term:q.slice(0,80), results_visible:visible, locale:_getLocale() }); }
-export function trackFeedbackOpen(){ g()('event','feedback_open',{ event_category:'Feedback', locale:_getLocale() }); }
-export function trackFeedbackSubmit(type, percent){ g()('event','feedback_submit',{ event_category:'Feedback', event_label:type, value:percent, locale:_getLocale() }); }
 
 function trackMilestones(p){
   for(const m of MILESTONES){

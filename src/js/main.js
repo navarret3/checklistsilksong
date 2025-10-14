@@ -4,10 +4,9 @@ import { toggle } from './progress.js';
 import { renderCategories, updatePercent, updateCategoryCounts, setupLazyImages } from './ui.js';
 import { computePercent } from './progress.js';
 import { setLocale, t, activeLocale } from './i18n.js';
-import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackSearch, trackFeedbackOpen, trackFeedbackSubmit } from './analytics.js';
+import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackSearch } from './analytics.js';
 
 (async function init(){
-  try {
     // Determine initial locale earlier (HTML bootstrap may have set data-locale)
     const LOCALE_KEY = 'silksongChecklistLocale_v1';
     const bootLocale = document.documentElement.getAttribute('data-locale') || localStorage.getItem(LOCALE_KEY) || 'en';
@@ -79,46 +78,9 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
     // Centralized function to render the item list based on current filters/language
     const collapsedSet = new Set(loadCollapsedCategories());
 
-    function applyCollapsedState(){
-      // Only apply stored collapsed when no active search filter
-      if(searchInput && searchInput.value.trim()) return;
-      document.querySelectorAll('.cat').forEach(catEl => {
-        const id = catEl.dataset.category;
-        if(id && collapsedSet.has(id)) catEl.classList.add('collapsed');
-      });
-    }
-
-    function rerenderList() {
-      const lang = activeLocale();
-      const q = searchInput ? searchInput.value.trim().toLowerCase() : '';
-      lastQuery = q;
-
-      const itemsToRender = !q
-        ? allItems
-        : allItems.filter(it => (it.name?.[lang] || it.name?.en || '').toLowerCase().includes(q));
-
-      renderCategories(container, itemsToRender, progress, handleItemToggle, globalTotalWeight);
-      updateBothPercents();
-
-      if (q) {
-        document.querySelectorAll('.cat').forEach(c => c.classList.remove('collapsed'));
-      } else {
-        applyCollapsedState();
-        // Re-apply in microtask in case CSS/layout or late inserted nodes appear
-        queueMicrotask(applyCollapsedState);
-      }
-    }
-
-  // Initial render (after locale set)
-  rerenderList();
-  document.body.classList.remove('pre-init');
-    if(floatingProgress) floatingProgress.hidden = false;
-    // Defer lazy image wiring to next frame to avoid blocking first paint
-    requestAnimationFrame(()=> setupLazyImages());
-
-    // Event listeners
+    // Search input listener (reconstructed after cleanup)
     if (searchInput) {
-      const SEARCH_DEBOUNCE = 180; // ms
+      const SEARCH_DEBOUNCE = 180;
       let searchTimer;
       searchInput.addEventListener('input', () => {
         const newQuery = searchInput.value.trim().toLowerCase();
@@ -126,17 +88,17 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         clearTimeout(searchTimer);
         searchTimer = setTimeout(()=>{
           rerenderList();
-          // Re-setup lazy images after search re-renders content
           requestAnimationFrame(() => setupLazyImages());
           if (newQuery) {
             clearTimeout(searchInput._searchTimeout);
             searchInput._searchTimeout = setTimeout(() => {
-              const visibleItems = document.querySelectorAll('.item').length; // simplified count
-              try { trackSearch(newQuery, visibleItems); } catch(_){}
+              const visibleItems = document.querySelectorAll('.item').length;
+              try { trackSearch(newQuery, visibleItems); } catch(_){ }
             }, 700);
           }
         }, SEARCH_DEBOUNCE);
       });
+    }
 
       /* Collapsible search (mobile/icon-only) */
       if(searchWrap){
@@ -217,7 +179,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
           }
         });
       }
-    }
+    
 
     // Locale already applied before first render
     // Sync toggle visuals with current locale
@@ -469,64 +431,35 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
     }
     applyI18n();
 
-    /* ===== Service Worker update notice (Option A) ===== */
-    // Creates (once) a small fixed banner prompting user to refresh when a new SW is waiting.
-    function ensureUpdateBanner(){
-      let banner = document.getElementById('updateAvailableBanner');
-      if(!banner){
-        banner = document.createElement('div');
-        banner.id = 'updateAvailableBanner';
-        banner.style.cssText = 'position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:400;display:flex;align-items:center;gap:.65rem;background:#1d262d;border:1px solid #32424d;padding:.6rem .85rem .65rem;border-radius:12px;font-size:.62rem;letter-spacing:.8px;font-weight:600;color:#d6e4ed;box-shadow:0 8px 28px -10px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04);';
-        banner.setAttribute('role','status');
-        banner.setAttribute('aria-live','polite');
-        banner.innerHTML = '<span data-i18n="update.available">New version available</span><button type="button" style="background:#25313a;color:#fff;border:1px solid #39576a;font-size:.6rem;font-weight:600;letter-spacing:.8px;padding:.4rem .65rem .45rem;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem" data-action="reload"><span data-i18n="update.reload">Reload</span></button><button type="button" aria-label="Dismiss" data-action="dismiss" style="background:none;border:none;color:#9fb2c0;font-size:1rem;line-height:1;cursor:pointer;padding:.2rem .3rem .25rem">×</button>';
-        document.body.appendChild(banner);
-        applyI18n();
-        banner.addEventListener('click', (e)=>{
-          const btn = e.target.closest('[data-action]');
-          if(!btn) return;
-          const action = btn.getAttribute('data-action');
-          if(action==='reload'){
-            // Attempt to tell waiting SW to skip waiting then reload
-            if(window._waitingServiceWorker){ window._waitingServiceWorker.postMessage({ type:'SKIP_WAITING' }); }
-            setTimeout(()=> window.location.reload(), 120);
-          } else if(action==='dismiss'){
-            banner.remove();
-          }
-        });
-      }
+    // ===== Render Helper (restored after cleanup) =====
+    function rerenderList(){
+      const q = (searchInput?.value || '').trim().toLowerCase();
+      lastQuery = q;
+      const locale = activeLocale();
+      const filtered = q ? allItems.filter(it => {
+        const name = (it.name?.[locale] || it.name?.en || '').toLowerCase();
+        const desc = (it.description?.[locale] || it.description?.en || it.location_text?.[locale] || it.location_text?.en || '').toLowerCase();
+        return name.includes(q) || desc.includes(q) || (it.id && it.id.toLowerCase().includes(q));
+      }) : allItems;
+      renderCategories(container, filtered, progress, handleItemToggle, globalTotalWeight);
+      // Re-apply collapsed state
+      container.querySelectorAll('.cat').forEach(catEl => {
+        const id = catEl.dataset.category;
+        if(id && collapsedSet.has(id)) catEl.classList.add('collapsed');
+      });
+      updateBothPercents();
     }
 
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.getRegistration().then(reg => {
-        if(!reg) return;
-        // Listen for updates after initial load
-        reg.addEventListener('updatefound', () => {
-          const newWorker = reg.installing;
-          if(!newWorker) return;
-          newWorker.addEventListener('statechange', () => {
-            if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
-              window._waitingServiceWorker = newWorker;
-              ensureUpdateBanner();
-            }
-          });
-        });
-        // If a waiting worker already exists (page opened during update)
-        if(reg.waiting && navigator.serviceWorker.controller){
-          window._waitingServiceWorker = reg.waiting;
-          ensureUpdateBanner();
-        }
-      });
-      // Handle SKIP_WAITING -> controllerchange
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        // If we already triggered reload manually skip
-      });
-      // Message channel from SW (optional future use)
-      navigator.serviceWorker.addEventListener('message', (e)=>{
-        if(!e.data) return;
-        if(e.data.type === 'SW_READY'){ /* could log or show debug */ }
-      });
-    }
+    // Initial render
+    rerenderList();
+    // Setup lazy images next frame
+    requestAnimationFrame(() => setupLazyImages());
+  // Ensure we exit pre-init visual state
+  document.body.classList.remove('pre-init');
+  // Safety: force removal if something blocks before this point
+  setTimeout(()=> document.body.classList.remove('pre-init'), 2000);
+
+    // (Removed service worker update banner and SW listeners to simplify code.)
 
     function spawnCelebration(){
       if(celebrationShown) return;
@@ -630,129 +563,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       setTimeout(schedule, 350);
     })();
 
-    /* ===== Feedback Modal & Submission (Discord Webhook) ===== */
-    (function setupFeedback(){
-      const feedbackBtn = document.getElementById('feedbackBtn');
-      const feedbackModal = document.getElementById('feedbackModal');
-      if(!feedbackBtn || !feedbackModal) return;
-      const form = document.getElementById('feedbackForm');
-      const msgEl = document.getElementById('fbMsg');
-      const typeEl = document.getElementById('fbType');
-      const statusEl = document.getElementById('fbStatus');
-      const sendBtn = document.getElementById('fbSendBtn');
-      const webhookMeta = document.querySelector('meta[name="feedback-webhook"]');
-      // Resolución perezosa y robusta del webhook:
-      // 1. Meta inyectada por CI (no se guarda en repo) -> <meta name="feedback-webhook" content="URL" />
-      // 2. Fichero plano feedback-webhook.txt (inyectado por workflow con secret)
-      // 3. config.json (JSON con { feedbackWebhook: "..." })
-      // 4. Parámetro de URL ?feedbackWebhook=<url codificada> (solo para depuración local)
-      const initialMetaWebhook = (webhookMeta && webhookMeta.content || '').trim();
-      const urlParam = (()=>{ try { const p=new URLSearchParams(location.search); return decodeURIComponent(p.get('feedbackWebhook')||'').trim(); } catch(e){ return ''; } })();
-      let _cachedWebhook = null; // string ya resuelta
-      let _webhookResolving = null; // Promise en curso
-
-      async function resolveWebhook(){
-        if(_cachedWebhook) return _cachedWebhook;
-        if(_webhookResolving) return _webhookResolving;
-        _webhookResolving = (async ()=>{
-          // Prioridades
-            if(urlParam && /^https?:\/\//i.test(urlParam)) return _cachedWebhook = urlParam;
-            if(initialMetaWebhook && /^https?:\/\//i.test(initialMetaWebhook)) return _cachedWebhook = initialMetaWebhook;
-            // Intentar feedback-webhook.txt (sin cache)
-            try {
-              const res = await fetch('/feedback-webhook.txt?cb=' + Date.now(), { cache:'no-store' });
-              if(res.ok){
-                const txt = (await res.text()).trim();
-                if(/^https?:\/\//i.test(txt)) return _cachedWebhook = txt;
-              }
-            } catch(e){}
-            // Intentar config.json
-            try {
-              const res = await fetch('/config.json?cb=' + Date.now(), { cache:'no-store' });
-              if(res.ok){
-                const json = await res.json();
-                const cw = (json.feedbackWebhook||'').trim();
-                if(/^https?:\/\//i.test(cw)) return _cachedWebhook = cw;
-              }
-            } catch(e){}
-            return _cachedWebhook = '';
-        })();
-        const val = await _webhookResolving; _webhookResolving = null; return val;
-      }
-      if(!initialMetaWebhook && location.hostname === 'checklistsilksong.com'){
-        console.warn('[FEEDBACK] Webhook no disponible en meta; se intentará fallback dinámico.');
-      }
-      let activeSending = false;
-
-      function openFb(){
-        feedbackModal.hidden = false;
-        statusEl.hidden = true;
-        statusEl.className = 'fb-status';
-        form.reset();
-        msgEl.focus();
-  trackFeedbackOpen();
-      }
-      function closeFb(){
-        feedbackModal.hidden = true;
-      }
-      feedbackBtn.addEventListener('click', openFb);
-      feedbackModal.addEventListener('click', (e)=>{
-        if(e.target.matches('[data-close="feedbackModal"], .feedback-modal__backdrop')) closeFb();
-      });
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !feedbackModal.hidden) closeFb(); });
-
-      async function submitFeedback(e){
-        e.preventDefault();
-        if(activeSending) return;
-        const raw = (msgEl.value||'').trim();
-        if(raw.length < 10){
-          statusEl.hidden = false; statusEl.textContent = t('feedback.status.tooShort') || 'Message too short.'; statusEl.className='fb-status fb-status--err'; return;
-        }
-        const webhookFinal = await resolveWebhook();
-        if(!webhookFinal){
-          statusEl.hidden = false;
-          statusEl.textContent = 'Webhook not configured.';
-          statusEl.className='fb-status fb-status--err';
-          // Provide a hint for debugging (only once)
-          if(!window._feedbackMissingWarned){
-            window._feedbackMissingWarned = true;
-            alert('Feedback webhook no configurado. Asegúrate de que el deploy inyectó la meta y que no hay un service worker antiguo cacheando index.html. Prueba Ctrl+F5 / borrar caché.');
-          }
-          return;
-        }
-        activeSending = true;
-        sendBtn.disabled = true; sendBtn.style.opacity='.6';
-        statusEl.hidden = false; statusEl.textContent = t('feedback.status.sending') || 'Sending...'; statusEl.className='fb-status';
-        const { completedWeight, totalWeight } = computePercent(items, progress);
-        const percent = totalWeight ? Math.round((completedWeight/totalWeight)*100) : 0;
-        const locale = activeLocale();
-        const type = typeEl.value || 'other';
-        const prefixKey = 'feedback.type.prefix.'+type;
-        const prefix = t(prefixKey) || `[${type.toUpperCase()}]`;
-        const ua = navigator.userAgent.split(')')[0]+')';
-        const bodyLines = [
-          `${prefix} ${raw}`,
-          `Progress: ${percent}%`,
-          `Locale: ${locale}`,
-          `UA: ${ua}`
-        ];
-        const payload = { content: bodyLines.join('\n') };
-        try {
-          const res = await fetch(webhookFinal, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
-          if(!res.ok) throw new Error('HTTP '+res.status);
-          statusEl.textContent = t('feedback.status.sent') || 'Feedback sent. Thank you!';
-          statusEl.className = 'fb-status fb-status--ok';
-          trackFeedbackSubmit(type, percent);
-          setTimeout(()=>{ closeFb(); }, 1400);
-        } catch(err){
-          statusEl.textContent = t('feedback.status.error') || 'Error sending feedback.';
-          statusEl.className = 'fb-status fb-status--err';
-        } finally {
-          activeSending = false; sendBtn.disabled = false; sendBtn.style.opacity='';
-        }
-      }
-      form.addEventListener('submit', submitFeedback);
-    })();
+  /* (Former feedback/webhook feature fully removed) */
 
     function formatWeightedPercent(v){
       if(v >= 100) return '100';
@@ -807,9 +618,5 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
     // Initialize analytics after idle to avoid impacting FCP
     requestIdleCallback?.(()=> initAnalytics({ items, progress, getLocale: activeLocale })) || setTimeout(()=> initAnalytics({ items, progress, getLocale: activeLocale }), 900);
 
-  } catch(e){
-    console.error('[INIT] Failure', e);
-  const container = document.getElementById('categories');
-    if(container) container.innerHTML = `<p style="color:#f66">Init error: ${e.message}</p>`;
-  }
+  // (Removed outer try/catch for simplicity; rely on console errors.)
 })();
