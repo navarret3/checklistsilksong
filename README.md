@@ -46,6 +46,41 @@ Proyecto hecho por fans para fans. No afiliado ni respaldado por Team Cherry. Gr
 ## 📄 Privacidad
 No pedimos cuentas ni contraseñas. El progreso vive en tu dispositivo. Solo se usan métricas anónimas agregadas para entender uso general.
 
+## 📊 Eventos GA4 (Instrumentación)
+La aplicación envía eventos anónimos para entender el uso y priorizar mejoras. Principales eventos:
+
+| Evento | Cuándo se dispara | Parámetros clave |
+|--------|-------------------|------------------|
+| item_completed / item_unchecked | Marcar / desmarcar un ítem | item_id, item_category, progress_percent, optional |
+| category_completed | Se completa una categoría core | category, progress_percent |
+| progress_milestone | Se alcanza 25, 50, 75 o 100% | milestone, progress_percent |
+| progress_quartile | Se alcanza 25, 50 o 75% (alias para dashboards) | quartile, progress_percent |
+| full_completion | 100% core alcanzado | core_total, core_completed |
+| checklist_reset | Reset manual | completed_before_reset |
+| search | Búsqueda (tras leve debounce) | search_term, results_visible |
+| language_change | Cambio de idioma | locale |
+| visibility_change | Pestaña se oculta o muestra | state, visible_ms |
+| scroll_milestone | Scroll alcanza 25/50/75/100% página | milestone |
+| session_summary | Al cambiar de pestaña (hidden) o unload | duration_sec, toggles, core_percent |
+
+Dimensiones recomendadas en GA4 (Custom definitions):
+- progress_percent (Number) – usa event parameter.
+- item_category (Text).
+- locale (Text).
+- quartile (Number) para progress_quartile.
+
+Sugerencias de dashboards:
+1. Tabla de conversión: Usuarios vs milestones (usar progress_milestone + full_completion).  
+2. Funnel de quartiles: 0 → 25 → 50 → 75 → 100 (usar progress_quartile + full_completion).  
+3. Distribución de categorías completadas (conteo de category_completed).  
+4. Engagement: item_completed por sesión / session_summary.duration_sec.
+
+Debug local rápido:
+1. Abrir DevTools y ejecutar: `window.gtag = (...a)=>{console.log('GTAG',a); dataLayer.push(a);}` antes de interactuar.
+2. Activar GA DebugView (extensión Chrome o `gtag('config','G-XXXX',{debug_mode:true});`).
+3. Verificar que se disparan progress_milestone y progress_quartile al editar el progreso (puedes simular marcando muchos ítems rápido).
+
+
 ## ⚖️ Disclaimer
 No es un producto oficial de Team Cherry. Hollow Knight: Silksong y todos los elementos relacionados pertenecen a sus respectivos dueños.
 

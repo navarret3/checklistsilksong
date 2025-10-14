@@ -4,7 +4,8 @@ import { computePercent } from './progress.js';
 
 const MILESTONES_KEY = 'ss_milestones_v1';
 const SESSION_ID_KEY = 'ss_session_id_v1';
-const MILESTONES = [25,50,75,90,100];
+// Milestones: track quartiles plus 100% (removed 90%).
+const MILESTONES = [25,50,75,100];
 
 let _items = [];
 let _progress = {};
@@ -75,8 +76,7 @@ export function trackItemToggle(item){
 }
 export function trackReset(count){ g()('event','checklist_reset',{ event_category:'User Interaction', value:count, completed_before_reset:count, locale:_getLocale() }); _toggleCount=0; }
 export function trackSearch(q, visible){ g()('event','search',{ search_term:q.slice(0,80), results_visible:visible, locale:_getLocale() }); }
-export function trackFeedbackOpen(){ g()('event','feedback_open',{ event_category:'Feedback', locale:_getLocale() }); }
-export function trackFeedbackSubmit(type, percent){ g()('event','feedback_submit',{ event_category:'Feedback', event_label:type, value:percent, locale:_getLocale() }); }
+// (Legacy feedback events removed)
 
 function trackMilestones(p){
   for(const m of MILESTONES){
@@ -86,6 +86,10 @@ function trackMilestones(p){
         g()('event','full_completion',{ locale:_getLocale(), core_total:p.total, core_completed:p.completed, optional_completed:p.optionalCompleted, optional_total:p.optionalTotal });
       } else {
         g()('event','progress_milestone',{ milestone:m, progress_percent:p.percent, locale:_getLocale() });
+        // Additional explicit quartile event naming (easier GA4 report building)
+        if(m===25||m===50||m===75){
+          g()('event','progress_quartile',{ quartile:m, progress_percent:p.percent, locale:_getLocale() });
+        }
       }
     }
   }
