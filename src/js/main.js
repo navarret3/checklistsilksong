@@ -7,6 +7,11 @@ import { setLocale, t, activeLocale } from './i18n.js';
 import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackSearch } from './analytics.js';
 
 (async function init(){
+    // Constants
+    const MOBILE_BREAKPOINT = 760;
+    const SEARCH_DEBOUNCE = 180;
+    const SEARCH_TRACK_DELAY = 700;
+    const SEARCH_FOCUS_DELAY = 40;
     // Determine initial locale earlier (HTML bootstrap may have set data-locale)
     const LOCALE_KEY = 'silksongChecklistLocale_v1';
     const bootLocale = document.documentElement.getAttribute('data-locale') || localStorage.getItem(LOCALE_KEY) || 'en';
@@ -30,10 +35,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
   const percentValueFloating = document.getElementById('progressPercentTextFloating'); // legacy (removed visually)
   const itemsRemainingFloating = document.getElementById('itemsRemainingFloating');
   const progressFillFloating = document.querySelector('.progress-bar__fill--floating');
-  // Removed compact topbar progress elements (redundant)
-  const topbarFill = null;
-  const percentCompact = null;
-  const floatingWrap = null; // removed
+  // (Removed compact topbar progress elements)
   // Language dropdown elements
   const langToggle = document.getElementById('langToggle');
   const langMenu = document.getElementById('langMenu');
@@ -51,8 +53,9 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
   const dismissIssues = document.getElementById('dismissIssues');
   const searchInput = document.getElementById('searchInput');
   const searchWrap = searchInput ? searchInput.closest('.search-inline') : null;
-  // Celebration flag must be declared early to avoid TDZ if user already at 100% before later definitions
+  // Celebration: track previous percent so re-reaching 100% after un-checking triggers again
   let celebrationShown = false;
+  let previousPercent = 0;
 
     // Validate dataset first
     validateDataset(items, issuesBox, issuesList, dismissIssues);
@@ -80,7 +83,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
 
     // Search input listener (reconstructed after cleanup)
     if (searchInput) {
-      const SEARCH_DEBOUNCE = 180;
+      const SEARCH_DEBOUNCE_LOCAL = SEARCH_DEBOUNCE;
       let searchTimer;
       searchInput.addEventListener('input', () => {
         const newQuery = searchInput.value.trim().toLowerCase();
@@ -94,9 +97,9 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
             searchInput._searchTimeout = setTimeout(() => {
               const visibleItems = document.querySelectorAll('.item').length;
               try { trackSearch(newQuery, visibleItems); } catch(_){ }
-            }, 700);
+            }, SEARCH_TRACK_DELAY);
           }
-        }, SEARCH_DEBOUNCE);
+        }, SEARCH_DEBOUNCE_LOCAL);
       });
     }
 
@@ -104,7 +107,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       if(searchWrap){
         // Start collapsed if viewport narrow
         function shouldCollapseInitially(){
-          return window.innerWidth < 760; // heuristic breakpoint
+          return window.innerWidth < MOBILE_BREAKPOINT;
         }
         function collapse(){
           if(!searchWrap.classList.contains('collapsed')){
@@ -118,8 +121,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         function expand(){
           searchWrap.classList.add('expanded');
           searchWrap.classList.remove('collapsed');
-          // Delay focus slightly to allow width transition start
-          setTimeout(()=> searchInput.focus(), 40);
+          setTimeout(()=> searchInput.focus(), SEARCH_FOCUS_DELAY);
           searchWrap.setAttribute('aria-expanded','true');
           // Mark as user-forced to prevent auto collapse from overflow manager
           searchWrap.classList.add('manual-expanded');
@@ -149,12 +151,12 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         });
         // Blur collapses if empty and viewport narrow
         searchInput.addEventListener('blur', ()=>{
-          if(window.innerWidth < 760 && !searchInput.value.trim()){
+          if(window.innerWidth < MOBILE_BREAKPOINT && !searchInput.value.trim()){
             collapse();
           }
         });
         window.addEventListener('resize', ()=>{
-          if(window.innerWidth >= 760){
+          if(window.innerWidth >= MOBILE_BREAKPOINT){
             searchWrap.classList.remove('collapsed');
             searchWrap.classList.add('expanded');
             searchWrap.setAttribute('aria-expanded','true');
@@ -173,7 +175,7 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
               searchInput.value = '';
               const event = new Event('input');
               searchInput.dispatchEvent(event);
-            } else if(window.innerWidth < 760){
+            } else if(window.innerWidth < MOBILE_BREAKPOINT){
               collapse();
             }
           }
@@ -213,9 +215,9 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       langMenu.style.maxWidth='';
     }
     function openMenu(){
-      if(!langMenu || !langMenu.hidden) return;
+      if(!langMenu || !langToggle || !langMenu.hidden) return;
       langMenu.hidden = false;
-      langToggle?.setAttribute('aria-expanded','true');
+      langToggle.setAttribute('aria-expanded','true');
       // Overlay floating positioning so header height does not change (no layout shift)
       try {
         const toggleRect = langToggle.getBoundingClientRect();
@@ -407,9 +409,28 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         if(target.matches('[data-close="infoModal"], .info-modal__backdrop')){
           infoModal.hidden = true;
           document.removeEventListener('keydown', escListener);
+          infoBtn.focus(); // return focus to trigger
         }
       };
-      const escListener = (e) => { if(e.key==='Escape'){ infoModal.hidden = true; document.removeEventListener('keydown', escListener); } };
+      const escListener = (e) => {
+        if(e.key==='Escape'){
+          infoModal.hidden = true;
+          document.removeEventListener('keydown', escListener);
+          infoBtn.focus();
+        }
+        // Focus trap: keep Tab cycling inside modal
+        if(e.key==='Tab'){
+          const focusable = Array.from(infoModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+          if(!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if(e.shiftKey && document.activeElement === first){
+            e.preventDefault(); last.focus();
+          } else if(!e.shiftKey && document.activeElement === last){
+            e.preventDefault(); first.focus();
+          }
+        }
+      };
       infoBtn.onclick = () => {
         infoModal.hidden = false;
         document.addEventListener('keydown', escListener);
@@ -448,12 +469,33 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         if(id && collapsedSet.has(id)) catEl.classList.add('collapsed');
       });
       updateBothPercents();
+      // Re-observe new categories for scroll reveal
+      requestAnimationFrame(observeCategories);
+    }
+
+    // Pre-populate search from URL ?q= param (enables Google Sitelinks Searchbox)
+    const urlQ = new URLSearchParams(location.search).get('q');
+    if(urlQ && searchInput){
+      searchInput.value = urlQ.trim();
+      lastQuery = urlQ.trim().toLowerCase();
+    }
+
+    // Scroll reveal: animate categories into view
+    let revealObserver;
+    function observeCategories(){
+      container.querySelectorAll('.cat:not(.revealed)').forEach(el => revealObserver?.observe(el));
+    }
+    if('IntersectionObserver' in window){
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('revealed'); revealObserver.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
     }
 
     // Initial render
     rerenderList();
-    // Setup lazy images next frame
-    requestAnimationFrame(() => setupLazyImages());
+    // Setup lazy images + reveal next frame
+    requestAnimationFrame(() => { setupLazyImages(); observeCategories(); });
+
   // Ensure we exit pre-init visual state
   document.body.classList.remove('pre-init');
   // Safety: force removal if something blocks before this point
@@ -511,9 +553,11 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
   percentValue.title = (percentValueFloating||percentValue).title = formattedPercent + '% (' + completedWeight.toFixed(2).replace(/\.00$/,'') + ' / ' + totalWeight.toFixed(2).replace(/\.00$/,'') + ' weight)';
       // Refresh per-category counts each time global progress updates
       updateCategoryCounts(items, progress);
-      if(rawPercent >= 100 && totalWeight > 0){
+      if(rawPercent >= 100 && totalWeight > 0 && previousPercent < 100){
+        celebrationShown = false; // allow re-trigger
         spawnCelebration();
       }
+      previousPercent = rawPercent;
     }
 
     /* ===== Adaptive header overflow handling ===== */
@@ -539,11 +583,11 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
         if(searchWrapLocal){
           const input = searchWrapLocal.querySelector('input');
           const userForced = searchWrapLocal.classList.contains('manual-expanded');
-          if(window.innerWidth < 760 && input && !input.value.trim() && !userForced){
+          if(window.innerWidth < MOBILE_BREAKPOINT && input && !input.value.trim() && !userForced){
             searchWrapLocal.classList.add('collapsed');
             searchWrapLocal.classList.remove('expanded');
             searchWrapLocal.setAttribute('aria-expanded','false');
-          } else if(userForced || window.innerWidth >= 760 || (input && input.value.trim())){
+          } else if(userForced || window.innerWidth >= MOBILE_BREAKPOINT || (input && input.value.trim())){
             searchWrapLocal.classList.add('expanded');
             searchWrapLocal.classList.remove('collapsed');
             searchWrapLocal.setAttribute('aria-expanded','true');

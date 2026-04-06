@@ -13,10 +13,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Silksong Checklist" />
   <meta name="color-scheme" content="dark light" />
-  <title>Hollow Knight: Silksong | Interactive 100% checklist &amp; Guide</title>
-  <meta name="description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
+  <title>Hollow Knight: Silksong | Interactive 100% Checklist, Items &amp; Guide</title>
+  <meta name="description" content="Free interactive checklist for Hollow Knight: Silksong. Track every ability, silk spool, ancient mask, crest, tool and collectible needed for 100% completion. Includes location maps and guides." />
   <!-- Spanish alternate description (used on ES static variant) -->
-  <meta name="description" lang="es" content="Checklist interactivo completo de Hollow Knight: Silksong. Marca cada objeto, fragmento, mejora y habilidad para alcanzar el 100% de progreso." />
+  <meta name="description" lang="es" content="Checklist interactivo completo de Hollow Knight: Silksong. Rastrea habilidades, bobinas de seda, máscaras antiguas, crestas y coleccionables para el 100%. Mapas de ubicaciones incluidos." />
+  <meta name="keywords" content="Hollow Knight Silksong checklist, Silksong 100% completion, Silksong items list, Silksong collectibles, Silksong guide, Silksong abilities, Silksong silk spools, Silksong ancient masks, Hornet checklist" />
   <link rel="canonical" href="https://checklistsilksong.com/" />
   <!-- Internationalization (only EN & ES for now) -->
   <link rel="alternate" hreflang="en" href="https://checklistsilksong.com/" />
@@ -39,18 +40,21 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Silksong 100% Checklist" />
   <meta property="og:url" content="https://checklistsilksong.com/" />
-  <meta property="og:title" content="Hollow Knight: Silksong | Interactive 100% checklist & Guide" />
-  <meta property="og:description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
+  <meta property="og:title" content="Hollow Knight: Silksong | Interactive 100% Checklist, Items &amp; Guide" />
+  <meta property="og:description" content="Free interactive checklist for Hollow Knight: Silksong. Track every ability, silk spool, ancient mask, crest, tool and collectible needed for 100% completion. Includes location maps and guides." />
   <meta property="og:image" content="https://checklistsilksong.com/assets/images/ss3.png" />
   <meta property="og:image:alt" content="Silksong 100% Checklist interface preview" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_ES" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hollow Knight: Silksong | Interactive 100% checklist & Guide" />
-  <meta name="twitter:description" content="Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc." />
+  <meta name="twitter:title" content="Hollow Knight: Silksong | Interactive 100% Checklist, Items &amp; Guide" />
+  <meta name="twitter:description" content="Free interactive checklist for Hollow Knight: Silksong. Track every ability, silk spool, ancient mask, crest, tool and collectible needed for 100% completion." />
   <meta name="twitter:image" content="https://checklistsilksong.com/assets/images/ss3.png" />
-  <!-- TODO: Add your Twitter handle here. Example: <meta name="twitter:site" content="@mytwitter" /> -->
 
   
   <!-- Preconnect & Performance Hints -->
@@ -79,22 +83,26 @@
         "@type": "WebSite",
         "@id": "https://checklistsilksong.com/#website",
         "url": "https://checklistsilksong.com/",
-        "name": "Hollow Knight: Silksong | Interactive 100% checklist & Guide",
+        "name": "Hollow Knight: Silksong | Interactive 100% Checklist, Items & Guide",
         "inLanguage": ["en","es"],
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://checklistsilksong.com/?q={search_term}",
-          "query-input": "required name=search_term"
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://checklistsilksong.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
         }
       },
       {
         "@type": "WebApplication",
-        "name": "Hollow Knight: Silksong | Interactive 100% checklist & Guide",
+        "name": "Hollow Knight: Silksong 100% Checklist",
         "url": "https://checklistsilksong.com/",
         "applicationCategory": "GameApplication",
         "operatingSystem": "Any",
-        "description": "Interactive checklist for Hollow Knight: Silksong that will help you easily achieve 100% completion of the video game. Includes everything you need, maps, guides, etc.",
+        "description": "Free interactive checklist for Hollow Knight: Silksong. Track every ability, silk spool, ancient mask, crest, tool and collectible needed for 100% completion. Includes location maps and guides.",
         "inLanguage": ["en","es"],
+        "screenshot": "https://checklistsilksong.com/assets/images/ss3.png",
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
       }
     ]
@@ -135,34 +143,36 @@
 
 <header>
   <div class="topbar" role="banner">
-    <div class="logo-wrap">
-  <img src="./assets/images/ss3.png" alt="Silksong" class="logo" loading="lazy" decoding="async" />
-  <h1 data-i18n="app.title" class="app-title"><span class="title-flair" aria-hidden="true">✦</span><span class="title-text" data-outline="100% Completion Checklist">100% Completion Checklist</span><span class="title-flair" aria-hidden="true">✦</span></h1>
-    </div>
+    <a href="/" class="logo-wrap" aria-label="Home">
+      <img src="./assets/images/ss3.png" alt="Silksong" class="logo" width="40" height="40" />
+      <h1 class="app-title" data-i18n="app.title">100% Completion Checklist</h1>
+    </a>
     <div class="toolbar" role="group" aria-label="Primary toolbar">
       <div class="search-inline">
         <input id="searchInput" type="search" placeholder="Search..." aria-label="Search items" data-i18n-placeholder="search.placeholder" />
       </div>
-      <button id="importBtn" data-i18n="import" aria-label="Import data" class="btn-icon-labeled btn-import"><span class="btn-label" data-i18n="import">Import</span></button>
-      <button id="exportBtn" data-i18n="export" aria-label="Export data" class="btn-icon-labeled btn-export"><span class="btn-label" data-i18n="export">Export</span></button>
-      <button id="infoBtn" data-i18n="info" aria-haspopup="dialog" aria-controls="infoModal" class="btn-icon-labeled btn-info"><span class="btn-label" data-i18n="info">Info</span></button>
-  <button id="expandAllBtn" aria-label="Expand categories" data-i18n="expand" class="btn-icon-labeled btn-expand"><span class="btn-label" data-i18n="expand">Expand</span></button>
-  <button id="collapseAllBtn" aria-label="Collapse categories" data-i18n="collapse" class="btn-icon-labeled btn-collapse"><span class="btn-label" data-i18n="collapse">Collapse</span></button>
-      <div class="lang-dropdown">
-        <button id="langToggle" type="button" class="lang-toggle" aria-label="Change language" aria-haspopup="listbox" aria-expanded="false" data-lang="en">
-          <span class="flag flag-en" aria-hidden="true"></span>
-          <span class="lang-code">EN</span>
-          <span class="lang-caret" aria-hidden="true"></span>
-        </button>
-        <ul id="langMenu" class="lang-menu" role="listbox" aria-label="Language" hidden>
-          <li role="option" data-lang="en" aria-selected="true" tabindex="-1"><span class="flag flag-en" aria-hidden="true"></span><span class="opt-code">EN</span></li>
-          <li role="option" data-lang="es" aria-selected="false" tabindex="-1"><span class="flag flag-es" aria-hidden="true"></span><span class="opt-code">ES</span></li>
-        </ul>
+      <div class="toolbar-actions">
+        <button id="importBtn" aria-label="Import data" class="btn-icon-labeled btn-import"><span class="btn-label" data-i18n="import">Import</span></button>
+        <button id="exportBtn" aria-label="Export data" class="btn-icon-labeled btn-export"><span class="btn-label" data-i18n="export">Export</span></button>
+        <button id="infoBtn" aria-haspopup="dialog" aria-controls="infoModal" class="btn-icon-labeled btn-info"><span class="btn-label" data-i18n="info">Info</span></button>
+        <button id="expandAllBtn" aria-label="Expand categories" class="btn-icon-labeled btn-expand"><span class="btn-label" data-i18n="expand">Expand</span></button>
+        <button id="collapseAllBtn" aria-label="Collapse categories" class="btn-icon-labeled btn-collapse"><span class="btn-label" data-i18n="collapse">Collapse</span></button>
+        <div class="toolbar-divider" aria-hidden="true"></div>
+        <div class="lang-dropdown">
+          <button id="langToggle" type="button" class="lang-toggle" aria-label="Change language" aria-haspopup="listbox" aria-expanded="false" data-lang="en">
+            <span class="flag flag-en" aria-hidden="true"></span>
+            <span class="lang-code">EN</span>
+            <span class="lang-caret" aria-hidden="true"></span>
+          </button>
+          <ul id="langMenu" class="lang-menu" role="listbox" aria-label="Language" hidden>
+            <li role="option" data-lang="en" aria-selected="true" tabindex="-1"><span class="flag flag-en" aria-hidden="true"></span><span class="opt-code">EN</span></li>
+            <li role="option" data-lang="es" aria-selected="false" tabindex="-1"><span class="flag flag-es" aria-hidden="true"></span><span class="opt-code">ES</span></li>
+          </ul>
+        </div>
+        <button id="resetBtn" class="btn-icon-labeled btn-reset"><span class="btn-label" data-i18n="reset">Reset</span></button>
       </div>
-      <button id="resetBtn" data-i18n="reset" class="btn-icon-labeled btn-reset"><span class="btn-label" data-i18n="reset">Reset</span></button>
       <input type="file" id="importFileInput" accept="application/json" style="display:none" />
     </div>
-  </div>
   </div>
 </header>
 <div class="hero" id="hero">

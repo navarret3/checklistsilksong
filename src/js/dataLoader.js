@@ -1,7 +1,16 @@
 export async function loadData() {
   const t0 = performance.now();
-  // Switched to real (partial) Silksong dataset. Placeholder file retained for reference.
-  const res = await fetch('./data/silksong_items.json');
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
+  let res;
+  try {
+    res = await fetch('./data/silksong_items.json', { signal: controller.signal });
+  } catch (e) {
+    clearTimeout(timeoutId);
+    if (e.name === 'AbortError') throw new Error('Data load timed out. Check your connection.');
+    throw e;
+  }
+  clearTimeout(timeoutId);
   if (!res.ok) throw new Error('Failed to load dataset');
   const data = await res.json();
   const ids = new Set();

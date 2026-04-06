@@ -17,15 +17,6 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
   rootEl.innerHTML='';
   const frag = document.createDocumentFragment();
   const categoryKeys = Object.keys(grouped);
-  // Ad configuration: insert after specific category indices (0-based)
-  const adDefs = [
-    { afterIndex: 1, id: 'ad-mid-1', slot: '8232693985' },
-    { afterIndex: 3, id: 'ad-mid-2', slot: '9354203965' },
-    { afterIndex: 5, id: 'ad-mid-3', slot: '5405238139' },
-    { afterIndex: 7, id: 'ad-mid-4', slot: '5960923281' },
-    { afterIndex: 9, id: 'ad-mid-5', slot: '2930116017' }
-  ];
-  const adClient = 'ca-pub-9707168065012640';
   for(const [idx, cat] of categoryKeys.entries()){
     const list = grouped[cat];
     const catEl = document.createElement('section');
@@ -68,25 +59,12 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     if(cat === 'pulgas' && !rootEl.querySelector('.non-100-separator')){
       const sep = document.createElement('div');
       sep.className = 'non-100-separator';
-      const loc = activeLocale();
-      const sepMsg = loc==='es' ? 'A partir de aquí los elementos no cuentan para el 100%' : 'From here items do NOT count toward 100%';
+      const sepMsg = t('separator.non100') || 'From here items do NOT count toward 100%';
       sep.innerHTML = `<span class="sep-text">${sepMsg}</span>`;
       frag.appendChild(sep);
     }
     catEl.appendChild(header); catEl.appendChild(body);
     frag.appendChild(catEl);
-
-    // Multi AdSense insertion: check if current index matches any afterIndex
-    const adDef = adDefs.find(d => d.afterIndex === idx);
-    if(adDef && !document.getElementById(adDef.id)){
-      const wrap = document.createElement('div');
-      wrap.className = 'ad-container';
-      wrap.id = adDef.id;
-      wrap.setAttribute('data-ad-slot-id', adDef.slot);
-      wrap.innerHTML = `\n<ins class="adsbygoogle" style="display:block" data-ad-client="${adClient}" data-ad-slot="${adDef.slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
-      frag.appendChild(wrap);
-      queueMicrotask(()=>{ try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){ console.warn('AdSense init error', e); } });
-    }
   }
   rootEl.appendChild(frag);
   // Bind interactive listeners only once to avoid duplicate toggle (double-click effect after reset)
@@ -371,24 +349,10 @@ function loadReal(img){
   if(!src) return;
   img.removeAttribute('data-src');
   img.src = src;
-  // After real load, upscale tiny assets
+  // Mark tiny assets for CSS-based upscaling instead of expensive canvas operations
   img.addEventListener('load', ()=>{
     if(img.naturalWidth && img.naturalHeight && (img.naturalWidth < 48 || img.naturalHeight < 48)){
-      try {
-        const target = 96;
-        const canvas = document.createElement('canvas');
-        canvas.width = target; canvas.height = target;
-        const ctx = canvas.getContext('2d');
-        if(ctx){
-          ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality='high';
-          const scale = Math.min(target/img.naturalWidth, target/img.naturalHeight);
-          const dw = img.naturalWidth * scale; const dh = img.naturalHeight * scale;
-          const dx = (target-dw)/2; const dy = (target-dh)/2;
-          ctx.drawImage(img, dx, dy, dw, dh);
-          const dataUrl = canvas.toDataURL('image/png');
-          img.src = dataUrl; img.classList.add('hi-upscaled');
-        }
-      } catch(_){}
+      img.classList.add('hi-upscaled');
     }
   }, { once:true });
 }
@@ -399,7 +363,8 @@ function ensureImageModal(){
   if(imageModalEl) return;
   imageModalEl = document.createElement('div');
   imageModalEl.className = 'img-modal hidden';
-  imageModalEl.innerHTML = `\n    <div class="img-modal-backdrop" data-dismiss></div>\n    <div class="img-modal-dialog" role="dialog" aria-modal="true">\n      <button class="img-modal-close" aria-label="Cerrar" data-dismiss>×</button>\n      <div class="img-modal-body"><img alt=""></div>\n    </div>`;
+  const closeAriaLabel = t('modal.close') || 'Close';
+  imageModalEl.innerHTML = `\n    <div class="img-modal-backdrop" data-dismiss></div>\n    <div class="img-modal-dialog" role="dialog" aria-modal="true">\n      <button class="img-modal-close" aria-label="${closeAriaLabel}" data-dismiss>×</button>\n      <div class="img-modal-body"><img alt=""></div>\n    </div>`;
   document.body.appendChild(imageModalEl);
   imageModalImg = imageModalEl.querySelector('img');
   imageModalClose = imageModalEl.querySelector('.img-modal-close');
