@@ -123,4 +123,4 @@ function sendSessionSummary(){
   _toggleCount = 0;
 }
 
-if(typeof window!=='undefined') window._analyticsDebug = { milestones:()=>[..._milestonesHit] };
+// Analytics debug info available via console only, not on global scope

@@ -45,5 +45,9 @@
   "category.ability": "Abilities",
   "category.tool": "Tools",
   "category.pulgas": "Fleas",
-  "category.bosses": "Bosses"
+  "category.bosses": "Bosses",
+  "category.bosses.note": "These bosses do not count toward 100%",
+  "category.pulgas.note": "You must find all 30 fleas to obtain the \"Egg of Flealia\" tool",
+  "separator.non100": "From here items do NOT count toward 100%",
+  "modal.close": "Close"
 }

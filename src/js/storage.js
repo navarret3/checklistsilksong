@@ -17,7 +17,15 @@ export function loadProgress(currentIds) {
 }
 
 export function saveProgress(progress) {
-  localStorage.setItem(KEY, JSON.stringify({ items: progress }));
+  try {
+    localStorage.setItem(KEY, JSON.stringify({ items: progress }));
+  } catch (e) {
+    if (e.name === 'QuotaExceededError') {
+      console.error('[STORAGE] Quota exceeded — progress may not save.');
+    } else {
+      throw e;
+    }
+  }
 }
 
 export function clearProgress() {
@@ -37,8 +45,6 @@ export function saveCollapsedCategories(list){
   try { 
     const unique = Array.from(new Set(list));
     localStorage.setItem(KEY_UI, JSON.stringify({ collapsed: unique }));
-    // Debug (can be removed later)
-  if(typeof console!=='undefined') console.log('[UI STATE] Saved collapsed categories', unique);
   } catch {}
 }
 

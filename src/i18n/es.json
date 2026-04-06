@@ -45,5 +45,9 @@
   "category.ability": "Habilidades",
   "category.tool": "Herramientas",
   "category.pulgas": "Pulgas",
-  "category.bosses": "Jefes"
+  "category.bosses": "Jefes",
+  "category.bosses.note": "Estos jefes no cuentan para el 100%",
+  "category.pulgas.note": "Es necesario encontrar las 30 pulgas para conseguir la herramienta \"Egg of Flealia\"",
+  "separator.non100": "A partir de aqu\u00ed los elementos no cuentan para el 100%",
+  "modal.close": "Cerrar"
 }
