@@ -24,7 +24,27 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-  # Legacy injection step removed (feature deprecated). Build is a direct pass-through.
+      - name: Inject feedback webhook (Discord)
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -z "$WEBHOOK" ]; then
+            echo "::warning::DISCORD_WEBHOOK secret is empty; feedback form will be disabled."
+            exit 0
+          fi
+          echo "Injecting feedback webhook into config.json, feedback-webhook.txt and index.html meta"
+          ESCAPED=$(printf '%s' "$WEBHOOK" | sed -e 's/[\/&]/\\&/g')
+          # Primary source read by the client
+          printf '{\n  "feedbackWebhook": "%s"\n}\n' "$WEBHOOK" > config.json
+          # Fallback plain-text source
+          printf '%s\n' "$WEBHOOK" > feedback-webhook.txt
+          # Fallback meta tag in index.html
+          sed -i "s|<meta name=\"feedback-webhook\" content=\"\" />|<meta name=\"feedback-webhook\" content=\"$ESCAPED\" />|" index.html || true
+          if grep -q "content=\"$ESCAPED\"" index.html; then
+            echo "Webhook meta injected (length ${#WEBHOOK})."
+          else
+            echo "::warning::Webhook meta not injected; client will fall back to config.json."
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

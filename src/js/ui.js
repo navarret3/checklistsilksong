@@ -30,17 +30,17 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
     if(cat === 'bosses') {
       const loc = activeLocale();
       const bossMsg = loc==='es' ? 'Estos jefes no cuentan para el 100%' : 'These bosses do not count toward 100%';
-      header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)} <span class="boss-header-note">${bossMsg}</span></h2>` +
+      header.innerHTML = `<span class="collapse-icon" aria-hidden="true"></span><h2>${formatCategory(cat)} <span class="boss-header-note">${bossMsg}</span></h2>` +
         `<span class="cat-count cat-count--side" data-count-boss>${counts.optionalDone}/${counts.optionalCount}</span>`;
     } else if(cat === 'pulgas') {
       const loc = activeLocale();
       const pulgasMsg = loc==='es' 
         ? 'Es necesario encontrar las 30 pulgas para conseguir la herramienta "Egg of Flealia"' 
         : 'You must find all 30 fleas to obtain the "Egg of Flealia" tool';
-      header.innerHTML = `<span class=\"collapse-icon\">▶</span><h2>${formatCategory(cat)} <span class=\"pulgas-header-note\">${pulgasMsg}</span></h2>` +
+      header.innerHTML = `<span class=\"collapse-icon\" aria-hidden=\"true\"></span><h2>${formatCategory(cat)} <span class=\"pulgas-header-note\">${pulgasMsg}</span></h2>` +
         `<span class=\"cat-count cat-count--side\" data-count-pulgas>${counts.optionalDone}/${counts.optionalCount}</span>`;
     } else {
-      header.innerHTML = `<span class="collapse-icon">▶</span><h2>${formatCategory(cat)}${anyOptional ? ' <span class=\"badge-opt\" title=\"Opcional / Optional\">★</span>' : ''}</h2>` +
+      header.innerHTML = `<span class="collapse-icon" aria-hidden="true"></span><h2>${formatCategory(cat)}${anyOptional ? ' <span class=\"badge-opt\" title=\"Opcional / Optional\">★</span>' : ''}</h2>` +
         (showMainCount ? `<span class="cat-count" data-count>${counts.done}/${counts.total} (${counts.categoryPercentStr}%)</span>` : '');
     }
     header.onclick = () => {
@@ -63,7 +63,10 @@ export function renderCategories(rootEl, items, progress, onToggle, globalTotalW
       sep.innerHTML = `<span class="sep-text">${sepMsg}</span>`;
       frag.appendChild(sep);
     }
-    catEl.appendChild(header); catEl.appendChild(body);
+    const bodyWrap = document.createElement('div');
+    bodyWrap.className = 'cat-body-wrap';
+    bodyWrap.appendChild(body);
+    catEl.appendChild(header); catEl.appendChild(bodyWrap);
     frag.appendChild(catEl);
   }
   rootEl.appendChild(frag);

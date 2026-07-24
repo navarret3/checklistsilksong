@@ -46,8 +46,6 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
   const importFileInput = document.getElementById('importFileInput');
   const infoBtn = document.getElementById('infoBtn');
   const infoModal = document.getElementById('infoModal');
-  const expandAllBtn = document.getElementById('expandAllBtn');
-  const collapseAllBtn = document.getElementById('collapseAllBtn');
   const issuesBox = document.getElementById('datasetIssues');
   const issuesList = document.getElementById('datasetIssuesList');
   const dismissIssues = document.getElementById('dismissIssues');
@@ -323,19 +321,6 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       requestAnimationFrame(() => setupLazyImages());
     };
 
-    // Expand / Collapse All
-    if (expandAllBtn) expandAllBtn.onclick = () => {
-      document.querySelectorAll('.cat').forEach(c => c.classList.remove('collapsed'));
-      collapsedSet.clear();
-      saveCollapsedCategories([...collapsedSet]);
-    };
-    if (collapseAllBtn) collapseAllBtn.onclick = () => {
-      document.querySelectorAll('.cat').forEach(c => c.classList.add('collapsed'));
-      collapsedSet.clear();
-      document.querySelectorAll('.cat').forEach(c => { const id = c.dataset.category; if(id) collapsedSet.add(id); });
-      saveCollapsedCategories([...collapsedSet]);
-    };
-
     // Export
     if (exportBtn) exportBtn.onclick = () => {
       try {
@@ -607,7 +592,145 @@ import { initAnalytics, trackItemToggle, trackLanguageChange, trackReset, trackS
       setTimeout(schedule, 350);
     })();
 
-  /* (Former feedback/webhook feature fully removed) */
+  /* ===== Feedback Modal & Submission (Discord Webhook) ===== */
+  (function setupFeedback(){
+    const feedbackBtn = document.getElementById('feedbackBtn');
+    const feedbackModal = document.getElementById('feedbackModal');
+    if(!feedbackBtn || !feedbackModal) return;
+    const form = document.getElementById('feedbackForm');
+    const nameEl = document.getElementById('fbName');
+    const emailEl = document.getElementById('fbEmail');
+    const typeEl = document.getElementById('fbType');
+    const msgEl = document.getElementById('fbMsg');
+    const hpEl = document.getElementById('fbCompany');
+    const statusEl = document.getElementById('fbStatus');
+    const sendBtn = document.getElementById('fbSendBtn');
+
+    // Lazy, robust webhook resolution: injected <meta> (CI) -> feedback-webhook.txt -> config.json
+    const metaWebhook = (document.querySelector('meta[name="feedback-webhook"]')?.content || '').trim();
+    let _cachedWebhook = null;
+    async function resolveWebhook(){
+      if(_cachedWebhook !== null) return _cachedWebhook;
+      if(/^https?:\/\//i.test(metaWebhook)) return (_cachedWebhook = metaWebhook);
+      for(const url of ['./feedback-webhook.txt', './config.json']){
+        try {
+          const res = await fetch(url + '?cb=' + Date.now(), { cache:'no-store' });
+          if(!res.ok) continue;
+          if(url.endsWith('.json')){
+            const json = await res.json();
+            const cw = (json.feedbackWebhook || '').trim();
+            if(/^https?:\/\//i.test(cw)) return (_cachedWebhook = cw);
+          } else {
+            const txt = (await res.text()).trim();
+            if(/^https?:\/\//i.test(txt)) return (_cachedWebhook = txt);
+          }
+        } catch(_){ /* try next source */ }
+      }
+      return (_cachedWebhook = '');
+    }
+
+    let sending = false;
+    let lastSentAt = 0;
+
+    function setStatus(key, kind){
+      statusEl.hidden = false;
+      statusEl.textContent = t(key) || key;
+      statusEl.className = 'fb-status' + (kind ? ' fb-status--' + kind : '');
+    }
+    function openFb(){
+      feedbackModal.hidden = false;
+      statusEl.hidden = true;
+      statusEl.className = 'fb-status';
+      form.reset();
+      document.addEventListener('keydown', escListener);
+      setTimeout(()=> nameEl.focus(), 30);
+    }
+    function closeFb(){
+      feedbackModal.hidden = true;
+      document.removeEventListener('keydown', escListener);
+      feedbackBtn.focus();
+    }
+    function escListener(e){
+      if(e.key === 'Escape'){ closeFb(); return; }
+      if(e.key === 'Tab'){
+        const focusable = Array.from(feedbackModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+          .filter(el => el.offsetParent !== null);
+        if(!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+    }
+    feedbackBtn.addEventListener('click', openFb);
+    feedbackModal.addEventListener('click', (e)=>{
+      if(e.target.matches('[data-close="feedbackModal"], .info-modal__backdrop')) closeFb();
+    });
+
+    async function submitFeedback(e){
+      e.preventDefault();
+      if(sending) return;
+      // Honeypot: bots fill hidden field -> silently drop but fake success
+      if(hpEl && hpEl.value.trim()){ setStatus('feedback.status.sent', 'ok'); setTimeout(closeFb, 1200); return; }
+      // Basic rate limit: one submission per 15s
+      if(Date.now() - lastSentAt < 15000){ setStatus('feedback.status.error', 'err'); return; }
+
+      const name = (nameEl.value || '').trim().slice(0, 80);
+      const email = (emailEl.value || '').trim().slice(0, 120);
+      const type = typeEl.value || 'other';
+      const message = (msgEl.value || '').trim();
+
+      if(message.length < 10){ setStatus('feedback.status.tooShort', 'err'); msgEl.focus(); return; }
+      if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ setStatus('feedback.email.invalid', 'err'); emailEl.focus(); return; }
+
+      const webhook = await resolveWebhook();
+      if(!webhook){ setStatus('feedback.status.unconfigured', 'err'); return; }
+
+      sending = true;
+      sendBtn.disabled = true;
+      setStatus('feedback.status.sending', null);
+
+      const { completedWeight, totalWeight } = computePercent(items, progress);
+      const percent = totalWeight ? Math.round((completedWeight / totalWeight) * 100) : 0;
+      const locale = activeLocale();
+      const ua = navigator.userAgent.split(')')[0] + ')';
+      const colors = { bug:0xff4f4f, idea:0x4fb3ff, data:0xf0c776, other:0x8fb6cc };
+
+      const payload = {
+        username: 'Silksong Checklist',
+        embeds: [{
+          title: '[' + type.toUpperCase() + '] New feedback',
+          description: message.slice(0, 1800),
+          color: colors[type] || colors.other,
+          fields: [
+            { name: 'Name', value: name || '—', inline: true },
+            { name: 'Email', value: email || '—', inline: true },
+            { name: 'Progress', value: percent + '%', inline: true },
+            { name: 'Locale', value: locale, inline: true }
+          ],
+          footer: { text: ua.slice(0, 120) },
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      try {
+        const res = await fetch(webhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+        lastSentAt = Date.now();
+        setStatus('feedback.status.sent', 'ok');
+        setTimeout(closeFb, 1400);
+      } catch(err){
+        setStatus('feedback.status.error', 'err');
+      } finally {
+        sending = false;
+        sendBtn.disabled = false;
+      }
+    }
+    form.addEventListener('submit', submitFeedback);
+  })();
 
     function formatWeightedPercent(v){
       if(v >= 100) return '100';
